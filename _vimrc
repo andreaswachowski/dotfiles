@@ -5,9 +5,11 @@ if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
 endif
 unlet s:host_specific_pre_setup
 
-"if &term =~ "dtterm" 
-" set t_Co=256
-if  &term =~ "rxvt-unicode"
+if &term =~ "dtterm" 
+  set t_Co=256
+elseif &term =~ "xterm-256color"
+  set t_Co=256
+elseif  &term =~ "rxvt-unicode"
   set t_Co=88
 "2010-04-03: The following two lines don't help on Linux - my term is
 "xterm, and I have 256 colors there. Will have to adapt this to work on all
@@ -37,6 +39,7 @@ set exrc " enable reading of local .vimrc and .exrc files
 set winminheight=0 " minimize a window to just its status bar
 set textwidth=75
 set statusline=%f%m%=%l:%c
+set diffopt=filler,vertical
 
 let g:netrw_alto = 1 " split below the file browser
 filetype plugin indent on
@@ -104,5 +107,6 @@ nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 
+:hi Comment	term=bold ctermfg=Blue guifg=#80a0ff gui=bold
 " vi:expandtab ts=2 sw=2
 set modeline
