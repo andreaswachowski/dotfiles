@@ -1,0 +1,53 @@
+#!/bin/ksh
+# Date: 23/01/01 15:47
+
+function displayUsageScreen {
+	# <<- as opposed to << strips the leading tabs from the output
+	cat <<- HERE
+	Usage: $ScriptName # <arguments>
+
+	# <description>
+
+	#Options:
+	#           -h : Displays this screen
+	#   -d yyyymmdd: Specifies the date for which data shall be retrieved.
+	#                By default, this is yesterday.
+	HERE
+}
+
+# -------------------------------------------------------------------------
+# main program
+ScriptName=`basename $0`
+
+# --- process options (example)
+while getopts ":hd:" OPT
+do
+    case "$OPT" in
+    h)  displayUsageScreen
+        exit
+        ;;
+
+    d)  DATE=$OPTARG
+        ;;
+
+    :)  print -u2 "Incorrect Syntax: -${OPTARG} needs argument."
+    	displayUsageScreen
+        exit 1
+        ;;
+
+    \?) print -u2 "Incorrect Syntax: -${OPTARG} bad option."
+        displayUsageScreen
+        exit 1
+        ;;
+    esac
+done
+
+shift `expr $OPTIND - 1`
+
+# --- process the arguments
+# FIXME: change condition according to the number of arguments expected
+if [ $# -ne 1 ]
+then
+	displayUsageScreen
+	exit 1
+fi
