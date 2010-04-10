@@ -1,0 +1,18 @@
+ScriptID SourceID Filename
+--------------------------
+294 6210 Align.vim
+102 5306 DirDiff.vim
+356 6527 dbext.vim
+1567 7183 rails.vim
+642 7080 GetLatestVimScripts.vim
+489 6763 Manpageview.vim
+39 6332 matchit.vim
+273 7169 taglist.vim
+90 7119 vcscommand.vim
+1318 6951 snippetsEmu.vim
+1066 6974 :AutoInstall: cecutil.vim
+489 6763 :AutoInstall: manpageview.vim
+1075 7079 :AutoInstall: netrw.vim
+1502 7078 :AutoInstall: vimball.vim
+1697 7093 :AutoInstall: surround.vim
+642 7080 :AutoInstall: getscript.vim

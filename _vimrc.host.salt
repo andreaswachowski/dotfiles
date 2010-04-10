@@ -1,0 +1,4 @@
+if has("gui_running")
+  set lines=65
+  set columns=80
+end

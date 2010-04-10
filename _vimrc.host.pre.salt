@@ -1,0 +1,2 @@
+" As of konsole 1.6.4 (KDE 3.5.4), 256 colors are supported.
+set t_Co=256
