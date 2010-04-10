@@ -1,8 +1,9 @@
 " Vim syntax file
-" Language:	VCS commit file
-" Maintainer:	Bob Hiestand (bob.hiestand@gmail.com)
+" Language:	git annotate output
+" Maintainer:	Bob Hiestand <bob.hiestand@gmail.com>
+" Remark:	Used by the vcscommand plugin.
 " License:
-" Copyright (c) 2007 Bob Hiestand
+" Copyright (c) 2009 Bob Hiestand
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
 " of this software and associated documentation files (the "Software"), to
@@ -26,6 +27,18 @@ if exists("b:current_syntax")
 	finish
 endif
 
-syntax region vcsComment start="^VCS: " end="$"
-highlight link vcsComment Comment
-let b:current_syntax = "vcscommit"
+syn region gitName start="(\@<=" end="\( \d\d\d\d-\)\@=" contained
+syn match gitCommit /^\^\?\x\+/ contained
+syn match gitDate /\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d\d\d\d/ contained
+syn match gitLineNumber /\d\+)\@=/ contained
+syn region gitAnnotation start="^" end=") " oneline keepend contains=gitCommit,gitLineNumber,gitDate,gitName
+
+if !exists("did_gitannotate_syntax_inits")
+	let did_gitannotate_syntax_inits = 1
+	hi link gitName Type
+	hi link gitCommit Statement
+	hi link gitDate Comment
+	hi link gitLineNumber Label
+endif
+
+let b:current_syntax="gitAnnotate"

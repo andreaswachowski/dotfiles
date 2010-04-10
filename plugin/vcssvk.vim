@@ -1,6 +1,6 @@
 " vim600: set foldmethod=marker:
 "
-" SVN extension for VCSCommand.
+" SVK extension for VCSCommand.
 "
 " Version:       VCS development
 " Maintainer:    Bob Hiestand <bob.hiestand@gmail.com>
@@ -29,16 +29,9 @@
 "
 " Options documentation: {{{2
 "
-" VCSCommandSVNExec
-"   This variable specifies the SVN executable.  If not set, it defaults to
-"   'svn' executed from the user's executable path.
-"
-" VCSCommandSVNDiffExt
-"   This variable, if set, sets the external diff program used by Subversion.
-"
-" VCSCommandSVNDiffOpt
-"   This variable, if set, determines the options passed to the svn diff
-"   command (such as 'u', 'w', or 'b').
+" VCSCommandSVKExec
+"   This variable specifies the SVK executable.  If not set, it defaults to
+"   'svk' executed from the user's executable path.
 
 " Section: Plugin header {{{1
 
@@ -53,8 +46,8 @@ endif
 
 runtime plugin/vcscommand.vim
 
-if !executable(VCSCommandGetOption('VCSCommandSVNExec', 'svn'))
-	" SVN is not installed
+if !executable(VCSCommandGetOption('VCSCommandSVKExec', 'svk'))
+	" SVK is not installed
 	finish
 endif
 
@@ -63,60 +56,56 @@ set cpo&vim
 
 " Section: Variable initialization {{{1
 
-let s:svnFunctions = {}
+let s:svkFunctions = {}
 
 " Section: Utility functions {{{1
 
 " Function: s:Executable() {{{2
-" Returns the executable used to invoke git suitable for use in a shell
+" Returns the executable used to invoke SVK suitable for use in a shell
 " command.
 function! s:Executable()
-	return shellescape(VCSCommandGetOption('VCSCommandSVNExec', 'svn'))
+	return shellescape(VCSCommandGetOption('VCSCommandSVKExec', 'svk'))
 endfunction
 
 " Function: s:DoCommand(cmd, cmdName, statusText, options) {{{2
-" Wrapper to VCSCommandDoCommand to add the name of the SVN executable to the
+" Wrapper to VCSCommandDoCommand to add the name of the SVK executable to the
 " command argument.
 function! s:DoCommand(cmd, cmdName, statusText, options)
-	if VCSCommandGetVCSType(expand('%')) == 'SVN'
+	if VCSCommandGetVCSType(expand('%')) == 'SVK'
 		let fullCmd = s:Executable() . ' ' . a:cmd
 		return VCSCommandDoCommand(fullCmd, a:cmdName, a:statusText, a:options)
 	else
-		throw 'SVN VCSCommand plugin called on non-SVN item.'
+		throw 'SVK VCSCommand plugin called on non-SVK item.'
 	endif
 endfunction
 
 " Section: VCS function implementations {{{1
 
-" Function: s:svnFunctions.Identify(buffer) {{{2
-function! s:svnFunctions.Identify(buffer)
+" Function: s:svkFunctions.Identify(buffer) {{{2
+function! s:svkFunctions.Identify(buffer)
 	let fileName = resolve(bufname(a:buffer))
 	if isdirectory(fileName)
 		let directoryName = fileName
 	else
-		let directoryName = fnamemodify(fileName, ':h')
+		let directoryName = fnamemodify(fileName, ':p:h')
 	endif
-	if strlen(directoryName) > 0
-		let svnDir = directoryName . '/.svn'
-	else
-		let svnDir = '.svn'
-	endif
-	if isdirectory(svnDir)
-		return 1
-	else
+	let statusText = s:VCSCommandUtility.system(s:Executable() . ' info -- "' . directoryName . '"', "no")
+	if(v:shell_error)
 		return 0
+	else
+		return 1
 	endif
 endfunction
 
-" Function: s:svnFunctions.Add() {{{2
-function! s:svnFunctions.Add(argList)
+" Function: s:svkFunctions.Add() {{{2
+function! s:svkFunctions.Add(argList)
 	return s:DoCommand(join(['add'] + a:argList, ' '), 'add', join(a:argList, ' '), {})
 endfunction
 
-" Function: s:svnFunctions.Annotate(argList) {{{2
-function! s:svnFunctions.Annotate(argList)
+" Function: s:svkFunctions.Annotate(argList) {{{2
+function! s:svkFunctions.Annotate(argList)
 	if len(a:argList) == 0
-		if &filetype == 'SVNannotate'
+		if &filetype == 'SVKannotate'
 			" Perform annotation of the version indicated by the current line.
 			let caption = matchstr(getline('.'),'\v^\s+\zs\d+')
 			let options = ' -r' . caption
@@ -132,24 +121,28 @@ function! s:svnFunctions.Annotate(argList)
 		let options = ' ' . caption
 	endif
 
-	return s:DoCommand('blame --non-interactive' . options, 'annotate', caption, {})
+	let resultBuffer = s:DoCommand('blame' . options, 'annotate', caption, {})
+	if resultBuffer > 0
+		normal 1G2dd
+	endif
+	return resultBuffer
 endfunction
 
-" Function: s:svnFunctions.Commit(argList) {{{2
-function! s:svnFunctions.Commit(argList)
-	let resultBuffer = s:DoCommand('commit --non-interactive -F "' . a:argList[0] . '"', 'commit', '', {})
+" Function: s:svkFunctions.Commit(argList) {{{2
+function! s:svkFunctions.Commit(argList)
+	let resultBuffer = s:DoCommand('commit -F "' . a:argList[0] . '"', 'commit', '', {})
 	if resultBuffer == 0
 		echomsg 'No commit needed.'
 	endif
 endfunction
 
-" Function: s:svnFunctions.Delete() {{{2
-function! s:svnFunctions.Delete(argList)
-	return s:DoCommand(join(['delete --non-interactive'] + a:argList, ' '), 'delete', join(a:argList, ' '), {})
+" Function: s:svkFunctions.Delete() {{{2
+function! s:svkFunctions.Delete(argList)
+	return s:DoCommand(join(['delete'] + a:argList, ' '), 'delete', join(a:argList, ' '), {})
 endfunction
 
-" Function: s:svnFunctions.Diff(argList) {{{2
-function! s:svnFunctions.Diff(argList)
+" Function: s:svkFunctions.Diff(argList) {{{2
+function! s:svkFunctions.Diff(argList)
 	if len(a:argList) == 0
 		let revOptions = []
 		let caption = ''
@@ -162,67 +155,51 @@ function! s:svnFunctions.Diff(argList)
 		let revOptions = a:argList
 	endif
 
-	let svnDiffExt = VCSCommandGetOption('VCSCommandSVNDiffExt', '')
-	if svnDiffExt == ''
-		let diffExt = []
-	else
-		let diffExt = ['--diff-cmd ' . svnDiffExt]
-	endif
-
-	let svnDiffOpt = VCSCommandGetOption('VCSCommandSVNDiffOpt', '')
-	if svnDiffOpt == ''
-		let diffOptions = []
-	else
-		let diffOptions = ['-x -' . svnDiffOpt]
-	endif
-
-	return s:DoCommand(join(['diff --non-interactive'] + diffExt + diffOptions + revOptions), 'diff', caption, {})
+	return s:DoCommand(join(['diff'] + revOptions), 'diff', caption, {})
 endfunction
 
-" Function: s:svnFunctions.GetBufferInfo() {{{2
+" Function: s:svkFunctions.GetBufferInfo() {{{2
 " Provides version control details for the current file.  Current version
 " number and current repository version number are required to be returned by
 " the vcscommand plugin.
-" Returns: List of results:  [revision, repository, branch]
+" Returns: List of results:  [revision, repository]
 
-function! s:svnFunctions.GetBufferInfo()
+function! s:svkFunctions.GetBufferInfo()
 	let originalBuffer = VCSCommandGetOriginalBuffer(bufnr('%'))
-	let fileName = bufname(originalBuffer)
-	let statusText = s:VCSCommandUtility.system(s:Executable() . ' status --non-interactive -vu -- "' . fileName . '"')
+	let fileName = resolve(bufname(originalBuffer))
+	let statusText = s:VCSCommandUtility.system(s:Executable() . ' status -v -- "' . fileName . '"')
 	if(v:shell_error)
 		return []
 	endif
 
-	" File not under SVN control.
+	" File not under SVK control.
 	if statusText =~ '^?'
 		return ['Unknown']
 	endif
 
-	let [flags, revision, repository] = matchlist(statusText, '^\(.\{9}\)\s*\(\d\+\)\s\+\(\d\+\)')[1:3]
+	let [flags, revision, repository] = matchlist(statusText, '^\(.\{3}\)\s\+\(\S\+\)\s\+\(\S\+\)\s\+\(\S\+\)\s')[1:3]
 	if revision == ''
 		" Error
 		return ['Unknown']
 	elseif flags =~ '^A'
 		return ['New', 'New']
-	elseif flags =~ '*'
-		return [revision, repository, '*']
 	else
 		return [revision, repository]
 	endif
 endfunction
 
-" Function: s:svnFunctions.Info(argList) {{{2
-function! s:svnFunctions.Info(argList)
-	return s:DoCommand(join(['info --non-interactive'] + a:argList, ' '), 'info', join(a:argList, ' '), {})
+" Function: s:svkFunctions.Info(argList) {{{2
+function! s:svkFunctions.Info(argList)
+	return s:DoCommand(join(['info'] + a:argList, ' '), 'info', join(a:argList, ' '), {})
 endfunction
 
-" Function: s:svnFunctions.Lock(argList) {{{2
-function! s:svnFunctions.Lock(argList)
-	return s:DoCommand(join(['lock --non-interactive'] + a:argList, ' '), 'lock', join(a:argList, ' '), {})
+" Function: s:svkFunctions.Lock(argList) {{{2
+function! s:svkFunctions.Lock(argList)
+	return s:DoCommand(join(['lock'] + a:argList, ' '), 'lock', join(a:argList, ' '), {})
 endfunction
 
-" Function: s:svnFunctions.Log(argList) {{{2
-function! s:svnFunctions.Log(argList)
+" Function: s:svkFunctions.Log() {{{2
+function! s:svkFunctions.Log(argList)
 	if len(a:argList) == 0
 		let options = []
 		let caption = ''
@@ -235,17 +212,17 @@ function! s:svnFunctions.Log(argList)
 		let caption = join(a:argList, ' ')
 	endif
 
-	let resultBuffer = s:DoCommand(join(['log --non-interactive', '-v'] + options), 'log', caption, {})
+	let resultBuffer = s:DoCommand(join(['log', '-v'] + options), 'log', caption, {})
 	return resultBuffer
 endfunction
 
-" Function: s:svnFunctions.Revert(argList) {{{2
-function! s:svnFunctions.Revert(argList)
+" Function: s:svkFunctions.Revert(argList) {{{2
+function! s:svkFunctions.Revert(argList)
 	return s:DoCommand('revert', 'revert', '', {})
 endfunction
 
-" Function: s:svnFunctions.Review(argList) {{{2
-function! s:svnFunctions.Review(argList)
+" Function: s:svkFunctions.Review(argList) {{{2
+function! s:svkFunctions.Review(argList)
 	if len(a:argList) == 0
 		let versiontag = '(current)'
 		let versionOption = ''
@@ -254,32 +231,28 @@ function! s:svnFunctions.Review(argList)
 		let versionOption = ' -r ' . versiontag . ' '
 	endif
 
-	return s:DoCommand('cat --non-interactive' . versionOption, 'review', versiontag, {})
+	return s:DoCommand('cat' . versionOption, 'review', versiontag, {})
 endfunction
 
-" Function: s:svnFunctions.Status(argList) {{{2
-function! s:svnFunctions.Status(argList)
-	let options = ['-u', '-v']
+" Function: s:svkFunctions.Status(argList) {{{2
+function! s:svkFunctions.Status(argList)
+	let options = ['-v']
 	if len(a:argList) == 0
 		let options = a:argList
 	endif
-	return s:DoCommand(join(['status --non-interactive'] + options, ' '), 'status', join(options, ' '), {})
+	return s:DoCommand(join(['status'] + options, ' '), 'status', join(options, ' '), {})
 endfunction
 
-" Function: s:svnFunctions.Unlock(argList) {{{2
-function! s:svnFunctions.Unlock(argList)
-	return s:DoCommand(join(['unlock --non-interactive'] + a:argList, ' '), 'unlock', join(a:argList, ' '), {})
+" Function: s:svkFunctions.Unlock(argList) {{{2
+function! s:svkFunctions.Unlock(argList)
+	return s:DoCommand(join(['unlock'] + a:argList, ' '), 'unlock', join(a:argList, ' '), {})
 endfunction
-
-" Function: s:svnFunctions.Update(argList) {{{2
-function! s:svnFunctions.Update(argList)
-	return s:DoCommand('update --non-interactive', 'update', '', {})
+" Function: s:svkFunctions.Update(argList) {{{2
+function! s:svkFunctions.Update(argList)
+	return s:DoCommand('update', 'update', '', {})
 endfunction
-
-" Annotate setting {{{2
-let s:svnFunctions.AnnotateSplitRegex = '\s\+\S\+\s\+\S\+ '
 
 " Section: Plugin Registration {{{1
-let s:VCSCommandUtility = VCSCommandRegisterModule('SVN', expand('<sfile>'), s:svnFunctions, [])
+let s:VCSCommandUtility = VCSCommandRegisterModule('SVK', expand('<sfile>'), s:svkFunctions, [])
 
 let &cpo = s:save_cpo

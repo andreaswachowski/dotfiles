@@ -1,8 +1,8 @@
 " -*- vim -*-
-" FILE: "C:\Documents and Settings\William Lee\vimfiles\plugin\DirDiff.vim" {{{
-" LAST MODIFICATION: "Wed, 22 Feb 2006 22:31:59 Central Standard Time"
+" FILE: "/home/wlee/.vim/plugin/DirDiff.vim" {{{
+" LAST MODIFICATION: "Mon, 20 Oct 2008 09:04:59 -0500 (wlee)"
 " HEADER MAINTAINED BY: N/A
-" VERSION: 1.1.0
+" VERSION: 1.1.2
 " (C) 2001-2006 by William Lee, <wl1012@yahoo.com>
 " }}}
 
@@ -150,6 +150,9 @@
 "   Salman Halim, Yosuke Kimura, and others for their suggestions
 "
 " HISTORY:
+"  1.1.2  - Applied the patch to 1.1.0 instead of 1.0.2. Please do not use
+"           1.1.1
+"  1.1.1  - Make it work with filename with spaces. (Thanks to Atte Kojo)
 "  1.1.0  - Added support for i18n (tested on a French version for now only).
 "           Can dynamically figure out the diff strings output by diff.
 "  1.0.2  - Fixed a small typo bug in the quit function.
@@ -532,7 +535,7 @@ function! <SID>DirDiffOpen()
         endif
         split
         wincmd k
-        silent exec "edit ".fileToOpen
+        silent exec "edit ".fnameescape(fileToOpen)
         " Fool the window saying that this is diff
         diffthis
         wincmd j
@@ -543,8 +546,8 @@ function! <SID>DirDiffOpen()
         "Open the diff windows
         split
         wincmd k
-        silent exec "edit ".fileB
-        silent exec "vert diffsplit ".fileA
+        silent exec "edit ".fnameescape(fileB)
+        silent exec "vert diffsplit ".fnameescape(fileA)
         " Go back to the diff window
         wincmd j
         " Resize the window
