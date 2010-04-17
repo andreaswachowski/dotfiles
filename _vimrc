@@ -107,7 +107,7 @@ nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 
-:hi Comment	term=bold ctermfg=Blue guifg=#80a0ff gui=bold
+:hi Comment	term=bold ctermfg=LightBlue guifg=#80a0ff gui=bold
 " vi:expandtab ts=2 sw=2
 set modeline
 let g:GetLatestVimScripts_allowautoinstall=1
