@@ -55,9 +55,15 @@ if &t_Co >= 256 || has("gui_running")
 " needed, therefore using desert256 now.
 " colorscheme default256
   colorscheme desert256
+  " desert256's original comment color is darkcyan, which is too dark on a
+  " black background. Changing to cyan:
+  hi Comment       ctermfg=cyan
 elseif &t_Co >= 88
   colorscheme desert256
 "  colorscheme inkpot
+  " desert256's original comment color is darkcyan, which is too dark on a
+  " black background. Changing to cyan:
+  hi Comment       ctermfg=cyan
 endif
 if has("gui_running")
   set guioptions-=m " remove menu bar
@@ -107,7 +113,6 @@ nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 
-:hi Comment	term=bold ctermfg=LightBlue guifg=#80a0ff gui=bold
 " vi:expandtab ts=2 sw=2
 set modeline
 let g:GetLatestVimScripts_allowautoinstall=1
