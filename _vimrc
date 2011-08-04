@@ -74,9 +74,6 @@ endif
 " colors, therefore using 255 instead.
 highlight Visual term=reverse ctermbg=255 guibg=White
 
-" filetype for Supermemo Databases:
-au BufRead,BufNewFile *.smd		setfiletype smd
-
 source <sfile>.handling_gzip
 source <sfile>.tip343_large_files
 source <sfile>.tip112_indentation_helper
@@ -116,3 +113,5 @@ nmap <c-j> <c-w>j
 " vi:expandtab ts=2 sw=2
 set modeline
 let g:GetLatestVimScripts_allowautoinstall=1
+
+set runtimepath+=/usr/share/lilypond/2.12.3/vim/
