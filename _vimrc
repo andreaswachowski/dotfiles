@@ -113,5 +113,3 @@ nmap <c-j> <c-w>j
 " vi:expandtab ts=2 sw=2
 set modeline
 let g:GetLatestVimScripts_allowautoinstall=1
-
-set runtimepath+=/usr/share/lilypond/2.12.3/vim/
