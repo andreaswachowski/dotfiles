@@ -2,3 +2,6 @@ if has("gui_running")
   set lines=65
   set columns=80
 end
+filetype off
+set runtimepath+=/usr/share/lilypond/2.12.3/vim/
+filetype on
