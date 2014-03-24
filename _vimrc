@@ -1,4 +1,7 @@
 " -- General settings -----------------------------------------------------
+execute pathogen#infect()
+set sessionoptions-=optins
+
 let s:host_specific_pre_setup = expand("<sfile>").".host.pre.".hostname()
 if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
   source `=expand(s:host_specific_pre_setup)`
