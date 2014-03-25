@@ -1,5 +1,0 @@
-Color change for salt, new colorscheme wombat
---This line, and those below, will be ignored--
-
-M    _vimrc
-A    colors/wombat.vim
