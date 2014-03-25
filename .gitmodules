@@ -10,3 +10,6 @@
 [submodule "bundle/tvo-outliner"]
 	path = bundle/tvo-outliner
 	url = https://github.com/vim-scripts/TVO--The-Vim-Outliner
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim
