@@ -114,6 +114,12 @@ nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 
+" Overriding a few VCSCommands with fugitive equivalents
+nmap \cs :Gstatus
+nmap \cv :Gdiff
+nmap \cl :Extradite
+nmap \cb :Gblame
+
 " vi:expandtab ts=2 sw=2
 set modeline
 let g:GetLatestVimScripts_allowautoinstall=1
