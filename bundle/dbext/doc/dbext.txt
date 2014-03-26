@@ -1,13 +1,13 @@
-*dbext.txt*	For Vim version 7.0.  Last change: 2009 Aug 27
+*dbext.txt*	For Vim version 7.0.  Last change: 2013 Sep 24
 
 
                 	  VIM REFERENCE MANUAL 
                                 by 
                      David Fishburn <dfishburn dot vim at gmail dot com>
-                     Peter Bagyinszki <petike1 at dpg dot hu>
+                     Peter Bagyinszki 
 
 	  	Database extension plugin (dbext.vim) manual
-	  	dbext.vim version 11.01
+	  	dbext.vim version 20.00
 
 For instructions on installing this file, type
 	:help add-local-help
@@ -17,7 +17,7 @@ Homepage: http://vim.sourceforge.net/script.php?script_id=356
 
 *dbext* *dbext.vim* *db_ext* *db_ext.vim* *database-extension* *pgsql* *mysql*
 *asa* *ase* *ingres* *interbase* *sqlite* *sqlsrv* *ora* *oracle* 
-*db2* *DBI* *ODBC* *sqlanywhere*
+*db2* *DBI* *ODBC* *sqlanywhere* *firebird*
 
 1.  Getting Started			      |dbext-getting-started|
 2.  Whats New   			      |dbext-new|
@@ -71,6 +71,30 @@ Homepage: http://vim.sourceforge.net/script.php?script_id=356
 ==============================================================================
 1. Getting Started					*dbext-getting-started*
 
+The following different databases are supported by dbext:
+    Sybase SQL Anywhere
+    Sybase UltraLite
+    Sybase ASE
+    SAP HANA
+    Oracle 
+    Oracle RDB 
+    SQL Server 
+    MySQL
+    PostgreSQL
+    DB2 
+    Firebird
+    Ingres
+    Interbase
+    SQLite
+
+If you have a Perl enabled Vim and install the required packages then any of
+the databases supported by DBI or ODBC are also included.
+
+NOTE: Connecting through the Perl interface is much faster than they other
+database types.  SQL Anywhere is supported either way, I always connect to it
+via DBI as once the shared library is loaded the access is nearly instant and 
+a new database connect need not be made on each request.
+
 If you are looking for a tutorial that will take you through the
 features and the "best way" to use this plugin start here |dbext-tutorial|.
 This tutorial is a must before beginning to use dbext.
@@ -80,7 +104,7 @@ advanced features you can read this entire document.
 
 dbext is also integrated with the OMNI SQL Completion script which is
 included in the Vim distribution.  See :h |omni-sql-completion|
-The sqlcomplete.vim plugin is occassionally updated before a new
+The sqlcomplete.vim plugin is occasionally updated before a new
 release of Vim and newer versions of this file can be found here:
 http://www.vim.org/scripts/script.php?script_id=1572
 
@@ -92,11 +116,238 @@ David Fishburn
 ==============================================================================
 2. What's New						*dbext-new*
 
-Version 11.01
+Version 20.00 (September 24, 2013)
+
+ New Features
+ ------------
+ - Added new DBI/ODBC option DBI_max_column_width to restrict the width 
+   displayed in the DBI result window (Luke Mauldin).
+ - Improved the pattern used to find the query under the cursor.  Besides
+   finding the command terminator, it will also look for the first blank
+   line or the end of the file (Jason Quirk).
+ - The dbext menu now uses the maps rather than calls to the commands.
+   A new option will control this behaviour, g:dbext_map_or_cmd.
+ - Changed the default SQLite binary to be sqlite3 instead of sqlite 
+   (Greg Kapfhammer).
+ - Added a profile example for using the "sqsh" binary to connect to 
+   SQL Server instead of "osql" (Brian Iván Martínez).
+ - The cmd_terminator displayed under Connection Options in the DBGetOption
+   output was always blank.
+ - Improved support for SAP HANA database, pulling objects from the system
+   catalogue.
 
  Bug Fixes
  ---------
- - If a large result set is retrieved, there is a signficant performance
+ - Controlling the DBI max rows (:DBSetOption DBI_max_rows=100) and DBI
+   column separator did not work on a per buffer basis.
+ - Undefined variable, s:dbext_prev_winnr, was reported when using DBI/ODBC
+   connections through the sqlComplete plugin and completing objects 
+   which require an active database connection (i.e. Tables, 
+   Procedures, ...) which had failed to connect to the database.
+ - dbext was not prompting for ? parameters in PHP files.  This also
+   affected all languages (Jérémie).
+ - Changing a database's global cmd terminator was not necessarily
+   picked up when using that database type (Jason Quirk).
+ - ODBC or DBI could report an error about using length() instead
+   of scalar() (Micah Duke).
+ - Various errors on Linux with DBI (Micah Duke).
+ - Using the console version of Vim displayed a number of "debug" messages 
+   during initialization.
+
+
+Version 19.00 (April 29, 2013)
+
+ New Features
+ ------------
+ - Added support for parsing C# files (Raul Segura Acevedo).
+ - Updated the PostgreSQL message when the .pgpass file is 
+   missing (Dav Clark).
+
+ Bug Fixes
+ ---------
+ - When prompting for connection parameters a second time, the previously 
+   chosen profile number was not defaulted.
+ - If a dbext login script was stored in the $HOME directory it would 
+   never be found (Tim Teufel).
+ - The first host variable was prompted for replacement, but the 
+   second one was not (Stanimir Mladenov).
+ - Selecting a visual region with leading and ending double quotes (like
+   a table name) could report invalid arguments for the following 
+   commands: DBSelectFromTable, DBSelectFromTableTopX, DBDescribeTable,
+             DBDescribeProcedure, DBListColumn
+ - For DB2 on the mainframe the command line utilities do not support the
+   -t switch.  If you override the buffer specific cmd_terminator setting and
+   set this value to an empty string the -t will be left off.  This can be 
+   most easily specified in a dbext connection profile (Michael McDermott):
+      let g:dbext_default_profile_MyDB2 = 'type=DB2:user=me:passwd=mypass:dbname=SSD:cmd_terminator='
+   Or while within a buffer:
+      DBSetOption cmd_terminator=
+      DBSetOption cmd_terminator=;
+
+
+Version 18.00 (Nov 28, 2012)
+
+ New Features
+ ------------
+ - Added support for parsing C# files (Raul Segura Acevedo).
+
+ Bug Fixes
+ ---------
+ - Changed the Oracle calls to SQLPlus from using single quotes to using 
+   double quotes (David Sweeney).
+ - The <Leader>sbp and <Leader>tcl mapping were missing with version 17.00.
+ - The DBI interface could report: "E15: Invalid expression" when retrieving 
+   table lists from DB2, but this could also affect other SQL commands 
+   that returned strings surrounded in double quotes (Charles McGarvey).
+
+
+Version 17.00 (Oct 10, 2012)
+
+ New Features
+ ------------
+ - Added new database type, the SAP HANA in memory database.
+ - Added new option, ignore_variable_regex, which is used when parsing your 
+   statement for replaceable input parameters (i.e. placeholders for prepared
+   statements).  Certain variables need to be skipped (for example when
+   running a CREATE PROCEDURE statement) to leave the logic inside the stored
+   procedure intact.  This option allows the user finer control over the regex
+   used to decide which SQL syntax should be skipped.
+ - Added new option, statement_starts_line, which is used when deciding if
+   the query should be parsed for input parameters.  Certain filetypes assume 
+   the statements can be embedded within strings (like in Java, PHP, Perl and
+   so on).
+ - When parsing PHP and Java files, leading and trailing quotes are stripped 
+   automatically when executing the query, which could lead to incorrect
+   results.  First check if there is a leading quote.  If so, then only strip
+   the corresponding closing quote.
+ - Updated documentation describing the default regex for variable_def_regex.
+ - Added new option g:dbext_map_prefix which defaults to <Leader>s, this allows 
+   you to customize the start of all the default maps (Daniel Hahler).
+
+ Bug Fixes
+ ---------
+ - The default value for variable_def_regex, did not properly escape 
+   the $, which lead to some query parameters being skipped when 
+   executing SQL.
+ - It was impossible to search and replace input parameters within 
+   a query if the parameter was enclosed in single quotes.  The above 
+   new features were required to make this possible (Joshua Dennis).
+ - DBCompleteTable, DBCompleteProcedure, DBCompleteView would always
+   recreate the object list.  If it has already been created, it should
+   simply reuse what was available.  To force the recreation you add 
+   the bang to the command: DBCompleteTable!, DBCompleteProcedure!, 
+   DBCompleteView!.
+ - Even with the checks it was possible for dbext to report:
+   E227: mapping already exists for ... when creating maps where the 
+   mapping already exists (Daniel Hahler).
+
+
+Version 16.00 (Jun 12, 2012)
+
+ Bug Fixes
+ ---------
+ - For Oracle databases, the SQLPlus command had unmatched quotation marks 
+   which could lead to errors displayed by dbext indicating it could not 
+   open the file to execute the SQL (JustinF Zhang).
+
+
+Version 15.00 (May 2, 2012)
+
+ New Features
+ ------------
+ - A new database configuration parameter, g:dbext_default_DBTYPE_extra, is 
+   available to allow the user to customize command line parameters passed to
+   the database binary used to execute the statement.  This can be overridden
+   affecting all new connections via your .vimrc.  Or for a specific buffer
+   via connection profile or :DBPromptForBufferParameters (Ken Inglis, 
+   Michael Berkowski).
+
+ Bug Fixes
+ ---------
+ - The dbext menu for List Variables displayed the wrong mapping.
+ - For SQLite databases, if no database is specified now a warning message
+   is displayed instead of an error message.
+
+
+Version 14.00 (Apr 5, 2012)
+
+ New Features
+ ------------
+ - For Oracle connection profiles, support this form of server name, 
+   srvname=(description=(address=(protocol=TCP)(host=dbhost.our.domain.com)(port=1521))(connect_data=(server=dedicated)(service_name=gps03tst.our.domain.com)))
+   (Fredrik Acosta).
+ - Added a new buffer option to specify which filetype dbext should use when 
+   parsing the query.  If an existing language already works as you need 
+   you can tell dbext to use it via the modeline or DBSetOption
+   (Albie Janse van Rensburg).
+ - Added an example of a function I use to execute blocks of stored procedures
+   using dbext's commands.
+ - For PostgreSQL, dbext will check for the existence of a .pgpass file.  If
+   not found, execution will abort and a warning message will be displayed.
+   By default $HOME/.pgpass will be validated (Frank Schwach).
+
+ Bug Fixes
+ ---------
+ - When closing or deleting buffers it was possible to loose syntax, filetype 
+   and hidden settings (Alexey Radkov).
+ - Parsing VisualBasic and Basic variables let to errors in DB_parseVB
+   (Albie Janse van Rensburg).
+ - Generating a column list for an ASA database left an extra , at the end
+   of the list.  This also affected the SQLComplete plugin.
+
+
+Version 13.00 (Jun 13, 2011)
+
+ New Features
+ ------------
+ - Added new command, DBDisconnectAll, for DBI/ODBC.
+ - DBDisconnect for DBI/ODBC now can accept an optional parameter 
+   for the buffer you wish disconnected.
+ - DBListConnections also includes the buffer filename in it's output 
+   to help associate the two more easily.
+ - Updated the default variable_def_regex to include an alphabetic 
+   character after a ":" for host variables to avoid false matches
+   with time formats "10:20".
+ - Improved the variable substitution to also check if a variable is 
+   preceded by a single line comment character.  If so, ignore the match.
+         CALL myProc( sl_var1  -- p_var1
+                    , sl_var2  -- p_var2
+                    );   
+
+ Bug Fixes
+ ---------
+ - When clearing the results buffer the default register was updated.
+ - Duplicate tag on MyProjectDir when running helptags (Simon Dambe).
+ - Some of the variable substitution options Skip, Use Blank had off 
+   by one errors.
+
+
+Version 12.00 (Jul 15, 2010)
+
+
+ New Features
+ ------------
+ - A number of changes around the Oracle formating instructions.
+   Support for packages when describing certain objects.
+   These changes were provided by Sergey Khorev.
+ - Improved the parsing of Perl strings when prompting for 
+   variables.
+ - Made some additional changes to the variable_def_regex for how you 
+   can specify it from Vim modelines and DBSetOption.  This makes it 
+   much more flexible.
+
+ Bug Fixes
+ ---------
+ - If the word "profile" was used in a dbext profile name dbext would report
+   the error: "dbext: Profiles cannot be nested" (Chris Cierpisz).
+ - Corrected the regex used to find object owner names (Sergey Khorev).
+
+
+Version 11.01 (Sep 8, 2009)
+
+ Bug Fixes
+ ---------
+ - If a large result set is retrieved, there is a significant performance
    delay which was introduced in 11.00.  This was related to the new 
    g:dbext_rows_affected feature (Tocer).
  - Error E15: Invalid expression: b:dbext_sqlvar_mv[var] is reported if
@@ -105,7 +356,7 @@ Version 11.01
    and you are prompted for the unknown.
 
 
-Version 11.00
+Version 11.00 (Aug 23, 2009)
 
  New Features
  ------------
@@ -142,7 +393,7 @@ Version 11.00
    variables.
 
 
-Version 10.00
+Version 10.00 (Mar 14, 2009)
 
  New Features
  ------------
@@ -169,7 +420,7 @@ Version 10.00
    the current setting for each database connection currently open.
 
 
-Version 9.00
+Version 9.00 (Jan 10, 2009)
 
  New Features
  ------------
@@ -199,7 +450,7 @@ Version 9.00
  Bug Fixes
  ---------
  - DBextPostResult was passed in a string for the buf_nr which required
-   conversion if passed to Vim's builtin functions like getbuflines
+   conversion if passed to Vim's built-in functions like getbuflines
    (Ying Chen).
  - If g:dbext_default_menu_mode was set to an invalid value an error
    would occur when starting Vim.
@@ -214,7 +465,7 @@ Version 9.00
    SQLPlus (Anton Sharonov).
 
 
-Version 8.00
+Version 8.00 (Oct 30, 2008)
 
  New Features
  ------------
@@ -237,7 +488,7 @@ Version 8.00
  ---------
  - Setting LongReadLen for DBI and ODBC connections did not work.
  - DBextPostResult was passed in a string for the buf_nr which required
-   conversion if passed to Vim's builtin functions like getbuflines
+   conversion if passed to Vim's built-in functions like getbuflines()
    (Ying Chen).
  - If g:dbext_default_menu_mode was set to an invalid value an error
    would occur when starting Vim.
@@ -247,7 +498,7 @@ Version 8.00
  - The dbext menu item "List Connections (DBI)" did not work.
 
 
-Version 7.00
+Version 7.00 (Sep 21, 2008)
 
  New Features
  ------------
@@ -266,7 +517,7 @@ Version 7.00
    instead of returning to the buffer you were editing.
 
 
-Version 6.20
+Version 6.20 (Aug 9, 2008)
 
  New Features
  ------------
@@ -281,7 +532,7 @@ Version 6.20
    to miss excluding the INTO clause correctly (Sergey Alekhin).
 
 
-Version 6.10
+Version 6.10 (Jun 10, 2008)
 
  New Features
  ------------
@@ -295,8 +546,8 @@ Version 6.10
    different databases.
  - Added the ability to choose where to put the Result window.
    When the window is split you can choose vertical or horizontal,
-   bottom or top, and choose the the width of the window for
-   horizontal switches (Clinton Jones).
+   bottom or top, and choose the width of the window for horizontal 
+   switches (Clinton Jones).
  - Modified DBExecSQLUnderCursor to select all text until end of 
    line if no valid command terminator is found rather than just
    one letter (David Venus).
@@ -309,7 +560,7 @@ Version 6.10
  - DBGetOption reported an exception E730: using List as a String.
 
 
-Version 6.01
+Version 6.01 (Apr 29, 2008)
 
  Bug Fixes
  ---------
@@ -317,7 +568,7 @@ Version 6.01
    (Matt).
 
 
-Version 6.00
+Version 6.00 (Apr 28, 2008)
 
  New Features
  ------------
@@ -345,7 +596,7 @@ Version 6.00
 
  Bug Fixes
  ---------
- - If a database column had an emdedded double quote this would be 
+ - If a database column had an embedded double quote this would be 
    displayed as \" in the dbext result window (Jean-Christophe Clavier).
  - When loading the plugin, it will now check to ensure the map
    does not already exist before attempting to create it.  This
@@ -360,7 +611,7 @@ Version 6.00
    were not escaped properly and could disappear.
 
 
-Version 5.20
+Version 5.20 (Sep 15, 2007)
 
  New Features
  ------------
@@ -376,7 +627,7 @@ Version 5.20
    Clavier).
 
 
-Version 5.11
+Version 5.11 (Sep 10, 2007)
 
  New Features
  ------------
@@ -386,7 +637,7 @@ Version 5.11
    Development of support by Andi Stern.
 
 
-Version 5.00
+Version 5.00 (Sep 3, 2007)
 
  New Features
  ------------
@@ -419,7 +670,7 @@ Version 5.00
    of the parameters, now the wizard continues as expected.
 
 
-Version 4.20
+Version 4.20 (Dec 19, 2006)
 
  New Features
  ------------
@@ -437,12 +688,12 @@ Version 4.20
    plugin included with Vim7 (Albie Janse van Rensburg).
 
 
-Version 4.10
+Version 4.10 (Dec 5, 2006)
 
  New Features
  ------------
  - Updated DBGetOption to additionally display a list of all database profiles
-   and their types.  All dbext options that have been overriden via the
+   and their types.  All dbext options that have been overridden via the
    vimrc are also displayed.
 
  Bug Fixes
@@ -454,7 +705,7 @@ Version 4.10
    has been removed with Vim7.
 
 
-Version 4.00
+Version 4.00 (Sep 23, 2006)
 
  New Features
  ------------
@@ -478,7 +729,7 @@ Version 4.00
    4 and 5 servers.
 
 
-Version 3.50
+Version 3.50 (Jun 20, 2006)
 
  New Features
  ------------
@@ -492,7 +743,7 @@ Version 3.50
    variables with values prior to sending the statement to the database
    to be executed.  This is useful for testing SQL which is embedded
    in your code without having to manually replace variables and string
-   concatentation.  A new identifier (the until flag) allows you to 
+   concatenation.  A new identifier (the until flag) allows you to 
    specify the beginning of a string and what to prompt for until a 
    finishing string.  This makes it more flexible for you to configure
    what you would like prompting for when looking for variables.
@@ -505,7 +756,7 @@ Version 3.50
    work around this Vim7 bug.
 
 
-Version 3.00
+Version 3.00 (May 15, 2006)
 
  New Features
  ------------
@@ -540,7 +791,7 @@ Version 3.00
  - Miscellaneous documentation updates.
 
 
-Version 2.30
+Version 2.30 (Sep 13, 2005)
 
  New Features
  ------------
@@ -551,7 +802,7 @@ Version 2.30
    installed in the database.  System views are used instead.
  - Support for MySQL 5.0 has been added, which includes stored procedures
    and views (as much as the beta allowed).
- - For Postgress SQL you can now optionally enter an owner name to filter by
+ - For PostgreSQL you can now optionally enter an owner name to filter by
    when showing list of objects (tables, procedures, views).
 
  Bug Fixes
@@ -570,7 +821,7 @@ Version 2.30
    continuation slash from the from of a query.
 
 
-Version 2.20
+Version 2.20 (Mar 10, 2005)
 
  New Features
  ------------
@@ -612,11 +863,11 @@ Version 2.20
    showed up as an issue with the SQL Intellisense plugin.
  - When executing SELECT statements the INTO clause (if present) is 
    removed so the results are displayed in the result window.  Refined the
-   removal of the INTO clause to ensure it does not interfer with an
+   removal of the INTO clause to ensure it does not interfere with an
    INSERT or MERGE statement.
 
 
-Version 2.11
+Version 2.11 (Sep 24, 2004)
 
  Bug Fixes
  ---------
@@ -624,7 +875,14 @@ Version 2.11
    end in ".sql".  Corrected this for all databases
 
 
-Version 2.10
+Version 2.10 (Sep 15, 2004)
+
+ New Features
+ ------------
+ - Support for the SQLite database has been added (thanks to Ron Aaron).
+
+
+Version 2.01 (Jul 22, 2004)
 
  New Features
  ------------
@@ -651,7 +909,7 @@ Version 2.10
  - Updated the connection text in the Result buffer.
 
 
-Version 2.00
+Version 2.00 (Jul 11, 2004)
 
  New Features
  ------------
@@ -686,6 +944,7 @@ Version 2.00
         Sybase Adaptive Server Anywhere
         Sybase UltraLite
         Sybase Adaptive Server Enterprise
+        SAP HANA
  When using a Perl enabled Vim ( :echo has('perl') ):
         DBI
         ODBC
@@ -775,9 +1034,8 @@ Version 2.00
               the results and essentially want to hide it until the 
               next time you need it.
 
-    a       - Toggle the autoclose feature.
-              the results and essentially want to hide it until the 
-              next time you need it.
+    a       - Toggle the autoclose feature which closes the window
+              if there is not enough output.
 
     O       - Change the result orientation (only with DBI and ODBC).
 
@@ -794,7 +1052,8 @@ Version 2.00
     db_type
 <       - The database type specified for the buffer which caused the
           Result buffer to be updated.  It will be one of the following:
-          ASA,ASE,DB2,INGRES,INTERBASE,MYSQL,ORA,PGSQL,SQLSRV,SQLITE >
+          ASA,ASE,DB2,INGRES,INTERBASE,MYSQL,ORA,PGSQL,SQLSRV,SQLITE,
+          RDB,ULTRALITE,FIREBIRD,HANA >
     buf_nr
 <       - The buffer number of the result window    
  Here is a very simple example which will:
@@ -838,6 +1097,12 @@ Version 2.00
 <       - Whether to use separate result buffers for each file >
     dbext_default_buffer_lines
 <       - How many lines the Result window should be >
+    dbext_default_query_statements 
+<       - Which statements are used to determine what query is under the
+          cursor.  The default value for this option is:a >
+              select,update,delete,insert,create,grant,alter,call,exec,merge,with
+<         This can be updated via your vimrc using: >
+              let dbext_default_query_statements = 'select,update';
     dbext_default_parse_statements 
 <       - Which statements are parsed for input parameters (See |dbext-newdb|) >
     dbext_default_prompt_for_variables 
@@ -869,6 +1134,107 @@ Version 2.00
 <       - List of variables and rules on how to search and prompt for variable
           names within a statement that starts with any of the words listed in
           dbext_parse_statements. >
+    dbext_default_variable_def_regex
+<       - List of regexes (comma separated) used to find input parameters to 
+          prompt the user for possible replacement when executing the query 
+          against the database.  Default value is: >
+          '\(\w\|'."'".'\)\@<!?\(\w\|'."'".'\)\@<!,\zs\(@\|:\a\|\$\)\w\+\>'
+<
+        - This is two different regex expressions.  The first one finds the 
+          question marks and the second one finds any variables
+          beginning with "@,:,$". >
+                \(\w\|'\)\@<!?\(\w\|'\)\@<!
+                    \(\w\|'\)    - Beginning of a word character or a single quote
+                    \@<!         - If the above is true do NOT match
+                    ?            - Match a question mark
+                    \(\w\|'\)    - Beginning of a word character or a single quote
+                    \@<!         - If the above is true do NOT match
+                    - In otherwords, find a question mark on its own which 
+                      is not surround in quotes and not embedded in a word 
+                      SELECT c1 FROM t1 WHERE c2 = ?    -- match this
+                      SELECT c1 FROM t1 WHERE c2 = '?'  -- do not match this
+                      SELECT c1 FROM t1 WHERE c2 = da?  -- do not match this
+
+                \zs\(@\|:\|$\)\w\+\>
+                    \zs          - Start matching now
+                    \(@\|:\|$\)  - Match a @ or : or $ character
+                    \w\+         - Match at least one or as many word characters as possible
+                    \>           - and end on a word boundary
+                    - In otherwords, find these types
+                      SELECT c1 FROM t1 WHERE c2 = @myVar
+                      SELECT c1 FROM t1 WHERE c2 = :hostVar
+                      SELECT c1 FROM t1 WHERE c2 = $placeHolder
+<
+        - These values can be updated via your .vimrc or using DBSetOption.
+          When using DBSetOption, if the value begins with "," it will append 
+          to the existing setting.  Without a leading comma, the value will 
+          be replaced (for the current buffer).   This example will add 
+          to the default values and also look for variables that begin 
+          with p_ or lv_.  >
+            autocmd BufRead *.sql DBSetOption variable_def_regex=,\<\(p_\|lv_\)\w\+\>
+>
+    dbext_default_ignore_variable_regex
+<       - List of regexes (comma separated) used to find input parameters to 
+          prompt the user for possible replacement when executing the query 
+          against the database.  Default value is: >
+          '\(in\|out\|inout\|declare\|set\|variable\|''\|/\|@\)'
+<
+        - The regex checks the strings before the variable found by variable_def_regex. 
+          If this is part of a parameter definition:
+            IN       @variable CHAR(1)
+            OUT      @variable CHAR(1)
+            INOUT    @variable CHAR(1)
+            DECLARE  @variable CHAR(1)
+            VARIABLE @variable CHAR(1)  -- CREATE VARIABLE @variable
+          Or part of a string:
+            '@variable'
+          Or part of path:
+            /@variable'
+          Or a global variable:
+            SET @@variable = ...
+          Or the definition of a global variable:
+            CREATE VARIABLE variable ...
+          If so, ignore the match and do not prompt to replace the variable with 
+          an input parameter.
+
+        - These values can be updated via your .vimrc or using DBSetOption.
+          When using DBSetOption, if the value begins with "," it will append 
+          to the existing setting.  Without a leading comma, the value will 
+          be replaced (for the current buffer).   In this example we are 
+          removing the check to see the variable is enclosed in single quotes. >
+            DBSetOption ignore_variable_regex = \(in\|out\|inout\|declare\|set\|variable\|/\|@\)
+>
+    dbext_default_statement_starts_line
+<       - A buffer local variable which is used to check whether the query
+          must start at the beginning of the line.  This is useful for SQL
+          files, which can have for example CREATE PROCEDURE statements that
+          you will execute.  These procedures can have embedded SELECT
+          statements.  These statements we do not want to check for input
+          parameters, as changing them changes the meaning of the stored
+          procedure.  For Java and PHP files, queries are often built up by
+          concatenating strings together.  So, we still want to prompt for the
+          variables in these cases, yet the SELECT may not start at the
+          beginning of the line.  Consider the following examples: >
+            CREATE PROECURE sp_test( @p1 INT )
+            BEGIN
+                DECLARE lv_id INT;
+                SET lv_id = @p1;
+            END;
+<
+        - Due to this being a CREATE PROCEDURE, we do not want to prompt
+          for any any of the potential input parameters.  For SQL files 
+          the statement_starts_line is 1, since we will only prompt for 
+          input parameters if the statement begins with values listed 
+          in the query_statements option.  >
+
+            String sql = "SELECT c1 FROM T1 " 
+                       + " WHERE c2 = @p2   ";
+<
+        - When visually selecting the two lines and executing, dbext
+          finds the @p2 and prompts for a value before executing.
+          In this case statement_starts_line is 0, since we are assigning
+          the statement to a String.
+>
     dbext_default_replace_title 
 <       - Changes the title of the buffer to show connection information.
           This is useful if you are using a scratch buffer to test statements, 
@@ -938,7 +1304,7 @@ Version 2.00
             :let  g:dbext_default_history_max_entry = 4096
     dbext_default_dict_show_owner
 <       - When creating a dictionary of tables, procedures and views
-          the owner name can also be included.  The omni sql complete
+          the owner name can also be included.  The OMNI SQLComplete
           plugin uses this setting.  The default is enabled, to disable 
           add the following to your vimrc: >
             :let  g:dbext_default_dict_show_owner = 0
@@ -1035,7 +1401,7 @@ Version 2.00
           multiple statements (usually ; delimited) to the driver and have
           it execute each statement.  For example, in the MySQL 3.x DBI
           driver, you cannot send ; delimited statements, the driver
-          will report an error.  This has apparantly been updated in the
+          will report an error.  This has apparently been updated in the
           MySQL 4.x DBI driver.  For SQL Anywhere and SQL Server you
           can send multiple statements delimited by ;, but if you use
           the command terminated "go", the DBI layer will report errors.
@@ -1063,7 +1429,7 @@ Version 2.00
     dbext_default_DBI_cmd_terminator
 <       - Most databases support the ";" as a command terminator, which
           is the default for the DBI / ODBC layer.  This is used by
-          the DBI_read_file_cmd.  It can be overriden using: >
+          the DBI_read_file_cmd.  It can be overridden using: >
             :let  g:dbext_default_DBI_cmd_terminator = ';'
             :DBSetOption DBI_cmd_terminator=';'
             :DBSetOption DBI_cmd_terminator=     " Resets back to the default
@@ -1219,6 +1585,16 @@ Version 2.00
         prompted, the value will be stored for later use.  To turn
         this feature off, add the following to your .vimrc: >
             let g:dbext_default_variable_remember = '0'
+    dbext_default_filetype
+<       Default: &filetype
+        New feature to version 14.0.  By default, dbext will use
+        Vim's filetype when parsing queries.  But depending on your
+        setup and your language, a different filetype might already
+        prompt for variables they way you need.  This will allow 
+        you to override the dbext default and use the value you 
+        specify. >
+            :DBSetOption filetype=sql
+            let g:dbext_default_profile_test = 'type=ASA:user=DBA:passwd=SQL:filetype=sql'
 
 
 <
@@ -1282,6 +1658,7 @@ Version 2.00
 <
           From within a profile (set within your vimrc): >
               let g:dbext_default_profile_mysql = 'type=MYSQL:user=root:passwd=:dbname=mysql:extra=-t'
+              let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=whatever:dbname=mysql:extra=--batch --raw --silent'
 <
           This has the net result of creating the following command line: >
               dbisql -c "UID=dba;PWD=sql;CON=myconn"
@@ -1327,6 +1704,9 @@ Version 2.00
     display_cmd_line
 <       - Optionally display the command line used to execute the command
           in the Result buffer useful for debugging >
+    query_statements 
+<       - Which statements are used to determine what query is under the
+          cursor. >
     parse_statements 
 <       - Which statements are parsed for input parameters |dbext-prompting| >
     variable_def 
@@ -1345,6 +1725,20 @@ Version 2.00
     cmd_options
 <       - Optionally specify (or override) additional command line switches
           for the database tool. >
+    extra
+<       - If additional parameters are required on a particular database
+          type's command line they can be specified using this option.
+          MySQL defaults this to '-t', to format the output with tabs.
+          This value can be overridden three different ways:
+              1.  Changing the default for a specific database type: >
+                  let g:dbext_default_MYSQL_extra = '--batch --raw'
+<             2.  Using the "extra" parameter specified in a connection
+                  profile: >
+                  let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=whatever:dbname=mysql:extra=--batch --raw'
+<             3.  Using :DBPromptForBufferParameters and specifying a value
+                  for the extra parameter.  If this value is set to an empty
+                  string, it will default to #1.  If it is set to a value
+                  or a blank space it can be overridden. >
     on_error
 <       - Dictates the behaviour of the tool if an error is encountered during
           execution. >
@@ -1370,34 +1764,43 @@ Version 2.00
         dbext_default_PGSQL_cmd_header         = ''
         dbext_default_PGSQL_cmd_terminator     = ''
         dbext_default_PGSQL_cmd_options        = ''
+        dbext_default_PGSQL_extra              = ''
+        dbext_default_PGSQL_pgpass             = expand('$HOME/.pgpass')
         dbext_default_MYSQL_bin                = 'isql'
         dbext_default_MYSQL_cmd_header         = ''
         dbext_default_MYSQL_cmd_terminator     = ''
         dbext_default_MYSQL_cmd_options        = ''
+        dbext_default_MYSQL_extra              = '-t'
         dbext_default_MYSQL_version            = '5'
         dbext_default_ASA_bin                  = 'dbisql'
         dbext_default_ASA_cmd_header           = ''
         dbext_default_ASA_cmd_terminator       = ';'
         dbext_default_ASA_cmd_options          = '-nogui'
+        dbext_default_ASA_extra                = ''
         dbext_default_INGRES_bin               = 'sql'
         dbext_default_INGRES_cmd_header        = ''
         dbext_default_INGRES_cmd_terminator    = '\p\g'
         dbext_default_INGRES_cmd_options       = ''
+        dbext_default_INGRES_extra             = ''
         dbext_default_ASE_bin                  = "isql"
         dbext_default_ASE_cmd_header           = ""
         dbext_default_ASE_cmd_terminator       = "\ngo\n"
         dbext_default_ASE_cmd_options          = '-w 10000'
+        dbext_default_ASE_extra                = ''
         dbext_default_INTERBASE_bin            = ''
         dbext_default_INTERBASE_cmd_header     = ''
         dbext_default_INTERBASE_cmd_terminator = ''
         dbext_default_INTERBASE_cmd_options    = ''
+        dbext_default_INTERBASE_extra          = ''
         dbext_default_SQLITE_bin               = 'sqlite'
         dbext_default_SQLITE_cmd_header        = ".mode column\n.headers ON\n"
         dbext_default_SQLITE_cmd_terminator    = ';'
+        dbext_default_SQLITE_extra             = ''
         dbext_default_SQLSRV_bin               = "osql"
         dbext_default_SQLSRV_cmd_header        = ""
-        dbext_default_SQLSRV_cmd_terminator    = ""
+        dbext_default_SQLSRV_cmd_terminator    = "\ngo\n"
         dbext_default_SQLSRV_cmd_options       = '-w 10000 -r -b -n'
+        dbext_default_SQLSRV_extra             = ''
         dbext_default_ORA_bin                  = "sqlplus"
         dbext_default_ORA_cmd_header           = 
                                 \ "set pagesize 10000\n" .
@@ -1407,15 +1810,31 @@ Version 2.00
                                 \ "set flush off\n" .
                                 \ "set colsep \"\t\"\n" .
                                 \ "set tab off\n\n"
-        dbext_default_ORA_cmd_terminator       = ";\nquit;"
+        dbext_default_ORA_cmd_terminator       = ";"
         dbext_default_ORA_cmd_options          = '-S'
+        dbext_default_ORA_extra                = ''
         dbext_default_DB2_use_db2batch         = 0
         dbext_default_DB2_bin                  = 'db2batch'
         dbext_default_DB2_cmd_header           = ''
         dbext_default_DB2_cmd_terminator       = ';'
         dbext_default_DB2_cmd_options          = '-q del -s off'
+        dbext_default_DB2_extra                = ''
         dbext_default_DB2_db2cmd_bin           = 'db2cmd'
         dbext_default_DB2_db2cmd_cmd_options   = '-c -w -i -t db2 -s'
+        dbext_default_FIREBIRD_bin             = 'isql'
+        dbext_default_FIREBIRD_cmd_options     = ''
+        dbext_default_FIREBIRD_cmd_terminator  = ';'
+        dbext_default_FIREBIRD_version         = '5'
+        dbext_default_FIREBIRD_extra           = ''
+        dbext_default_ULTRALITE_bin            = 'dbisql'
+        dbext_default_ULTRALITE_cmd_header     = ''
+        dbext_default_ULTRALITE_cmd_terminator = ';'
+        dbext_default_ULTRALITE_cmd_options    = '-nogui -ul'
+        dbext_default_ULTRALITE_extra          = ''
+        dbext_default_HANA_bin                 = 'hdbsql'
+        dbext_default_HANA_cmd_terminator      = ''
+        dbext_default_HANA_cmd_options         = ''
+        dbext_default_HANA_extra               = ''
 
     dbext_default_MYSQL_version
 <       - MySQL version 5 supports stored procedures, views and new system
@@ -1440,6 +1859,20 @@ Version 2.00
     platform you may only have access to one or the other.  Please
     try both to see which fits your needs.
 
+    For DB2 on the mainframe, specifying a cmd_terminator is not allowed 
+    and results in an error. >
+        DB2100E The option "-;" specified after the 'db2' command or 
+        in the DB2OPTIONS variable is incorrect.
+    
+<   For these cases, I recommend setting up a connection profile and
+    overriding the cmd_terminator to the empty string instead of the default ';'.
+    This can be done in your .vimrc when you create your dbext connection profile: >
+      let g:dbext_default_profile_MyDB2 = 'type=DB2:user=me:passwd=mypass:dbname=SSD:cmd_terminator='
+
+<   It can also be overridden at any time within a buffer using this
+    command: >
+      DBSetOption cmd_terminator=
+      DBSetOption cmd_terminator=;
 
 5.5 DBI Installation                                    *dbext-configure-dbi*
     To use the DBI interface you must first have a Perl enabled Vim.
@@ -1472,7 +1905,7 @@ Version 2.00
             quit
 
     Installing the SQL Anywhere DBI module (ensure you are using 10.0.1.3525
-    and above)
+    or above)
         cd %SQLANY10%\src\perl
         copy "%SQLANYSAMP10%\demo.db"
         dbeng10 demo
@@ -1581,11 +2014,21 @@ Version 2.00
     
  Normal mode mapping (|:nmap|):
 
-    " Execute SQL query under cursor. You need a semicolon at the 
-    " end of the query.
+    " Execute SQL query under cursor. The statement requires a valid
+    " statement terminator at the end of the query.  This is typically 
+    " a semicolon or "go".
+    " DBExecSQLUnderCursor works by starting at the current cursor position
+    " and searching backwards for the first keyword defined by the dbext 
+    " query_statements option.  Then searches forward for a cmd_terminator 
+    " (usually a semicolon but it depends on database type).
+    " The SQL found within these 2 searches is executed.
+    " This has a number of downfalls, consider this SQL:
+    "    create table xyz_bak as select * from xyz
+    " For ambiguous statements, use visual mode to highlight exactly what 
+    " you would want executed.
     " sql - execute
-    nnoremap <unique> <Leader>se <Plug>DBExecSQL
-    :DBExecSQL
+    nnoremap <unique> <Leader>se <Plug>DBExecSQLUnderCursor
+    :DBExecSQLUnderCursor
 
     " Execute SQL query under cursor. You need a semicolon at the 
     " end of the query.  Prompt the user for how many rows to
@@ -1727,6 +2170,11 @@ Version 2.00
  will use your mappings and will not create the default mappings.  You can
  also specify the following to disable the default mappings: >
         let g:dbext_default_usermaps = 0
+<    
+ By default the dbext menu will use the default mappings to execute commands.
+ You can change the behaviour to use the dbext commands instead by setting
+ the following option: >
+        let g:dbext_map_or_cmd = 'cmd'
 <    
  Commands
     (In addition to the above mappings)
@@ -1871,43 +2319,16 @@ Version 2.00
  takes 3 input parameters.  The author of the stored procedure places a i_
  ahead of all input variables.  You can modify the buffer variable for this
  file as follows: >
-        DBSetOption variable_def='?WQ,@wq,$wq,i_wq'
-        TODO update with variable_def_regex
+        DBSetOption variable_def_regex=,\<i_\w\+\>
 <
- or more specifically: >
-        DBSetOption variable_def='i_wq'
-<
- Adding new search and replace criteria must follow these rules:
-        i_ - look for this string
-        w  - MUST have word characters after it
-        W  - cannot have any word characters after it
-        q  - quotes do not matter
-        Q  - CANNOT be surrounded in quotes
-        ,  - delimits between the identifiers
->
-        DBSetOption variable_def='i_wq,'
+ The same regex expression should work when you simply run a find in Vim: >
+        /\<i_\w\+\>
 <
  This instructs the plugin to find all words that begin with "i_", with a
- series of \w characters following, that is NOT surrounded in quotes.  If the
- plugin finds more matches that expected, you can choose Cancel when prompted
- for the variable name, and choose Skip, to move to the next match.
+ series of \w characters following.  If the plugin finds more matches that
+ expected, you can choose Cancel when prompted for the variable name, and
+ choose Skip, to move to the next match.
  
- Another type of criteria is specified.  You can also use the "unitl" setting
- which allows you to specify the start of the string, and the everything
- should be replaced "until" another string.  Here is an example: >
-        SELECT * FROM Customers WHERE ID = http_variable('cust_id')
-<
- In this case, we want dbext to prompt for anything like "http_variable(...)".
- This can be configured using: >
-        DBSetOption variable_def='http_varu)'
-<
- This option has special rules, and is broken down as:
-        http_var - Look for this string
-        u        - Assume a match UNTIL
-        )        - This string
- So in this case, matching "http_var" until the ")" will force dbext to 
- prompt the user for a replacement of "http_variable('cust_id')".
-
  For more information on specific filetype support see |dbext-filetypes|
 
 ==============================================================================
@@ -1990,7 +2411,7 @@ To specify the type of database you connect to most often, you can place the
 
  Here are some sample profiles I maintain.  These can help when trying to
  setup your own: >
-    " SQL Anywhere (Normal, DBI and ODBC)
+    " ASA - SQL Anywhere (Normal, DBI and ODBC)
     let g:dbext_default_profile_cons = 'type=ASA:dsnname=cons'
     let g:dbext_default_profile_ASA_DBI = 'type=DBI:user=dba:passwd=sql:driver=SQLAnywhere:conn_parms=:driver_parms=AutoCommit=1;PrintError=0'
     let g:dbext_default_profile_ASA_DBI_demo10 = 'type=DBI:user=dba:passwd=sql:driver=SQLAnywhere:conn_parms=ENG=demo10;DBN=demo:driver_parms=AutoCommit=0'
@@ -2002,9 +2423,11 @@ To specify the type of database you connect to most often, you can place the
     " IBM DB2
     let g:dbext_default_profile_DB2 = 'type=DB2:user=db2admin:passwd=whatever:dbname=SSD:bin_path=C:\Programs\IBM\SQLLIB\BIN'
     let g:dbext_default_profile_DB2_cons_1d = 'type=DB2:user=mlink:passwd=whatever:dbname=db2_2a:host=my_lab_box:port=60000'
+    let g:dbext_default_profile_MyDB2 = 'type=DB2:user=me:passwd=mypass:dbname=SSD:cmd_terminator='
     
     " MySQL
     let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=whatever:dbname=mysql:extra=-t'
+    let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=whatever:dbname=mysql:extra=--batch --raw --silent'
     let g:dbext_default_profile_mysql_local_DBI = 'type=DBI:user=root:passwd=whatever:driver=mysql:conn_parms=database=mysql;host=localhost'
     let g:dbext_default_profile_mysql_local_ODBC = 'type=ODBC:user=root:passwd=whatever:dsnname=mysql'
     
@@ -2012,16 +2435,34 @@ To specify the type of database you connect to most often, you can place the
     let g:dbext_default_profile_ORA = 'type=ORA:srvname=ffs42ga:user=john:passwd=whatever'
     " Oracle SQL Connect URL string (notice the : is escaped for the port option)
     let g:dbext_default_profile_ORA_URL = 'type=ORA:srvname=//localhost\:3333/instance_name:user=scott:passwd=tiger'
-    
-    " Postgress
+    " Different form of Oracle server name
+    let g:dbext_default_profile_ORA_Extended = 'type=ORA:user=scott:passwd=tiger:srvname=(description=(address=(protocol=TCP)(host=localhost)(port=1521))(connect_data=(server=dedicated)(service_name=10gR2)))'
+
+    " PostgreSQL
     let g:dbext_default_profile_PG = 'type=PGSQL:user=postgres'
     
     " Microsoft SQL Server
     let g:dbext_default_profile_SQLSRV        = 'type=SQLSRV:user=sa:passwd=whatever:host=localhost:replace_title=1'
-     let g:dbext_default_profile_mySQLServer  = 'type=SQLSRV:integratedlogin=1:dbname=myDB'
+    let g:dbext_default_profile_mySQLServer  = 'type=SQLSRV:integratedlogin=1:dbname=myDB'
+    " This SQL Server example uses sqsh to connect instead of the default osql
+    " binary by using the SQLSRV_bin connection parameter. Since this binary
+    " requires different parameters than osql, the "extra" connection option
+    " is used to add additional switches.
+    let g:dbext_default_profile_SQLSRV_sqsh='type=SQLSRV:user=User:passwd=Pass:host=Ip:SQLSRV_bin=sqsh:SQLSRV_cmd_options=:extra=-SFreetdsProfile -D dbname'
     
     " SQLite
     let g:dbext_default_profile_POPFile = 'type=SQLITE:SQLITE_bin=C:\Programs\POPFile\sqlite.exe:dbname=C:\Programs\POPFile\popfile.db'
+
+    " Firebird
+    let g:dbext_default_profile_Firebird = 'type=FIREBIRD:user=sysdba:passwd=masterkey:dbname=C:\Programs\Firebird\Firebird_2_1\examples\empbuild\EMPLOYEE.FDB'
+
+    " ULTRALITE
+    let g:dbext_default_profile_UL_CustDB = 'type=ULTRALITE:user=dba:passwd=sql:dbname='.expand('$SQLANYSAMP11\ultralite\custdb\custdb.udb')
+
+    " HANA
+    " The instance ID is specified via the extra parameter
+    let g:dbext_default_profile_HANA_MySrv = 'type=HANA:user=SYSTEM:passwd=manager:host=myhost:extra=-i 60'
+    let g:dbext_default_profile_ODBC_MySrv = 'type=ODBC:user=SYSTEM:passwd=manager:dsnname=My_HANA_DSN'
 <
 9.5 Connection information in modelines           *dbext-connect-modelines*
                                                   *dbext-modelines*
@@ -2066,6 +2507,21 @@ To specify the type of database you connect to most often, you can place the
  different: >
      -- dbext:type=SQLITE:bin_path=D:\Programs\POPFile:dbname=D:\Programs\POPFile\popfile.db'
 <
+ If you use the variable_def_regex option to specify different variables to
+ prompt for, this setting can also be set via the modeline.  All though, due
+ to the special regex syntax.  This means to set the variable_def_regex from 
+ a modeline, you must use a separate modeline: >
+     // dbext:profile=myFavouriteProfile
+     // dbext:variable_def_regex=\<\(p_\|lv_\)\w\+\>
+<
+ If you simply want to add to the existing default settings for this option
+ the value can be preceded by a comma: >
+     // dbext:variable_def_regex=,\<\(p_\|lv_\)\w\+\>
+<
+ Executing :DBGetOption variable_def_regex will display the new values 
+ notice the , separating 3 different regexes.  The regex used here is 
+ explained further in this file, keep looking for variable_def_regex. >
+     variable_def_regex = \(\w\|'\)\@<!?\(\w\|'\)\@<!,\zs\(@\|:\|$\)\w\+\>,\<\(p_\|lv_\)\w\+\>
 
 
 9.6 Ask for connection parameters	           *dbext-connect-ask*
@@ -2119,6 +2575,7 @@ To specify the type of database you connect to most often, you can place the
 
  dbext's commands can be used within mappings.  Here is a simple example 
  that you can place in your |.vimrc|:
+
      a) Sets connection information (based on "your_profile"). >
            profile=your_profile
 <       This assumes you have the following in your |.vimrc| >
@@ -2138,6 +2595,86 @@ To specify the type of database you connect to most often, you can place the
            \ :let sql_cmd = "DBExecSQL delete from xsl " .
            \      "where name = '" . expand("%:t") . "';"<CR>
            \ :exec sql_cmd<CR>
+<
+ Here is an example of a custom map which I use to execute a block of SQL from
+ a file full of stored procedures.  The function finds the necessary SQL and
+ calls dbext's DBExecRangeSQL command.  Add the function to your vimrc.
+>
+    " Since I repeatedly need to edit stored procedures, the CREATE PROCEDURE
+    " statement is preceeded by an IF ... END IF block which will drop
+    " the procedure or it uses the CREATE OR REPLACE syntax.  A third alternative
+    " is an ALTER PROCEDURE statement.
+    " This function will visually select the IF block to the END; statement
+    " of the stored procedure and execute it.  Or check for the
+    " CREATE OR REPLACE and stop there and look to the end.
+    " Here are the 3 structures this will look for (all from column 0):
+    " Case 1:
+    "     IF ..
+    "     END IF;
+    "     CREATE PROCEDURE
+    "     BEGIN
+    "     END;
+    " Case 2:
+    "     CREATE OR REPLACE PROCEDURE
+    "     BEGIN
+    "     END;
+    " Case 3:
+    "     ALTER PROCEDURE
+    "     BEGIN
+    "     END;
+    "
+    function! SQLExecuteIfCreateReplace() 
+        let l:old_sel = &sel
+        let &sel = 'inclusive'
+        let saveWrapScan=&wrapscan
+        let saveSearch=@/
+        let l:reg_z = @z
+        let &wrapscan=0
+        let @z = ''
+        let found = 0
+        let startLine = 0
+        let endLine = 0
+        let curLine = line(".")
+        let curCol  = virtcol(".")
+
+        " Must default the command terminator
+        let l:dbext_cmd_terminator = ";"
+
+        try
+            " Search backwards and do NOT wrap
+            " Find the line beginning with an IF clause
+            "     IF EXISTS( SELECT 1 ...
+            " or find an or replace clause
+            "     CREATE OR REPLACE PROCEDURE ...
+            " or find an ALTER PROCEDURE
+            "     CREATE OR REPLACE PROCEDURE ...
+            " And execute it until we find an
+            "     END
+            " at the beginning of a line.
+            let startLine = search('\c\(^\<if\>\|^\<alter\s\+procedure\>\|\<or\s\+replace\>\)', 'bcnW' )
+
+            if startLine > 0
+                " Search forward and visually select all lines
+                " until we find an END; clause
+                " exe 'silent! norm! V/^END'.l:dbext_cmd_terminator."\s*$\n\<esc>"
+                let endLine = search('^END'.l:dbext_cmd_terminator.'\s*$', 'cnW')
+                exec startLine.','.endLine.'DBExecRangeSQL'
+            endif
+        finally
+            call cursor(curLine, curCol)
+            noh
+            let l:query = @z
+            let @z = l:reg_z
+            let @/=saveSearch
+            let &wrapscan=saveWrapScan
+            let &sel = l:old_sel
+        endtry
+    endfunction 
+<
+ The mapping I use to trigger the function is <Leader>sbe using the 
+ mnemonic sql - begin - end
+>
+    nnoremap <Leader>sbe :call SQLExecuteIfCreateReplace()<CR>
 <
 ==============================================================================
 11. Object Completion                                 	*dbext-completion*
@@ -2527,7 +3064,9 @@ To specify the type of database you connect to most often, you can place the
     c) Menu (if available):
         Plugin->dbext->Exec SQL (Under cursor)
 
- DBExecSQLUnderCursor searches backwards for the following words: >
+ DBExecSQLUnderCursor searches backwards for the certain keywords (based on
+ the query_statements option).  An example of the default values for this 
+ option are: >
     select, insert, update, delete, create, grant, alter, 
     call, exec, merge, with
 <
@@ -2704,7 +3243,7 @@ To specify the type of database you connect to most often, you can place the
  You can simply choose the number from the list to setup the buffer.
  
  If you always want dbext to use a specific profile for every new buffer
- (unless overriden in your modelines) you can add the following to your 
+ (unless overridden in your modelines) you can add the following to your 
  vimrc (using the profile created above): >
      let g:dbext_default_profile = 'usual'
 < 
@@ -2729,8 +3268,8 @@ To specify the type of database you connect to most often, you can place the
      let g:dbext_default_profile_usual = 'type=ASA:user=DBA:passwd=SQL:login_script=ASA_defaults.sql'
 <
  Each time I connect to this datasource the above 2 options will 
- be set.  The syntax of this file (including command terminators is 
- expected to be syntactically correct for you database.
+ be set.  The syntax of this file (including command terminators) is 
+ expected to be syntactically correct for your database.
 
 
 
@@ -2952,7 +3491,26 @@ To specify the type of database you connect to most often, you can place the
  finds the question marks and the second one finds any variables
  beginning with "@,:,$". >
         \(\w\|'\)\@<!?\(\w\|'\)\@<!
+            \(\w\|'\)    - Beginning of a word character or a single quote
+            \@<!         - If the above is true do NOT match
+            ?            - Match a question mark
+            \(\w\|'\)    - Beginning of a word character or a single quote
+            \@<!         - If the above is true do NOT match
+            - In otherwords, find a question mark on its own which 
+              is not surround in quotes and not embedded in a word 
+              SELECT c1 FROM t1 WHERE c2 = ?    -- match this
+              SELECT c1 FROM t1 WHERE c2 = '?'  -- do not match this
+              SELECT c1 FROM t1 WHERE c2 = da?  -- do not match this
+
         \zs\(@\|:\|$\)\w\+\>
+            \zs          - Start matching now
+            \(@\|:\|$\)  - Match a @ or : or $ character
+            \w\+         - Match at least one or as many word characters as possible
+            \>           - and end on a word boundary
+            - In otherwords, find these types
+              SELECT c1 FROM t1 WHERE c2 = @myVar
+              SELECT c1 FROM t1 WHERE c2 = :hostVar
+              SELECT c1 FROM t1 WHERE c2 = $placeHolder
 <
  These are just standard Vim regular expressions which you can
  test on your own by doing a find.  Once you have them correct you
@@ -2978,12 +3536,12 @@ To specify the type of database you connect to most often, you can place the
  a file somewhere under a directory called MyProjectDir.  If so, it sets
  dbext's current variable_def_regex for this buffer.  This |autocmd| can be
  added to your |.vimrc|: >
-        autocmd BufRead */MyProjectDir/* exec 'DBSetOption variable_def_regex=\<\(p_\|lv_\)\w\+\>'
+        autocmd BufRead */MyProjectDir/* DBSetOption variable_def_regex=\<\(p_\|lv_\)\w\+\>
 <
  Or if you simply wanted to extended the existing defaults, you can
  retrieve the existing setting using dbext's DB_listOption function and
  concatenate the new regex separated by a comma: >
-        autocmd BufRead */MyProjectDir/* exec 'DBSetOption variable_def_regex=' . DB_listOption('variable_def_regex') . ',\<\(p_\|lv_\)\w\+\>'
+        autocmd BufRead */MyProjectDir2/* DBSetOption variable_def_regex=,\<\(p_\|lv_\)\w\+\>
 <
         
 
@@ -3219,7 +3777,7 @@ To specify the type of database you connect to most often, you can place the
  that can be customized for your project.
 
  Above all, enjoy the plugin.  Feedback is always appreciated, please send it
- to both David and Peter.
+ to David.
 
 
 ==============================================================================
