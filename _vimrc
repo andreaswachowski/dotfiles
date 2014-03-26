@@ -41,7 +41,7 @@ set sidescroll=1
 set exrc " enable reading of local .vimrc and .exrc files
 set winminheight=0 " minimize a window to just its status bar
 set textwidth=75
-set statusline=%f%m%=%l:%c
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set diffopt=filler,vertical
 
 let g:netrw_alto = 1 " split below the file browser
