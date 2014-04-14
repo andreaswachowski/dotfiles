@@ -101,6 +101,10 @@ if s:os != "unknown"
 endif
 unlet s:os
 
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
 " -- host-specific settings -----------------------------------------------
 let s:host_specific_setup = expand("<sfile>").".host.".hostname()
 if findfile(s:host_specific_setup,"<sfile>:%h") != ""
@@ -117,7 +121,7 @@ nmap <c-j> <c-w>j
 " Overriding a few VCSCommands with fugitive equivalents
 nmap \cs :Gstatus
 nmap \cv :Gdiff
-nmap \cl :Extradite
+nmap \cl :Glog
 nmap \cb :Gblame
 
 " vi:expandtab ts=2 sw=2
