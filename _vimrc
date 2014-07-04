@@ -22,6 +22,7 @@ Plugin 'vcscommand.vim'
 Plugin 'tpope/vim-bundler'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-rails'
+Bundle 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
