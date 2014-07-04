@@ -19,6 +19,7 @@
 [submodule "bundle/vcscommand"]
 	path = bundle/vcscommand
 	url = git://repo.or.cz/vcscommand.git
+	ignore = dirty
 [submodule "bundle/vim-extradite"]
 	path = bundle/vim-extradite
 	url = https://github.com/int3/vim-extradite/
