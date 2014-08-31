@@ -21,6 +21,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-rails'
 Bundle 'mileszs/ack.vim'
+Plugin 'othree/xml.vim'
 
 " JavaScript, see
 " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
