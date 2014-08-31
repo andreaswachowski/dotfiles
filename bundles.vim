@@ -22,5 +22,16 @@ Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-rails'
 Bundle 'mileszs/ack.vim'
 
+" JavaScript, see
+" http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
