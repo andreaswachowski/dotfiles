@@ -11,6 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-fugitive'
 Plugin 'dbext.vim'
 Plugin 'scrooloose/nerdtree'
