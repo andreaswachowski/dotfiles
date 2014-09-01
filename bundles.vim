@@ -21,7 +21,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-rails'
 Plugin 'mileszs/ack.vim'
-Plugin 'othree/xml.vim'
+Plugin 'sukima/xmledit'
 Plugin 'bolasblack/csslint.vim'
 
 " JavaScript, see
