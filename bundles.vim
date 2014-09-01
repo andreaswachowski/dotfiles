@@ -20,7 +20,7 @@ Plugin 'vcscommand.vim'
 Plugin 'tpope/vim-bundler'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-rails'
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'othree/xml.vim'
 Plugin 'bolasblack/csslint.vim'
 
@@ -34,6 +34,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
