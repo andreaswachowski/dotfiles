@@ -230,3 +230,6 @@ setglobal fileencoding=utf-8           " change default file encoding when writi
 
 au FileType html let b:loaded_delimitMate = 1
 au FileType xml let b:loaded_delimitMate = 1
+
+" For YouCompleteMe
+let g:ycm_extra_conf_globlist = ['~/*']
