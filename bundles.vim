@@ -24,6 +24,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'mileszs/ack.vim'
 Plugin 'sukima/xmledit'
 Plugin 'bolasblack/csslint.vim'
+Plugin 'freitass/todo.txt-vim'
 
 " JavaScript, see
 " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
