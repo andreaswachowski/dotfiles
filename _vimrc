@@ -1,4 +1,6 @@
+" vi:expandtab ts=2 sw=2
 set nocompatible
+set modeline
 filetype off
 
 source ~/.vim/bundles.vim
@@ -136,8 +138,6 @@ nmap \cv :Gdiff
 nmap \cl :Glog
 nmap \cb :Gblame
 
-" vi:expandtab ts=2 sw=2
-set modeline
 let g:GetLatestVimScripts_allowautoinstall=1
 
 if has("multi_byte")
