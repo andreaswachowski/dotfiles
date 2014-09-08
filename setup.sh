@@ -14,10 +14,15 @@ function link {
   TARGET=$2
   SKIP="false"
   if [ -e "$TARGET" ]; then
-    echo Found $TARGET, moving to $DOTFILESBACKUP
-    mv $TARGET $DOTFILESBACKUP/$(basename $TARGET)
-    if [ $? -ne 0 ]; then
-      echo Could not move $TARGET, will not execute ln -s $SOURCE $TARGET
+    if [ ! -L "$TARGET" -o "$(readlink $TARGET)" != "$SOURCE" ]; then
+      echo Found $TARGET, moving to $DOTFILESBACKUP
+      mv $TARGET $DOTFILESBACKUP/$(basename $TARGET)
+      if [ $? -ne 0 ]; then
+        echo Could not move $TARGET, will not execute ln -s $SOURCE $TARGET
+        SKIP="true"
+      fi
+    else
+      echo Symbolic link from $SOURCE to $TARGET already in place, skipping ...
       SKIP="true"
     fi
   fi
@@ -30,4 +35,7 @@ function link {
 
 
 link $DOTFILES/.vim ~/.vim
-link $DOTFILES/vimrc ~/.vimrc
+for dotfile in vimrc tmuxinator tmux.conf
+do
+  link $DOTFILES/$dotfile ~/.$dotfile
+done
