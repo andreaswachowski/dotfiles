@@ -233,3 +233,5 @@ au FileType xml let b:loaded_delimitMate = 1
 
 " For YouCompleteMe
 let g:ycm_extra_conf_globlist = ['~/*']
+
+source ~/.vim/syntastic_ignore.vim
