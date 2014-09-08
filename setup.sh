@@ -35,7 +35,22 @@ function link {
 
 
 link $DOTFILES/.vim ~/.vim
+if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
+  # YouCompleteMe is not necessarily configured for all machines on which 
+  # this script runs
+  if [ -d ~/.vim/bundle/YouCompleteMe ]; then
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer
+  fi
+fi
+
 for dotfile in vimrc tmuxinator tmux.conf
 do
   link $DOTFILES/$dotfile ~/.$dotfile
 done
+
+if [ ! "$(ls -A $DOTFILESBACKUP)" ]; then  # Directory empty
+  rmdir $DOTFILESBACKUP
+fi
