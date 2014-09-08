@@ -1,4 +1,4 @@
-doc/tags
-**/tags
+.vim/doc/tags
+.vim/**/tags
 *.un~
-bundle/**
+.vim/bundle/**
