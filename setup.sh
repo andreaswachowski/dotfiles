@@ -33,7 +33,6 @@ function link {
   fi
 }
 
-
 link $DOTFILES/.vim ~/.vim
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -43,6 +42,23 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
   if [ -d ~/.vim/bundle/YouCompleteMe ]; then
     cd ~/.vim/bundle/YouCompleteMe
     ./install.sh --clang-completer
+  fi
+
+fi
+
+# Rationale for the following patch: See comment "Problems deleting unsaved
+# buffer" at http://vim.wikia.com/wiki/Script:356
+DBEXT=~/.vim/bundle/dbext.vim
+if [ -d "${DBEXT}" ]; then
+  grep "call s:DB_checkModeline" $DBEXT/plugin/dbext.vim
+  if [ $? -eq 1 ]; then
+    cp $DOTFILES/vim_dbext_patch.diff $DBEXT
+    cd $DBEXT
+    patch -p0 < vim_dbext_patch.diff
+    if [ $? -eq 0 ]; then
+      rm $DBEXT/vim_dbext_patch.diff
+    fi
+    cd -
   fi
 fi
 

@@ -1,0 +1,46 @@
+--- plugin/dbext.vim	2013-06-02 12:59:32.000000000 +0200
++++ plugin/dbext.vim	2014-08-28 16:09:12.451169153 +0200
+@@ -449,6 +449,34 @@
+     endif
+ endif
+ "}}}
++function! s:DB_checkModeline()
++    " Users can preset connection string options using Vim's modeline 
++    " features.
++    " For example, in a SQL file you could have the following:
++    "      -- dbext:profile=ASA_generic,user=bob
++    " See the Help for more details.
++    let rc = -1
++    if ((&modeline == '0') || (&modelines < 1))
++        return rc
++    endif
++    let saveSearch = @/
++    let pattern = 'dbext:'
++    let from_bottom_line = ((&modelines > line('$'))?1:(line('$')-&modelines))
++
++    let savePos = 'normal! '.line(".").'G'.col(".")."\<bar>"
++    silent execute "normal! 1G0\<bar>"
++    while search( pattern, 'W' )
++        if( (line(".") >= 1 && line(".") <= &modelines) ||
++                    \ (line(".") >= from_bottom_line)   )
++            call dbext#DB_checkModeline()
++        endif
++    endwhile
++
++    let @/ = saveSearch
++    execute savePos
++    return rc
++endfunction
++
+ function! DB_getDictionaryName( which ) 
+     return dbext#DB_getDictionaryName( a:which )
+ endfunction 
+@@ -535,7 +563,7 @@
+ augroup dbext
+     au!
+     autocmd BufEnter    * if exists('g:loaded_dbext_auto') != 0 | exec "call dbext#DB_setTitle()" | endif
+-    autocmd BufReadPost * if &modeline == 1 | call dbext#DB_checkModeline() | endif
++    autocmd BufReadPost * if &modeline == 1 | call s:DB_checkModeline() | endif
+     autocmd BufDelete   * if exists('g:loaded_dbext_auto') != 0 | exec 'call dbext#DB_auBufDelete( expand("<abuf>") )' | endif
+     autocmd VimLeavePre * if exists('g:loaded_dbext_auto') != 0 | exec 'call dbext#DB_auVimLeavePre()' | endif
+ augroup END
