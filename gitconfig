@@ -1,0 +1,26 @@
+[user]
+	name = Andreas Wachowski
+	mail = andreas.wachowski@gmail.com
+	email = andreas.wachowski@gmail.com
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+#[merge]
+#	tool = opendiff
+#	tool = mate -w
+[core]
+	excludesfile = ~/.gitignore
+#[apply]
+#	  whitespace = nowarn
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	br = branch
+
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
