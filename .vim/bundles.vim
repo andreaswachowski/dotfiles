@@ -24,6 +24,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'jlanzarotta/bufexplorer'
 
 if (s:development=="true")
   Plugin 'vim-ruby/vim-ruby'
