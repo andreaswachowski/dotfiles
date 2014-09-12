@@ -1,21 +1,27 @@
-*pi_vimball.txt*	For Vim version 7.2.  Last change: 2009 Dec 28
+*pi_vimball.txt*	For Vim version 7.4.  Last change: 2014 Jul 18
 
 			       ----------------
 			       Vimball Archiver
 			       ----------------
 
-Author:  Charles E. Campbell, Jr.  <NdrOchip@ScampbellPfamily.AbizM>
+Author:  Charles E. Campbell  <NdrOchip@ScampbellPfamily.AbizM>
 	  (remove NOSPAM from Campbell's email first)
-Copyright: (c) 2004-2009 by Charles E. Campbell, Jr.	*Vimball-copyright*
-	   The VIM LICENSE applies to Vimball.vim, and Vimball.txt
-	   (see |copyright|) except use "Vimball" instead of "Vim".
-	   No warranty, express or implied.
-	   Use At-Your-Own-Risk!
+Copyright: (c) 2004-2014 by Charles E. Campbell		*Vimball-copyright*
+	The VIM LICENSE (see |copyright|) applies to the files in this
+	package, including vimballPlugin.vim, vimball.vim, and pi_vimball.txt.
+	except use "vimball" instead of "VIM".  Like anything else that's free,
+	vimball.vim and its associated files are provided *as is* and comes with
+	no warranty of any kind, either expressed or implied.  No guarantees
+	of merchantability.  No guarantees of suitability for any purpose.  By
+	using this plugin, you agree that in no event will the copyright
+	holder be liable for any damages resulting from the use of this
+	software. Use at your own risk!
 
 ==============================================================================
 1. Contents				*vba* *vimball* *vimball-contents*
 
 	1. Contents......................................: |vimball-contents|
+	2. Vimball Introduction..........................: |vimball-intro|
 	3. Vimball Manual................................: |vimball-manual|
 	   MkVimball.....................................: |:MkVimball|
 	   UseVimball....................................: |:UseVimball|
@@ -93,10 +99,10 @@ MAKING DIRECTORIES VIA VIMBALLS				*g:vimball_mkdir*
 
 	If it doesn't exist, then if g:vimball_mkdir doesn't exist, it is set
 	as follows: >
-	  |g:netrw_local_mkdir|, if it exists
-	  "mkdir"              , if it is executable
-	  "makedir"            , if it is executable
-	  Otherwise            , it is undefined.
+	  |g:netrw_localmkdir|, if it exists
+	  "mkdir"             , if it is executable
+	  "makedir"           , if it is executable
+	  Otherwise           , it is undefined.
 <	One may explicitly specify the directory making command using
 	g:vimball_mkdir.  This command is used to make directories that
 	are needed as indicated by the vimball.
@@ -114,8 +120,7 @@ CONTROLLING THE VIMBALL EXTRACTION DIRECTORY		*g:vimball_home*
 	source the file to extract its contents.
 
 	Extraction will only proceed if the first line of a putative vimball
-	file holds the "Vimball Archiver by Charles E. Campbell, Jr., Ph.D."
-	line.
+	file holds the "Vimball Archiver by Charles E. Campbell" line.
 
 LISTING FILES IN A VIMBALL					*:VimballList*
 
@@ -156,10 +161,46 @@ PREVENTING LOADING
 		let g:loaded_vimballPlugin= 1
 		let g:loaded_vimball      = 1
 <
+WINDOWS							*vimball-windows*
+
+	Many vimball files are compressed with gzip.  Windows, unfortunately,
+	does not come provided with a tool to decompress gzip'ped files.
+	Fortunately, there are a number of tools available for Windows users
+	to un-gzip files:
+>
+	    Item     Tool/Suite   Free   Website
+	    ----     ----------   ----   -------
+	    7zip        tool       y     http://www.7-zip.org/
+	    Winzip      tool       n     http://www.winzip.com/downwz.htm
+	    unxutils    suite      y     http://unxutils.sourceforge.net/
+	    cygwin      suite      y     http://www.cygwin.com/
+	    GnuWin32    suite      y     http://gnuwin32.sourceforge.net/
+	    MinGW       suite      y     http://www.mingw.org/
+<
 
 ==============================================================================
 4. Vimball History					*vimball-history* {{{1
 
+	37 : Jul 18, 2014 * (by request of T. Miedema) added augroup around
+			    the autocmds in vimballPlugin.vim
+	34 : Sep 22, 2011 * "UseVimball path" now supports a non-full path by
+			    prepending the current directory to it.
+	33 : Apr 02, 2011 * Gave priority to *.vmb over *.vba
+			  * Changed silent! to sil! (shorter)
+			  * Safed |'swf'| setting (during vimball extraction,
+			    its now turned off)
+	32 : May 19, 2010 * (Christian Brabrandt) :so someplugin.vba and
+			    :so someplugin.vba.gz (and the other supported
+			    compression types) now works
+			  * (Jan Steffens) added support for xz compression
+			  * fenc extraction was erroneously picking up the
+			    end of the line number when no file encoding
+			    was present.  Fixed.
+			  * By request, beginning the switchover from the vba
+			    extension to vmb.  Currently both are supported;
+			    MkVimball, however, now will create *.vmb files.
+	     Feb 11, 2011 * motoyakurotsu reported an error with vimball's
+			    handling of zero-length files
 	30 : Dec 08, 2008 * fnameescape() inserted to protect error
 			    messaging using corrupted filenames from
 			    causing problems
@@ -181,8 +222,10 @@ PREVENTING LOADING
 	     Apr 18, 2008 * RmVimball command is now protected by saving and
 	                    restoring settings -- in particular, acd was
 			    causing problems as reported by Zhang Shuhan
-	24 : Nov 15, 2007 * |g:vimball_path_escape| used by s:Path() to
+	24 : Nov 15, 2007 * g:vimball_path_escape used by s:Path() to
 	                    prevent certain characters from causing trouble
+			    (defunct: |fnameescape()| and |shellescape()|
+			    now used instead)
 	22 : Mar 21, 2007 * uses setlocal instead of set during BufEnter
 	21 : Nov 27, 2006 * (tnx to Bill McCarthy) vimball had a header
 	                    handling problem and it now changes \s to /s
