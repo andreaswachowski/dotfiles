@@ -25,6 +25,7 @@ Plugin 'freitass/todo.txt-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'vim-scripts/DirDiff.vim'
 
 if (s:development=="true")
   Plugin 'vim-ruby/vim-ruby'
