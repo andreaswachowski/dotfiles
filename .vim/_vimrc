@@ -3,6 +3,8 @@ set nocompatible
 set modeline
 filetype off
 
+let mapleader = ","
+
 source ~/.vim/bundles.vim
 
 filetype plugin indent on    " required
