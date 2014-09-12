@@ -50,7 +50,7 @@ fi
 # buffer" at http://vim.wikia.com/wiki/Script:356
 DBEXT=~/.vim/bundle/dbext.vim
 if [ -d "${DBEXT}" ]; then
-  grep "call s:DB_checkModeline" $DBEXT/plugin/dbext.vim
+  grep -q "call s:DB_checkModeline" $DBEXT/plugin/dbext.vim
   if [ $? -eq 1 ]; then
     cp $DOTFILES/vim_dbext_patch.diff $DBEXT
     cd $DBEXT
