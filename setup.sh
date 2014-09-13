@@ -13,7 +13,9 @@ function link {
   SOURCE=$1
   TARGET=$2
   SKIP="false"
-  if [ -e "$TARGET" ]; then
+  # Testing explicitly for the symbolic link captures
+  # dangling symbolic links
+  if [ -e "$TARGET" -o -L "$TARGET" ]; then
     if [ ! -L "$TARGET" -o "$(readlink $TARGET)" != "$SOURCE" ]; then
       echo Found $TARGET, moving to $DOTFILESBACKUP
       mv $TARGET $DOTFILESBACKUP/$(basename $TARGET)
@@ -62,9 +64,9 @@ if [ -d "${DBEXT}" ]; then
   fi
 fi
 
-for dotfile in vimrc tmuxinator tmux.conf gitignore gitconfig bashrc
+for dotfile in `ls $DOTFILES/dots`
 do
-  link $DOTFILES/$dotfile ~/.$dotfile
+  link $DOTFILES/dots/$dotfile ~/.$dotfile
 done
 
 if [ ! "$(ls -A $DOTFILESBACKUP)" ]; then  # Directory empty
