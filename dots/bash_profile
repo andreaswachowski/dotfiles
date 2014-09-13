@@ -1,0 +1,9 @@
+# vi: syntax=sh
+# See helpful info at
+# http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
+if [ -r ~/.profile ]; then
+  . ~/.profile;
+fi
+
+# Only read .bashrc when shell is interactive
+case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi;; esac

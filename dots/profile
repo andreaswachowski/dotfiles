@@ -1,0 +1,13 @@
+# vi: syntax=sh
+# From http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
+# ~/.profile is the place to put stuff that applies to your whole session,
+# such as programs that you want to start when you log in (but not
+# graphical programs, they go into a different file), and
+# environment variable definitions.
+
+set -o vi
+export EDITOR=vim
+
+if [ -f ~/.profile.`hostname` ]; then
+	source ~/.profile.`hostname`
+fi
