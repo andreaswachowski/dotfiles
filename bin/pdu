@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# pdu - pretty disk usage.
+# Displays the space occupied by each subdirectory of the current
+# directory, ordered by size.
+find . -maxdepth 1 -type d -a ! -name 'lost+found' -exec du -ks {} \; | sort -n

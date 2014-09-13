@@ -62,7 +62,7 @@ if [ -d "${DBEXT}" ]; then
   fi
 fi
 
-for dotfile in vimrc tmuxinator tmux.conf gitignore gitconfig
+for dotfile in vimrc tmuxinator tmux.conf gitignore gitconfig bashrc
 do
   link $DOTFILES/$dotfile ~/.$dotfile
 done
