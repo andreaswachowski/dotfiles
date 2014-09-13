@@ -1,4 +1,3 @@
 .vim/doc/tags
 .vim/**/tags
-*.un~
 .vim/bundle/**
