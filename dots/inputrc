@@ -1,1 +1,3 @@
+# "man readline" for details on this config file
+set bell-style visible
 set editing-mode vi
