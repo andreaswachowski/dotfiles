@@ -21,7 +21,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " -- General settings -----------------------------------------------------
-set sessionoptions-=optins
+set sessionoptions-=curdir
+set sessionoptions+=sesdir
 
 let s:host_specific_pre_setup = expand("<sfile>").".host.pre.".hostname()
 if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
