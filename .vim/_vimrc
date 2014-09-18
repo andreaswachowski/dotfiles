@@ -165,4 +165,3 @@ let g:ycm_extra_conf_globlist = ['~/*']
 " nnoremap : ;
 
 " source ~/.vim/plist.vim
-source ~/.vim/syntastic_ignore.vim
