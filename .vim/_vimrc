@@ -24,6 +24,11 @@ filetype plugin indent on    " required
 set sessionoptions-=curdir
 set sessionoptions+=sesdir
 
+" Do not store global options. Otherwise the machine-specific runtimepath
+" would also be stored, and Sessions would not be portable across different
+" machines.
+set sessionoptions-=options
+
 let s:host_specific_pre_setup = expand("<sfile>").".host.pre.".hostname()
 if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
   source `=expand(s:host_specific_pre_setup)`
