@@ -2,8 +2,8 @@
 map _l :w:!latex %
 set tw=75
 
-"ITeMize
 ia itm \begin{itemize}\end{itemize}O\item
+ia enm \begin{enumerate}\end{enumerate}O\item
 " New enViRonment
 ia nvr \begin{}\item \end{}-f}i
 " Begin DisplayMath
@@ -45,3 +45,5 @@ imap û \^u
 
 imap ¢ \c{c}
 
+au BufEnter anki.tex so <sfile>:h/anki.tex.vim
+au BufEnter */fortbildung/*/notes.tex so <sfile>:h/notes_for_videos.tex.vim

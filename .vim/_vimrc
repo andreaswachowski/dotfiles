@@ -165,6 +165,13 @@ au FileType xml let b:loaded_delimitMate = 1
 " For YouCompleteMe
 let g:ycm_extra_conf_globlist = ['~/*']
 
+" Helpful to get rid of the space when typing
+" dabbreviations:
+func! Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunc
+
 " Switching ; and : to increase editing speed and comfort.
 " nnoremap ; :
 " nnoremap : ;
