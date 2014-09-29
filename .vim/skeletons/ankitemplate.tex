@@ -1,0 +1,36 @@
+% vi: ts=4 sw=4 expandtab
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\usepackage{mathtools}
+\usepackage{clrscode3e}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\detail}[1]{{\scriptsize(#1)\par}~}
+\newcommand{\refs}[1]{{\scriptsize\textit{Refs: }#1\par}\hfill.}
+\newcommand*{\abs}[1]{\left\vert#1\right\vert}
+
+%%% commands that do not need to imported into Anki:
+\usepackage{mdframed}
+\newcommand*{\tags}[1]{\paragraph{tags: }#1\bigskip}
+\newcommand*{\xfield}[1]{\begin{mdframed}\centering #1\end{mdframed}\bigskip}
+\newenvironment{field}{}{}
+\newcommand*{\xplain}[1]{\begin{mdframed}\texttt{#1}\end{mdframed}\bigskip}
+\newenvironment{plain}{\ttfamily}{\par}
+\newenvironment{note}{}{}
+\begin{document}
+
+% Chapter 2
+\tags{algorithms algorithms:sorting book:algos:clr:ch2}
+\begin{note}
+    \xplain{What is the general idea of Selection sort?}
+    \begin{field}
+        Start with an unsorted array $A[0 \twodots n-1]$.
+        Find the minimum element, exchange it with $A[0]$.
+        Proceed recursively with $A[1 \twodots n-1]$
+    \end{field}
+\end{note}
+
+\end{document}

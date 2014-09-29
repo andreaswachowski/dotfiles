@@ -27,6 +27,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/DirDiff.vim'
+Plugin 'tomtom/tskeleton_vim'
 
 if (s:development=="true")
   Plugin 'vim-ruby/vim-ruby'
