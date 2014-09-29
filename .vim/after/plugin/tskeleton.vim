@@ -5,4 +5,8 @@
 if exists("loaded_tskeleton")
   au BufNewFile anki.txt TSkeletonSetup ankitemplate.txt
   au BufNewFile anki.tex TSkeletonSetup ankitemplate.tex
+
+  " Normally mapped to <c-j>, but that would override my _vimrc
+  " settings for movement between split windows:
+  let g:tskelMapGoToNextTag = '<c-n>'
 endif
