@@ -140,6 +140,12 @@ nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 
+" In the tskeleton plugin, g:tskelMapGoToNextTag is by default
+" mapped to <c-j>, but that would override the setting above.
+" Hence I define the variable differently here (in particular,
+" that is, *before* the plugin is loaded).
+let g:tskelMapGoToNextTag = '<c-n>'
+
 " Overriding a few VCSCommands with fugitive equivalents
 nmap \cs :Gstatus
 nmap \cv :Gdiff
