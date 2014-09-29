@@ -1,3 +1,4 @@
 .vim/doc/tags
 .vim/**/tags
 .vim/bundle/**
+.vim/cache
