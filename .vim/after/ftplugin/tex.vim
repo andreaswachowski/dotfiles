@@ -45,5 +45,5 @@ imap û \^u
 
 imap ¢ \c{c}
 
-au BufEnter anki.tex so <sfile>:h/anki.tex.vim
+au BufEnter */fortbildung/*/anki.tex so <sfile>:h/anki.tex.vim
 au BufEnter */fortbildung/*/notes.tex so <sfile>:h/notes_for_videos.tex.vim
