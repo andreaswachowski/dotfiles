@@ -12,6 +12,8 @@
 # avoided, and explicitly only happen when in interactive mode
 export PATH=~/dotfiles/bin:$PATH
 
+export HISTCONTROL=ignoredups
+
 if [ -f ~/.bashrc.`hostname` ]; then
 	source ~/.bashrc.`hostname`
 fi
