@@ -27,6 +27,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/DirDiff.vim'
+" tlib is required by tskeleton
+Plugin 'tomtom/tlib_vim'
 Plugin 'tomtom/tskeleton_vim'
 
 if (s:development=="true")
@@ -47,7 +49,6 @@ if (s:development=="true")
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'marijnh/tern_for_vim'
 
-  Plugin 'tomtom/tlib_vim'
   Plugin 'MarcWeber/vim-addon-mw-utils'
   Plugin 'garbas/vim-snipmate'
 endif
