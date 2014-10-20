@@ -6,5 +6,6 @@ if exists("loaded_tskeleton")
   au BufNewFile anki.txt TSkeletonSetup ankitemplate.txt
   au BufNewFile anki.tex TSkeletonSetup ankitemplate.tex
   au BufNewFile notes.tex TSkeletonSetup lecture_notes.tex
+  au BufNewFile Makefile TSkeletonSetup Makefile
   au BufNewFile *.tex TSkeletonSetup template.tex
 endif
