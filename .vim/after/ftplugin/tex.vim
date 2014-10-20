@@ -1,16 +1,17 @@
 " LaTeX
-map _l :w:!latex %
+map <buffer> _l :w:!latex %
 set tw=75
 
-ia itm \begin{itemize}\end{itemize}O\item
-ia enm \begin{enumerate}\end{enumerate}O\item
+ia <buffer> itm \begin{itemize}\end{itemize}O\item
+ia <buffer> enm \begin{enumerate}\end{enumerate}O\item
 " New enViRonment
-ia nvr \begin{}\item \end{}-f}i
+ia <buffer> nvr \begin{}\item \end{}-f}i
 " Begin DisplayMath
-ia bdm \begin{displaymath}\end{displaymath}O
+ia <buffer> bdm \begin{displaymath}\end{displaymath}O
 " SubSubSection
-ia sss \subsubsection{}i
+ia <buffer> sss \subsubsection{}i
 
+iab <buffer> em {\em \/}<Left><Left><Left><C-R>=Eatchar('\s')<CR>
 
 set comments=:%,b:\\item
 set formatoptions=tro
@@ -35,15 +36,15 @@ imap ê \^e
 
 imap î \^i
 
-imap ó \'o
-imap ò \`o
-imap ô \^o
+imap <buffer> ó \'o
+imap <buffer> ò \`o
+imap <buffer> ô \^o
 
-imap ú \'u
-imap ù \`u
-imap û \^u
+imap <buffer> ú \'u
+imap <buffer> ù \`u
+imap <buffer> û \^u
 
-imap ¢ \c{c}
+imap <buffer> ¢ \c{c}
 
 au BufEnter */fortbildung/*/anki.tex so <sfile>:h/anki.tex.vim
 au BufEnter */fortbildung/*/notes.tex so <sfile>:h/notes_for_videos.tex.vim
