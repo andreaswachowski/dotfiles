@@ -183,10 +183,3 @@ endfunc
 " nnoremap : ;
 
 " source ~/.vim/plist.vim
-
-" To enable crontab editing on Mac OS X:
-" http://superuser.com/questions/359580/error-adding-cronjobs-in-mac-os-x-lion
-if $VIM_CRONTAB == "true"
-    set nobackup
-    set nowritebackup
-endif
