@@ -10,7 +10,7 @@
 # http://lists.gnu.org/archive/html/bug-bash/2012-06/msg00028.html
 # scp breaks when it encounters output, so all echos etc. must be
 # avoided, and explicitly only happen when in interactive mode
-export PATH=~/dotfiles/bin:$PATH
+export PATH=~/dotfiles/bin:~/local/bin:$PATH
 
 export HISTCONTROL=ignoredups
 
