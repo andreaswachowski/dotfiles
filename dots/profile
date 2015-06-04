@@ -8,6 +8,18 @@
 set -o vi
 export EDITOR=vim
 
+# -------------------------------------------------------------------------
+# Install npm packages globally without sudo on OS X and Linux:
+# https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
+export NPM_PACKAGES="${HOME}/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+# command
+unset MANPATH # delete if MANPATH was already modified elsewhere
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# -------------------------------------------------------------------------
 if [ -f ~/.profile.`hostname` ]; then
 	source ~/.profile.`hostname`
 fi
