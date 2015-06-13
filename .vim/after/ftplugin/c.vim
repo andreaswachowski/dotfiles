@@ -21,3 +21,7 @@ imap ä }
 " map <C-K>	<Plug>MarkersJumpB
 " imap <C-<>	<Plug>MarkersMark
 " vmap <C-<>	<Plug>MarkersMark
+
+" Automatically remove trailing spaces before writing the file
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces
+autocmd BufWritePre *.c :%s/\s\+$//e
