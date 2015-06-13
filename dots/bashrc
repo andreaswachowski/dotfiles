@@ -22,3 +22,5 @@ alias ct="clear;t"
 if [ -f ~/.bashrc.`hostname` ]; then
 	source ~/.bashrc.`hostname`
 fi
+
+. $HOME/bin/z.sh
