@@ -30,6 +30,7 @@ Plugin 'vim-scripts/DirDiff.vim'
 " tlib is required by tskeleton
 Plugin 'tomtom/tlib_vim'
 Plugin 'tomtom/tskeleton_vim'
+Plugin 'sukima/xmledit'
 
 if (s:development=="true")
   Plugin 'vim-ruby/vim-ruby'
@@ -37,7 +38,6 @@ if (s:development=="true")
   Plugin 'taglist.vim'
   Plugin 'TVO--The-Vim-Outliner'
   Plugin 'tpope/vim-rails'
-  Plugin 'sukima/xmledit'
   Plugin 'bolasblack/csslint.vim'
 
   " JavaScript, see
