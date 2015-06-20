@@ -15,10 +15,15 @@ export VISUAL=vim # crontab -e on qnap depends on VISUAL and apparently does not
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-# command
-unset MANPATH # delete if MANPATH was already modified elsewhere
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# manpath is not available on QNAP, therefore we must check for it
+which manpath >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+	# Unset manpath so we can inherit from /etc/manpath via the `manpath`
+	# command
+	unset MANPATH # delete if MANPATH was already modified elsewhere
+	MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+fi
 
 # -------------------------------------------------------------------------
 if [ -f ~/.profile.`hostname` ]; then
