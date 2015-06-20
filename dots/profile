@@ -7,6 +7,7 @@
 
 set -o vi
 export EDITOR=vim
+export VISUAL=vim # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
 
 # -------------------------------------------------------------------------
 # Install npm packages globally without sudo on OS X and Linux:
