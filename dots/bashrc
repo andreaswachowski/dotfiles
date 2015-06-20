@@ -24,3 +24,5 @@ if [ -f ~/.bashrc.`hostname` ]; then
 fi
 
 . $HOME/dotfiles/bin/z.sh
+
+set -o vi
