@@ -16,7 +16,7 @@ function link {
   # Testing explicitly for the symbolic link captures
   # dangling symbolic links
   if [ -e "$TARGET" -o -L "$TARGET" ]; then
-    if [ ! -L "$TARGET" -o "$(readlink $TARGET)" != "$SOURCE" ]; then
+    if [ ! -L "$TARGET" -o "$(readlink $TARGET 2>/dev/null)" != "$SOURCE" ]; then
       echo Found $TARGET, moving to $DOTFILESBACKUP
       mv $TARGET $DOTFILESBACKUP/$(basename $TARGET)
       if [ $? -ne 0 ]; then
