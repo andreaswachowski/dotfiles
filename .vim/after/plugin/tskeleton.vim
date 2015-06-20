@@ -9,4 +9,5 @@ if exists("loaded_tskeleton")
   au BufNewFile Makefile TSkeletonSetup Makefile
   au BufNewFile prg.cc TSkeletonSetup prg.cc
   au BufNewFile *.tex TSkeletonSetup template.tex
+  au BufNewFile *.html TSkeletonSetup plainhtml.html
 endif
