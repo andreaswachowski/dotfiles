@@ -10,4 +10,5 @@ if exists("loaded_tskeleton")
   au BufNewFile prg.cc TSkeletonSetup prg.cc
   au BufNewFile *.tex TSkeletonSetup template.tex
   au BufNewFile *.html TSkeletonSetup plainhtml.html
+  au BufNewFile gitcommit TSkeletonSetup gitcommit
 endif
