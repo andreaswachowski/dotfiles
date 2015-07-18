@@ -18,6 +18,7 @@ alias t="todo.sh -td $HOME/dotfiles/bin/todo.cfg"
 alias vt="vim $HOME/Documents/Dropbox/todo/todo.txt"
 alias vo="vim $HOME/Documents/Dropbox/todo/outline.txt"
 alias ct="clear;t"
+alias tmux="TERM=screen-256color-bce tmux"
 
 if [ -f ~/.bashrc.`hostname` ]; then
 	source ~/.bashrc.`hostname`
