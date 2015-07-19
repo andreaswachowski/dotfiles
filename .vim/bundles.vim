@@ -39,6 +39,7 @@ if (s:development=="true")
   Plugin 'TVO--The-Vim-Outliner'
   Plugin 'tpope/vim-rails'
   Plugin 'bolasblack/csslint.vim'
+  Plugin 'majutsushi/tagbar'
 
   " JavaScript, see
   " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
