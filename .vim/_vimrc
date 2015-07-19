@@ -148,6 +148,7 @@ let g:tskelMapGoToNextTag = ""
 
 " Overriding a few VCSCommands with fugitive equivalents
 nmap \cs :Gstatus
+nmap \cc :Gcommit
 nmap \cv :Gdiff
 nmap \cl :Glog
 nmap \cb :Gblame
