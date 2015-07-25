@@ -40,6 +40,9 @@ if (s:development=="true")
   Plugin 'tpope/vim-rails'
   Plugin 'bolasblack/csslint.vim'
   Plugin 'majutsushi/tagbar'
+  Plugin 'andreaswachowski/vim-rfc'
+  Plugin 'vim-scripts/rfc-syntax'
+  Plugin 'mustache/vim-mustache-handlebars'
 
   " JavaScript, see
   " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
