@@ -31,6 +31,7 @@ Plugin 'vim-scripts/DirDiff.vim'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tomtom/tskeleton_vim'
 Plugin 'sukima/xmledit'
+Plugin 'davidoc/taskpaper.vim'
 
 if (s:development=="true")
   Plugin 'vim-ruby/vim-ruby'
