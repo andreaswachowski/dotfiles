@@ -14,7 +14,9 @@ export VISUAL=vim # crontab -e on qnap depends on VISUAL and apparently does not
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$NPM_PACKAGES/bin:$PATH"
+export PATH="$HOME/.rvm/bin:$NPM_PACKAGES/bin:$HOME/bin:$HOME/local/bin:$HOME/dotfiles/bin:$PATH"
+
+export HISTCONTROL=ignoredups
 
 # manpath is not available on QNAP, therefore we must check for it
 which manpath >/dev/null 2>&1
@@ -29,3 +31,5 @@ fi
 if [ -f ~/.profile.`hostname` ]; then
 	source ~/.profile.`hostname`
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

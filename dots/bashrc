@@ -10,9 +10,6 @@
 # http://lists.gnu.org/archive/html/bug-bash/2012-06/msg00028.html
 # scp breaks when it encounters output, so all echos etc. must be
 # avoided, and explicitly only happen when in interactive mode
-export PATH=$HOME/bin:$HOME/local/bin:$HOME/dotfiles/bin:$PATH
-
-export HISTCONTROL=ignoredups
 
 alias t="todo.sh -td $HOME/dotfiles/bin/todo.cfg"
 alias vt="vim $HOME/Documents/Dropbox/todo/todo.txt"
