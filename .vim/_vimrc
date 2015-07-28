@@ -179,6 +179,11 @@ func! Eatchar(pat)
   return (c =~ a:pat) ? '' : c
 endfunc
 
+let g:tagbar_left = 1
+nnoremap <silent> <F8> :NERDTree<CR>
+nnoremap <silent> <F9> :NERDTree /Users/andreas/Documents/Dropbox/notes/todos/<CR>
+nnoremap <silent> <F10> :TagbarToggle<CR>
+
 " Switching ; and : to increase editing speed and comfort.
 " nnoremap ; :
 " nnoremap : ;
