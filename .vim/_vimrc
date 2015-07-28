@@ -180,7 +180,7 @@ func! Eatchar(pat)
 endfunc
 
 let g:tagbar_left = 1
-nnoremap <silent> <F8> :NERDTree<CR>
+nnoremap <silent> <F8> :NERDTreeToggle<CR>
 nnoremap <silent> <F9> :NERDTree /Users/andreas/Documents/Dropbox/notes/todos/<CR>
 nnoremap <silent> <F10> :TagbarToggle<CR>
 
