@@ -36,7 +36,6 @@ Plugin 'davidoc/taskpaper.vim'
 if (s:development=="true")
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'dbext.vim'
-  Plugin 'taglist.vim'
   Plugin 'TVO--The-Vim-Outliner'
   Plugin 'tpope/vim-rails'
   Plugin 'bolasblack/csslint.vim'
