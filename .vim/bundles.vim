@@ -44,6 +44,7 @@ if (s:development=="true")
   Plugin 'vim-scripts/rfc-syntax'
   Plugin 'mustache/vim-mustache-handlebars'
   Plugin 'tpope/vim-haml'
+  Plugin 'kana/vim-tabpagecd'
 
   " JavaScript, see
   " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
