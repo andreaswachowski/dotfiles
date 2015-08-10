@@ -16,7 +16,10 @@ export NPM_PACKAGES="${HOME}/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$HOME/.rvm/bin:$NPM_PACKAGES/bin:$HOME/bin:$HOME/local/bin:$HOME/dotfiles/bin:$PATH"
 
-export HISTCONTROL=ignoredups
+# Use ignoreboth instead of ignoredups so that tmux-resurrect history save
+# commands will not be saved. See
+# https://github.com/tmux-plugins/tmux-resurrect
+export HISTCONTROL=ignoreboth
 
 # manpath is not available on QNAP, therefore we must check for it
 which manpath >/dev/null 2>&1
