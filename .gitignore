@@ -5,3 +5,6 @@
 .vim/cache
 dots/tmux/plugins/*
 !dots/tmux/plugins/tpm/
+local/
+os_specific/
+host_specific/
