@@ -31,8 +31,14 @@ if [ $? -eq 0 ]; then
 fi
 
 # -------------------------------------------------------------------------
-if [ -f ~/.profile.`hostname` ]; then
-	source ~/.profile.`hostname`
+OS_SPECIFIC_PROFILE=~/dotfiles/os_specific/$(uname)/dots/profile 
+if [ -f $OS_SPECIFIC_PROFILE ]; then
+	source $OS_SPECIFIC_PROFILE
+fi
+
+HOST_SPECIFIC_PROFILE=~/dotfiles/host_specific/$(hostname -s)/dots/profile
+if [ -f $HOST_SPECIFIC_PROFILE ]; then
+	source $HOST_SPECIFIC_PROFILE
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
