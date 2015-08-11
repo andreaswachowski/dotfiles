@@ -31,12 +31,12 @@ if [ $? -eq 0 ]; then
 fi
 
 # -------------------------------------------------------------------------
-OS_SPECIFIC_PROFILE=~/dotfiles/os_specific/$(uname)/dots/profile 
+OS_SPECIFIC_PROFILE=~/dotfiles/os/dots/profile 
 if [ -f $OS_SPECIFIC_PROFILE ]; then
 	source $OS_SPECIFIC_PROFILE
 fi
 
-HOST_SPECIFIC_PROFILE=~/dotfiles/host_specific/$(hostname -s)/dots/profile
+HOST_SPECIFIC_PROFILE=~/dotfiles/local/dots/profile
 if [ -f $HOST_SPECIFIC_PROFILE ]; then
 	source $HOST_SPECIFIC_PROFILE
 fi
