@@ -17,8 +17,14 @@ alias vo="vim $HOME/Documents/Dropbox/todo/outline.txt"
 alias ct="clear;t"
 alias tmux="TERM=screen-256color-bce tmux"
 
-if [ -f ~/.bashrc.`hostname` ]; then
-	source ~/.bashrc.`hostname`
+OS_SPECIFIC_BASHRC=~/dotfiles/os_specific/$(uname)/dots/bashrc 
+if [ -f $OS_SPECIFIC_BASHRC ]; then
+	source $OS_SPECIFIC_BASHRC
+fi
+
+HOST_SPECIFIC_BASHRC=~/dotfiles/host_specific/$(hostname -s)/dots/bashrc
+if [ -f $HOST_SPECIFIC_BASHRC ]; then
+	source $HOST_SPECIFIC_BASHRC
 fi
 
 . $HOME/dotfiles/bin/z.sh
