@@ -184,6 +184,9 @@ nnoremap <silent> <F8> :NERDTreeToggle<CR>
 nnoremap <silent> <F9> :NERDTree ~/Documents/Dropbox/notes/todos/<CR>
 nnoremap <silent> <F10> :TagbarToggle<CR>
 
+" For Transcribe!
+au BufEnter *.xsc setlocal tw=0
+
 " Switching ; and : to increase editing speed and comfort.
 " nnoremap ; :
 " nnoremap : ;
