@@ -51,11 +51,11 @@ endif
 if &term =~ "dtterm" || &term =~ "xterm"|| &term =~ "rxvt-unicode"
   if has("terminfo")
     set t_Sf=<Esc>[3%p1%dm
-   set t_Sb=<Esc>[4%p1%dm
- else
-   set t_Sf=<Esc>[3%dm
-   set t_Sb=<Esc>[4%dm
- endif
+    set t_Sb=<Esc>[4%p1%dm
+  else
+    set t_Sf=<Esc>[3%dm
+    set t_Sb=<Esc>[4%dm
+  endif
 endif
 
 set nohlsearch
@@ -156,11 +156,11 @@ nmap \cb :Gblame
 let g:GetLatestVimScripts_allowautoinstall=1
 
 if has("multi_byte")
-	if &termencoding == ""
-		let &termencoding = &encoding
-	endif
-	set encoding=utf-8                     " better default than latin1
-	setglobal fileencoding=utf-8           " change default file encoding when writing new files
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8                     " better default than latin1
+  setglobal fileencoding=utf-8           " change default file encoding when writing new files
 endif
 set encoding=utf-8                     " better default than latin1
 set fileencoding=utf-8                     " better default than latin1
