@@ -59,6 +59,10 @@ if (s:development=="true")
 
   Plugin 'MarcWeber/vim-addon-mw-utils'
   Plugin 'garbas/vim-snipmate'
+
+  Plugin 'vim-scripts/ingo-library'
+  Plugin 'vim-scripts/IndentConsistencyCop'
+  Plugin 'vim-scripts/IndentConsistencyCopAutoCmds'
 endif
 
 " All of your Plugins must be added before the following line
