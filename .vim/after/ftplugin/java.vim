@@ -1,7 +1,4 @@
 set showmatch
-set tabstop=2
-set shiftwidth=2
-set expandtab
 
 " Simpler input for accolades on a German keyboard
 imap ö {
