@@ -1,7 +1,3 @@
-set ts=4
-set sw=4
-set expandtab
-
 " Automatically remove trailing spaces before writing the file
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre *.js :%s/\s\+$//e
