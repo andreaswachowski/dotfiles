@@ -158,6 +158,7 @@ set encoding=utf-8                     " better default than latin1
 set fileencoding=utf-8                     " better default than latin1
 setglobal fileencoding=utf-8           " change default file encoding when writing new files
 
+" Do not (!) load delimitMate for html and xml files.
 au FileType html let b:loaded_delimitMate = 1
 au FileType xml let b:loaded_delimitMate = 1
 
@@ -171,22 +172,8 @@ func! Eatchar(pat)
   return (c =~ a:pat) ? '' : c
 endfunc
 
-let g:tagbar_left = 1
-nnoremap <silent> <F8> :NERDTreeToggle<CR>
-nnoremap <silent> <F9> :NERDTree ~/Documents/Dropbox/notes/todos/<CR>
-nnoremap <silent> <F10> :TagbarToggle<CR>
-
 " For Transcribe!
 au BufEnter *.xsc setlocal tw=0
 
-" Avoid indentation checks for 3rd-party files
-au BufReadPre ~/dotfiles/.vim/bundle/* let b:indentconsistencycop_SkipChecks = 1
-au BufReadPre ~/.vim/bundle/* let b:indentconsistencycop_SkipChecks = 1
-au BufReadPre */node_modules/* let b:indentconsistencycop_SkipChecks = 1
-au BufReadPre */bower_components/* let b:indentconsistencycop_SkipChecks = 1
-
-" Switching ; and : to increase editing speed and comfort.
-" nnoremap ; :
-" nnoremap : ;
-
+" ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
