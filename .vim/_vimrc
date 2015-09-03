@@ -68,7 +68,6 @@ set sidescroll=1
 set exrc " enable reading of local .vimrc and .exrc files
 set winminheight=0 " minimize a window to just its status bar
 set textwidth=75
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 set diffopt=filler,vertical
 
@@ -145,13 +144,6 @@ nmap <c-j> <c-w>j
 " Hence I define the variable differently here (in particular,
 " that is, *before* the plugin is loaded).
 let g:tskelMapGoToNextTag = ""
-
-" Overriding a few VCSCommands with fugitive equivalents
-nmap \cs :Gstatus
-nmap \cc :Gcommit
-nmap \cv :Gdiff
-nmap \cl :Glog
-nmap \cb :Gblame
 
 let g:GetLatestVimScripts_allowautoinstall=1
 
