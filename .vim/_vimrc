@@ -67,7 +67,7 @@ set sidescroll=1
 " Then, the whole configuration will be sourced twice.
 set exrc " enable reading of local .vimrc and .exrc files
 set winminheight=0 " minimize a window to just its status bar
-set textwidth=75
+set textwidth=125
 set laststatus=2
 set diffopt=filler,vertical
 
