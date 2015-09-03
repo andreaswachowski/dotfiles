@@ -70,6 +70,7 @@ set winminheight=0 " minimize a window to just its status bar
 set textwidth=125
 set laststatus=2
 set diffopt=filler,vertical
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 let g:netrw_alto = 1 " split below the file browser
 
