@@ -42,7 +42,7 @@ if (s:development=="true")
   Plugin 'tpope/vim-rails'
   Plugin 'bolasblack/csslint.vim'
   Plugin 'majutsushi/tagbar'
-  Plugin 'andreaswachowski/vim-rfc'
+  Plugin 'mhinz/vim-rfc'
   Plugin 'vim-scripts/rfc-syntax'
   Plugin 'mustache/vim-mustache-handlebars'
   Plugin 'tpope/vim-haml'
