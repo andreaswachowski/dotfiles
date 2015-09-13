@@ -35,6 +35,7 @@ Plugin 'sukima/xmledit'
 Plugin 'davidoc/taskpaper.vim'
 
 if (s:development=="true")
+  Plugin 'scrooloose/nerdcommenter'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'dbext.vim'
   Plugin 'TVO--The-Vim-Outliner'
