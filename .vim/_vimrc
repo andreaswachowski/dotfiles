@@ -5,7 +5,9 @@ filetype off
 
 let mapleader = ","
 
-source $VIMRUNTIME/macros/matchit.vim
+if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
+  source $VIMRUNTIME/macros/matchit.vim
+endif
 
 source ~/.vim/bundles.vim
 
