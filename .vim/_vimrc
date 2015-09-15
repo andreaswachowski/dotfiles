@@ -5,6 +5,8 @@ filetype off
 
 let mapleader = ","
 
+source $VIMRUNTIME/macros/matchit.vim
+
 source ~/.vim/bundles.vim
 
 filetype plugin indent on    " required
