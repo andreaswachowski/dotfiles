@@ -18,6 +18,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-bundler'
+" Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -44,9 +45,11 @@ if (s:development=="true")
   Plugin 'TVO--The-Vim-Outliner'
 
   Plugin 'vim-ruby/vim-ruby'
+  " Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-rails'
 
   Plugin 'bolasblack/csslint.vim'
+  " Plugin 'groenewege/vim-less'
 
   Plugin 'tpope/vim-haml'
   Plugin 'mustache/vim-mustache-handlebars'
