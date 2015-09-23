@@ -38,6 +38,7 @@ Plugin 'sukima/xmledit'
 Plugin 'davidoc/taskpaper.vim'
 
 if (s:development=="true")
+  Plugin 'tpope/vim-dispatch'
   Plugin 'majutsushi/tagbar'
   Plugin 'scrooloose/nerdcommenter'
 
