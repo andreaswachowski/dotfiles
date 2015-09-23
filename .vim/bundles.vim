@@ -50,6 +50,7 @@ if (s:development=="true")
   Plugin 'tpope/vim-rails'
 
   Plugin 'hail2u/vim-css3-syntax'
+  Plugin 'cakebaker/scss-syntax.vim'
   Plugin 'bolasblack/csslint.vim'
   " Plugin 'groenewege/vim-less'
 
