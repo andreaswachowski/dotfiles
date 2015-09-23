@@ -37,17 +37,22 @@ Plugin 'sukima/xmledit'
 Plugin 'davidoc/taskpaper.vim'
 
 if (s:development=="true")
+  Plugin 'majutsushi/tagbar'
   Plugin 'scrooloose/nerdcommenter'
-  Plugin 'vim-ruby/vim-ruby'
+
   Plugin 'dbext.vim'
   Plugin 'TVO--The-Vim-Outliner'
+
+  Plugin 'vim-ruby/vim-ruby'
   Plugin 'tpope/vim-rails'
+
   Plugin 'bolasblack/csslint.vim'
-  Plugin 'majutsushi/tagbar'
+
+  Plugin 'tpope/vim-haml'
+  Plugin 'mustache/vim-mustache-handlebars'
+
   Plugin 'mhinz/vim-rfc'
   Plugin 'vim-scripts/rfc-syntax'
-  Plugin 'mustache/vim-mustache-handlebars'
-  Plugin 'tpope/vim-haml'
   Plugin 'kana/vim-tabpagecd'
   Plugin 'greyblake/vim-preview'
 
