@@ -49,6 +49,7 @@ if (s:development=="true")
   " Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-rails'
 
+  Plugin 'hail2u/vim-css3-syntax'
   Plugin 'bolasblack/csslint.vim'
   " Plugin 'groenewege/vim-less'
 
