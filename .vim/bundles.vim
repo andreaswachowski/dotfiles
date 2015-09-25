@@ -2,7 +2,7 @@
 " vi: ts=2 sw=2 expandtab
 set rtp+=~/.vim/bundle/Vundle.vim
 
-if (hostname() =~ "salt" || hostname() =~ "macbook") && ($USER == "andreas")
+if (hostname() =~ "salt" || hostname() =~ "macbook" || hostname() =~ "MacBookPro" ) && ($USER == "andreas")
   let s:development="true"
 else
   let s:development="false"
