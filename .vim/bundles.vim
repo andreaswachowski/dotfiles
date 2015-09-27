@@ -71,6 +71,8 @@ if (s:development=="true")
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'marijnh/tern_for_vim'
 
+  Plugin 'kchmck/vim-coffee-script'
+
   Plugin 'MarcWeber/vim-addon-mw-utils'
   Plugin 'garbas/vim-snipmate'
 
