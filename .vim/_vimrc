@@ -180,5 +180,8 @@ endfunc
 " For Transcribe!
 au BufEnter *.xsc setlocal tw=0
 
+" Include a date indication in the fugitive Glog quickfix entries
+let g:fugitive_summary_format = '%ai %s'
+
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
