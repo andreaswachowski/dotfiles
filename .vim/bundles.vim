@@ -45,6 +45,7 @@ if (s:development=="true")
   Plugin 'dbext.vim'
   Plugin 'TVO--The-Vim-Outliner'
 
+  Plugin 'tpope/vim-rvm'
   Plugin 'vim-ruby/vim-ruby'
   " Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-rails'
