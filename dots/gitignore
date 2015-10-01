@@ -1,9 +1,14 @@
 *.un~
 *.swp
 *.swo
+Session.vim
+tags
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 dots/tmux/resurrect/
+
+# mailmap to configure vim-fugitive
+.mailmap
