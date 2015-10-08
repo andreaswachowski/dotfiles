@@ -24,6 +24,7 @@ if [ -f $OS_SPECIFIC_BASHRC ]; then
 fi
 
 # See "I have [bash] history back to ~2003" on https://news.ycombinator.com/item?id=10162189
+# (for a different take, see http://mywiki.wooledge.org/BashFAQ/088 )
 # According to my initial test, and according to one tweet in the discussion, on OS X, it is necessary
 # to create the directory first:
 HISTDIR=${HOME}/.history/$(date -u +%Y/%m/)
@@ -33,6 +34,10 @@ fi
 # When testing, remember that the history is only written on session *exit*
 # (see http://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize )
 shopt -s histappend
+# Append each command immediately, to minimize the effect of sudden power losses
+# Otherwise, the history is only written on session exit
+# http://apple.stackexchange.com/questions/114691/why-isnt-history-a-working
+PROMPT_COMMAND="history -a"
 HISTFILESIZE= # Never truncate the file
 HOSTNAME="$(hostname)"
 HOSTNAME_SHORT="${HOSTNAME%%.*}"
