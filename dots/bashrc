@@ -23,6 +23,21 @@ if [ -f $OS_SPECIFIC_BASHRC ]; then
 	source $OS_SPECIFIC_BASHRC
 fi
 
+# See "I have [bash] history back to ~2003" on https://news.ycombinator.com/item?id=10162189
+# According to my initial test, and according to one tweet in the discussion, on OS X, it is necessary
+# to create the directory first:
+HISTDIR=${HOME}/.history/$(date -u +%Y/%m/)
+if [ ! -d $HISTDIR ]; then
+	mkdir -p $HISTDIR
+fi
+# When testing, remember that the history is only written on session *exit*
+# (see http://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize )
+shopt -s histappend
+HISTFILESIZE= # Never truncate the file
+HOSTNAME="$(hostname)"
+HOSTNAME_SHORT="${HOSTNAME%%.*}"
+HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
+
 HOST_SPECIFIC_BASHRC=~/dotfiles/local/dots/bashrc
 if [ -f $HOST_SPECIFIC_BASHRC ]; then
 	source $HOST_SPECIFIC_BASHRC
