@@ -10,6 +10,7 @@ if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
 endif
 
 source ~/.vim/bundles.vim
+source $HOME/.vim/tabline.vim
 
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
