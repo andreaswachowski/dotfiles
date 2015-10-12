@@ -105,6 +105,10 @@ if has("gui_running")
   set guioptions-=T " remove tool bar
 endif
 
+hi TabLineFill ctermfg=Grey ctermbg=Black
+hi TabLine ctermfg=Grey ctermbg=Black
+hi TabLineSel ctermfg=Black ctermbg=Grey
+
 " Using "ctermbg=White" will only use gray background on an iTerm with 256
 " colors, therefore using 255 instead.
 highlight Visual term=reverse ctermbg=255 guibg=White
