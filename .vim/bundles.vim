@@ -45,18 +45,22 @@ if (s:development=="true")
   Plugin 'dbext.vim'
   Plugin 'TVO--The-Vim-Outliner'
 
+  " Ruby etc.
   Plugin 'tpope/vim-rvm'
   Plugin 'vim-ruby/vim-ruby'
   " Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-rails'
 
+  " CSS related bundles
   Plugin 'hail2u/vim-css3-syntax'
   Plugin 'cakebaker/scss-syntax.vim'
   Plugin 'bolasblack/csslint.vim'
   " Plugin 'groenewege/vim-less'
 
+  " Templating engines
   Plugin 'tpope/vim-haml'
   Plugin 'mustache/vim-mustache-handlebars'
+  Plugin 'digitaltoad/vim-jade'
 
   Plugin 'mhinz/vim-rfc'
   Plugin 'vim-scripts/rfc-syntax'
