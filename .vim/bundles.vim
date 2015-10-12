@@ -56,6 +56,7 @@ if (s:development=="true")
   Plugin 'cakebaker/scss-syntax.vim'
   Plugin 'bolasblack/csslint.vim'
   " Plugin 'groenewege/vim-less'
+  Plugin 'wavded/vim-stylus'
 
   " Templating engines
   Plugin 'tpope/vim-haml'
