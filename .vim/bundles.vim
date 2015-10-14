@@ -15,6 +15,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'morhetz/gruvbox'
+
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-bundler'

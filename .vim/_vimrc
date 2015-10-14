@@ -40,19 +40,6 @@ if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
 endif
 unlet s:host_specific_pre_setup
 
-if &term =~ "dtterm" 
-  set t_Co=256
-elseif &term =~ "xterm-256color"
-  set t_Co=256
-elseif  &term =~ "rxvt-unicode"
-  set t_Co=88
-"2010-04-03: The following two lines don't help on Linux - my term is
-"xterm, and I have 256 colors there. Will have to adapt this to work on all
-"machines; in the meantime just commenting it out.
-"elseif &term =~ "xterm"
-"  set t_Co=8
-endif
-
 if &term =~ "dtterm" || &term =~ "xterm"|| &term =~ "rxvt-unicode"
   if has("terminfo")
     set t_Sf=<Esc>[3%p1%dm
@@ -79,37 +66,35 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 au BufReadPost quickfix  set nowrap
 
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  highlight Statement ctermfg=1
+" -- Color Settings -------------------------------------------------------
+if &term =~ "dtterm" 
+  set t_Co=256
+elseif &term =~ "xterm-256color"
+  set t_Co=256
+elseif  &term =~ "rxvt-unicode"
+  set t_Co=88
+"2010-04-03: The following two lines don't help on Linux - my term is
+"xterm, and I have 256 colors there. Will have to adapt this to work on all
+"machines; in the meantime just commenting it out.
+"elseif &term =~ "xterm"
+"  set t_Co=8
 endif
-if &t_Co >= 256 || has("gui_running")
-" 2010-04-03 Switched to a black desktop theme where a black colorscheme is
-" needed, therefore using desert256 now.
-" colorscheme default256
-  colorscheme desert256
-  " desert256's original comment color is darkcyan, which is too dark on a
-  " black background. Changing to cyan:
-  hi Comment       ctermfg=cyan
-elseif &t_Co >= 88
-  colorscheme desert256
-"  colorscheme inkpot
-  " desert256's original comment color is darkcyan, which is too dark on a
-  " black background. Changing to cyan:
-  hi Comment       ctermfg=cyan
-endif
+
+set background=dark
+let g:gruvbox_contrast_dark="hard"
+colorscheme gruvbox
+
+syntax on
+
+" Prevent weird black color shading with gruvbox. Needs to be set after syntax on
+" http://stackoverflow.com/questions/4325682/vim-colorschemes-not-changing-background-color?lq=1
+hi Normal ctermbg=0
+hi nonText ctermbg=NONE
+
 if has("gui_running")
   set guioptions-=m " remove menu bar
   set guioptions-=T " remove tool bar
 endif
-
-hi TabLineFill ctermfg=Grey ctermbg=Black
-hi TabLine ctermfg=Grey ctermbg=Black
-hi TabLineSel ctermfg=Black ctermbg=Grey
-
-" Using "ctermbg=White" will only use gray background on an iTerm with 256
-" colors, therefore using 255 instead.
-highlight Visual term=reverse ctermbg=255 guibg=White
 
 source <sfile>.handling_gzip
 source <sfile>.tip343_large_files
