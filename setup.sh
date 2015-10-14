@@ -64,6 +64,16 @@ if [ -d "${DBEXT}" ]; then
   fi
 fi
 
+# Setup terminfo entries
+# https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
+which tic 2>&1 >/dev/null
+if [ $? -eq 0 ]; then
+  for terminfo_record in share/terminfo/*.terminfo
+  do
+    tic $terminfo_record
+  done
+fi
+
 for dotfile in `ls $DOTFILES/dots`
 do
   link $DOTFILES/dots/$dotfile ~/.$dotfile

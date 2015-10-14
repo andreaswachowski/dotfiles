@@ -91,6 +91,11 @@ syntax on
 hi Normal ctermbg=0
 hi nonText ctermbg=NONE
 
+" https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
+if &term =~ "italic"
+  hi Comment cterm=italic
+end
+
 if has("gui_running")
   set guioptions-=m " remove menu bar
   set guioptions-=T " remove tool bar
