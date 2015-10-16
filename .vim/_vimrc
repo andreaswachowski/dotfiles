@@ -155,6 +155,8 @@ if s:agprg != ""
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 endif
 
+let g:ctrlp_open_new_file = 'h'
+
 let g:GetLatestVimScripts_allowautoinstall=1
 
 " For YouCompleteMe
@@ -189,6 +191,10 @@ endfunc
 
 " For Transcribe!
 au BufEnter *.xsc setlocal tw=0
+
+" Remove trailing spaces
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces
+autocmd BufWritePre * :%s/\s\+$//e
 
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
