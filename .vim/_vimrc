@@ -67,7 +67,7 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 au BufReadPost quickfix  set nowrap
 
 " -- Color Settings -------------------------------------------------------
-if &term =~ "dtterm" 
+if &term =~ "dtterm"
   set t_Co=256
 elseif &term =~ "xterm-256color"
   set t_Co=256
@@ -142,7 +142,7 @@ nmap <c-j> <c-w>j
 "
 let g:netrw_alto = 1 " split below the file browser
 
-" In the tskeleton plugin, g:tskelMapGoToNextTag is by default mapped to <c-j>, 
+" In the tskeleton plugin, g:tskelMapGoToNextTag is by default mapped to <c-j>,
 " but that would override the setting of Vim Tip 173 above. Since we don't need it,
 " just clear it:
 let g:tskelMapGoToNextTag = ""
@@ -164,6 +164,8 @@ let g:ycm_extra_conf_globlist = ['~/*']
 
 " Include (mailmap'ed) author and a date indication in the fugitive Glog quickfix entries
 let g:fugitive_summary_format = '%aN %ai %s'
+
+let g:syntastic_javascript_checkers = ['eslint']
 
 " -------------------------------------------------------------------------
 
