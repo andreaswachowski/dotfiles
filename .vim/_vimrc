@@ -34,6 +34,10 @@ set sessionoptions+=sesdir
 " machines.
 set sessionoptions-=options
 
+" Don't save empty windows. This will prevent |:mksession| from saving
+" |syntastic-error-window| as empty quickfix windows.
+set sessionoptions-=blank
+
 let s:host_specific_pre_setup = expand("<sfile>").".host.pre.".hostname()
 if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
   source `=expand(s:host_specific_pre_setup)`
