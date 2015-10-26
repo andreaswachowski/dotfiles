@@ -65,6 +65,7 @@ if (s:development=="true")
   Plugin 'tpope/vim-haml'
   Plugin 'mustache/vim-mustache-handlebars'
   Plugin 'digitaltoad/vim-jade'
+  Plugin 'tpope/vim-liquid'
 
   Plugin 'mhinz/vim-rfc'
   Plugin 'vim-scripts/rfc-syntax'
