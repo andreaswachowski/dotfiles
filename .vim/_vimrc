@@ -160,6 +160,7 @@ if s:agprg != ""
 endif
 
 let g:ctrlp_open_new_file = 'h'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|^.git$\|_site' " _site is for Jekyll projects
 
 let g:GetLatestVimScripts_allowautoinstall=1
 
