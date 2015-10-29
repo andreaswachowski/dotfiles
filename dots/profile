@@ -30,8 +30,16 @@ if [ $? -eq 0 ]; then
 	MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
 
+if [ -z "$BASH" ]; then
+  if [ "`id -u`" -eq 0 ]; then
+    export PS1='[\w] # '
+  else
+    export PS1='[\w] $ '
+  fi
+fi
+
 # -------------------------------------------------------------------------
-OS_SPECIFIC_PROFILE=~/dotfiles/os/dots/profile 
+OS_SPECIFIC_PROFILE=~/dotfiles/os/dots/profile
 if [ -f $OS_SPECIFIC_PROFILE ]; then
 	source $OS_SPECIFIC_PROFILE
 fi
