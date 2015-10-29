@@ -11,7 +11,7 @@
 # scp breaks when it encounters output, so all echos etc. must be
 # avoided, and explicitly only happen when in interactive mode
 if [ -z "$PS1" ]; then
-	return
+  return
 fi
 
 alias t="todo.sh -td $HOME/dotfiles/bin/todo.cfg"
@@ -32,10 +32,10 @@ if [ $? -eq 0 ]; then
     echo ""
   }
 
-	export PS1='\h:\w$(gitprompt)
+  export PS1='\h:\w$(gitprompt)
 $ '
 else
-	export PS1='\h:\w $ '
+  export PS1='\h:\w $ '
 fi
 
 # See "I have [bash] history back to ~2003" on https://news.ycombinator.com/item?id=10162189
@@ -44,7 +44,7 @@ fi
 # to create the directory first:
 HISTDIR=${HOME}/.history/$(date -u +%Y/%m/)
 if [ ! -d $HISTDIR ]; then
-	mkdir -p $HISTDIR
+  mkdir -p $HISTDIR
 fi
 # When testing, remember that the history is only written on session *exit*
 # (see http://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize )
@@ -60,12 +60,12 @@ HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
 
 OS_SPECIFIC_BASHRC=~/dotfiles/os/dots/bashrc
 if [ -f $OS_SPECIFIC_BASHRC ]; then
-	source $OS_SPECIFIC_BASHRC
+  source $OS_SPECIFIC_BASHRC
 fi
 
 HOST_SPECIFIC_BASHRC=~/dotfiles/local/dots/bashrc
 if [ -f $HOST_SPECIFIC_BASHRC ]; then
-	source $HOST_SPECIFIC_BASHRC
+  source $HOST_SPECIFIC_BASHRC
 fi
 
 . $HOME/dotfiles/bin/z.sh
