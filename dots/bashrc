@@ -32,7 +32,7 @@ if [ $? -eq 0 ]; then
     echo ""
   }
 
-  export PS1='\h:\w$(gitprompt)
+  export PS1='\u@\h:\w$(gitprompt)
 $ '
 else
   export PS1='\h:\w $ '
