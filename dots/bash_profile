@@ -5,6 +5,10 @@ if [ -r ~/.profile ]; then
   . ~/.profile;
 fi
 
+if [ -r ~/.bash_functions ]; then
+  . ~/.bash_functions
+fi
+
 OS_SPECIFIC_BASH_PROFILE=~/dotfiles/os/dots/bash_profile
 if [ -f $OS_SPECIFIC_BASH_PROFILE ]; then
 	source $OS_SPECIFIC_BASH_PROFILE
