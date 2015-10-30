@@ -39,7 +39,7 @@ link $DOTFILES/.vim ~/.vim
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
-  # YouCompleteMe is not necessarily configured for all machines on which 
+  # YouCompleteMe is not necessarily configured for all machines on which
   # this script runs
   if [ -d ~/.vim/bundle/YouCompleteMe ]; then
     cd ~/.vim/bundle/YouCompleteMe
@@ -77,6 +77,11 @@ fi
 for dotfile in `ls $DOTFILES/dots`
 do
   link $DOTFILES/dots/$dotfile ~/.$dotfile
+done
+
+for nodotfile in `ls $DOTFILES/nodots`
+do
+  link $DOTFILES/dots/$nodotfile ~/$nodotfile
 done
 
 if [ ! "$(ls -A $DOTFILESBACKUP)" ]; then  # Directory empty
