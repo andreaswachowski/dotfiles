@@ -171,6 +171,7 @@ let g:ycm_extra_conf_globlist = ['~/*']
 let g:fugitive_summary_format = '%aN %ai %s'
 
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_scss_checkers = ['scss_lint']
 
 " -------------------------------------------------------------------------
 
