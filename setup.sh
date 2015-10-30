@@ -1,4 +1,43 @@
 # vi: ts=2 sw=2 expandtab
+ScriptName=`basename $0`
+
+function displayUsageScreen {
+  cat << HERE
+Usage: $ScriptName [-h|-v]
+
+Initializes dotfiles.
+
+Options:
+  -h : Displays this screen
+  -v : Verbose mode.
+HERE
+}
+
+# --- process options (example)
+while getopts ":hv" OPT
+do
+    case "$OPT" in
+    h)  displayUsageScreen
+        exit
+        ;;
+
+    v)  VERBOSE="true"
+        ;;
+
+    :)  >&2 echo "Incorrect Syntax: -${OPTARG} needs argument. (Use -h for help)"
+        displayUsageScreen
+        exit 1
+        ;;
+
+    \?) >&2 echo "Incorrect Syntax: -${OPTARG} bad option. (Use -h for help)"
+        exit 1
+        ;;
+    esac
+done
+
+shift `expr $OPTIND - 1`
+
+# --- process the arguments
 DOTFILES=~/dotfiles # Assume dotfiles is checked out here
 if [ ! -d "$DOTFILES" ]; then
   echo Dotfiles not found at $DOTFILES. Set this variable correctly, then continue. Aborting.
@@ -17,14 +56,14 @@ function link {
   # dangling symbolic links
   if [ -e "$TARGET" -o -L "$TARGET" ]; then
     if [ ! -L "$TARGET" -o "$(readlink $TARGET 2>/dev/null)" != "$SOURCE" ]; then
-      echo Found $TARGET, moving to $DOTFILESBACKUP
+      [ "$VERBOSE" ] && echo Found $TARGET, moving to $DOTFILESBACKUP
       mv $TARGET $DOTFILESBACKUP/$(basename $TARGET)
       if [ $? -ne 0 ]; then
-        echo Could not move $TARGET, will not execute ln -s $SOURCE $TARGET
+        >&2 echo Could not move $TARGET, will not execute ln -s $SOURCE $TARGET
         SKIP="true"
       fi
     else
-      echo Symbolic link from $SOURCE to $TARGET already in place, skipping ...
+      [ "$VERBOSE" ] && echo Symbolic link from $SOURCE to $TARGET already in place, skipping ...
       SKIP="true"
     fi
   fi
