@@ -74,10 +74,18 @@ if [ $? -eq 0 ]; then
   done
 fi
 
-for dotfile in `ls $DOTFILES/dots`
+for dotfile in $(ls $DOTFILES/dots | grep -v rvm)
 do
   link $DOTFILES/dots/$dotfile ~/.$dotfile
 done
+
+if [ -f $HOME/.rvm/gemsets/global.gems ]; then
+  diff $HOME/.rvm/gemsets/global.gems $DOTFILES/dots/rvm/gemsets/global.gems >/dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo Consider using the following changes in .rvm/gemsets/global.gems:
+    diff $HOME/.rvm/gemsets/global.gems $DOTFILES/dots/rvm/gemsets/global.gems
+  fi
+fi
 
 for nodotfile in `ls $DOTFILES/nodots`
 do
