@@ -122,7 +122,7 @@ if [ -f $HOME/.rvm/gemsets/global.gems ]; then
   diff $HOME/.rvm/gemsets/global.gems $DOTFILES/dots/rvm/gemsets/global.gems >/dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo Consider using the following changes in .rvm/gemsets/global.gems:
-    diff $HOME/.rvm/gemsets/global.gems $DOTFILES/dots/rvm/gemsets/global.gems
+    diff -p $HOME/.rvm/gemsets/global.gems $DOTFILES/dots/rvm/gemsets/global.gems
   fi
 fi
 
