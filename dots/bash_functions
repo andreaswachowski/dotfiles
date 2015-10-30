@@ -1,0 +1,4 @@
+# https://github.com/Salzig/.files/blob/master/home/.bash_functions
+togif() {
+	ffmpeg -i "$1" -pix_fmt rgb24 -r 10 ${1%.*}.gif
+}
