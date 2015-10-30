@@ -7,13 +7,10 @@
 	diff = auto
 	branch = auto
 	interactive = auto
-#[merge]
-#	tool = opendiff
-#	tool = mate -w
+
 [core]
 	excludesfile = ~/.gitignore
-#[apply]
-#	  whitespace = nowarn
+
 [alias]
 	ci = commit
 	co = checkout
