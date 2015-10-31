@@ -18,7 +18,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 
 Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-sleuth'
+" Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-bundler'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
