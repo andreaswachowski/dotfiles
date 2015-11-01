@@ -206,5 +206,10 @@ au BufEnter *.xsc setlocal tw=0
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * :%s/\s\+$//e
 
+augroup markdown
+  au!
+  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim

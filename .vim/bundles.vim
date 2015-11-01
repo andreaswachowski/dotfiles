@@ -38,6 +38,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'tomtom/tskeleton_vim'
 Plugin 'sukima/xmledit'
 Plugin 'davidoc/taskpaper.vim'
+Plugin 'jtratner/vim-flavored-markdown'
 
 if (s:development=="true")
   Plugin 'editorconfig/editorconfig-vim'
