@@ -16,6 +16,7 @@
 	co = checkout
 	st = status
 	br = branch
+	l = log --date=format:%Y-%m-%d-%H:%M:%S --pretty=format:%h:%aN:%cd:%s
 
 [credential]
 	helper = osxkeychain
