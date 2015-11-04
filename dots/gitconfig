@@ -17,6 +17,8 @@
 	st = status
 	br = branch
 	l = log --date=format:%Y-%m-%d-%H:%M:%S --pretty=format:%h:%aN:%cd:%s
+	# http://stackoverflow.com/questions/424071/list-all-the-files-for-a-commit-in-git
+	shownames = diff-tree --no-commit-id --name-only -r
 
 [credential]
 	helper = osxkeychain
