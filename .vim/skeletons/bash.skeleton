@@ -47,6 +47,6 @@ shift `expr $OPTIND - 1`
 # FIXME: change condition according to the number of arguments expected
 if [ $# -ne 1 ]
 then
-	displayUsageScreen
-	exit 1
+  displayUsageScreen
+  exit 1
 fi
