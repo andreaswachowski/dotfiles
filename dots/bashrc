@@ -76,4 +76,5 @@ fi
 
 . $HOME/dotfiles/bin/z.sh
 
+eval $(ssh-agent -s)
 set -o vi
