@@ -176,6 +176,15 @@ let g:syntastic_haml_checkers = ['haml_lint']
 let g:syntastic_ruby_checkers = ['rubocop']
 
 " -------------------------------------------------------------------------
+" Store temporary files in a central spot to ease
+" clean-up after machine crashes
+" https://github.com/tpope/vim-obsession/issues/18
+let vimtmp = $HOME . '/tmp/vim/' . getpid()
+silent! call mkdir(vimtmp, "p", 0700)
+let &backupdir=vimtmp
+let &directory=vimtmp
+
+" -------------------------------------------------------------------------
 
 if has("multi_byte")
   if &termencoding == ""
