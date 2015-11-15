@@ -5,6 +5,11 @@
 # graphical programs, they go into a different file), and
 # environment variable definitions.
 
+# fix for QNAP devices - source this before appending any other PATH settings
+if [ -f /Apps/opt/etc/profile ]; then
+  . /Apps/opt/etc/profile
+fi
+
 set -o vi
 export EDITOR=vim
 export VISUAL=vim # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
