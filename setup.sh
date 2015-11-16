@@ -44,6 +44,11 @@ if [ ! -d "$DOTFILES" ]; then
   exit 1
 fi
 
+cd $DOTFILES
+git submodule init
+git submodule update
+cd -
+
 DOTFILESBACKUP=~/.dotfiles_setup_backup.$(date +%Y%m%d_%H%M%S)
 
 mkdir $DOTFILESBACKUP
