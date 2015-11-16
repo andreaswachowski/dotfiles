@@ -4,3 +4,9 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = git://github.com/gmarik/Vundle.vim.git
+[submodule "dots/tmux/plugins/tmux-continuum"]
+	path = dots/tmux/plugins/tmux-continuum
+	url = git://github.com/tmux-plugins/tmux-continuum.git
+[submodule "dots/tmux/plugins/tmux-resurrect"]
+	path = dots/tmux/plugins/tmux-resurrect
+	url = git://github.com/tmux-plugins/tmux-resurrect.git

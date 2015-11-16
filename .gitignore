@@ -3,8 +3,6 @@
 .vim/bundle/**
 !.vim/bundle/Vundle*
 .vim/cache
-dots/tmux/plugins/*
-!dots/tmux/plugins/tpm/
 local
 os
 host_specific/
