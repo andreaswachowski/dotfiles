@@ -1,4 +1,4 @@
-# vi: syntax=sh
+# vi: filetype=sh
 # From http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
 # ~/.profile is the place to put stuff that applies to your whole session,
 # such as programs that you want to start when you log in (but not
@@ -29,10 +29,10 @@ export HISTCONTROL=ignoreboth
 # manpath is not available on QNAP, therefore we must check for it
 which manpath >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-	# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-	# command
-	unset MANPATH # delete if MANPATH was already modified elsewhere
-	MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+  # Unset manpath so we can inherit from /etc/manpath via the `manpath`
+  # command
+  unset MANPATH # delete if MANPATH was already modified elsewhere
+  MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
 
 if [ -z "$BASH" ]; then
@@ -46,12 +46,12 @@ fi
 # -------------------------------------------------------------------------
 OS_SPECIFIC_PROFILE=~/dotfiles/os/dots/profile
 if [ -f $OS_SPECIFIC_PROFILE ]; then
-	source $OS_SPECIFIC_PROFILE
+  source $OS_SPECIFIC_PROFILE
 fi
 
 HOST_SPECIFIC_PROFILE=~/dotfiles/local/dots/profile
 if [ -f $HOST_SPECIFIC_PROFILE ]; then
-	source $HOST_SPECIFIC_PROFILE
+  source $HOST_SPECIFIC_PROFILE
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
