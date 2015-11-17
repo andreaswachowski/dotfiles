@@ -1,0 +1,7 @@
+# http://apple.stackexchange.com/questions/66611/how-to-change-computer-name-so-terminal-displays-it-in-mac-os-x-mountain-lion
+initHostname() {
+sudo scutil --set ComputerName "$1"
+sudo scutil --set LocalHostName "$1"
+sudo scutil --set HostName "$1"
+dscacheutil -flushcache
+}

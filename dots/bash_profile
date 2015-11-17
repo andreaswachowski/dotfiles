@@ -9,10 +9,12 @@ if [ -r ~/.bash_functions ]; then
   . ~/.bash_functions
 fi
 
-OS_SPECIFIC_BASH_PROFILE=~/dotfiles/os/dots/bash_profile
-if [ -f $OS_SPECIFIC_BASH_PROFILE ]; then
-	source $OS_SPECIFIC_BASH_PROFILE
-fi
+for os_specific_file in ~/dotfiles/os/dots/bash_profile ~/dotfiles/os/dots/bash_functions
+do
+  if [ -f $os_specific_file ]; then
+    . $os_specific_file
+  fi
+done
 
 # Only read .bashrc when shell is interactive
 case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi;; esac
