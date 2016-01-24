@@ -2,6 +2,9 @@
 	path = ~/dotfiles/identity/gitconfig
 
 [include]
+	path = ~/dotfiles/os/dots/gitconfig
+
+[include]
 	path = ~/dotfiles/local/dots/gitconfig
 
 [color]
