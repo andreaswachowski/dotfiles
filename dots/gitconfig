@@ -1,7 +1,6 @@
-[user]
-	name = Andreas Wachowski
-	mail = andreas.wachowski@gmail.com
-	email = andreas.wachowski@gmail.com
+[include]
+	path = ~/dotfiles/identity/gitconfig
+
 [color]
 	status = auto
 	diff = auto
