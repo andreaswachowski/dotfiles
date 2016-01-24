@@ -1,12 +1,3 @@
-[include]
-	path = ~/dotfiles/identity/gitconfig
-
-[include]
-	path = ~/dotfiles/os/dots/gitconfig
-
-[include]
-	path = ~/dotfiles/local/dots/gitconfig
-
 [color]
 	status = auto
 	diff = auto
@@ -26,8 +17,19 @@
 	shownames = diff-tree --no-commit-id --name-only -r
 
 [credential]
-	helper = osxkeychain
+	helper = cache
+
 [push]
 	default = simple
 [init]
 	templatedir = ~/.git_template
+
+[include]
+	path = ~/dotfiles/identity/gitconfig
+
+[include]
+	path = ~/dotfiles/os/dots/gitconfig
+
+[include]
+	path = ~/dotfiles/local/dots/gitconfig
+
