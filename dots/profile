@@ -6,8 +6,15 @@
 # environment variable definitions.
 
 # fix for QNAP devices - source this before appending any other PATH settings
+
+# this will be removable after decommissioning the other NASs
 if [ -f /Apps/opt/etc/profile ]; then
   . /Apps/opt/etc/profile
+fi
+
+# for the new NAS
+if [ -f /opt/etc/profile ]; then
+  . /opt/etc/profile
 fi
 
 set -o vi
