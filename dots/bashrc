@@ -39,9 +39,9 @@ if [ $? -eq 0 ]; then
   }
 
   export PS1='\u@\h:\w$(gitprompt)
-$PROMPT_CHAR '
+$(date +'%H:%M:%S') $PROMPT_CHAR '
 else
-  export PS1='\h:\w $PROMPT_CHAR '
+  export PS1='\h:\w$(date +'%H:%M:%S') $PROMPT_CHAR '
 fi
 
 # See "I have [bash] history back to ~2003" on https://news.ycombinator.com/item?id=10162189
