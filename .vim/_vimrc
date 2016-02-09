@@ -54,6 +54,7 @@ if &term =~ "dtterm" || &term =~ "xterm"|| &term =~ "rxvt-unicode"
   endif
 endif
 
+set tildeop
 set nohlsearch
 set visualbell
 set autoindent
