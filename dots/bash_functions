@@ -23,3 +23,8 @@ scss-lint-stats() {
   scss-lint | awk '{ print $3 }' | sort | uniq -c | sort -n
 }
 
+# http://stackoverflow.com/questions/18364146/show-all-commits-whose-diff-contain-specific-string
+git-commits-containing-pattern() {
+  git rev-list HEAD | while read rev; do   if git show -p $rev | grep "$1" >/dev/null; then echo $rev; fi; done
+}
+
