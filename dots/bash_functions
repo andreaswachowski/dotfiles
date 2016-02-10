@@ -1,4 +1,21 @@
+# vi: filetype=sh
 # https://github.com/Salzig/.files/blob/master/home/.bash_functions
 togif() {
 	ffmpeg -i "$1" -pix_fmt rgb24 -r 10 ${1%.*}.gif
 }
+
+# http://superuser.com/questions/246967/tmux-insert-a-window-at-a-specified-position?rq=1
+#ins-move() {
+#  if [ "$1" -lt "$2" ] ; then
+#    WINDOW_TO_MOVE=$1
+#    MOVE_BEFORE_POS=$2
+#  else
+#    WINDOW_TO_MOVE=$2
+#    MOVE_BEFORE_POS=$1
+#  fi
+#  for ((i=$WINDOW_TO_MOVE; i<$MOVE_BEFORE_POS-1; i++))
+#    do
+#      tmux swap-window -s :$i -t :$((i+1))
+#        done
+#}
+
