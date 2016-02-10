@@ -19,3 +19,7 @@ togif() {
 #        done
 #}
 
+scss-lint-stats() {
+  scss-lint | awk '{ print $3 }' | sort | uniq -c | sort -n
+}
+
