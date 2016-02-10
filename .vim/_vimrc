@@ -96,6 +96,9 @@ syntax on
 hi Normal ctermbg=0
 hi nonText ctermbg=NONE
 
+hi TabLine ctermfg=White ctermbg=Black
+hi TabLineSel ctermfg=Black ctermbg=White
+
 " https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
 if &term =~ "italic"
   hi Comment cterm=italic
