@@ -1,6 +1,7 @@
 *.un~
 *.swp
 *.swo
+.byebug_history
 Session.vim
 tags
 .DS_Store
