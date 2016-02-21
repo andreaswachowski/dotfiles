@@ -44,9 +44,23 @@ if [ ! -d "$DOTFILES" ]; then
   exit 1
 fi
 
+gitfallback() {
+  echo "git not found. skipping git $*"
+}
+
+GIT=$(which git)
+if [ -z "$GIT" ]; then
+  # on QTS, PATH might not yet be set appropriately, so we hard-check against it
+  if [ -f /opt/bin/git ]; then
+    GIT=/opt/bin/git
+  else
+    GIT=gitfallback
+  fi
+fi
+
 cd $DOTFILES
-git submodule init
-git submodule update
+$GIT submodule init
+$GIT submodule update
 cd -
 
 DOTFILESBACKUP=~/.dotfiles_setup_backup.$(date +%Y%m%d_%H%M%S)
@@ -81,7 +95,7 @@ function link {
 
 link $DOTFILES/.vim ~/.vim
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  $GIT clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
   # YouCompleteMe is not necessarily configured for all machines on which
   # this script runs
