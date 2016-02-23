@@ -85,8 +85,10 @@ if (s:development=="true")
 
   Plugin 'kchmck/vim-coffee-script'
 
-  Plugin 'MarcWeber/vim-addon-mw-utils'
-  Plugin 'garbas/vim-snipmate'
+  " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+  Bundle 'ervandew/supertab'
+  Plugin 'SirVer/ultisnips'
+  Plugin 'honza/vim-snippets'
 
   Plugin 'vim-scripts/ingo-library'
   Plugin 'vim-scripts/IndentConsistencyCop'
