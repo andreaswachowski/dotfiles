@@ -54,6 +54,7 @@ if (s:development=="true")
   Plugin 'vim-ruby/vim-ruby'
   " Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-rails'
+  Plugin 'tpope/vim-endwise'
 
   " CSS related bundles
   Plugin 'hail2u/vim-css3-syntax'
