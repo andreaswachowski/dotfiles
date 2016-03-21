@@ -48,19 +48,19 @@ gitfallback() {
   echo "git not found. skipping git $*"
 }
 
-GIT=$(which git)
-if [ -z "$GIT" ]; then
+GITCMD=$(which git)
+if [ -z "$GITCMD" ]; then
   # on QTS, PATH might not yet be set appropriately, so we hard-check against it
   if [ -f /opt/bin/git ]; then
-    GIT=/opt/bin/git
+    GITCMD=/opt/bin/git
   else
-    GIT=gitfallback
+    GITCMD=gitfallback
   fi
 fi
 
 cd $DOTFILES
-$GIT submodule init
-$GIT submodule update
+$GITCMD submodule init
+$GITCMD submodule update
 cd -
 
 DOTFILESBACKUP=~/.dotfiles_setup_backup.$(date +%Y%m%d_%H%M%S)
@@ -95,7 +95,7 @@ function link {
 
 link $DOTFILES/.vim ~/.vim
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-  $GIT clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  $GITCMD clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
   # YouCompleteMe is not necessarily configured for all machines on which
   # this script runs
