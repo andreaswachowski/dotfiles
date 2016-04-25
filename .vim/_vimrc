@@ -161,7 +161,7 @@ if s:agprg != ""
   let g:ackprg = 'ag --vimgrep'
   " The silver searcher and a global .agignore file are used to keep ctrl-p fast.
   " See http://earthwithsun.com/questions/649714/can-i-get-the-vim-ctrlp-plugin-to-ignore-a-specific-folder-in-one-project
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  let g:ctrlp_user_command = 'ag %s --ignore node_modules --ignore .git --ignore .hg --ignore .svn -l --nocolor --hidden -g ""'
 endif
 
 let g:ctrlp_open_new_file = 't'
