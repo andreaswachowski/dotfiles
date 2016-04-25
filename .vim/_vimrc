@@ -192,6 +192,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:indentconsistencycop_CheckOnLoad = 0
 " -------------------------------------------------------------------------
 " Store temporary files in a central spot to ease
 " clean-up after machine crashes
