@@ -42,6 +42,7 @@ if (s:development=="true")
   Plugin 'tpope/vim-dispatch'
   Plugin 'majutsushi/tagbar'
   Plugin 'scrooloose/nerdcommenter'
+  Plugin 'rizzatti/dash.vim'
 
   Plugin 'dbext.vim'
   Plugin 'TVO--The-Vim-Outliner'
