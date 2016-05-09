@@ -182,6 +182,11 @@ let g:syntastic_haml_checkers = ['haml_lint']
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_always_populate_loc_list = 1
 
+" mappings to temporarily enable or disable Syntastic for operations with lots of buffers
+" http://stackoverflow.com/questions/20030603/vim-syntastic-how-to-disable-the-checker
+nnoremap <leader>sN :bufdo let b:syntastic_mode="passive"<cr>
+nnoremap <leader>sY :bufdo unlet b:syntastic_mode<cr>
+
 " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
