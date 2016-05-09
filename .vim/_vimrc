@@ -199,6 +199,8 @@ let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
 let g:indentconsistencycop_CheckOnLoad = 0
+
+nmap <silent> <leader>D <Plug>DashSearch
 " -------------------------------------------------------------------------
 " Store temporary files in a central spot to ease
 " clean-up after machine crashes
