@@ -199,6 +199,7 @@ let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
 let g:indentconsistencycop_CheckOnLoad = 0
+let g:indentconsistencycop_AutoRunCmd = 'IndentRangeConsistencyCop'
 
 nmap <silent> <leader>D <Plug>DashSearch
 
