@@ -50,7 +50,7 @@ if (s:development=="true")
   " Ruby etc.
   Plugin 'tpope/vim-rvm'
   Plugin 'vim-ruby/vim-ruby'
-  " Plugin 'thoughtbot/vim-rspec'
+  Plugin 'thoughtbot/vim-rspec'
   Plugin 'tpope/vim-rails'
   Plugin 'tpope/vim-endwise'
 
