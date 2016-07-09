@@ -63,6 +63,7 @@ if (s:development=="true")
 
   " Templating engines
   Plugin 'tpope/vim-haml'
+  Plugin 'slim-template/vim-slim'
   Plugin 'mustache/vim-mustache-handlebars'
   Plugin 'digitaltoad/vim-jade'
   Plugin 'tpope/vim-liquid'
