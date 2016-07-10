@@ -84,6 +84,9 @@ if (s:development=="true")
 
   Plugin 'kchmck/vim-coffee-script'
 
+  " Z80 Assembly
+  Plugin 'cpcsdk/vim-z80-democoding'
+
   " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
   Bundle 'ervandew/supertab'
   Plugin 'SirVer/ultisnips'
