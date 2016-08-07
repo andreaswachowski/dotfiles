@@ -20,6 +20,7 @@ alias vo="vim $HOME/Documents/Dropbox/todo/outline.txt"
 alias ct="clear;t"
 alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
+alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
 
 # Prompt initialization
 if [ "`id -u`" -eq 0 ]; then
