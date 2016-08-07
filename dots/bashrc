@@ -14,10 +14,6 @@ if [ -z "$PS1" ]; then
   return
 fi
 
-alias t="todo.sh -td $HOME/dotfiles/bin/todo.cfg"
-alias vt="vim $HOME/Documents/Dropbox/todo/todo.txt"
-alias vo="vim $HOME/Documents/Dropbox/todo/outline.txt"
-alias ct="clear;t"
 alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
