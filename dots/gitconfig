@@ -24,6 +24,9 @@
 [credential]
 	helper = cache
 
+[fetch]
+	prune = true
+
 [push]
 	default = simple
 [init]
