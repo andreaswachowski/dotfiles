@@ -12,7 +12,10 @@
 	co = checkout
 	st = status
 	br = branch
-	l = log --date=format:%Y-%m-%d-%H:%M:%S --pretty=format:%h:%aN:%cd:%s
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	la = !git l --all && 0
+	lg = log --oneline --graph --decorate
+	lga = log --oneline --graph --decorate --all
 	# http://stackoverflow.com/questions/424071/list-all-the-files-for-a-commit-in-git
 	shownames = diff-tree --no-commit-id --name-only -r
 	# http://stackoverflow.com/questions/12219604/list-git-tag-names-dates-and-messages
