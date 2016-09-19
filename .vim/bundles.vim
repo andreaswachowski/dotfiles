@@ -34,7 +34,6 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/DirDiff.vim'
 Plugin 'sukima/xmledit'
 Plugin 'davidoc/taskpaper.vim'
-Plugin 'jtratner/vim-flavored-markdown'
 
 if (s:development=="true")
   Plugin 'editorconfig/editorconfig-vim'
