@@ -250,7 +250,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 augroup markdown
   au!
-  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+  au BufNewFile,BufReadPost *.md,*.markdown setlocal filetype=markdown
 augroup END
 
 " ViM autocommands for binary plist files:
