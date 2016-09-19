@@ -156,6 +156,9 @@ let g:netrw_alto = 1 " split below the file browser
 " just clear it:
 let g:tskelMapGoToNextTag = ""
 
+" See https://github.com/tpope/vim-markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
+
 silent let s:agprg = system('which ag')
 if s:agprg != ""
   let g:ackprg = 'ag --vimgrep'
