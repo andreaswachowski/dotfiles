@@ -19,8 +19,14 @@ togif() {
 #        done
 #}
 
+lint-stats() {
+  linter=$1 # linter is tested with 'haml' and 'scss'
+  dir=$2 # possibly empty
+  $linter-lint $2 | awk '{ print $3 }' | sort | uniq -c | sort -n
+}
+
 scss-lint-stats() {
-  scss-lint | awk '{ print $3 }' | sort | uniq -c | sort -n
+  lint-stats scss
 }
 
 # http://stackoverflow.com/questions/18364146/show-all-commits-whose-diff-contain-specific-string
