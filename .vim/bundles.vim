@@ -76,6 +76,7 @@ if (s:development=="true")
   " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
   Plugin 'jelera/vim-javascript-syntax'
   Plugin 'pangloss/vim-javascript'
+  Plugin 'mxw/vim-jsx'
   Plugin 'nathanaelkane/vim-indent-guides'
   Plugin 'scrooloose/syntastic'
   Plugin 'Valloric/YouCompleteMe'
