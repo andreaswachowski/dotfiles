@@ -35,6 +35,8 @@ Plugin 'vim-scripts/DirDiff.vim'
 Plugin 'sukima/xmledit'
 Plugin 'davidoc/taskpaper.vim'
 
+Plugin 'suan/vim-instant-markdown'
+
 if (s:development=="true")
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'tpope/vim-dispatch'
