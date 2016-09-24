@@ -150,6 +150,12 @@ do
   link $DOTFILES/dots/$nodotfile ~/$nodotfile
 done
 
+for setup in $(ls $DOTFILES/setups)
+do
+  echo Executing setup for $setup ...
+  $DOTFILES/setups/$setup
+done
+
 if [ ! "$(ls -A $DOTFILESBACKUP)" ]; then  # Directory empty
   rmdir $DOTFILESBACKUP
 fi
