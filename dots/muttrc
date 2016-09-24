@@ -96,6 +96,8 @@ bind index,pager & noop                                                # unbind 
 bind index,pager b noop                                                # Unbind bounce
 bind index,pager A create-alias                                        # bind alias-creation
 
+bind pager K previous-undeleted
+bind pager J next-undeleted
 bind pager k previous-line
 bind pager j next-line
 bind pager gg       top
@@ -116,9 +118,10 @@ bind  index,pager l  copy-message	                               # Label
 bind  index,pager m  save-message	                               # Move to
 
 # Sidebar Navigation
-bind index,pager J   sidebar-next
-bind index,pager K     sidebar-prev
-bind index,pager L  sidebar-open
+bind index J  sidebar-next
+bind index K  sidebar-prev
+bind index L  sidebar-open
+bind index,pager S sidebar-toggle-visible
 
 # Gmail macros
 macro index,pager I  <set-flag>O	"Mark as read"
