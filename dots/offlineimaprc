@@ -804,6 +804,9 @@ remoteuser = username
 #
 #auth_mechanisms = GSSAPI, XOAUTH2, CRAM-MD5, PLAIN, LOGIN
 
+# Removing XOAUTH2 to avoid warnings, see https://bbs.archlinux.org/viewtopic.php?pid=1588425#p1588425
+auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN
+
 
 # This option stands in the [Repository RemoteExample] section.
 #
