@@ -49,7 +49,7 @@ unignore from: to: cc: date: subject:                                  # show on
 unhdr_order *                                                          # some distros order things by default
 hdr_order from: to: cc: date: subject:                                 # and in this order
 
-set date_format         = "%d-%m-%y"                                   # a simple date format
+set date_format         = "%d-%m-%y %H:%M:%S"                          # a simple date format
 set index_format        = "[%Z]  %D  %-20.20F  %s"                     # format of the index view, show all flags, date, the sender and finally the subject
 set sort                = threads                                      # like gmail
 set sort_aux            = reverse-last-date-received                   # like gmail
