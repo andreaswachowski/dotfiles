@@ -1,5 +1,6 @@
 # vim: filetype=muttrc
 # https://github.com/victorparmar/vic-config/blob/master/mutt-colors-solarized-dark-256.muttrc
+# Color Codes from xterm-256 to RGB: https://gist.github.com/MicahElliott/719710
 
 #
 #
@@ -55,19 +56,19 @@ color index         color166        color234        "~E"                        
 color index         color33         color234        "~N"                        # new messages
 color index         color33         color234        "~O"                        # old messages
 color index         color61         color234        "~Q"                        # messages that have been replied to
-color index         color240        color234        "~R"                        # read messages
-color index         color33         color234        "~U"                        # unread messages
-color index         color33         color234        "~U~$"                      # unread, unreferenced messages
+color index         color240        color234        "~R"                        # [   ] read messages
+color index         color33         color234        "~U"                        # [N  ] unread messages
+color index         color33         color234        "~U~$"                      # [N  ]? unread, unreferenced messages
 color index         color241        color234        "~v"                        # messages part of a collapsed thread
 color index         color241        color234        "~P"                        # messages from me
 color index         color37         color234        "~p!~F"                     # messages to me
 color index         color37         color234        "~N~p!~F"                   # new messages to me
 color index         color37         color234        "~U~p!~F"                   # unread messages to me
-color index         color240        color234        "~R~p!~F"                   # messages to me
-color index         color160        color234        "~F"                        # flagged messages
-color index         color160        color234        "~F~p"                      # flagged messages to me
-color index         color160        color234        "~N~F"                      # new flagged messages
-color index         color160        color234        "~N~F~p"                    # new flagged messages to me
+color index         color240        color234        "~R~p!~F"                   # [  +] messages to me
+color index         color160        color234        "~F"                        # [  !] flagged messages
+color index         color160        color234        "~F~p"                      # [  !] flagged messages to me
+color index         color160        color234        "~N~F"                      # [N !] new flagged messages
+color index         color160        color234        "~N~F~p"                    # [N !] new flagged messages to me
 color index         color160        color234        "~U~F~p"                    # new flagged messages to me
 color index         color235        color160        "~D"                        # deleted messages
 color index         color245        color234        "~v~(!~N)"                  # collapsed thread with no unread
