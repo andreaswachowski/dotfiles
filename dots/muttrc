@@ -36,6 +36,7 @@ set wait_key            = no                                           # Don't a
 set mbox_type           = Maildir                                      # mailbox type
 set timeout             = 60                                           # idle time before scanning
 set mail_check          = 60                                           # minimum time between scans
+set mail_check_stats    = yes                                          # calculate message statistics of a mailbox (unread, flagged, total message count)
 set delete                                                             # don't ask, just do
 unset confirmappend                                                    # When saving a message, append the message to an existing mailbox without asking (Why should it ask, anyway? Mailboxes generally have multiple messages...)
 unset mark_old                                                         # read/new is good enough for me
@@ -63,8 +64,11 @@ set smart_wrap                                                         # dont wr
 auto_view text/html                                                    # autoview html
 alternative_order text/plain text/enriched text/html                   # save html for last
 
-set sidebar_visible     = yes
-set sidebar_width       = 40
+set sidebar_visible        = yes
+set sidebar_folder_indent  = yes
+set sidebar_short_path     = yes
+set sidebar_format         = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_width          = 40
 
 set status_chars        = " *%A"
 set status_format       = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
