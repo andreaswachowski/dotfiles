@@ -105,23 +105,23 @@ color quoted4       color166        color234
 color signature     color240        color234
 color bold          color235        color234
 color underline     color235        color234
-color normal        color244        color234
+color normal        color251        color234
 #
-color body          color245        color234        "[;:][-o][)/(|]"    # emoticons
-color body          color245        color234        "[;:][)(|]"         # emoticons
-color body          color245        color234        "[*]?((N)?ACK|CU|LOL|SCNR|BRB|BTW|CWYL|\
+color body          color251        color234        "[;:][-o][)/(|]"    # emoticons
+color body          color251        color234        "[;:][)(|]"         # emoticons
+color body          color251        color234        "[*]?((N)?ACK|CU|LOL|SCNR|BRB|BTW|CWYL|\
                                                      |FWIW|vbg|GD&R|HTH|HTHBE|IMHO|IMNSHO|\
                                                      |IRL|RTFM|ROTFL|ROFL|YMMV)[*]?"
-color body          color245        color234        "[ ][*][^*]*[*][ ]?" # more emoticon?
-color body          color245        color234        "[ ]?[*][^*]*[*][ ]" # more emoticon?
+color body          color251        color234        "[ ][*][^*]*[*][ ]?" # more emoticon?
+color body          color251        color234        "[ ]?[*][^*]*[*][ ]" # more emoticon?
 
 ## pgp
 
 color body          color160        color234        "(BAD signature)"
 color body          color37         color234        "(Good signature)"
-color body          color234        color234        "^gpg: Good signature .*"
-color body          color241        color234        "^gpg: "
-color body          color241        color160        "^gpg: BAD signature from.*"
+color body          color244        color234        "^gpg: Good signature .*"
+color body          color251        color234        "^gpg: "
+color body          color251        color160        "^gpg: BAD signature from.*"
 mono  body          bold                            "^gpg: Good signature"
 mono  body          bold                            "^gpg: BAD signature from.*"
 
