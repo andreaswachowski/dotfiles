@@ -26,7 +26,7 @@
 # base03, bg, black, any of the non brights
 
 # basic colors ---------------------------------------------------------
-color normal        color241        color234
+color normal        color251        color234
 color error         color160        color234
 color tilde         color235        color234
 color message       color37         color234
@@ -56,7 +56,7 @@ color index         color166        color234        "~E"                        
 color index         color33         color234        "~N"                        # new messages
 color index         color33         color234        "~O"                        # old messages
 color index         color61         color234        "~Q"                        # messages that have been replied to
-color index         color240        color234        "~R"                        # [   ] read messages
+color index         color247        color234        "~R"                        # [   ] read messages
 color index         color33         color234        "~U"                        # [N  ] unread messages
 color index         color33         color234        "~U~$"                      # [N  ]? unread, unreferenced messages
 color index         color241        color234        "~v"                        # messages part of a collapsed thread
@@ -64,7 +64,7 @@ color index         color241        color234        "~P"                        
 color index         color37         color234        "~p!~F"                     # messages to me
 color index         color37         color234        "~N~p!~F"                   # new messages to me
 color index         color37         color234        "~U~p!~F"                   # unread messages to me
-color index         color240        color234        "~R~p!~F"                   # [  +] messages to me
+color index         color251        color234        "~R~p!~F"                   # [  +] messages to me
 color index         color160        color234        "~F"                        # [  !] flagged messages
 color index         color160        color234        "~F~p"                      # [  !] flagged messages to me
 color index         color160        color234        "~N~F"                      # [N !] new flagged messages
