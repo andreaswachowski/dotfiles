@@ -31,7 +31,7 @@ unset record
 #set mbox               = "+mbox"
 #set postponed          = "+postponed"
 
-set quit                = ask-yes                                      # confirm before quitting
+set quit
 set wait_key            = no                                           # Don't ask me to press a key to continue after I did a shell escape and came back
 set mbox_type           = Maildir                                      # mailbox type
 set timeout             = 60                                           # idle time before scanning
