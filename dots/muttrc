@@ -14,14 +14,16 @@ set edit_headers        = yes
 set imap_user           = "andreas.wachowski@gmail.com"
 set imap_keepalive      = 30
 unset imap_passive                                                     # allow mutt to open new imap connection automatically
-set folder              = "imaps://imap.gmail.com"
+set folder              = ~/.mail
 set spoolfile           = "+INBOX"
+set mbox                = "+[Gmail]/All Mail"
 set postponed           = "+[Gmail]/Drafts"
 set header_cache        = ~/.mutt/andreas.wachowski/headers
 set message_cachedir    = ~/.mutt/andreas.wachowski/bodies
 set certificate_file    = ~/.mutt/certificates
 set smtp_url            = "smtp://andreas.wachowski@smtp.gmail.com:587/"
 set move                = no                                           # Don't ask me to move messages out of my inbox when I quit.
+unset record
 
 #set folder             = ~/Mail                                       # mailbox location
 #set tmpdir             = "/tmp"
@@ -67,8 +69,8 @@ set sidebar_width       = 24
 set status_chars        = " *%A"
 set status_format       = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
-# mailboxes /var/mail/andreas ~/Mail/sent
-mailboxes ='INBOX' ='[Gmail]/All Mail' ='[Gmail]/Drafts' ='[Gmail]/Sent Mail' ='work' ='0inbox'
+# mailboxes set up by offlineimap
+source ~/.mutt/muttrc.mailboxes
 
 set pager_index_lines   = 10                                           # number of index lines to show
 set pager_context       = 5                                            # When going to the next page, keep the bottom two lines of this page on top so that I have some context
@@ -119,6 +121,10 @@ macro index,pager +  <save-message>=[Gmail]/Important<enter> "Mark as important"
 #macro index,pager !  <save-message>=[Gmail]/Spam<enter> "Report spam"
 macro index,pager e  "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"
 macro index,pager 0  "<save-message>=0inbox<enter>" "0inbox conversation"
+
+# Sync email
+macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
 
 #folder-hook +INBOX 'macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"'
 folder-hook +[Gmail]/Trash macro index,pager y <save-message>=INBOX<enter> "Move to inbox"
