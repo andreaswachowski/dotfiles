@@ -145,6 +145,8 @@ macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to s
 folder-hook "+gmail/[Google Mail].Trash" macro index,pager y <save-message>=gmail/INBOX<enter> "Move to inbox"
 # folder-hook +gmail/[Google Mail].Starred bind  index,pager y flag-message # "Toggle star"
 
+# URLs
+macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
 # Contact aliases, could also use `goobook`.
 set alias_file		= ~/.mutt/aliases
