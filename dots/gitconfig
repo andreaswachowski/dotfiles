@@ -10,6 +10,7 @@
 [alias]
 	ci = commit
 	co = checkout
+	dc = diff --cached
 	st = status
 	br = branch
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
