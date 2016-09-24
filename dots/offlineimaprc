@@ -72,7 +72,7 @@
 #
 # Always use ASCII characters only.
 #
-accounts = Test
+accounts = gmail
 
 
 # This option stands in the [general] section.
@@ -107,7 +107,7 @@ accounts = Test
 #
 # You can override this with a command-line option -u.
 #
-#ui = basic
+ui = TTYUI
 
 
 # This option stands in the [general] section.
@@ -136,7 +136,7 @@ accounts = Test
 #
 # Tilde and environment variable expansions will be performed.
 #
-#pythonfile = ~/.offlineimap.py
+# pythonfile = ~/.offlineimap.py
 
 
 # This option is in the [general] section.
@@ -198,12 +198,12 @@ accounts = Test
 # Tilde and environment variable expansions will be performed
 # for "filename" knob.
 #
-#enabled = no
-#filename = ~/Mutt/muttrc.mailboxes
-#header = "mailboxes "
-#peritem = "+%(accountname)s/%(foldername)s"
-#sep = " "
-#footer = "\n"
+enabled = yes
+filename = ~/.mutt/muttrc.mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
 #incremental = no
 
 
@@ -237,13 +237,13 @@ accounts = Test
 # This is an account definition clause.  You'll have one of these for each
 # account listed in the "accounts" option in [general] section (above).
 
-[Account Test]
+[Account gmail]
 
 # These settings specify the two folders that you will be syncing.
 # You'll need to have a "Repository ..." section for each one.
 
-localrepository = LocalExample
-remoterepository = RemoteExample
+localrepository = Gmail-Local
+remoterepository = Gmail-Remote
 
 
 ########## Advanced settings
@@ -300,7 +300,7 @@ remoterepository = RemoteExample
 # The historical backend is 'plain' which writes out the state in plain text
 # files. See manual.
 #
-#status_backend = sqlite
+status_backend = sqlite
 
 
 # This option stands in the [Account Test] section.
@@ -359,7 +359,7 @@ remoterepository = RemoteExample
 #
 # Non-ASCII characters in labels are bad handled or won't work at all.
 #
-#synclabels = no
+synclabels = yes
 
 
 # This option stands in the [Account Test] section.
@@ -418,12 +418,12 @@ remoterepository = RemoteExample
 #proxy = SOCKS5:IP:9999
 
 
-[Repository LocalExample]
+# [Repository LocalExample]
 
 # Each repository requires a "type" declaration. The types supported for
 # local repositories are Maildir, GmailMaildir and IMAP.
 #
-type = Maildir
+# type = Maildir
 
 
 # This option stands in the [Repository LocalExample] section.
@@ -432,7 +432,7 @@ type = Maildir
 # to maildirs created under this path.  OfflineIMAP will create the
 # maildirs for you as needed.
 #
-localfolders = ~/Test
+# localfolders = ~/Test
 
 
 # This option stands in the [Repository LocalExample] section.
@@ -548,7 +548,7 @@ localfolders = ~/Test
 #customflag_c = NonJunk
 #customflag_d = ToDo
 
-[Repository GmailLocalExample]
+[Repository Gmail-Local]
 
 # This type of repository enables syncing of Gmail. All Maildir
 # configuration settings are also valid here but the utime_from_header.
@@ -563,12 +563,13 @@ localfolders = ~/Test
 #
 type = GmailMaildir
 
+localfolders = ~/.mail/gmail
 
-[Repository RemoteExample]
+# [Repository RemoteExample]
 
 # The remote repository.  We only support IMAP or Gmail here.
 #
-type = IMAP
+# type = IMAP
 
 
 # This option stands in the [Repository RemoteExample] section.
@@ -607,7 +608,7 @@ type = IMAP
 #
 # Specify the remote hostname.
 #
-remotehost = examplehost
+# remotehost = examplehost
 
 
 # This option stands in the [Repository RemoteExample] section.
@@ -1231,7 +1232,7 @@ remoteuser = username
 #copy_ignore_eval = lambda foldername: {'INBOX': [2, 3, 4]}.get(foldername)
 
 
-[Repository GmailExample]
+[Repository Gmail-Remote]
 
 # A repository using Gmail's IMAP interface.
 #
@@ -1258,7 +1259,10 @@ type = Gmail
 #
 # Specify the Gmail user name. This is the only mandatory parameter.
 #
-remoteuser = username@gmail.com
+remoteuser = andreas.wachowski@gmail.com
+remotepassfile = ~/.offlineimap.gmailpasswd
+# Requires openssl installed with homebrew:
+sslcacertfile = /usr/local/etc/openssl/cert.pem
 
 
 # This option stands in the [Repository GmailExample] section.
