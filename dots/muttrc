@@ -1,6 +1,8 @@
 # Adapted from Victor Parmar's setup: https://smalldata.tech/blog/2016/09/10/gmail-with-mutt
 # discussed at https://news.ycombinator.com/item?id=12563398
-# Also see http://stevelosh.com/blog/2012/10/the-homely-mutt/
+# Further sources:
+# * http://stevelosh.com/blog/2012/10/the-homely-mutt/
+# * https://pbrisbin.com/posts/mutt_gmail_offlineimap/
 source "gpg -d ~/.mutt/andreaswachowskigmail.gpg |"
 
 set editor              = "vim"                                        # use vim as the default editor
