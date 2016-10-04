@@ -1,0 +1,99 @@
+# React Snippets are from http://courses.reactjsprogram.com/courses/redux-and-immutablejs/lectures/945035
+# React Native Stateless Functional Component Skeleton
+global !p
+def react_classname(filename):
+# Original (Sublime Text conformant) regexp to extract the class name: ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g}
+    return re.match(r'.*(?=\.)', fn).group()
+endglobal
+
+snippet rnccf
+import React, { PropTypes } from 'react'
+import { View, StyleSheet, Text } from 'react-native'
+
+${1:`!p snip.rv = react_classname(fn)`}.propTypes = {
+
+}
+
+export default function $1 (props) {
+  return (
+    ${0:<View>
+      <Text>
+        $1
+      </Text>
+    </View>}
+  )
+}
+
+const styles = StyleSheet.create({
+
+})
+endsnippet
+
+# React Native Stateful Component Skeleton
+snippet rnccs
+import React, { PropTypes, Component } from 'react'
+import { View, Text } from 'react-native'
+
+export default class ${1:`!p snip.rv = react_classname(fn)`} extends Component {
+  static propTypes = {}
+  state = {}
+  render () {
+    return (
+      ${0:<View>
+        <Text>
+          $1
+        </Text>
+      </View>}
+    )
+  }
+}
+endsnippet
+
+# Redux Module skeleton
+snippet duck
+const initialState = {}
+
+export default function ${1:`!p snip.rv = react_classname(fn)`} (state = initialState, action) {
+  switch (action.type) {
+    default :
+      return state
+  }
+endsnippet
+
+# Redux Connect Skeleton
+snippet rc
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import {  } from 'components'
+function mapStateToProps (state, props) {
+  return {
+  }
+}
+function mapDispatchToProps (dispatch, props) {
+  return bindActionCreators( , dispatch)
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+endsnippet
+
+# React Component - Stateful
+snippet rccs
+import React from 'react'
+const ${1:`!p snip.rv = react_classname(fn)`} = React.createClass({
+  render () {
+    return (
+      ${0:<div></div>}
+    )
+  },
+})
+endsnippet
+
+# React Stateless Functional Component Skeleton
+snippet rccf
+import React, { PropTypes } from 'react'
+export default function ${1:`!p snip.rv = react_classname(fn)`} (props) {
+  return (
+    ${0:<div></div>}
+  )
+endsnippet
