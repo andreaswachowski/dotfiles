@@ -89,7 +89,7 @@ if (s:development=="true")
   Plugin 'cpcsdk/vim-z80-democoding'
 
   " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
-  " Bundle 'ervandew/supertab'
+  Plugin 'ervandew/supertab'
   Plugin 'SirVer/ultisnips'
   Plugin 'honza/vim-snippets'
 
