@@ -57,6 +57,8 @@ shopt -s histappend
 # http://apple.stackexchange.com/questions/114691/why-isnt-history-a-working
 PROMPT_COMMAND="history -a"
 HISTFILESIZE= # Never truncate the file
+# don't add duplicates and space-prefixed commands to the history:
+HISTIGNORE=ignoreboth
 HOSTNAME="$(hostname)"
 HOSTNAME_SHORT="${HOSTNAME%%.*}"
 HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
