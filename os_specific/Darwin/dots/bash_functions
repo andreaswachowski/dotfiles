@@ -5,3 +5,7 @@ sudo scutil --set LocalHostName "$1"
 sudo scutil --set HostName "$1"
 dscacheutil -flushcache
 }
+
+lastscreenshot() {
+  open "`ls -t ~/Desktop/Screen\ Shot\ * | head -1`"
+}
