@@ -205,6 +205,9 @@ let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 let g:indentconsistencycop_CheckOnLoad = 0
 let g:indentconsistencycop_AutoRunCmd = 'IndentRangeConsistencyCop'
 
+" mxw/vim-jsx: Allow JSX highlighting on .js files, not only .jsx
+let g:jsx_ext_required = 0
+
 nmap <silent> <leader>D <Plug>DashSearch
 
 " RSpec.vim mappings
