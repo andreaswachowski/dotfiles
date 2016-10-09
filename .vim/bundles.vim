@@ -73,27 +73,28 @@ if (s:development=="true")
   Plugin 'kana/vim-tabpagecd'
   Plugin 'greyblake/vim-preview'
 
+  " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+  Plugin 'ervandew/supertab'
+  Plugin 'SirVer/ultisnips'
+  Plugin 'honza/vim-snippets'
+
   " JavaScript, see
   " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
   Plugin 'jelera/vim-javascript-syntax'
   Plugin 'pangloss/vim-javascript'
-  Plugin 'mxw/vim-jsx'
   Plugin 'nathanaelkane/vim-indent-guides'
   Plugin 'scrooloose/syntastic'
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'marijnh/tern_for_vim'
-
   Plugin 'mtscout6/syntastic-local-eslint.vim'
+
+  Plugin 'mxw/vim-jsx'
+  Plugin 'justinj/vim-react-snippets'
 
   Plugin 'kchmck/vim-coffee-script'
 
   " Z80 Assembly
   Plugin 'cpcsdk/vim-z80-democoding'
-
-  " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
-  Plugin 'ervandew/supertab'
-  Plugin 'SirVer/ultisnips'
-  Plugin 'honza/vim-snippets'
 
   Plugin 'vim-scripts/ingo-library'
   Plugin 'vim-scripts/IndentConsistencyCop'
