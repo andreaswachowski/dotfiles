@@ -83,6 +83,8 @@ if (s:development=="true")
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'marijnh/tern_for_vim'
 
+  Plugin 'mtscout6/syntastic-local-eslint.vim'
+
   Plugin 'kchmck/vim-coffee-script'
 
   " Z80 Assembly
