@@ -44,3 +44,16 @@ git-remove-merged() {
   # http://devblog.springest.com/a-script-to-remove-old-git-branches
   git branch --merged develop | grep -v 'develop$' | grep -v 'master$' | xargs git branch -d
 }
+
+git-most-changed() {
+  # Show the most often changed files in a git repo
+  # See http://stackoverflow.com/questions/7686582/finding-most-changed-files-in-git
+
+  NO=$1
+
+  if [ -z "$NO" ]; then
+    NO=10
+  fi
+
+  git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -$NO
+}
