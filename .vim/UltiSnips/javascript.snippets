@@ -1,3 +1,78 @@
+# Taken from https://raw.githubusercontent.com/mauroporrasp/vim-snippets/ee2f8f7fbbf28814bd074402eebbbcfaadcf88ac/snippets/javascript.es6.react.snippets, adapted for Ultisnips
+# Also see https://github.com/honza/vim-snippets/pull/800
+
+# Import only React
+snippet ri1
+import React from 'react'${0}
+endsnippet
+
+# Import both React and Component
+snippet ri2
+import React, { Component } from 'react'${0}
+endsnippet
+
+# React class
+snippet rcla
+class ${1:MyComponent} extends Component {
+	render() {
+		return (
+			<div>
+				${0}
+			</div>
+		)
+	}
+}
+endsnippet
+
+# React constructor
+snippet rcon
+constructor(props) {
+	super(props)
+
+	this.state = {
+		${1:foo}: ${0:'foo'},
+	}
+}
+endsnippet
+
+# Presentational component
+snippet rcom
+(props) => {
+return (
+	<div>
+		${0}
+	</div>
+)
+}
+endsnippet
+
+# Lifecycle Methods
+snippet rcdm
+componentDidMount() {
+	${0}
+}
+endsnippet
+
+# State
+snippet rtss
+this.setState({
+	${1:foo}: ${0:'foo'},
+})
+endsnippet
+
+snippet rts
+this.state.${0}
+endsnippet
+
+# Props
+snippet rp
+props.${0}
+endsnippet
+
+snippet rtp
+this.props.${0}
+endsnippet
+
 # React Snippets are from http://courses.reactjsprogram.com/courses/redux-and-immutablejs/lectures/945035
 # React Native Stateless Functional Component Skeleton
 global !p
