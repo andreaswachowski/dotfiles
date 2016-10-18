@@ -90,13 +90,13 @@ ${1:`!p snip.rv = react_classname(fn)`}.propTypes = {
 };
 
 export default function $1 (props) {
-  return (
-    ${0:<View>
-      <Text>
-        $1
-      </Text>
-    </View>}
-  )
+	return (
+		${0:<View>
+			<Text>
+				$1
+			</Text>
+		</View>}
+	)
 }
 
 const styles = StyleSheet.create({
@@ -109,17 +109,17 @@ import React, {PropTypes, Component} from 'react';
 import {View, Text} from 'react-native';
 
 export default class ${1:`!p snip.rv = react_classname(fn)`} extends Component {
-  static propTypes = {}
-  state = {}
-  render () {
-    return (
-      ${0:<View>
-        <Text>
-          $1
-        </Text>
-      </View>}
-    );
-  }
+	static propTypes = {}
+	state = {}
+	render () {
+		return (
+			${0:<View>
+				<Text>
+					$1
+				</Text>
+			</View>}
+		);
+	}
 }
 endsnippet
 
@@ -127,10 +127,10 @@ snippet duck "Redux Module skeleton"
 const initialState = {};
 
 export default function ${1:`!p snip.rv = react_classname(fn)`} (state = initialState, action) {
-  switch (action.type) {
-    default :
-      return state;
-  }
+	switch (action.type) {
+		default :
+			return state;
+	}
 endsnippet
 
 snippet rc "Redux Connect skeleton"
@@ -139,17 +139,17 @@ import {connect} from 'react-redux';
 import {  } from 'components';
 
 function mapStateToProps (state, props) {
-  return {
-  };
+	return {
+	};
 }
 
 function mapDispatchToProps (dispatch, props) {
-  return bindActionCreators( , dispatch);
+	return bindActionCreators( , dispatch);
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )
 endsnippet
 
@@ -157,11 +157,11 @@ snippet rccs "React Stateful Component"
 import React from 'react';
 
 const ${1:`!p snip.rv = react_classname(fn)`} = React.createClass({
-  render () {
-    return (
-      ${0:<div></div>}
-    );
-  }
+	render () {
+		return (
+			${0:<div></div>}
+		);
+	}
 });
 
 export default $1;
@@ -171,9 +171,9 @@ snippet rccf "React Stateless Functional Component"
 import React, {PropTypes} from 'react';
 
 export default function ${1:`!p snip.rv = react_classname(fn)`} (props) {
-  return (
-    ${0:<div></div>}
-  );
+	return (
+		${0:<div></div>}
+	);
 }
 endsnippet
 endsnippet
