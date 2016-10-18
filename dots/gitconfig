@@ -41,6 +41,3 @@
 
 [include]
 	path = ~/dotfiles/local/dots/gitconfig
-
-[pull]
-	rebase = true
