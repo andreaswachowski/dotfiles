@@ -9,7 +9,7 @@ if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
   source $VIMRUNTIME/macros/matchit.vim
 endif
 
-source ~/.vim/bundles.vim
+source ~/.vim/plugs.vim
 source $HOME/.vim/tabline.vim
 source ~/.vim/delete_inactive_buffers.vim
 

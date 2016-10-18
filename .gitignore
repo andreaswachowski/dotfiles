@@ -1,7 +1,6 @@
 .vim/doc/tags
 .vim/**/tags
-.vim/bundle/**
-!.vim/bundle/Vundle*
+.vim/plugged/**
 .vim/cache
 local
 os
