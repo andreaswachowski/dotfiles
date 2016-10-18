@@ -150,11 +150,18 @@ do
   link $DOTFILES/dots/$nodotfile ~/$nodotfile
 done
 
-for setup in $(ls $DOTFILES/setups)
+for setup in $(ls $DOTFILES/setups 2>/dev/null)
 do
   echo Executing setup for $setup ...
   $DOTFILES/setups/$setup
 done
+
+if [ -f $DOTFILES/os/setup.sh ]; then
+  echo Executing os-specific setup ...
+  $DOTFILES/os/setup.sh
+fi
+
+echo 'Remember to npm install inside ~/.vim/bundle/tern_for_vim for each node version'
 
 if [ ! "$(ls -A $DOTFILESBACKUP)" ]; then  # Directory empty
   rmdir $DOTFILESBACKUP
