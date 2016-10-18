@@ -1,13 +1,11 @@
 # Taken from https://raw.githubusercontent.com/mauroporrasp/vim-snippets/ee2f8f7fbbf28814bd074402eebbbcfaadcf88ac/snippets/javascript.es6.react.snippets, adapted for Ultisnips
 # Also see https://github.com/honza/vim-snippets/pull/800
 
-# Import only React
-snippet ri1
+snippet ri1 "Import React"
 import React from 'react'${0}
 endsnippet
 
-# Import both React and Component
-snippet ri2
+snippet ri2 "Import React and Component"
 import React, { Component } from 'react'${0}
 endsnippet
 
@@ -15,8 +13,7 @@ snippet ri3 "Import React and Proptypes"
 import React, { PropTypes } from 'react'${0}
 endsnippet
 
-# React class
-snippet rcla
+snippet rcla "React class with render"
 class ${1:MyComponent} extends Component {
 	render() {
 		return (
@@ -28,8 +25,7 @@ class ${1:MyComponent} extends Component {
 }
 endsnippet
 
-# React constructor
-snippet rcon
+snippet rcon "React constructor"
 constructor(props) {
 	super(props)
 
@@ -39,8 +35,7 @@ constructor(props) {
 }
 endsnippet
 
-# Presentational component
-snippet rcom
+snippet rcom "Presentational component"
 (props) => {
 return (
 	<div>
@@ -51,29 +46,29 @@ return (
 endsnippet
 
 # Lifecycle Methods
-snippet rcdm
+snippet rcdm "componentDidMount"
 componentDidMount() {
 	${0}
 }
 endsnippet
 
 # State
-snippet rtss
+snippet rtss "this.setState ({...})"
 this.setState({
 	${1:foo}: ${0:'foo'},
 })
 endsnippet
 
-snippet rts
+snippet rts "this.state"
 this.state.${0}
 endsnippet
 
 # Props
-snippet rp
+snippet rp "props"
 props.${0}
 endsnippet
 
-snippet rtp
+snippet rtp "this.props"
 this.props.${0}
 endsnippet
 
@@ -180,4 +175,10 @@ export default function ${1:`!p snip.rv = react_classname(fn)`} (props) {
 	);
 }
 endsnippet
+
+snippet ...state "return {...state,}"
+return {
+	...state,
+	$0
+}
 endsnippet
