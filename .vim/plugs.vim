@@ -36,6 +36,9 @@ if (s:development=="true")
   Plug 'scrooloose/nerdcommenter'
   Plug 'rizzatti/dash.vim'
 
+  Plug 'vim-syntastic/syntastic'
+  Plug 'Valloric/YouCompleteMe'
+
   Plug 'dbext.vim'
   Plug 'TVO--The-Vim-Outliner'
 
@@ -74,8 +77,6 @@ if (s:development=="true")
   Plug 'jelera/vim-javascript-syntax'
   Plug 'pangloss/vim-javascript'
   Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'scrooloose/syntastic'
-  Plug 'Valloric/YouCompleteMe'
   Plug 'marijnh/tern_for_vim'
   Plug 'mtscout6/syntastic-local-eslint.vim'
 
