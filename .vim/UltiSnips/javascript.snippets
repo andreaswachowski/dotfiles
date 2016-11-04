@@ -81,21 +81,21 @@ def react_classname(filename):
 endglobal
 
 snippet rnccf "React Native Stateless Component"
-import React, {PropTypes} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import React, { PropTypes } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 
 ${1:`!p snip.rv = react_classname(fn)`}.propTypes = {
 
 };
 
-export default function $1 (props) {
+export default function $1(props) {
 	return (
 		${0:<View>
 			<Text>
 				$1
 			</Text>
 		</View>}
-	)
+	);
 }
 
 const styles = StyleSheet.create({
@@ -104,13 +104,13 @@ const styles = StyleSheet.create({
 endsnippet
 
 snippet rnccs "React Native Stateful Component"
-import React, {PropTypes, Component} from 'react';
-import {View, Text} from 'react-native';
+import React, { PropTypes, Component } from 'react';
+import { View, Text } from 'react-native';
 
 export default class ${1:`!p snip.rv = react_classname(fn)`} extends Component {
 	static propTypes = {}
 	state = {}
-	render () {
+	render() {
 		return (
 			${0:<View>
 				<Text>
@@ -133,16 +133,16 @@ export default function ${1:`!p snip.rv = react_classname(fn)`} (state = initial
 endsnippet
 
 snippet rc "Redux Connect skeleton"
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {  } from 'components';
 
-function mapStateToProps (state, props) {
+function mapStateToProps(state, props) {
 	return {
 	};
 }
 
-function mapDispatchToProps (dispatch, props) {
+function mapDispatchToProps(dispatch, props) {
 	return bindActionCreators( , dispatch);
 }
 
@@ -156,7 +156,7 @@ snippet rccs "React Stateful Component"
 import React from 'react';
 
 const ${1:`!p snip.rv = react_classname(fn)`} = React.createClass({
-	render () {
+	render() {
 		return (
 			${0:<div></div>}
 		);
@@ -167,9 +167,9 @@ export default $1;
 endsnippet
 
 snippet rccf "React Stateless Functional Component"
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
-export default function ${1:`!p snip.rv = react_classname(fn)`} (props) {
+export default function ${1:`!p snip.rv = react_classname(fn)`}(props) {
 	return (
 		${0:<div></div>}
 	);
