@@ -83,6 +83,7 @@ if (s:development=="true")
 
   Plug 'mxw/vim-jsx'
   Plug 'justinj/vim-react-snippets'
+  Plug 'pgilad/vim-react-proptypes-snippets'
 
   Plug 'kchmck/vim-coffee-script'
 
