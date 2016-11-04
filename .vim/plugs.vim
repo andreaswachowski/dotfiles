@@ -78,7 +78,7 @@ if (s:development=="true")
   Plug 'pangloss/vim-javascript'
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'marijnh/tern_for_vim'
-  Plug 'mtscout6/syntastic-local-eslint.vim'
+  Plug 'andreaswachowski/syntastic-local-eslint.vim'
   Plug 'isRuslan/vim-es6'
 
   Plug 'mxw/vim-jsx'
