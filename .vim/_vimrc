@@ -3,6 +3,9 @@ set nocompatible
 set modeline
 filetype off
 
+" Output the syntax highlighting item under the cursor
+" echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+
 let mapleader = ","
 
 if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
