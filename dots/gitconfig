@@ -20,7 +20,7 @@
 	# http://stackoverflow.com/questions/424071/list-all-the-files-for-a-commit-in-git
 	shownames = diff-tree --no-commit-id --name-only -r
 	# http://stackoverflow.com/questions/12219604/list-git-tag-names-dates-and-messages
-	tagv = for-each-ref --format='%(refname:short) %(objecttype) %(objectname) %(taggerdate) %(subject) %(body)' refs/tags
+	tagv = for-each-ref --format='%(refname:short) %(objecttype) %(objectname) %(authordate:format:%Y-%m-%d-%H:%M:%S) %(subject) %(body)' refs/tags
 
 [credential]
 	helper = cache
