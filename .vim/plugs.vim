@@ -27,6 +27,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'vim-scripts/DirDiff.vim'
 Plug 'sukima/xmledit'
 Plug 'davidoc/taskpaper.vim'
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'suan/vim-instant-markdown'
 
@@ -34,7 +35,6 @@ if (s:development=="true")
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'majutsushi/tagbar'
-  Plug 'scrooloose/nerdcommenter'
   Plug 'rizzatti/dash.vim'
 
   Plug 'vim-syntastic/syntastic'
