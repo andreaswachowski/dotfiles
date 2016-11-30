@@ -93,22 +93,20 @@ function link {
   fi
 }
 
-link $DOTFILES/.vim ~/.vim
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-  $GITCMD clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  vim +PluginInstall +qall
-  # YouCompleteMe is not necessarily configured for all machines on which
-  # this script runs
-  if [ -d ~/.vim/bundle/YouCompleteMe ]; then
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer
-  fi
+VIM_PLUGIN_DIR=~/.vim/plugged
 
+link $DOTFILES/.vim ~/.vim
+vim +PlugInstall
+# YouCompleteMe is not necessarily configured for all machines on which
+# this script runs
+if [ -d $VIM_PLUGIN_DIR/YouCompleteMe ]; then
+  cd $VIM_PLUGIN_DIR/YouCompleteMe
+  ./install.sh --clang-completer
 fi
 
 # Rationale for the following patch: See comment "Problems deleting unsaved
 # buffer" at http://vim.wikia.com/wiki/Script:356
-DBEXT=~/.vim/bundle/dbext.vim
+DBEXT=$VIM_PLUGIN_DIR/dbext.vim
 if [ -d "${DBEXT}" ]; then
   grep -q "call s:DB_checkModeline" $DBEXT/plugin/dbext.vim
   if [ $? -eq 1 ]; then
