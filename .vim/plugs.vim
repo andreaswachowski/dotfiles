@@ -28,6 +28,7 @@ Plug 'vim-scripts/DirDiff.vim'
 Plug 'sukima/xmledit'
 Plug 'davidoc/taskpaper.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'chrisbra/vim-diff-enhanced'
 
 Plug 'suan/vim-instant-markdown'
 
