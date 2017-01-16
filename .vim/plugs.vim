@@ -37,6 +37,7 @@ if (s:development=="true")
   Plug 'tpope/vim-dispatch'
   Plug 'majutsushi/tagbar'
   Plug 'rizzatti/dash.vim'
+  Plug 'Yggdroot/indentLine'
 
   Plug 'vim-syntastic/syntastic'
   Plug 'Valloric/YouCompleteMe'
