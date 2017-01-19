@@ -57,3 +57,7 @@ git-most-changed() {
 
   git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -$NO
 }
+
+which-process-on-port() {
+  lsof -n -i4TCP:$1 -i6TCP:$1
+}
