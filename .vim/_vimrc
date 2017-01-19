@@ -186,6 +186,10 @@ let g:GetLatestVimScripts_allowautoinstall=1
 
 " For YouCompleteMe
 let g:ycm_extra_conf_globlist = ['~/*']
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'gitcommit': 1,
+      \ 'text': 1
+      \}
 
 " Include (mailmap'ed) author and a date indication in the fugitive Glog quickfix entries
 let g:fugitive_summary_format = '%aN %ai %s'
