@@ -12,6 +12,13 @@ if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
   source $VIMRUNTIME/macros/matchit.vim
 endif
 
+set mouse=a
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+
 source ~/.vim/plugs.vim
 source $HOME/.vim/tabline.vim
 source ~/.vim/delete_inactive_buffers.vim
