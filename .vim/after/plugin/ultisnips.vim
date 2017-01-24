@@ -1,0 +1,1 @@
+au FileType javascript UltiSnipsAddFiletypes javascript.es6
