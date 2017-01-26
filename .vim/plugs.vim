@@ -45,6 +45,8 @@ if (s:development=="true")
   Plug 'dbext.vim'
   Plug 'TVO--The-Vim-Outliner'
 
+  Plug 'elzr/vim-json'
+
   " Ruby etc.
   Plug 'tpope/vim-rvm'
   Plug 'vim-ruby/vim-ruby'
