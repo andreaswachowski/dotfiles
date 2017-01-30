@@ -1,7 +1,12 @@
-" vi:expandtab ts=2 sw=2
 set nocompatible
 set modeline
 set number
+
+set tabstop=8
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
 filetype off
 
 " Output the syntax highlighting item under the cursor
