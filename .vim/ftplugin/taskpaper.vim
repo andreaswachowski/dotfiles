@@ -3,6 +3,7 @@ nmap <silent> <buffer>  <Leader>tc
 
 set ts=2
 set sw=2
+set noexpandtab
 set tw=0
 set nosmarttab
 set breakindent
