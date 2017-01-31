@@ -1,0 +1,1 @@
+echo "$(ls -tr ~/Desktop/Screen\ Shot\ 20* | tail -1)"
