@@ -1,4 +1,6 @@
 .vim/doc/tags
+.vim/doc/tags
+.vim/.netrwhist
 .vim/**/tags
 .vim/plugged/**
 .vim/cache
