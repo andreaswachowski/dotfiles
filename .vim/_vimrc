@@ -26,6 +26,7 @@ else
 end
 
 source ~/.vim/plugs.vim
+source $HOME/.vim/tabpagecd_persist.vim
 source $HOME/.vim/tabline.vim
 source ~/.vim/delete_inactive_buffers.vim
 
@@ -45,6 +46,7 @@ filetype plugin indent on    " required
 " -- General settings -----------------------------------------------------
 set sessionoptions-=curdir
 set sessionoptions+=sesdir
+set sessionoptions+=globals " for tabpagecd_persist
 
 " Do not store global options. Otherwise the machine-specific runtimepath
 " would also be stored, and Sessions would not be portable across different
@@ -200,7 +202,7 @@ let g:ycm_filetype_specific_completion_to_disable = {
 " Include (mailmap'ed) author and a date indication in the fugitive Glog quickfix entries
 let g:fugitive_summary_format = '%aN %ai %s'
 
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_slim_checkers = ['slim_lint']
 let g:syntastic_haml_checkers = ['haml_lint']
