@@ -19,20 +19,14 @@ if exists("+showtabline")
       let s .= winnr . '/' . tabpagewinnr(i,'$')
       let s .= ' %*'
       let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-      let bufnr = buflist[winnr - 1]
-      let file = bufname(bufnr)
-      let buftype = getbufvar(bufnr, 'buftype')
-      if buftype == 'nofile'
-        if file =~ '\/.'
-          let file = substitute(file, '.*\/\ze.', '', '')
-        endif
-      else
-        let file = fnamemodify(file, ':p:t')
+      " Set the title to the current working directory.  Assumes
+      " kana/vim-tabbpagecd's setting of t:cwd during TabEnter/TabLeave.
+      " In addition, make sure that any directory change is picked up
+      " immediately and not just during the TabLeave event:
+      if i == t && gettabvar(i, 'cwd') != getcwd()
+        call settabvar(i, 'cwd', getcwd())
       endif
-      if file == ''
-        let file = '[No Name]'
-      endif
-      let s .= file
+      let s .= fnamemodify(gettabvar(i,'cwd'), ':t')
       let i = i + 1
     endwhile
     let s .= '%T%#TabLineFill#%='
