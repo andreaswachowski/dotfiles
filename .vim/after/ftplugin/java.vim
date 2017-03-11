@@ -1,4 +1,4 @@
-set showmatch
+setlocal showmatch
 
 " Simpler input for accolades on a German keyboard
 imap ö {

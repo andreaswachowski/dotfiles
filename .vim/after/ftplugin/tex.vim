@@ -1,6 +1,6 @@
 " LaTeX
 map <buffer> _l :w:!latex %
-set tw=75
+setlocal tw=75
 
 ia <buffer> itm \begin{itemize}\end{itemize}O\item
 ia <buffer> enm \begin{enumerate}\end{enumerate}O\item
@@ -13,8 +13,8 @@ ia <buffer> sss \subsubsection{}i
 
 iab <buffer> em {\em \/}<Left><Left><Left><C-R>=Eatchar('\s')<CR>
 
-set comments=:%,b:\\item
-set formatoptions=tro
+setlocal comments=:%,b:\\item
+setlocal formatoptions=tro
 
 " Klammern und Backslash für dt. Tastatur
 " nützlich beim Schreiben fremdsprachiger Texte, wenn die Umlaute

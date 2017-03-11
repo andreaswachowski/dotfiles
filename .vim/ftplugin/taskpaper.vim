@@ -1,10 +1,10 @@
 nmap <silent> <buffer>  <Leader>tc
 \	:call taskpaper#toggle_tag('created', taskpaper#date())<CR>
 
-set ts=2
-set sw=2
-set noexpandtab
-set tw=0
-set nosmarttab
-set breakindent
-set briopt=shift:2
+setlocal ts=2
+setlocal sw=2
+setlocal noexpandtab
+setlocal tw=0
+setlocal nosmarttab
+setlocal breakindent
+setlocal briopt=shift:2

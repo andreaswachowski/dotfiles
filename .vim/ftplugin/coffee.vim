@@ -1,2 +1,2 @@
 " https://github.com/polarmobile/coffeescript-style
-set tw=79
+setlocal tw=79
