@@ -1,0 +1,38 @@
+#!/bin/sh
+# olcs = open last capybara screenshot
+
+if [ $# -gt 1 ]; then
+  cat <<EOF
+  Usage: "$(basename $0) [extension]"
+
+  olcs = Open the last capybara screenshot.
+  If no option is given, opens the HTML file. "png" will open the png screenshot.
+
+  The script assumes to be in the project's home directory, with the capybara screenshots below tmp/capybara
+EOF
+exit 1
+fi
+
+if [ ! -z "$1" ]; then
+  EXT=$1
+else
+  EXT=html
+  OPEN_WITH="/Applications/Google Chrome Canary.app"
+fi
+
+LAST_FILE=$(ls -tr tmp/capybara/*.$EXT | tail -1)
+
+if [ $EXT = "png" ]; then
+  TMPFILE="tmp/capybara/$(basename $LAST_FILE .png)_cropped.png"
+  echo convert -crop x1000+0+0 "$LAST_FILE" "$TMPFILE"
+  convert -crop x1000+0+0 "$LAST_FILE" "$TMPFILE"
+  LAST_FILE="$TMPFILE"
+fi
+
+if [ -z "$OPEN_WITH" ]; then
+  echo open $LAST_FILE
+  open $LAST_FILE
+else
+  echo open -a $OPEN_WITH $LAST_FILE
+  open -a "$OPEN_WITH" $LAST_FILE
+fi
