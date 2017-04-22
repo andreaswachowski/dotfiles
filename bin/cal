@@ -1,0 +1,7 @@
+# From http://www.macosxhints.com/article.php?story=20040625094428394
+#
+# TODO: Fix year display (e.g., "cal 2011"), which only displays first column
+/usr/bin/cal $* | awk '{ print " "$0; getline; print " Mo Tu We Th Fr Sa Su"; \
+getline; if (substr($0,1,2) == " 1") print "                    1 "; \
+do { prevline=$0; if (getline == 0) exit; print " " \
+substr(prevline,4,17) " " substr($0,1,2) " "; } while (1) }'
