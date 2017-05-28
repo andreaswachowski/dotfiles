@@ -24,7 +24,11 @@ done
 
 # set environment variables if user's agent already exists
 # the sed call at the end just in case someone (QNAP!) has aliased ls to ls -F
-[ -z "$SSH_AUTH_SOCK" ] && SSH_AUTH_SOCK=$(ls -l /tmp/ssh-*/agent.* 2> /dev/null | grep $(whoami) | awk '{print $9}' | sed 's/=$//')
+[ -z "$SSH_AUTH_SOCK" ] && SSH_AUTH_SOCK=$(ls -ltr /tmp/ssh-*/agent.* 2> /dev/null | grep $(whoami) | awk '{print $9}' | sed 's/=$//')
+if [ $(echo "$SSH_AUTH_SOCK" | wc -l) -gt 1 ]; then
+  echo Warning, more than one ssh agent socket found, using first: echo $SSH_AUTH_SOCK
+  SSH_AUTH_SOCK=$(echo "$SSH_AUTH_SOCK" | head -1)
+fi
 [ -z "$SSH_AGENT_PID" -a "`echo $SSH_AUTH_SOCK | cut -d. -f2`" ] && SSH_AGENT_PID=$((`echo $SSH_AUTH_SOCK | cut -d. -f2` + 1))
 [ -n "$SSH_AUTH_SOCK" ] && export SSH_AUTH_SOCK
 [ -n "$SSH_AGENT_PID" ] && export SSH_AGENT_PID
