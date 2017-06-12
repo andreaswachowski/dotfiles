@@ -52,16 +52,19 @@ fi
 # When testing, remember that the history is only written on session *exit*
 # (see http://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize )
 shopt -s histappend
-# Append each command immediately, to minimize the effect of sudden power losses
-# Otherwise, the history is only written on session exit
-# http://apple.stackexchange.com/questions/114691/why-isnt-history-a-working
-PROMPT_COMMAND="history -a"
 HISTFILESIZE= # Never truncate the file
 # don't add duplicates and space-prefixed commands to the history:
 HISTIGNORE=ignoreboth
 HOSTNAME="$(hostname)"
 HOSTNAME_SHORT="${HOSTNAME%%.*}"
 HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
+
+# Use trap instead of PROMPT_COMMAND to append each command immediately instead
+# of on session exit, minimizing the effect of sudden power losses
+# See https://github.com/tmux-plugins/tmux-resurrect/issues/86
+# PROMPT_COMMAND="history -a"
+trap "history -a $HISTFILE" DEBUG
+trap "cat $HISTFILE >> $HOME/.bash_history" EXIT
 
 OS_SPECIFIC_BASHRC=~/dotfiles/os/dots/bashrc
 if [ -f $OS_SPECIFIC_BASHRC ]; then
