@@ -85,10 +85,12 @@ if (s:development=="true")
   Plug 'marijnh/tern_for_vim'
   Plug 'isRuslan/vim-es6'
 
+  " React
   Plug 'mxw/vim-jsx'
   Plug 'justinj/vim-react-snippets'
   Plug 'pgilad/vim-react-proptypes-snippets'
 
+  " CoffeeScript
   Plug 'kchmck/vim-coffee-script'
 
   " Z80 Assembly
