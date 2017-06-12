@@ -190,6 +190,8 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|^[\/]\.(git|hg|svn)$\|_site
 
 let g:GetLatestVimScripts_allowautoinstall=1
 
+let g:vroom_use_vimux=1
+
 " For YouCompleteMe
 let g:ycm_extra_conf_globlist = ['~/*']
 let g:ycm_filetype_specific_completion_to_disable = {
