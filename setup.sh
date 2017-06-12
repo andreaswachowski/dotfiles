@@ -40,7 +40,7 @@ shift `expr $OPTIND - 1`
 # --- process the arguments
 DOTFILES=~/dotfiles # Assume dotfiles is checked out here
 if [ ! -d "$DOTFILES" ]; then
-  echo Dotfiles not found at $DOTFILES. Set this variable correctly, then continue. Aborting.
+  echo "Dotfiles not found at $DOTFILES. Set this variable correctly, then continue. Aborting."
   exit 1
 fi
 
