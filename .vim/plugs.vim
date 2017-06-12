@@ -27,6 +27,7 @@ Plug 'sukima/xmledit'
 Plug 'davidoc/taskpaper.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'benmills/vimux'
 
 Plug 'suan/vim-instant-markdown'
 
