@@ -182,7 +182,7 @@ endif
 
 let g:ctrlp_open_new_file = 't'
 set wildignore+=*.jpg,*.png
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|^[\/]\.(git|hg|svn)$\|_site' " _site is for Jekyll projects
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|^[\/]\.(git|hg|svn)$\|_site\|coverage' " _site is for Jekyll projects
 
 let g:GetLatestVimScripts_allowautoinstall=1
 
