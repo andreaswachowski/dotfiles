@@ -85,6 +85,9 @@ if (s:development=="true")
   Plug 'marijnh/tern_for_vim'
   Plug 'isRuslan/vim-es6'
 
+  " TypeScript
+  Plug 'leafgarland/typescript-vim.git'
+
   " React
   Plug 'mxw/vim-jsx'
   Plug 'justinj/vim-react-snippets'
