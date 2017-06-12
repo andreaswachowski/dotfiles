@@ -265,10 +265,6 @@ set encoding=utf-8                     " better default than latin1
 set fileencoding=utf-8                     " better default than latin1
 setglobal fileencoding=utf-8           " change default file encoding when writing new files
 
-" Do not (!) load delimitMate for html and xml files.
-au FileType html let b:loaded_delimitMate = 1
-au FileType xml let b:loaded_delimitMate = 1
-
 " Helpful to get rid of the space when typing
 " dabbreviations:
 func! Eatchar(pat)
@@ -276,21 +272,9 @@ func! Eatchar(pat)
   return (c =~ a:pat) ? '' : c
 endfunc
 
-" For Transcribe!
-au BufEnter *.xsc setlocal tw=0
-
 " Remove trailing spaces
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Add hyphen and underscore for web development keywords
-" http://stackoverflow.com/questions/7559737/vim-how-to-autocomplete-in-a-css-file-with-tag-ids-and-class-names-declared-in#7560484
-au FileType css,scss,html,slim setlocal iskeyword=@,48-57,_,-,?,!,192-255
-
-augroup markdown
-  au!
-  au BufNewFile,BufReadPost *.md,*.markdown setlocal filetype=markdown
-augroup END
 
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
