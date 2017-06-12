@@ -36,3 +36,5 @@ au FileType html let b:loaded_delimitMate = 1
 au FileType xml let b:loaded_delimitMate = 1
 
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* setfiletype nginx
+
+au BufEnter *.jsx setlocal expandtab
