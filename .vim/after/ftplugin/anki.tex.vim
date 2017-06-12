@@ -7,7 +7,3 @@ iab <buffer> Xf \xfield{}<Left><C-R>=Eatchar('\s')<CR>
 iab <buffer> Pl \begin{plain}\end{plain}<Up><Tab><Tab><C-R>=Eatchar('\s')<CR>
 iab <buffer> Xp \xplain{}<Left><C-R>=Eatchar('\s')<CR>
 iab <buffer> cbx \begin{codebox}\end{codebox}<Up><Tab><Tab><C-R>=Eatchar('\s')<CR>
-
-let g:syntastic_quiet_messages = { "regex":
-			\'\(Command terminated with space\)
-			\\|\(Wrong length of dash may have been used\)' }

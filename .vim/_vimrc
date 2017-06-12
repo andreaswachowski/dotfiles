@@ -51,10 +51,6 @@ set sessionoptions+=sesdir
 " machines.
 set sessionoptions-=options
 
-" Don't save empty windows. This will prevent |:mksession| from saving
-" |syntastic-error-window| as empty quickfix windows.
-set sessionoptions-=blank
-
 let s:host_specific_pre_setup = expand("<sfile>").".host.pre.".hostname()
 if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
   source `=expand(s:host_specific_pre_setup)`
@@ -201,18 +197,6 @@ let g:ycm_filetype_specific_completion_to_disable = {
 
 " Include (mailmap'ed) author and a date indication in the fugitive Glog quickfix entries
 let g:fugitive_summary_format = '%aN %ai %s'
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_slim_checkers = ['slim_lint']
-let g:syntastic_haml_checkers = ['haml_lint']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_always_populate_loc_list = 1
-
-" mappings to temporarily enable or disable Syntastic for operations with lots of buffers
-" http://stackoverflow.com/questions/20030603/vim-syntastic-how-to-disable-the-checker
-nnoremap <leader>sN :bufdo let b:syntastic_mode="passive"<cr>
-nnoremap <leader>sY :bufdo unlet b:syntastic_mode<cr>
 
 " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 " make YCM compatible with UltiSnips (using supertab)
