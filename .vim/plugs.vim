@@ -86,7 +86,7 @@ if (s:development=="true")
   Plug 'isRuslan/vim-es6'
 
   " TypeScript
-  Plug 'leafgarland/typescript-vim.git'
+  Plug 'leafgarland/typescript-vim'
 
   " React
   Plug 'mxw/vim-jsx'
