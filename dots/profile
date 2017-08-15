@@ -20,7 +20,9 @@ fi
 set -o vi
 export EDITOR=vim
 export VISUAL=vim # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
-export LESS="-F -X $LESS" # make less exit if output is <1page. Handy for git log
+export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for git log
+# -erX was necessary for color since around git 2.14.1 (but git itself might not be the reason)
+# Also see http://eigenjoy.com/2008/07/23/mac-os-x-color-showing-escwhatever-for-git-diff-colors-and-more/
 
 # -------------------------------------------------------------------------
 # Install npm packages globally without sudo on OS X and Linux:
