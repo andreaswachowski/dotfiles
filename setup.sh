@@ -159,7 +159,16 @@ if [ -f $DOTFILES/os/setup.sh ]; then
   $DOTFILES/os/setup.sh
 fi
 
-echo 'Remember to npm install inside ~/.vim/bundle/tern_for_vim for each node version'
+echo <<EOF
+1) Remember to npm install inside ~/.vim/bundle/tern_for_vim for each node version
+
+2) csslint:
+git clone git@github.com:andreaswachowski/csslint.git
+git co -b add-svg-properties
+npm install
+grunt release
+ln -s dist/csslint dist/cli.js
+EOF
 
 if [ ! "$(ls -A $DOTFILESBACKUP)" ]; then  # Directory empty
   rmdir $DOTFILESBACKUP
