@@ -25,14 +25,8 @@ export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for 
 # Also see http://eigenjoy.com/2008/07/23/mac-os-x-color-showing-escwhatever-for-git-diff-colors-and-more/
 
 # -------------------------------------------------------------------------
-# Install npm packages globally without sudo on OS X and Linux:
-# https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
-export NPM_PACKAGES="${HOME}/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-
 # PATH
 export PATH="$HOME/bin:$HOME/local/bin:$HOME/dotfiles/local/bin:$HOME/dotfiles/os/bin:$HOME/dotfiles/bin:$PATH"
-export PATH="$NPM_PACKAGES/bin:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="$PATH:$HOME/.yarn/bin"
 
@@ -40,15 +34,6 @@ export PATH="$PATH:$HOME/.yarn/bin"
 # commands will not be saved. See
 # https://github.com/tmux-plugins/tmux-resurrect
 export HISTCONTROL=ignoreboth
-
-# manpath is not available on QNAP, therefore we must check for it
-which manpath >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-  # Unset manpath so we can inherit from /etc/manpath via the `manpath`
-  # command
-  unset MANPATH # delete if MANPATH was already modified elsewhere
-  MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-fi
 
 if [ -z "$BASH" ]; then
   if [ "`id -u`" -eq 0 ]; then
@@ -73,3 +58,4 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
