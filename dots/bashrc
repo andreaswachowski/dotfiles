@@ -19,14 +19,13 @@ alias be="bundle exec"
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
 
 # Prompt initialization
-if [ "`id -u`" -eq 0 ]; then
+if [ "$(id -u)" -eq 0 ]; then
   PROMPT_CHAR="#"
 else
   PROMPT_CHAR="$"
 fi
 
-which git >/dev/null 2>&1
-if [ $? -eq 0 ]; then
+if which git >/dev/null 2>&1; then
   function gitprompt {
     BRANCH=$(git branch 2>/dev/null | cut -f2 -d* -s | cut -b 2-)
     if [ "$BRANCH" ]; then
@@ -34,9 +33,7 @@ if [ $? -eq 0 ]; then
     fi
     echo ""
   }
-
-  export PS1='\u@\h:\w$(gitprompt)
-$(date +'%H:%M:%S') $PROMPT_CHAR '
+  export PS1='\u@\h:\w$(gitprompt)\n$(date +'%H:%M:%S') $PROMPT_CHAR '
 else
   export PS1='\h:\w$(date +'%H:%M:%S') $PROMPT_CHAR '
 fi
@@ -46,8 +43,8 @@ fi
 # According to my initial test, and according to one tweet in the discussion, on OS X, it is necessary
 # to create the directory first:
 HISTDIR=${HOME}/.history/$(date -u +%Y/%m/)
-if [ ! -d $HISTDIR ]; then
-  mkdir -p $HISTDIR
+if [ ! -d "$HISTDIR" ]; then
+  mkdir -p "$HISTDIR"
 fi
 # When testing, remember that the history is only written on session *exit*
 # (see http://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize )
@@ -63,23 +60,30 @@ HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
 # of on session exit, minimizing the effect of sudden power losses
 # See https://github.com/tmux-plugins/tmux-resurrect/issues/86
 # PROMPT_COMMAND="history -a"
-trap "history -a $HISTFILE" DEBUG
-trap "cat $HISTFILE >> $HOME/.bash_history" EXIT
+trap 'history -a $HISTFILE' DEBUG
+trap 'cat $HISTFILE >> $HOME/.bash_history' EXIT
 
 OS_SPECIFIC_BASHRC=~/dotfiles/os/dots/bashrc
 if [ -f $OS_SPECIFIC_BASHRC ]; then
+  # shellcheck disable=SC1090
   source $OS_SPECIFIC_BASHRC
 fi
 
 HOST_SPECIFIC_BASHRC=~/dotfiles/local/dots/bashrc
 if [ -f $HOST_SPECIFIC_BASHRC ]; then
+  # shellcheck disable=SC1090
   source $HOST_SPECIFIC_BASHRC
 fi
 
-. $HOME/dotfiles/bin/z.sh
+# shellcheck disable=SC1090
+. "$HOME/dotfiles/bin/z.sh"
 
 set -o vi
 
 export NVM_DIR="/Users/andreas/.nvm"
+# shellcheck disable=SC1090
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# shellcheck disable=SC1090
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$PATH"
