@@ -43,3 +43,5 @@
 	path = ~/dotfiles/local/dots/gitconfig
 [diff]
 	algorithm = patience
+[rerere]
+	enabled = true
