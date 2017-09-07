@@ -89,6 +89,8 @@ if &term =~ "dtterm"
   set t_Co=256
 elseif &term =~ "xterm-256color"
   set t_Co=256
+elseif &term =~ "screen-256color"
+  set t_Co=256
 elseif  &term =~ "rxvt-unicode"
   set t_Co=88
 "2010-04-03: The following two lines don't help on Linux - my term is
