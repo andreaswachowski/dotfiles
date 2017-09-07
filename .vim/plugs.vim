@@ -101,7 +101,7 @@ if (s:development=="true")
   Plug 'cpcsdk/vim-z80-democoding'
 
   Plug 'vim-scripts/ingo-library'
-  Plug 'vim-scripts/IndentConsistencyCop' | Plug 'vim-scripts/IndentConsistencyCopAutoCmds'
+  " Plug 'vim-scripts/IndentConsistencyCop' | Plug 'vim-scripts/IndentConsistencyCopAutoCmds'
 endif
 
 call plug#end()
