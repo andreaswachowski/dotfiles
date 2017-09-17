@@ -99,10 +99,7 @@ link $DOTFILES/.vim ~/.vim
 vim +PlugInstall
 # YouCompleteMe is not necessarily configured for all machines on which
 # this script runs
-if [ -d $VIM_PLUGIN_DIR/YouCompleteMe ]; then
-  cd $VIM_PLUGIN_DIR/YouCompleteMe
-  ./install.sh --clang-completer
-fi
+cd $VIM_PLUGIN_DIR/YouCompleteMe && ./install.py --clang-completer
 
 # Rationale for the following patch: See comment "Problems deleting unsaved
 # buffer" at http://vim.wikia.com/wiki/Script:356
