@@ -1,2 +1,3 @@
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
-prefix=${HOME}/.npm-packages
+# Disable prefix so nvm works
+# prefix=${HOME}/.npm-packages
