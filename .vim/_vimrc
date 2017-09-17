@@ -179,7 +179,49 @@ if s:agprg != ""
   " The silver searcher and a global .agignore file are used to keep ctrl-p fast.
   " See http://earthwithsun.com/questions/649714/can-i-get-the-vim-ctrlp-plugin-to-ignore-a-specific-folder-in-one-project
   let g:ctrlp_user_command = 'ag %s --ignore node_modules --ignore tmp --ignore coverage --ignore .git --ignore .hg --ignore .svn -l --nocolor --hidden -g ""'
+  let g:ctrlp_mruf_case_sensitive = 1
   let g:ctrlp_switch_buffer = 'Et'
+
+  " https://blog.mikecordell.com/2015/01/27/better-fuzzy-search-with-ctrl-p-in-vim.html
+  " let g:ctrlp_abbrev = {
+  "       \ 'gmode': 't',
+  "       \ 'abbrevs': [
+  "       \ {
+  "       \ 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ',
+  "       \ 'expanded': '_',
+  "       \ 'mode': 'pfrz',
+  "       \ },
+  "       \ ]
+  "       \ }
+
+	let g:path_to_matcher = "/usr/local/bin/matcher"
+
+	let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files . -co --exclude-standard']
+
+	let g:ctrlp_match_func = { 'match': 'GoodMatch' }
+
+	function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
+
+		" Create a cache file if not yet exists
+		let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
+		if !( filereadable(cachefile) && a:items == readfile(cachefile) )
+			call writefile(a:items, cachefile)
+		endif
+		if !filereadable(cachefile)
+			return []
+		endif
+
+		" a:mmode is currently ignored. In the future, we should probably do
+		" something about that. the matcher behaves like "full-line".
+		let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
+		if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
+			let cmd = cmd.'--no-dotfiles '
+		endif
+		let cmd = cmd.a:str
+
+		return split(system(cmd), "\n")
+
+	endfunction
 endif
 
 let g:ctrlp_open_new_file = 't'
