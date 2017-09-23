@@ -16,6 +16,7 @@ fi
 
 alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
+alias dc="docker-compose"
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
 
 # Prompt initialization
