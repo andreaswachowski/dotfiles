@@ -35,7 +35,6 @@ Plug 'mbbill/undotree'
 Plug 'suan/vim-instant-markdown'
 
 if (s:development=="true")
-  Plug 'skalnik/vim-vroom'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'majutsushi/tagbar'
