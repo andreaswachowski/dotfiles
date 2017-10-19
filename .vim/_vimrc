@@ -173,9 +173,9 @@ let g:tskelMapGoToNextTag = ""
 " See https://github.com/tpope/vim-markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
 
-silent let s:agprg = system('which ag')
+silent let s:agprg = system('which rg')
 if s:agprg != ""
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'rg --vimgrep'
 endif
 
 set wildignore+=*.jpg,*.png
