@@ -85,12 +85,7 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 au BufReadPost quickfix  set nowrap
 
 " -- Color Settings -------------------------------------------------------
-if &term =~ "dtterm"
-  set t_Co=256
-elseif &term =~ "xterm-256color"
-  set t_Co=256
-elseif &term =~ "screen-256color"
-  set t_Co=256
+if &term =~ "xterm-256color" || &term =~ "screen-256color" || &term =~ "dtterm"
 elseif  &term =~ "rxvt-unicode"
   set t_Co=88
 "2010-04-03: The following two lines don't help on Linux - my term is
