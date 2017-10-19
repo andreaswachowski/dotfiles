@@ -31,6 +31,7 @@ Plug 'davidoc/taskpaper.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'benmills/vimux'
+Plug 'mbbill/undotree'
 
 Plug 'suan/vim-instant-markdown'
 
