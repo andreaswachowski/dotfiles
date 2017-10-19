@@ -50,6 +50,8 @@ if (s:development=="true")
 
   Plug 'elzr/vim-json'
 
+  Plug 'docunext/closetag.vim'
+
   " Ruby etc.
   Plug 'tpope/vim-rvm'
   Plug 'vim-ruby/vim-ruby'
