@@ -160,6 +160,10 @@ nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 nmap <c-p> :GFiles<Enter>
+" Mappings from https://statico.github.io/vim3.html
+nmap ; :Buffers<CR>
+" nmap <Leader>t :Files<CR>
+" nmap <Leader>r :Tags<CR>
 
 " -- Plugin-specific pre-load settings ------------------------------------
 "  (Have to be defined before the plugin is loaded)
