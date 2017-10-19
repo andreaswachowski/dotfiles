@@ -155,10 +155,6 @@ nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 nmap <c-p> :GFiles<Enter>
-" Mappings from https://statico.github.io/vim3.html
-nmap ; :Buffers<CR>
-" nmap <Leader>t :Files<CR>
-" nmap <Leader>r :Tags<CR>
 
 " -- Plugin-specific pre-load settings ------------------------------------
 "  (Have to be defined before the plugin is loaded)
@@ -219,11 +215,6 @@ let g:jsx_ext_required = 0
 
 nmap <silent> <leader>D <Plug>DashSearch
 
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 " -------------------------------------------------------------------------
 " Store temporary files in a central spot to ease
 " clean-up after machine crashes
