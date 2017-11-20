@@ -215,6 +215,9 @@ let g:jsx_ext_required = 0
 
 nmap <silent> <leader>D <Plug>DashSearch
 
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#trailing_comma = 'none'
+
 " -------------------------------------------------------------------------
 " Store temporary files in a central spot to ease
 " clean-up after machine crashes

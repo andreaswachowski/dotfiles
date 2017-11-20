@@ -51,6 +51,10 @@ if (s:development=="true")
 
   Plug 'docunext/closetag.vim'
 
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+
   " Ruby etc.
   Plug 'tpope/vim-rvm'
   Plug 'vim-ruby/vim-ruby'
