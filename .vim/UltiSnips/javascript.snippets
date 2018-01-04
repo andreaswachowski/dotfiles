@@ -10,7 +10,8 @@ import React, { Component } from 'react'${0}
 endsnippet
 
 snippet ri3 "Import React and Proptypes"
-import React, { PropTypes } from 'react'${0}
+import React from 'react'${0}
+import PropTypes from 'prop-types'
 endsnippet
 
 snippet rcla "React class with render"
@@ -81,7 +82,8 @@ def react_classname(filename):
 endglobal
 
 snippet rnccf "React Native Stateless Component"
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet, Text } from 'react-native';
 
 ${1:`!p snip.rv = react_classname(fn)`}.propTypes = {
@@ -104,7 +106,8 @@ const styles = StyleSheet.create({
 endsnippet
 
 snippet rnccs "React Native Stateful Component"
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 
 export default class ${1:`!p snip.rv = react_classname(fn)`} extends Component {
@@ -167,7 +170,8 @@ export default $1;
 endsnippet
 
 snippet rccf "React Stateless Functional Component"
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function ${1:`!p snip.rv = react_classname(fn)`}(props) {
 	return (
