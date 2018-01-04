@@ -264,7 +264,8 @@ endfunc
 
 " Remove trailing spaces
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre javascript,c,cpp,java,html,ruby,text,taskpaper,slim,css,scss :%s/\s\+$//e
+
 
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
