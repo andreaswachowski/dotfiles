@@ -1,10 +1,10 @@
 " Align: tool to align multiple fields based on one or more separators
 "   Author:		Charles E. Campbell
-"   Date:		Mar 12, 2013
-"   Version:	37
+"   Date:		Oct 21, 2016
+"   Version:	40a	ASTRO-ONLY
 " GetLatestVimScripts: 294 1 :AutoInstall: Align.vim
 " GetLatestVimScripts: 1066 1 :AutoInstall: cecutil.vim
-" Copyright:    Copyright (C) 1999-2012 Charles E. Campbell {{{1
+" Copyright:    Copyright (C) 1999-2013 Charles E. Campbell {{{1
 "               Permission is hereby granted to use and distribute this code,
 "               with or without modifications, provided that this copyright
 "               notice is copied with it. Like anything else that's free,
@@ -25,7 +25,7 @@
 if exists("g:loaded_Align") || &cp
  finish
 endif
-let g:loaded_Align = "v37"
+let g:loaded_Align = "v40a"
 if v:version < 700
  echohl WarningMsg
  echo "***warning*** this version of Align needs vim 7.0"
@@ -41,7 +41,7 @@ set cpo&vim
 "if !exists("g:loaded_Decho") | runtime plugin/Decho.vim | endif
 
 " ---------------------------------------------------------------------
-" Options: {{{1
+" Alignment Options: {{{1
 if !exists("g:Align_xstrlen")
  if exists("g:drawit_xstrlen")
   let g:Align_xstrlen= g:drawit_xstrlen
@@ -92,7 +92,7 @@ fun! Align#AlignCtrl(...)
 "  call Dfunc("Align#AlignCtrl(...) a:0=".a:0)
 
   " save options that may be changed later
-  call s:SaveUserOptions()
+  call s:SaveUserSettings()
 
   " turn ignorecase off
   setlocal noic
@@ -126,7 +126,7 @@ fun! Align#AlignCtrl(...)
     while ipat <= A[0]
      if "" =~ A[ipat]
       echoerr "(AlignCtrl) separator<".A[ipat]."> matches zero-length string"
-	  call s:RestoreUserOptions()
+	  call s:RestoreUserSettings()
 "	  call Dret("Align#AlignCtrl")
       return
      endif
@@ -195,7 +195,7 @@ fun! Align#AlignCtrl(...)
 	 call Align#AlignCtrl("g")
 	 call Align#AlignCtrl("v")
 	 let s:dovisclear = 1
-	 call s:RestoreUserOptions()
+	 call s:RestoreUserSettings()
 "	 call Dret("Align#AlignCtrl")
 	 return
    endif
@@ -244,7 +244,7 @@ fun! Align#AlignCtrl(...)
 "	call Decho("style case p".s:AlignPrePad.": pre-separator padding")
     if s:AlignPrePad == ""
      echoerr "(AlignCtrl) 'p' needs to be followed by a numeric argument'"
-	 call s:RestoreUserOptions()
+	 call s:RestoreUserSettings()
 "	 call Dret("Align#AlignCtrl")
      return
 	endif
@@ -255,7 +255,7 @@ fun! Align#AlignCtrl(...)
 "	call Decho("style case P".s:AlignPostPad.": post-separator padding")
     if s:AlignPostPad == ""
      echoerr "(AlignCtrl) 'P' needs to be followed by a numeric argument'"
-	 call s:RestoreUserOptions()
+	 call s:RestoreUserSettings()
 "	 call Dret("Align#AlignCtrl")
      return
 	endif
@@ -319,7 +319,7 @@ fun! Align#AlignCtrl(...)
   endif
 
   " restore options and return
-  call s:RestoreUserOptions()
+  call s:RestoreUserSettings()
 "  call Dret("Align#AlignCtrl ".s:AlignCtrl.'p'.s:AlignPrePad.'P'.s:AlignPostPad.s:AlignLeadKeep.s:AlignStyle)
   return s:AlignCtrl.'p'.s:AlignPrePad.'P'.s:AlignPostPad.s:AlignLeadKeep.s:AlignStyle
 endfun
@@ -356,7 +356,7 @@ fun! Align#Align(hasctrl,...) range
   endif
 
   " save user options
-  call s:SaveUserOptions()
+  call s:SaveUserSettings()
 
   " set up a list akin to an argument list
   if a:0 > 0
@@ -388,7 +388,7 @@ fun! Align#Align(hasctrl,...) range
   while ipat <= A[0]
    if "" =~ A[ipat]
 	echoerr "(Align) separator<".A[ipat]."> matches zero-length string"
-	call s:RestoreUserOptions()
+	call s:RestoreUserSettings()
 "    call Dret("Align#Align")
 	return
    endif
@@ -457,7 +457,7 @@ fun! Align#Align(hasctrl,...) range
 "   call Decho("case begline == endline")
    if !exists("s:AlignPat_{1}")
 	echohl Error|echo "(Align) no separators specified!"|echohl None
-	call s:RestoreUserOptions()
+	call s:RestoreUserSettings()
 "    call Dret("Align#Align")
     return
    endif
@@ -492,8 +492,8 @@ fun! Align#Align(hasctrl,...) range
   endif
 
   " Align needs these options
-  setl et
   set  paste
+  setl et
 
   " convert selected range of lines to use spaces instead of tabs
   " but if first line's initial white spaces are to be retained
@@ -594,7 +594,7 @@ fun! Align#Align(hasctrl,...) range
 "    call Decho("Pass".pass.": endtxt<".endtxt.">")
 	if !exists("s:AlignPat_{1}")
 	 echohl Error|echo "(Align) no separators specified!"|echohl None
-	 call s:RestoreUserOptions()
+	 call s:RestoreUserSettings()
 "     call Dret("Align#Align")
 	 return
 	endif
@@ -830,7 +830,7 @@ fun! Align#Align(hasctrl,...) range
   endif
 
   " restore user options and return
-  call s:RestoreUserOptions()
+  call s:RestoreUserSettings()
 "  call Dret("Align#Align")
   return
 endfun
@@ -1037,29 +1037,30 @@ fun! s:QArgSplitter(qarg)
 endfun
 
 " ---------------------------------------------------------------------
-" s:Strlen: this function returns the length of a string, even if its {{{1
-"           using two-byte etc characters.
-"           Currently, its only used if g:Align_xstrlen is set to a
-"           nonzero value.  Solution from Nicolai Weibull, vim docs
-"           (:help strlen()), Tony Mechelynck, and my own invention.
+" s:Strlen: this function returns the length of a string, even if its using multi-byte characters. {{{1
+"           Solution from Nicolai Weibull, vim docs (:help strlen()),
+"           Tony Mechelynck, and my own invention.
 fun! s:Strlen(x)
 "  call Dfunc("s:Strlen(x<".a:x."> g:Align_xstrlen=".g:Align_xstrlen)
 
-  if type(g:Align_xstrlen) == 1
-   " allow user to specify a function to compute the string length
+  if v:version >= 703 && exists("*strdisplaywidth")
+   let ret= strdisplaywidth(a:x)
+ 
+  elseif type(g:Align_xstrlen) == 1
+   " allow user to specify a function to compute the string length  (ie. let g:Align_xstrlen="mystrlenfunc")
    exe "let ret= ".g:Align_xstrlen."('".substitute(a:x,"'","''","g")."')"
-
+ 
   elseif g:Align_xstrlen == 1
    " number of codepoints (Latin a + combining circumflex is two codepoints)
    " (comment from TM, solution from NW)
    let ret= strlen(substitute(a:x,'.','c','g'))
-
+ 
   elseif g:Align_xstrlen == 2
    " number of spacing codepoints (Latin a + combining circumflex is one spacing
    " codepoint; a hard tab is one; wide and narrow CJK are one each; etc.)
    " (comment from TM, solution from TM)
    let ret=strlen(substitute(a:x, '.\Z', 'x', 'g'))
-
+ 
   elseif g:Align_xstrlen == 3
    " virtual length (counting, for instance, tabs as anything between 1 and
    " 'tabstop', wide CJK as 2 rather than 1, Arabic alif as zero when immediately
@@ -1072,59 +1073,54 @@ fun! s:Strlen(x)
    d
    keepj norm! k
    let &l:mod= modkeep
-
+ 
   else
    " at least give a decent default
-   if v:version >= 703
-	let ret= strdisplaywidth(a:x)
-   else
     let ret= strlen(a:x)
-   endif
   endif
 "  call Dret("s:Strlen ".ret)
   return ret
 endfun
 
 " ---------------------------------------------------------------------
-" s:SaveUserOptions: {{{1
-fun! s:SaveUserOptions()
-"  call Dfunc("s:SaveUserOptions() s:saved_user_options=".(exists("s:saved_user_options")? s:saved_user_options : 'n/a'))
-  if !exists("s:saved_user_options")
+" s:SaveUserSettings: {{{1
+fun! s:SaveUserSettings()
+"  call Dfunc("s:SaveUserSettings() s:saved_user_options=".(exists("s:saved_user_options")? s:saved_user_options : 'n/a'))
+  if !exists("s:saved_user_options") || s:saved_user_options <= 0
    let s:saved_user_options = 1
-   let s:keep_search        = @/
+   let s:keep_cedit         = &cedit
    let s:keep_et            = &l:et
    let s:keep_hls           = &hls
    let s:keep_ic            = &ic
    let s:keep_paste         = &paste
    let s:keep_report        = &report
+   let s:keep_search        = @/
   else
    let s:saved_user_options = s:saved_user_options + 1
   endif
-"  call Dret("s:SaveUserOptions : s:saved_user_options=".s:saved_user_options)
+"  call Dret("s:SaveUserSettings : s:saved_user_options=".s:saved_user_options)
 endfun
 
 " ---------------------------------------------------------------------
-" s:RestoreUserOptions: {{{1
-fun! s:RestoreUserOptions()
-"  call Dfunc("s:RestoreUserOptions() s:saved_user_options=".(exists("s:saved_user_options")? s:saved_user_options : 'n/a'))
+" s:RestoreUserSettings: {{{1
+"   Note that paste saves and restores a select set of settings internally to vim,
+"   hence its user setting is restored first so other user settings will be restored
+"   correctly.
+fun! s:RestoreUserSettings()
+"  call Dfunc("s:RestoreUserSettings() s:saved_user_options=".(exists("s:saved_user_options")? s:saved_user_options : 'n/a'))
   if exists("s:saved_user_options") && s:saved_user_options == 1
-   let @/       = s:keep_search
-   let &l:et    = s:keep_et
-   let &hls     = s:keep_hls
-   let &ic      = s:keep_ic
-   let &paste   = s:keep_paste
-   let &report  = s:keep_report
-   unlet s:keep_search
-   unlet s:keep_et
-   unlet s:keep_hls
-   unlet s:keep_ic
-   unlet s:keep_paste
-   unlet s:keep_report
-   unlet s:saved_user_options
-  elseif exists("s:saved_user_options")
+   let &paste   = s:keep_paste |unlet s:keep_paste
+   let &cedit   = s:keep_cedit |unlet s:keep_cedit
+   let &l:et    = s:keep_et    |unlet s:keep_et
+   let &hls     = s:keep_hls   |unlet s:keep_hls
+   let &ic      = s:keep_ic    |unlet s:keep_ic
+   let &report  = s:keep_report|unlet s:keep_report
+   let @/       = s:keep_search|unlet s:keep_search
+  endif
+  if exists("s:saved_user_options") && s:saved_user_options > 0
    let s:saved_user_options= s:saved_user_options - 1
   endif
-"  call Dret("s:RestoreUserOptions : s:saved_user_options=".(exists("s:saved_user_options")? s:saved_user_options : 'n/a'))
+"  call Dret("s:RestoreUserSettings : s:saved_user_options=".(exists("s:saved_user_options")? s:saved_user_options : 'n/a'))
 endfun
 
 " ---------------------------------------------------------------------

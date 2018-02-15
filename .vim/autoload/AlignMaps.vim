@@ -1,7 +1,7 @@
 " AlignMaps.vim : support functions for AlignMaps
 "   Author: Charles E. Campbell
-"     Date: Mar 12, 2013
-"  Version: 43
+"     Date: Oct 24, 2016
+"  Version: 46d	ASTRO-ONLY
 " Copyright:    Copyright (C) 1999-2012 Charles E. Campbell {{{1
 "               Permission is hereby granted to use and distribute this code,
 "               with or without modifications, provided that this copyright
@@ -16,10 +16,20 @@
 if &cp || exists("g:loaded_AlignMaps")
  finish
 endif
-let g:loaded_AlignMaps= "v43"
+let g:loaded_AlignMaps= "v46d"
 let s:keepcpo         = &cpo
 set cpo&vim
+
+" ---------------------------------------------------------------------
+" Debugging Support:
+"if !exists("g:loaded_Decho")              " Decho
+" runtime plugin/Decho.vim                 " Decho
+"endif                                     " Decho
+"if !exists("g:loaded_cecutil")            " Decho
+" runtime AsNeeded/cecutil.vim             " Decho
+"endif                                     " Decho
 "DechoTabOn
+"call Decho("AlignMaps loaded")
 
 " =====================================================================
 " Functions: {{{1
@@ -44,6 +54,11 @@ fun! AlignMaps#WrapperStart(vis) range
    let s:alignmaps_posn       = SaveWinPosn(0)
    " set up fencepost blank lines
    put =''
+   if line("'a") == 0
+	echoerr "Need to set mark-a or use visual-line mode (V)"
+"  call Dret("AlignMaps#WrapperStart : alignmaps_wrapcnt=".s:alignmaps_wrapcnt." my=".line("'y")." mz=".line("'z"))
+	return
+   endif
    keepj norm! mz'a
    put! =''
    ky
@@ -87,11 +102,13 @@ fun! AlignMaps#WrapperEnd() range
    keepj norm! 'yjmakdd'zdd
 
    " restore original 'y, 'z, and window positioning
-   call RestoreMark(s:alignmaps_keepmy)
-   call RestoreMark(s:alignmaps_keepmz)
-   if zstationary > 0
-    call RestoreWinPosn(s:alignmaps_posn)
-"    call Decho("restored window positioning")
+   if exists("s:alignmaps_posn")
+	call RestoreMark(s:alignmaps_keepmy)
+	call RestoreMark(s:alignmaps_keepmz)
+	if zstationary > 0
+	 call RestoreWinPosn(s:alignmaps_posn)
+ "    call Decho("restored window positioning")
+	endif
    endif
 
    " restoration of options
@@ -112,38 +129,29 @@ fun! AlignMaps#WrapperEnd() range
 endfun
 
 " ---------------------------------------------------------------------
-" AlignMaps#MakeMap: make both a normal-mode and a visual mode map for mapname {{{2
-fun! AlignMaps#MakeMap(mapname)
-  if exists("g:maplocalleader")
-   let maplead= g:maplocalleader
-  elseif exists("g:mapleader")
-   let maplead= g:mapleader
-  else
-   let maplead= '\'
-  endif
-  exe "nmap <unique> ".maplead.a:mapname."	<Plug>AM_".a:mapname
-  exe "vmap <silent> ".maplead.a:mapname.'	:call AlignMaps#Vis("'.a:mapname.'")'."<cr>"
-endfun
-
-" ---------------------------------------------------------------------
 " AlignMaps#StdAlign: some semi-standard align calls {{{2
-fun! AlignMaps#StdAlign(mode) range
+fun! AlignMaps#StdAlign(mode,...) range
 "  call Dfunc("AlignMaps#StdAlign(mode=".a:mode.")")
+  if a:0 == 2
+   let alignchar= a:1
+  else
+   let alignchar= '@'
+  endif
   if     a:mode == 1
    " align on @
 "   call Decho("align on @")
-   AlignCtrl mIp1P1=l @
+   exe "AlignCtrl mIp1P1=l ".alignchar
    'a,.Align
   elseif a:mode == 2
    " align on @, retaining all initial white space on each line
 "   call Decho("align on @, retaining all initial white space on each line")
-   AlignCtrl mWp1P1=l @
+   exe "AlignCtrl mWp1P1=l ".alignchar
    'a,.Align
   elseif a:mode == 3
    " like mode 2, but ignore /* */-style comments
 "   call Decho("like mode 2, but ignore /* */-style comments")
    AlignCtrl v ^\s*/[/*]
-   AlignCtrl mWp1P1=l @
+   exe "AlignCtrl mWp1P1=l ".alignchar
    'a,.Align
   else
    echoerr "(AlignMaps) AlignMaps#StdAlign doesn't support mode#".a:mode
@@ -371,24 +379,27 @@ endfun
 
 " ---------------------------------------------------------------------
 " AlignMaps#Vis: interfaces with visual maps {{{2
-fun! AlignMaps#Vis(plugmap) range
-"  call Dfunc("AlignMaps#VisCall(plugmap<".a:plugmap.">) ".a:firstline.",".a:lastline)
+fun! AlignMaps#Vis(nmapname) range
+"  call Dfunc("AlignMaps#VisCall(nmapname<".a:nmapname.">) ".a:firstline.",".a:lastline)
 
   let amark= SaveMark("a")
   exe a:firstline
   ka
   exe a:lastline
 
-  if exists("g:maplocalleader")
-   let maplead= g:maplocalleader
-  elseif exists("g:mapleader")
-   let maplead= g:mapleader
-  else
-   let maplead= '\'
+  if !exists("s:mapleader")
+   if exists("g:maplocalleader")
+    let maplead= g:maplocalleader
+   elseif exists("g:mapleader")
+    let maplead= g:mapleader
+   else
+    let maplead= '\'
+   endif
+   let s:mapleader= maplead
   endif
 
-"  call Decho("exe norm ".maplead.a:plugmap)
-  exe " norm ".maplead.a:plugmap
+"  call Decho("exe norm ".maplead.a:nmapname)
+  exe " norm ".s:mapleader.a:nmapname
 
   call RestoreMark(amark)
 "  call Dret("AlignMaps#VisCall")

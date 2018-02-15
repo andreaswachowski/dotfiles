@@ -1,9 +1,9 @@
 " AlignMapsPlugin:   Alignment maps based upon <Align.vim> and <AlignMaps.vim>
-" Maintainer:        Dr. Charles E. Campbell. <NdrOchipS@PcampbellAfamily.Mbiz>
-" Date:              Jan 07, 2013
+" Maintainer:        Charles E. Campbell. <NdrOchipS@PcampbellAfamily.Mbiz>
+" Date:              Jan 11, 2016
 "
 " NOTE: the code herein needs vim 7.0 or later
-" Copyright:    Copyright (C) 1999-2012 Charles E. Campbell {{{1
+" Copyright:    Copyright (C) 1999-2013 Charles E. Campbell {{{1
 "               Permission is hereby granted to use and distribute this code,
 "               with or without modifications, provided that this copyright
 "               notice is copied with it. Like anything else that's free,
@@ -37,12 +37,13 @@ if &cp || exists("g:loaded_AlignMapsPlugin")
  finish
 endif
 let s:keepcpo                = &cpo
-let g:loaded_AlignMapsPlugin = "v43"
+let g:loaded_AlignMapsPlugin = "v46d"
 set cpo&vim
 
 " =====================================================================
 "  Public Interface: {{{1
-com! AlignMapsClean	:call AlignMaps#AlignMapsClean()
+com!				AlignMapsClean		call AlignMaps#AlignMapsClean()
+com! -bar -nargs=+	AlignMapsMake		call s:MakeMap(<f-args>)
 
 " =====================================================================
 "  Maps: {{{1
@@ -65,30 +66,50 @@ endif
 nnoremap <silent> <script> <Plug>AlignMapsWrapperEnd	:call AlignMaps#WrapperEnd()<CR>:set nolz<CR>
 
 " ---------------------------------------------------------------------
+" s:MakeMap: make both a normal-mode and a visual mode map for mapname {{{2
+fun! s:MakeMap(mapname,...)
+
+  if !exists("s:mapleader")
+   if exists("g:maplocalleader")
+    let maplead= g:maplocalleader
+   elseif exists("g:mapleader")
+    let maplead= g:mapleader
+   else
+    let maplead= '\'
+   endif
+   let s:mapleader= maplead
+  endif
+
+  " allow users to set up their own mapnames
+  let mapname= (a:0)? a:1 : a:mapname
+  exe "nmap <unique> ".s:mapleader.mapname."	<Plug>AM_".a:mapname
+  exe "xmap <silent> ".s:mapleader.mapname.'	:call AlignMaps#Vis("'.mapname.'")'."<cr>"
+endfun
+
+" ---------------------------------------------------------------------
 " Complex C-code alignment maps: {{{2
-if !hasmapto('<Plug>AM_a?')   |call AlignMaps#MakeMap("a?")|endif
-if !hasmapto('<Plug>AM_a,')   |call AlignMaps#MakeMap("a,")|endif
-if !hasmapto('<Plug>AM_a<')   |call AlignMaps#MakeMap("a<")|endif
-if !hasmapto('<Plug>AM_a=')   |call AlignMaps#MakeMap("a=")|endif
-if !hasmapto('<Plug>AM_a(')   |call AlignMaps#MakeMap("a(")|endif
-if !hasmapto('<Plug>AM_abox') |call AlignMaps#MakeMap("abox")|endif
-if !hasmapto('<Plug>AM_acom') |call AlignMaps#MakeMap("acom")|endif
-if !hasmapto('<Plug>AM_adcom')|call AlignMaps#MakeMap("adcom")|endif
-if !hasmapto('<Plug>AM_aocom')|call AlignMaps#MakeMap("aocom")|endif
-if !hasmapto('<Plug>AM_ascom')|call AlignMaps#MakeMap("ascom")|endif
-if !hasmapto('<Plug>AM_adec') |call AlignMaps#MakeMap("adec")|endif
-if !hasmapto('<Plug>AM_adef') |call AlignMaps#MakeMap("adef")|endif
-if !hasmapto('<Plug>AM_afnc') |call AlignMaps#MakeMap("afnc")|endif
-if !hasmapto('<Plug>AM_afnc') |call AlignMaps#MakeMap("afnc")|endif
+if !hasmapto('<Plug>AM_a?')   |AlignMapsMake a?|endif
+if !hasmapto('<Plug>AM_a,')   |AlignMapsMake a,|endif
+if !hasmapto('<Plug>AM_a<')   |AlignMapsMake a<|endif
+if !hasmapto('<Plug>AM_a=')   |AlignMapsMake a=|endif
+if !hasmapto('<Plug>AM_a(')   |AlignMapsMake a(|endif    ")
+if !hasmapto('<Plug>AM_abox') |AlignMapsMake abox|endif
+if !hasmapto('<Plug>AM_acom') |AlignMapsMake acom|endif
+if !hasmapto('<Plug>AM_adcom')|AlignMapsMake adcom|endif
+if !hasmapto('<Plug>AM_aocom')|AlignMapsMake aocom|endif
+if !hasmapto('<Plug>AM_ascom')|AlignMapsMake ascom|endif
+if !hasmapto('<Plug>AM_adec') |AlignMapsMake adec|endif
+if !hasmapto('<Plug>AM_adef') |AlignMapsMake adef|endif
+if !hasmapto('<Plug>AM_afnc') |AlignMapsMake afnc|endif
 
 " ---------------------------------------------------------------------
 " Number alignment maps: {{{2
-if !hasmapto('<Plug>AM_aunum')|call AlignMaps#MakeMap("aunum")|endif
-if !hasmapto('<Plug>AM_aenum')|call AlignMaps#MakeMap("aenum")|endif
-if exists("g:alignmaps_euronumber") && !exists("g:alignmaps_usanumber")
- if !hasmapto('<Plug>AM_anum')|call AlignMaps#MakeMap("anum")|endif
+if !hasmapto('<Plug>AM_aunum')|call s:MakeMap("aunum")|endif
+if !hasmapto('<Plug>AM_aenum')|call s:MakeMap("aenum")|endif
+if (exists("g:alignmaps_euronumber") || exists("g:alignmaps_euronumber1000")) && !exists("g:alignmaps_usanumber") && !exists("g:alignmaps_usanumber1000")
+ if !hasmapto('<Plug>AM_anum')|call s:MakeMap("aenum","anum")|endif
 else
- if !hasmapto('<Plug>AM_anum')|call AlignMaps#MakeMap("anum")|endif
+ if !hasmapto('<Plug>AM_anum')|call s:MakeMap("aunum","anum")|endif
 endif
 
 " ---------------------------------------------------------------------
@@ -97,7 +118,7 @@ nnoremap <silent> <script> <Plug>AM_a?		<SID>WS:AlignCtrl mIp1P1lC ? : : : : <CR
 nnoremap <silent> <script> <Plug>AM_a,		<SID>WS:'y,'zs/\(\S\)\s\+/\1 /ge<CR>'yjma'zk:call AlignMaps#CharJoiner(",")<cr>:silent 'y,'zg/,/call AlignMaps#FixMultiDec()<CR>'z:exe "norm \<Plug>AM_adec"<cr><SID>WE
 nnoremap <silent> <script> <Plug>AM_a<		<SID>WS:AlignCtrl mIp1P1=l << >><CR>:'a,.Align<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_a(      <SID>WS:AlignCtrl mIp0P1=l<CR>:'a,.Align [(,]<CR>:sil 'y+1,'z-1s/\(\s\+\),/,\1/ge<CR><SID>WE
-nnoremap <silent> <script> <Plug>AM_a=		<SID>WS:AlignCtrl mIp1P1=l<CR>:AlignCtrl g :=<CR>:'a,'zAlign :\==<CR><SID>WE
+nnoremap <silent> <script> <Plug>AM_a=		<SID>WS:AlignCtrl mIp1P1=l<CR>:AlignCtrl g :=<CR>:'a,'zAlign :=<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_abox	<SID>WS:let g:alignmaps_iws=substitute(getline("'a"),'^\(\s*\).*$','\1','e')<CR>:'a,'z-1s/^\s\+//e<CR>:'a,'z-1s/^.*$/@&@/<CR>:AlignCtrl m=p01P0w @<CR>:'a,.Align<CR>:'a,'z-1s/@/ * /<CR>:'a,'z-1s/@$/*/<CR>'aYP:s/./*/g<CR>0r/'zkYp:s/./*/g<CR>0r A/<Esc>:exe "'a-1,'z-1s/^/".g:alignmaps_iws."/e"<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_acom	<SID>WS:'a,.s/\/[*/]\/\=/@&@/e<CR>:'a,.s/\*\//@&/e<CR>:'y,'zs/^\( *\) @/\1@/e<CR>'zk:call AlignMaps#StdAlign(2)<CR>:'y,'zs/^\(\s*\) @/\1/e<CR>:'y,'zs/ @//eg<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_adcom	<SID>WS:'a,.v/^\s*\/[/*]/s/\/[*/]\*\=/@&@/e<CR>:'a,.v/^\s*\/[/*]/s/\*\//@&/e<CR>:'y,'zv/^\s*\/[/*]/s/^\( *\) @/\1@/e<CR>'zk:call AlignMaps#StdAlign(3)<cr>:'y,'zv/^\s*\/[/*]/s/^\(\s*\) @/\1/e<CR>:'y,'zs/ @//eg<CR><SID>WE
@@ -106,8 +127,16 @@ nnoremap <silent> <script> <Plug>AM_ascom	<SID>WS:'a,.s/\/[*/]/@&@/e<CR>:'a,.s/\
 nnoremap <silent> <script> <Plug>AM_adec	<SID>WS:'a,'zs/\([^ \t/(]\)\([*&]\)/\1 \2/e<CR>:'y,'zv/^\//s/\([^ \t]\)\s\+/\1 /ge<CR>:'y,'zv/^\s*[*/]/s/\([^/][*&]\)\s\+/\1/ge<CR>:'y,'zv/^\s*[*/]/s/^\(\s*\%([a-zA-Z_][a-zA-Z_0-9<>:]*\s\+\%([a-zA-Z_*(&]\)\@=\)\+\)\([*(&]*\)\s*\([a-zA-Z0-9_()<>:]\+\)\s*\(\(\[.\{-}]\)*\)\s*\(=\)\=\s*\(.\{-}\)\=\s*;/\1@\2#@\3\4@\6@\7;@/e<CR>:'y,'zv/^\s*[*/]/s/\*\/\s*$/@*\//e<CR>:'y,'zv/^\s*[*/]/s/^\s\+\*/@@@@@* /e<CR>:'y,'zv/^\s*[*/]/s/^@@@@@\*\(.*[^*/]\)$/&@*/e<CR>'yjma'zk:AlignCtrl v ^\s*[*/#]<CR>:call AlignMaps#StdAlign(1)<cr>:'y,'zv/^\s*[*/]/s/@ //ge<CR>:'y,'zv/^\s*[*/]/s/\(\s*\);/;\1/e<CR>:'y,'zv/^#/s/# //e<CR>:'y,'zv/^\s\+[*/#]/s/\([^/*]\)\(\*\+\)\( \+\)/\1\3\2/e<CR>:'y,'zv/^\s\+[*/#]/s/\((\+\)\( \+\)\*/\2\1*/e<CR>:'y,'zv/^\s\+[*/#]/s/^\(\s\+\) \*/\1*/e<CR>:'y,'zv/^\s\+[*/#]/s/[ \t@]*$//e<CR>:'y,'zs/^[*]/ */e<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_adef	<SID>WS:AlignPush<CR>:AlignCtrl v ^\s*\(\/\*\<bar>\/\/\)<CR>:'a,.v/^\s*\(\/\*\<bar>\/\/\)/s/^\(\s*\)#\(\s\)*define\s*\(\I[a-zA-Z_0-9(),]*\)\s*\(.\{-}\)\($\<Bar>\/\*\)/#\1\2define @\3@\4@\5/e<CR>:'a,.v/^\s*\(\/\*\<bar>\/\/\)/s/\($\<Bar>\*\/\)/@&/e<CR>'zk:call AlignMaps#StdAlign(1)<cr>'yjma'zk:'a,.v/^\s*\(\/\*\<bar>\/\/\)/s/ @//g<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_afnc	:<c-u>set lz<CR>:silent call AlignMaps#Afnc()<CR>:set nolz<CR>
-nnoremap <silent> <script> <Plug>AM_aunum	<SID>WS:'a,'zs/\([-+]\=\d\+\)\([eE][-+]\d\+\)\=/\1#\2/ge<CR>:'a,'zs/\([.eE][-+]\=\d\+\)#/\1/ge<CR>:'a,'zs/#\././ge<CR>:'a,'zs/[-+]\=\%(\d\+\%([.#]\d*\)\=\<bar>[.#]\d\+\)\%([eE][-+]\=\d\+\)\=/@&@/ge<CR>:AlignCtrl Imp0P0r<CR>:'a,'zAlign [@#.]<CR>:'a,'zs/\([.#]\)\(\s\+\)\(\d*\%([eE][-+]\=\d\+\)\=\)@/\1\3\2@/ge<CR>:'a,'zs/@//<CR>:'a,'zs/[#@]/ /ge<CR><SID>WE
-nnoremap <silent> <script> <Plug>AM_aenum	<SID>WS:'a,'zs/\([-+]\=\d\+\)\([eE][-+]\d\+\)\=/\1#\2/ge<CR>:'a,'zs/\([,eE][-+]\=\d\+\)#/\1/ge<CR>:'a,'zs/#,/,/ge<CR>:'a,'zs/[-+]\=\%(\d\+\%([,#]\d*\)\=\<bar>[,#]\d\+\)\%([eE][-+]\=\d\+\)\=/@&@/ge<CR>:AlignCtrl Imp0P0r<CR>:'a,'zAlign [@#,]<CR>:'a,'zs/\([,#]\)\(\s\+\)\(\d*\%([eE][-+]\=\d\+\)\=\)@/\1\3\2@/ge<CR>:'a,'zs/@//<CR>:'a,'zs/[#@]/ /ge<CR><SID>WE
+if exists("g:alignmaps_usanumber1000") && g:alignmaps_usanumber1000
+ nnoremap <silent> <script> <Plug>AM_aunum	<SID>WS:'a,'zs/\([-+]\=[0-9,]\+\)\([eE][-+][0-9,]\+\)\=/\1#\2/ge<CR>:'a,'zs/\([.eE][-+]\=[0-9,]\+\)#/\1/ge<CR>:'a,'zs/#\././ge<CR>:'a,'zs/[-+]\=\%([0-9,]\+\%([.#][0-9,]*\)\=\<bar>[.#][0-9,]\+\)\%([eE][-+]\=[0-9,]\+\)\=/@&@/ge<CR>:AlignCtrl Imp0P0r<CR>:'a,'zAlign [@#.]<CR>:'a,'zs/\([.#]\)\(\s\+\)\([0-9,]*\%([eE][-+]\=[0-9,]\+\)\=\)@/\1\3\2@/ge<CR>:'a,'zs/@//<CR>:'a,'zs/[#@]/ /ge<CR><SID>WE
+else
+ nnoremap <silent> <script> <Plug>AM_aunum	<SID>WS:'a,'zs/\([-+]\=\d\+\)\([eE][-+]\d\+\)\=/\1#\2/ge<CR>:'a,'zs/\([.eE][-+]\=\d\+\)#/\1/ge<CR>:'a,'zs/#\././ge<CR>:'a,'zs/[-+]\=\%(\d\+\%([.#]\d*\)\=\<bar>[.#]\d\+\)\%([eE][-+]\=\d\+\)\=/@&@/ge<CR>:AlignCtrl Imp0P0r<CR>:'a,'zAlign [@#.]<CR>:'a,'zs/\([.#]\)\(\s\+\)\(\d*\%([eE][-+]\=\d\+\)\=\)@/\1\3\2@/ge<CR>:'a,'zs/@//<CR>:'a,'zs/[#@]/ /ge<CR><SID>WE
+endif
+if exists("g:alignmaps_euronumber1000") && g:alignmaps_euronumber1000
+ nnoremap <silent> <script> <Plug>AM_aenum	<SID>WS:'a,'zs/\([-+]\=[0-9.]\+\)\([eE][-+][0-9.]\+\)\=/\1#\2/ge<CR>:'a,'zs/\([,eE][-+]\=[0-9.]\+\)#/\1/ge<CR>:'a,'zs/#,/,/ge<CR>:'a,'zs/[-+]\=\%([0-9.]\+\%([,#][0-9.]*\)\=\<bar>[,#][0-9.]\+\)\%([eE][-+]\=[0-9.]\+\)\=/@&@/ge<CR>:AlignCtrl Imp0P0r<CR>:'a,'zAlign [@#,]<CR>:'a,'zs/\([,#]\)\(\s\+\)\([0-9.]*\%([eE][-+]\=[0-9.]\+\)\=\)@/\1\3\2@/ge<CR>:'a,'zs/@//<CR>:'a,'zs/[#@]/ /ge<CR><SID>WE
+else
+ nnoremap <silent> <script> <Plug>AM_aenum	<SID>WS:'a,'zs/\([-+]\=\d\+\)\([eE][-+]\d\+\)\=/\1#\2/ge<CR>:'a,'zs/\([,eE][-+]\=\d\+\)#/\1/ge<CR>:'a,'zs/#,/,/ge<CR>:'a,'zs/[-+]\=\%(\d\+\%([,#]\d*\)\=\<bar>[,#]\d\+\)\%([eE][-+]\=\d\+\)\=/@&@/ge<CR>:AlignCtrl Imp0P0r<CR>:'a,'zAlign [@#,]<CR>:'a,'zs/\([,#]\)\(\s\+\)\(\d*\%([eE][-+]\=\d\+\)\=\)@/\1\3\2@/ge<CR>:'a,'zs/@//<CR>:'a,'zs/[#@]/ /ge<CR><SID>WE
+endif
 " ---------------------------------------------------------------------
 " html table alignment	{{{2
 if !hasmapto('<Plug>AM_Htd')|map <unique> <Leader>Htd	<Plug>AM_Htd|endif
@@ -115,22 +144,22 @@ map <silent> <script> <Plug>AM_Htd <SID>WS:'y,'zs%<[tT][rR]><[tT][dD][^>]\{-}>\<
 
 " ---------------------------------------------------------------------
 " character-based right-justified alignment maps {{{2
-if !hasmapto('<Plug>AM_T|')|call AlignMaps#MakeMap("T|")|endif
-if !hasmapto('<Plug>AM_T#')	 |call AlignMaps#MakeMap("T#")|endif
-if !hasmapto('<Plug>AM_T,')	 |call AlignMaps#MakeMap("T,")|endif
-if !hasmapto('<Plug>AM_Ts,') |call AlignMaps#MakeMap("Ts,")|endif
-if !hasmapto('<Plug>AM_T:')	 |call AlignMaps#MakeMap("T:")|endif
-if !hasmapto('<Plug>AM_T;')	 |call AlignMaps#MakeMap("T;")|endif
-if !hasmapto('<Plug>AM_T<')	 |call AlignMaps#MakeMap("T<")|endif
-if !hasmapto('<Plug>AM_T=')	 |call AlignMaps#MakeMap("T=")|endif
-if !hasmapto('<Plug>AM_T?')	 |call AlignMaps#MakeMap("T?")|endif
-if !hasmapto('<Plug>AM_T@')	 |call AlignMaps#MakeMap("T@")|endif
-if !hasmapto('<Plug>AM_TW@') |call AlignMaps#MakeMap("TW@")|endif
-if !hasmapto('<Plug>AM_Tab') |call AlignMaps#MakeMap("Tab")|endif
-if !hasmapto('<Plug>AM_Tsp') |call AlignMaps#MakeMap("Tsp")|endif
-if !hasmapto('<Plug>AM_T~')	 |call AlignMaps#MakeMap("T~")|endif
+if !hasmapto('<Plug>AM_Tbar','n')|AlignMapsMake Tbar|endif
+if !hasmapto('<Plug>AM_T#')      |AlignMapsMake T#  |endif
+if !hasmapto('<Plug>AM_T,')      |AlignMapsMake T,  |endif
+if !hasmapto('<Plug>AM_Ts,')     |AlignMapsMake Ts, |endif
+if !hasmapto('<Plug>AM_T:')      |AlignMapsMake T:  |endif
+if !hasmapto('<Plug>AM_T;')      |AlignMapsMake T;  |endif
+if !hasmapto('<Plug>AM_T<')      |AlignMapsMake T<  |endif
+if !hasmapto('<Plug>AM_T=')      |AlignMapsMake T=  |endif
+if !hasmapto('<Plug>AM_T?')      |AlignMapsMake T?  |endif
+if !hasmapto('<Plug>AM_T@')      |AlignMapsMake T@  |endif
+if !hasmapto('<Plug>AM_TW@')     |AlignMapsMake TW@ |endif
+if !hasmapto('<Plug>AM_Tab')     |AlignMapsMake Tab |endif
+if !hasmapto('<Plug>AM_Tsp')     |AlignMapsMake Tsp |endif
+if !hasmapto('<Plug>AM_T~')      |AlignMapsMake T~  |endif
 
-nnoremap <silent> <script> <Plug>AM_T| <SID>WS:AlignCtrl mIp0P0=r <Bar><CR>:'a,.Align<CR><SID>WE
+nnoremap <silent> <script> <Plug>AM_Tbar <SID>WS:AlignCtrl mIp0P0=r <Bar><CR>:'a,.Align<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_T#   <SID>WS:AlignCtrl mIp0P0=r #<CR>:'a,.Align<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_T,   <SID>WS:AlignCtrl mIp0P1=r ,<CR>:'a,.Align<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_Ts,  <SID>WS:AlignCtrl mIp0P1=r ,<CR>:'a,.Align<CR>:'a,.s/\(\s*\),/,\1/ge<CR><SID>WE
@@ -147,33 +176,33 @@ nnoremap <silent> <script> <Plug>AM_T~   <SID>WS:AlignCtrl mIp0P0=r ~<CR>:'a,.Al
 
 " ---------------------------------------------------------------------
 " character-based left-justified alignment maps {{{2
-if !hasmapto('<Plug>AM_t|','n')	|call AlignMaps#MakeMap("t|")|endif
-if !hasmapto('<Plug>AM_t#','n')		|call AlignMaps#MakeMap("t#")|endif
-if !hasmapto('<Plug>AM_t,','n')		|call AlignMaps#MakeMap("t,")|endif
-if !hasmapto('<Plug>AM_t:','n')		|call AlignMaps#MakeMap("t:")|endif
-if !hasmapto('<Plug>AM_t;','n')		|call AlignMaps#MakeMap("t;")|endif
-if !hasmapto('<Plug>AM_t<','n')		|call AlignMaps#MakeMap("t<")|endif
-if !hasmapto('<Plug>AM_t=','n')		|call AlignMaps#MakeMap("t=")|endif
-if !hasmapto('<Plug>AM_ts,','n')	|call AlignMaps#MakeMap("ts,")|endif
-if !hasmapto('<Plug>AM_ts:','n')	|call AlignMaps#MakeMap("ts:")|endif
-if !hasmapto('<Plug>AM_ts;','n')	|call AlignMaps#MakeMap("ts;")|endif
-if !hasmapto('<Plug>AM_ts<','n')	|call AlignMaps#MakeMap("ts<")|endif
-if !hasmapto('<Plug>AM_ts=','n')	|call AlignMaps#MakeMap("ts=")|endif
-if !hasmapto('<Plug>AM_w=','n')		|call AlignMaps#MakeMap("w=")|endif
-if !hasmapto('<Plug>AM_t?','n')		|call AlignMaps#MakeMap("t?")|endif
-if !hasmapto('<Plug>AM_t~','n')		|call AlignMaps#MakeMap("t~")|endif
-if !hasmapto('<Plug>AM_t@','n')		|call AlignMaps#MakeMap("t@")|endif
-if !hasmapto('<Plug>AM_tW@','n')	|call AlignMaps#MakeMap("tW@")|endif
-if !hasmapto('<Plug>AM_m=','n')		|call AlignMaps#MakeMap("m=")|endif
-if !hasmapto('<Plug>AM_tab','n')	|call AlignMaps#MakeMap("tab")|endif
-if !hasmapto('<Plug>AM_tml','n')	|call AlignMaps#MakeMap("tml")|endif
-if !hasmapto('<Plug>AM_tsp','n')	|call AlignMaps#MakeMap("tsp")|endif
-if !hasmapto('<Plug>AM_tsq','n')	|call AlignMaps#MakeMap("tsq")|endif
-if !hasmapto('<Plug>AM_tt','n')		|call AlignMaps#MakeMap("tt")|endif
-if !hasmapto('<Plug>AM_tab','n')	|call AlignMaps#MakeMap("tab")|endif
+if !hasmapto('<Plug>AM_tbar','n')   |AlignMapsMake tbar    |endif
+if !hasmapto('<Plug>AM_t#','n')		|AlignMapsMake t#      |endif
+if !hasmapto('<Plug>AM_t,','n')		|AlignMapsMake t,      |endif
+if !hasmapto('<Plug>AM_t:','n')		|AlignMapsMake t:      |endif
+if !hasmapto('<Plug>AM_t;','n')		|AlignMapsMake t;      |endif
+if !hasmapto('<Plug>AM_t<','n')		|AlignMapsMake t<      |endif
+if !hasmapto('<Plug>AM_t=','n')		|AlignMapsMake t=      |endif
+if !hasmapto('<Plug>AM_ts,','n')	|AlignMapsMake ts,     |endif
+if !hasmapto('<Plug>AM_ts:','n')	|AlignMapsMake ts:     |endif
+if !hasmapto('<Plug>AM_ts;','n')	|AlignMapsMake ts;     |endif
+if !hasmapto('<Plug>AM_ts<','n')	|AlignMapsMake ts<     |endif
+if !hasmapto('<Plug>AM_ts=','n')	|AlignMapsMake ts=     |endif
+if !hasmapto('<Plug>AM_w=','n')		|AlignMapsMake w=      |endif
+if !hasmapto('<Plug>AM_t?','n')		|AlignMapsMake t?      |endif
+if !hasmapto('<Plug>AM_t~','n')		|AlignMapsMake t~      |endif
+if !hasmapto('<Plug>AM_t@','n')		|AlignMapsMake t@      |endif
+if !hasmapto('<Plug>AM_tW@','n')	|AlignMapsMake tW@     |endif
+if !hasmapto('<Plug>AM_m=','n')		|AlignMapsMake m=      |endif
+if !hasmapto('<Plug>AM_tab','n')	|AlignMapsMake tab     |endif
+if !hasmapto('<Plug>AM_tml','n')	|AlignMapsMake tml     |endif
+if !hasmapto('<Plug>AM_tsp','n')	|AlignMapsMake tsp     |endif
+if !hasmapto('<Plug>AM_tsq','n')	|AlignMapsMake tsq     |endif
+if !hasmapto('<Plug>AM_tt','n')		|AlignMapsMake tt      |endif
+if !hasmapto('<Plug>AM_tab','n')	|AlignMapsMake tab     |endif
 
 " <Plug> normal mode mappings
-nnoremap <silent> <script> <Plug>AM_t|	<SID>WS:AlignCtrl mIp0P0=l <Bar><CR>:'a,.Align<CR><SID>WE
+nnoremap <silent> <script> <Plug>AM_tbar	<SID>WS:AlignCtrl mIp0P0=l <Bar><CR>:'a,.Align<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_t#		<SID>WS:AlignCtrl mIp0P0=l #<CR>:'a,.Align<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_t,		<SID>WS:AlignCtrl mIp0P1=l ,<CR>:'a,.Align<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_t:		<SID>WS:AlignCtrl mIp1P1=l :<CR>:'a,.Align<CR><SID>WE
@@ -234,7 +263,7 @@ if has("menu") && has("gui_running") && &go =~# 'm' && !exists("s:firstmenu")
   exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Spaces\ (Right\ Justified)<tab>'.s:emapleader.'Tsp	'.s:mapleader.'Tsp'
   exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Statements\ With\ Percent\ Style\ Comments<tab>'.s:emapleader.'m=	'.s:mapleader.'m='
   exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Symbol\ <<tab>'.s:emapleader.'t<	'.s:mapleader.'t<'
-  exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Symbol\ \|<tab>'.s:emapleader.'t\|	'.s:mapleader.'t|'
+  exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Symbol\ \|<tab>'.s:emapleader.'tbar	'.s:mapleader.'tbar'
   exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Symbol\ @<tab>'.s:emapleader.'t@	'.s:mapleader.'t@'
   exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Symbol\ #<tab>'.s:emapleader.'t#	'.s:mapleader.'t#'
   exe 'menu '.g:DrChipTopLvlMenu.'AlignMaps.Tabs<tab>'.s:emapleader.'tab	'.s:mapleader.'tab'
