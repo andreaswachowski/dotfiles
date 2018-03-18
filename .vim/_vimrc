@@ -158,7 +158,9 @@ nmap <c-p> :GFiles<Enter>
 
 " -- Plugin-specific pre-load settings ------------------------------------
 "  (Have to be defined before the plugin is loaded)
-"
+
+let g:notes_directories = ['~/Documents/notes', '~/Documents/Dropbox/notes']
+let g:notes_suffix = '.txt'
 let g:netrw_alto = 1 " split below the file browser
 
 " In the tskeleton plugin, g:tskelMapGoToNextTag is by default mapped to <c-j>,
@@ -214,6 +216,7 @@ let g:indentconsistencycop_AutoRunCmd = 'IndentRangeConsistencyCop'
 let g:jsx_ext_required = 0
 
 nmap <silent> <leader>D <Plug>DashSearch
+nmap <silent> <leader>n :FZF ~/Documents/Dropbox/notes<CR>
 
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#semi = 'true'
