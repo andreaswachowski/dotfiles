@@ -14,16 +14,16 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-bundler'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
+" Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-unimpaired'
 Plug 'int3/vim-extradite'
 Plug 'vcscommand.vim'
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'vim-scripts/DirDiff.vim'
 Plug 'sukima/xmledit'
@@ -40,14 +40,14 @@ if (s:development=="true")
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'majutsushi/tagbar'
-  Plug 'rizzatti/dash.vim'
+  " Plug 'rizzatti/dash.vim'
   Plug 'Yggdroot/indentLine'
 
   Plug 'w0rp/ale'
   Plug 'Valloric/YouCompleteMe'
 
-  Plug 'dbext.vim'
-  Plug 'TVO--The-Vim-Outliner'
+  " Plug 'dbext.vim'
+  " Plug 'TVO--The-Vim-Outliner'
 
   Plug 'elzr/vim-json'
 
@@ -96,7 +96,7 @@ if (s:development=="true")
   Plug 'isRuslan/vim-es6'
 
   " TypeScript
-  Plug 'leafgarland/typescript-vim'
+  " Plug 'leafgarland/typescript-vim'
 
   " React
   Plug 'mxw/vim-jsx'
@@ -104,10 +104,10 @@ if (s:development=="true")
   Plug 'pgilad/vim-react-proptypes-snippets'
 
   " CoffeeScript
-  Plug 'kchmck/vim-coffee-script'
+  " Plug 'kchmck/vim-coffee-script'
 
   " Z80 Assembly
-  Plug 'cpcsdk/vim-z80-democoding'
+  " Plug 'cpcsdk/vim-z80-democoding'
 
   Plug 'vim-scripts/ingo-library'
   " Plug 'vim-scripts/IndentConsistencyCop' | Plug 'vim-scripts/IndentConsistencyCopAutoCmds'
