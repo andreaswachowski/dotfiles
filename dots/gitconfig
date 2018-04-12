@@ -9,6 +9,7 @@
 
 [alias]
 	ci = commit
+	can = commit --amend --no-edit
 	co = checkout
 	dc = diff --cached
 	st = status
