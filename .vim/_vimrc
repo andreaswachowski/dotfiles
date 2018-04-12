@@ -202,7 +202,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
-\  'ruby': ['rubocop', 'reek']
+\  'ruby': ['rubocop', 'reek'],
+\  'css': ['stylelint']
 \}
 
 " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
