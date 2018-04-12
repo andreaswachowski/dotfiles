@@ -154,7 +154,7 @@ nmap <c-l> <c-w>l
 nmap <c-h> <c-w>h
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
-nmap <c-p> :GFiles<Enter>
+nmap <c-p> :Files<Enter>
 
 " -- Plugin-specific pre-load settings ------------------------------------
 "  (Have to be defined before the plugin is loaded)
