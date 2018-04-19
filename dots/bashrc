@@ -92,7 +92,7 @@ export PATH="$HOME/.yarn/bin:$PATH"
 if [ -f ~/.fzf.bash ]; then
   source ~/.fzf.bash
   # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
-  export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+  export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,coverage}/*" 2> /dev/null'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   # bind -x '"\C-p": vim $(fzf);'
 fi
