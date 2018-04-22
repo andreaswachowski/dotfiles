@@ -7,3 +7,6 @@
 [submodule "dots/tmux/plugins/tmux-resurrect"]
 	path = dots/tmux/plugins/tmux-resurrect
 	url = git://github.com/tmux-plugins/tmux-resurrect.git
+[submodule "dots/tmux/plugins/tmux-battery"]
+	path = dots/tmux/plugins/tmux-battery
+	url = https://git::@github.com/tmux-plugins/tmux-battery
