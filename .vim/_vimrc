@@ -166,6 +166,7 @@ nmap <silent> <leader>n :call fzf#run({'source': 'find ~/Documents/Dropbox/notes
 " nmap <silent> <leader>n :call fzf#run({'source': 'find ~/Documents/ownCloud/2018/notes ~/Documents/Dropbox/notes -type f',
 "    \ 'sink': 'edit' })<Cr>
 let g:notes_suffix = '.txt'
+let g:notes_smart_quotes = 0
 let g:netrw_alto = 1 " split below the file browser
 
 " In the tskeleton plugin, g:tskelMapGoToNextTag is by default mapped to <c-j>,
