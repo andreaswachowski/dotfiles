@@ -9,9 +9,8 @@ snippet ri2 "Import React and Component"
 import React, { Component } from 'react'${0}
 endsnippet
 
-snippet ri3 "Import React and Proptypes"
-import React from 'react'${0}
-import PropTypes from 'prop-types'
+snippet ri3 "Import Proptypes"
+import PropTypes from 'prop-types'${0}
 endsnippet
 
 snippet rcla "React class with render"
@@ -80,6 +79,97 @@ def react_classname(filename):
 # Original (Sublime Text conformant) regexp to extract the class name: ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g}
     return re.match(r'.*(?=\.)', fn).group()
 endglobal
+
+snippet rbth "React Basic Test Harness"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ${1:`!p snip.rv = react_classname(fn)`} from './$1';
+
+describe('$1', () => {
+	it('renders without crashing', () => {
+		const div = document.createElement('div');
+		ReactDOM.render(<$1 />, div);
+	});
+
+	$0
+})
+endsnippet
+
+snippet reth "React Enzyme Test Harness"
+import React from 'react';
+import { $1 } from 'enzyme';
+import '@/globals/testHelper';
+import ${2:`!p snip.rv = react_classname(fn)`} from './$2';
+
+let wrapper;
+
+describe('$2', () => {
+	it('renders without crashing', () => {
+	  wrapper = $1(<$2 />);
+	});
+
+	$0
+});
+endsnippet
+
+snippet rsna "React Snapshot Test Harness"
+import React from 'react';
+import renderer from 'react-test-renderer';
+import ${1:`!p snip.rv = react_classname(fn)`} from './$1';
+
+describe('$1', () => {
+	const props = {
+		t: key => key
+	};
+
+	it('renders correctly', () => {
+		const tree = renderer.create(<$1 {...props} />).toJSON();
+		expect(tree).toMatchSnapshot();
+	});
+});
+endsnippet
+
+snippet rsth "React Store Test Harness"
+import { Provider } from 'react-redux';
+import { loggedInStore, loggedInUserId } from '@/globals/testHelper';
+
+const store = loggedInStore();
+
+      <Provider store={store}>
+      </Provider>
+      $0
+endsnippet
+
+snippet jte "Jest Test Header"
+import React from 'react';
+import { $1 }  from 'enzyme';
+import '@/globals/testHelper';
+$0
+endsnippet
+
+snippet jd "Jest describe"
+describe('$1', () => {
+	$0
+});
+endsnippet
+
+snippet ji "Jest it"
+it('${1}', () => {
+	${0}
+});
+endsnippet
+
+snippet jba "Jest beforeAll"
+beforeAll(() => {
+	${0}
+});
+endsnippet
+
+snippet jbe "Jest beforeEach"
+beforeEach(() => {
+	${0}
+});
+endsnippet
 
 snippet rnccf "React Native Stateless Component"
 import React from 'react';
@@ -156,17 +246,21 @@ export default connect(
 endsnippet
 
 snippet rccs "React Stateful Component"
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const ${1:`!p snip.rv = react_classname(fn)`} = React.createClass({
+class ${1:`!p snip.rv = react_classname(fn)`} extends Component {
 	render() {
 		return (
 			${0:<div></div>}
 		);
 	}
-});
+}
 
-export default $1;
+const mapStateToProps = state => ({
+})
+
+export default connect(mapStateToProps)($1)
 endsnippet
 
 snippet rccf "React Stateless Functional Component"
