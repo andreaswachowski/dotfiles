@@ -44,8 +44,8 @@ if (s:development=="true")
   Plug 'w0rp/ale'
   Plug 'Valloric/YouCompleteMe'
 
-  " Plug 'dbext.vim'
-  " Plug 'TVO--The-Vim-Outliner'
+  Plug 'vim-scripts/dbext.vim'
+  Plug 'vim-scripts/TVO--The-Vim-Outliner'
 
   Plug 'elzr/vim-json'
 
