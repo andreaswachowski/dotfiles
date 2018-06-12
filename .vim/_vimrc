@@ -233,11 +233,11 @@ let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 
 let g:prettier#autoformat = 0
-if v:version >= 800 && exists('*job_start')
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-else
+" if v:version >= 800 && exists('*job_start')
+"   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+" else
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md Prettier
-endif
+" endif
 
 " -------------------------------------------------------------------------
 " Store temporary files in a central spot to ease
