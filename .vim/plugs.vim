@@ -33,7 +33,6 @@ Plug 'benmills/vimux'
 Plug 'mbbill/undotree'
 Plug 'suan/vim-instant-markdown'
 Plug 'xolox/vim-misc'
-Plug 'pedrosans/vim-notes'
 
 if (s:development=="true")
   Plug 'editorconfig/editorconfig-vim'
