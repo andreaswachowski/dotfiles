@@ -107,6 +107,8 @@ if (s:development=="true")
 
   Plug 'vim-scripts/ingo-library'
   " Plug 'vim-scripts/IndentConsistencyCop' | Plug 'vim-scripts/IndentConsistencyCopAutoCmds'
+  "
+  Plug 'rust-lang/rust.vim'
 endif
 
 call plug#end()
