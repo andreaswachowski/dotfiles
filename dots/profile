@@ -30,6 +30,7 @@ export PATH="$HOME/bin:$HOME/local/bin:$HOME/dotfiles/local/bin:$HOME/dotfiles/o
 export PATH="$HOME/Documents/git_projects/csslint/dist:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Use ignoreboth instead of ignoredups so that tmux-resurrect history save
 # commands will not be saved. See
