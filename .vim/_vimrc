@@ -14,6 +14,11 @@ filetype off
 
 let mapleader = ","
 
+" Workaround for https://github.com/vim/vim/issues/3117
+if has('python3')
+  silent! python3 1
+endif
+
 if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
   source $VIMRUNTIME/macros/matchit.vim
 endif
