@@ -18,7 +18,7 @@ do
 done
 mkdir -p doc/magazines/{acm_computing_surveys,cacm,ieee_computer,ieee_software,mit_technology_review}
 mkdir -p finanzen/{t-mobile,targobank,telekom,vattenfall,vtb,steuererklärung,flatex,diba,quicken2017,anlage}
-mkdir -p fortbildung/{lectures,books,exercises}
+mkdir -p fortbildung/{lectures,books,exercises,anki}
 
 NOTES=~/Documents/Dropbox/notes/$YEAR
 mkdir $NOTES
