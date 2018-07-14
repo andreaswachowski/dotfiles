@@ -28,6 +28,8 @@ augroup markdown
   au BufNewFile,BufReadPost *.md,*.markdown setlocal filetype=markdown
 augroup END
 
+au BufNewFile,BufReadPost *.toc setlocal filetype=text noexpandtab sw=8 ts=8 sts=8
+
 " For Transcribe!
 au BufEnter *.xsc setlocal tw=0
 
