@@ -13,3 +13,4 @@ dots/tmux/resurrect/
 
 # mailmap to configure vim-fugitive
 .mailmap
+commit.msg
