@@ -77,7 +77,7 @@ endsnippet
 global !p
 def react_classname(filename):
 # Original (Sublime Text conformant) regexp to extract the class name: ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g}
-    return re.match(r'.*(?=\.)', fn).group()
+    return re.match(r'[^.]*(?=\.)', filename).group()
 endglobal
 
 snippet rbth "React Basic Test Harness"
