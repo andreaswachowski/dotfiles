@@ -3,5 +3,6 @@
 
 # Cleanup vim swap files
 VIMSWAPDIR=$HOME/tmp/vim
-# 2>/dev/null: ignore warning on relative dirs potentially unsafe
-find $VIMSWAPDIR -type d -empty -delete 2>/dev/null
+# see http://stackoverflow.com/questions/762348/how-can-i-exclude-all-permission-denied-messages-from-find
+# for a discussion on the error output redirection
+find "$VIMSWAPDIR" -type d -empty -delete 2> >(grep -v 'relative path potentially not safe' >&2)
