@@ -72,7 +72,6 @@ if (s:development=="true")
   " Templating engines
   Plug 'tpope/vim-haml'
   Plug 'slim-template/vim-slim'
-  Plug 'digitaltoad/vim-jade'
   Plug 'tpope/vim-liquid'
 
   Plug 'mhinz/vim-rfc'
