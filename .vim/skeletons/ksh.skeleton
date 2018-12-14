@@ -1,7 +1,7 @@
 #!/bin/ksh
 # Date: 23/01/01 15:47
 
-function displayUsageScreen {
+displayUsageScreen() {
 	# <<- as opposed to << strips the leading tabs from the output
 	cat <<- HERE
 	Usage: $ScriptName # <arguments>
@@ -17,7 +17,7 @@ function displayUsageScreen {
 
 # -------------------------------------------------------------------------
 # main program
-ScriptName=`basename $0`
+ScriptName=$(basename "$0")
 
 # --- process options (example)
 while getopts ":hd:" OPT
@@ -42,7 +42,7 @@ do
     esac
 done
 
-shift `expr $OPTIND - 1`
+shift $((OPTIND-1))
 
 # --- process the arguments
 # FIXME: change condition according to the number of arguments expected
