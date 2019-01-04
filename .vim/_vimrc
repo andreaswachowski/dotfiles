@@ -100,7 +100,6 @@ elseif  &term =~ "rxvt-unicode"
 "  set t_Co=8
 endif
 
-set background=dark
 let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 
@@ -109,6 +108,7 @@ syntax on
 " Prevent weird black color shading with gruvbox. Needs to be set after syntax on
 " http://stackoverflow.com/questions/4325682/vim-colorschemes-not-changing-background-color?lq=1
 hi Normal ctermbg=0
+set background=dark
 hi nonText ctermbg=NONE
 
 hi TabLine ctermfg=White ctermbg=Black
