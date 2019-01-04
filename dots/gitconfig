@@ -42,6 +42,10 @@
 
 [include]
 	path = ~/dotfiles/local/dots/gitconfig
+ 
+[includeIf "gitdir:~/dotfiles/"]
+   path = ~/dotfiles/identity_specific/private/gitconfig
+
 [diff]
 	algorithm = patience
 [rerere]
