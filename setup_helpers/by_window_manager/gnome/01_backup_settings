@@ -1,0 +1,2 @@
+gsettings list-recursively > $DOTFILES/original_gnome_settings_$(date +'%Y%m%d_%H%M').txt
+

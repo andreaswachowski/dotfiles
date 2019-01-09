@@ -1,0 +1,7 @@
+GSETTINGS_SCHEMA=org.gnome.Terminal.Legacy.Keybindings
+GSETTINGS_PATH=/org/gnome/terminal/legacy/keybindings/
+SCHEMA_PATH=$GSETTINGS_SCHEMA:$GSETTINGS_PATH
+gsettings set $SCHEMA_PATH move-tab-left '<Shift><Alt>h'
+gsettings set $SCHEMA_PATH move-tab-right '<Shift><Alt>l'
+gsettings set $SCHEMA_PATH new-tab '<Alt>j'
+gsettings set $SCHEMA_PATH next-tab '<Alt>l'

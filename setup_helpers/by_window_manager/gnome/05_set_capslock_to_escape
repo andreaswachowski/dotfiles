@@ -1,0 +1,4 @@
+# Instead of switching, setting capslock and escape:
+# capslock is not ever needed, and keeping the original escape key avoids
+# confusion during pair programming
+dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
