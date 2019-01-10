@@ -1,5 +1,5 @@
 # vi: ts=2 sw=2 expandtab
-ScriptName=`basename $0`
+ScriptName=$(basename $0)
 
 function displayUsageScreen {
   cat << HERE
@@ -35,7 +35,7 @@ do
     esac
 done
 
-shift `expr $OPTIND - 1`
+shift $(expr $OPTIND - 1)
 
 # --- process the arguments
 DOTFILES=~/dotfiles # Assume dotfiles is checked out here
@@ -48,7 +48,7 @@ gitfallback() {
   echo "git not found. skipping git $*"
 }
 
-GITCMD=$(which git)
+GITCMD=$(command -v git)
 if [ -z "$GITCMD" ]; then
   # on QTS, PATH might not yet be set appropriately, so we hard-check against it
   if [ -f /opt/bin/git ]; then
@@ -65,7 +65,7 @@ cd -
 
 DOTFILESBACKUP=~/.dotfiles_setup_backup.$(date +%Y%m%d_%H%M%S)
 
-mkdir $DOTFILESBACKUP
+mkdir "$DOTFILESBACKUP"
 
 function link {
   SOURCE=$1
@@ -73,23 +73,23 @@ function link {
   SKIP="false"
   # Testing explicitly for the symbolic link captures
   # dangling symbolic links
-  if [ -e "$TARGET" -o -L "$TARGET" ]; then
-    if [ ! -L "$TARGET" -o "$(readlink $TARGET 2>/dev/null)" != "$SOURCE" ]; then
-      [ "$VERBOSE" ] && echo Found $TARGET, moving to $DOTFILESBACKUP
-      mv $TARGET $DOTFILESBACKUP/$(basename $TARGET)
+  if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
+    if [ ! -L "$TARGET" ] || [ "$(readlink "$TARGET" 2>/dev/null)" != "$SOURCE" ]; then
+      [ "$VERBOSE" ] && echo "Found $TARGET, moving to $DOTFILESBACKUP"
+      mv "$TARGET" "$DOTFILESBACKUP/$(basename "$TARGET")"
       if [ $? -ne 0 ]; then
-        >&2 echo Could not move $TARGET, will not execute ln -s $SOURCE $TARGET
+        >&2 echo "Could not move $TARGET, will not execute ln -s $SOURCE $TARGET"
         SKIP="true"
       fi
     else
-      [ "$VERBOSE" ] && echo Symbolic link from $SOURCE to $TARGET already in place, skipping ...
+      [ "$VERBOSE" ] && echo "Symbolic link from $SOURCE to $TARGET already in place, skipping ..."
       SKIP="true"
     fi
   fi
 
   if [ "$SKIP" = "false" ]; then
-    echo ln -s $SOURCE $TARGET ...
-    ln -s $SOURCE $TARGET
+    echo "ln -s $SOURCE $TARGET ..."
+    ln -s "$SOURCE" "$TARGET"
   fi
 }
 
@@ -129,26 +129,26 @@ fi
 
 for dotfile in $(ls $DOTFILES/dots | grep -v rvm)
 do
-  link $DOTFILES/dots/$dotfile ~/.$dotfile
+  link "$DOTFILES/dots/$dotfile" "$HOME/.$dotfile"
 done
 
-if [ -f $HOME/.rvm/gemsets/global.gems ]; then
-  diff $HOME/.rvm/gemsets/global.gems $DOTFILES/dots/rvm/gemsets/global.gems >/dev/null 2>&1
+if [ -f "$HOME/.rvm/gemsets/global.gems" ]; then
+  diff "$HOME/.rvm/gemsets/global.gems" "$DOTFILES/dots/rvm/gemsets/global.gems" >/dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo Consider using the following changes in .rvm/gemsets/global.gems:
     diff -p $HOME/.rvm/gemsets/global.gems $DOTFILES/dots/rvm/gemsets/global.gems
   fi
 fi
 
-for nodotfile in `ls $DOTFILES/nodots`
+for nodotfile in $(ls $DOTFILES/nodots)
 do
-  link $DOTFILES/dots/$nodotfile ~/$nodotfile
+  link "$DOTFILES/dots/$nodotfile" "$HOME/$nodotfile"
 done
 
 for setup in $(ls $DOTFILES/setups 2>/dev/null)
 do
-  echo Executing setup for $setup ...
-  $DOTFILES/setups/$setup
+  echo "Executing setup for $setup ..."
+  "$DOTFILES/setups/$setup"
 done
 
 if [ -f $DOTFILES/os/setup.sh ]; then
@@ -156,7 +156,7 @@ if [ -f $DOTFILES/os/setup.sh ]; then
   $DOTFILES/os/setup.sh
 fi
 
-echo <<EOF
+cat <<EOF
 1) Remember to npm install inside ~/.vim/bundle/tern_for_vim for each node version
 
 2) csslint:
@@ -167,6 +167,6 @@ grunt release
 ln -s dist/csslint dist/cli.js
 EOF
 
-if [ ! "$(ls -A $DOTFILESBACKUP)" ]; then  # Directory empty
-  rmdir $DOTFILESBACKUP
+if [ ! "$(ls -A "$DOTFILESBACKUP")" ]; then  # Directory empty
+  rmdir "$DOTFILESBACKUP"
 fi
