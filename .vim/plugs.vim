@@ -1,6 +1,6 @@
 " vi: ts=2 sw=2 expandtab
 
-if (hostname() =~ "salt" || hostname() =~ "macbook" || hostname() =~ "MacBookPro" ) && ($USER == "andreas")
+if filereadable(expand("$HOME/.vim/.plugs_for_dev"))
   let s:development="true"
 else
   let s:development="false"

@@ -202,8 +202,6 @@ else
   log "No window-manager specific scripts found (looked in $WINDOW_MANAGER_DIR) ..."
 fi
 
-exit 1
-
 gitfallback() {
   echo "git not found. skipping git $*"
 }
@@ -256,6 +254,19 @@ function link {
 VIM_PLUGIN_DIR=~/.vim/plugged
 
 link $DOTFILES/.vim ~/.vim
+
+read -p "Use vim plugins for development (Y/n)? " answer
+answer=${answer:-Y}
+case $answer in
+  [yY]* ) cat >~/.vim/.plugs_for_dev <<EOF
+This file automatically created by ~/dotfiles/setup.sh to indicate
+to vim that development plugins shall be used. see plugs.vim
+EOF
+    ;;
+  [nN]* ) exit;;
+  *) ;;
+esac
+
 vim +PlugInstall
 # YouCompleteMe is not necessarily configured for all machines on which
 # this script runs
