@@ -153,8 +153,13 @@ setup_basics() {
 install_fundamentals() {
   log "Installing fundamental packages ..."
   case $PACKAGE_INSTALLER in
-    brew) ;;
-    *) $INSTALL_CMD vim git tmux fzf wmctrl
+    brew) brew bundle --file="$DOTFILES/os_specific/Darwin/dots/Brewfile"
+      ;;
+    *) BASIC_PACKAGES_FILE="$SETUP_HELPER_DIR/by_distributor_id/$DISTRIBUTOR_ID/basic_packages"
+      if [ -f "$BASIC_PACKAGES_FILE" ]; then
+        BASIC_PACKAGES=$(cat $SETUP_HELPER_DIR/by_distributor_id/$DISTRIBUTOR_ID/basic_packages)
+        $INSTALL_CMD $BASIC_PACKAGES
+      fi
   esac
 }
 
@@ -190,6 +195,7 @@ DOTFILES=~/dotfiles # Assume dotfiles is checked out here
 SETUP_HELPER_DIR=$DOTFILES/setup_helpers
 
 setup_basics
+install_fundamentals
 
 WINDOW_MANAGER_DIR=$SETUP_HELPER_DIR/by_window_manager/$(window_manager_to_directory "$WINDOW_MANAGER")
 if [ -d "$WINDOW_MANAGER_DIR" ]; then
