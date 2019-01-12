@@ -18,6 +18,9 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias be="bundle exec"
 alias dc="docker-compose"
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
+if command -v xdg-open >/dev/null; then
+  alias open="xdg-open"
+fi
 
 # Prompt initialization
 if [ "$(id -u)" -eq 0 ]; then
