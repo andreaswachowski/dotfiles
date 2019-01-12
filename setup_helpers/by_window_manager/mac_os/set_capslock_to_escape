@@ -1,0 +1,8 @@
+# https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+# https://apple.stackexchange.com/questions/4813/changing-modifier-keys-from-the-command-line/277544#277544
+# 39 = Caps Lock
+# 29 = Escape
+# Set Caps Lock to Escape:
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
+# Switch Caps Lock and Escape:
+# hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029},{"HIDKeyboardModifierMappingSrc":0x700000029,"HIDKeyboardModifierMappingDst":0x700000039}]}'
