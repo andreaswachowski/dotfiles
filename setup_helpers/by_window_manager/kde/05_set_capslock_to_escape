@@ -1,0 +1,4 @@
+# Instead of switching, setting capslock and escape:
+# capslock is not ever needed, and keeping the original escape key avoids
+# confusion during pair programming
+kwriteconfig5 --file kxkbrc --group Layout --key Options --type string 'caps:swapescape,compose:ralt'

@@ -1,0 +1,14 @@
+cat <<EOF
+Manually, in the Konsole menu bar, go to Settings -> Configure Shortcuts,
+then configure as desired.
+Or, add the following to ~/.local/share/kxmlgui5/konsole/konsoleui.rc
+(add the end before the closing </kpartgui>):
+
+ <ActionProperties>
+  <Action shortcut="" name="help_contents"/>
+  <Action shortcut="Alt+J" name="new-tab"/>
+  <Action shortcut="Alt+L; Ctrl+PgUp" name="next-view"/>
+  <Action shortcut="Alt+H; Ctrl+PgDown" name="previous-view"/>
+ </ActionProperties>
+
+EOF
