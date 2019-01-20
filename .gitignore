@@ -4,6 +4,7 @@
 .vim/**/tags
 .vim/plugged/**
 .vim/cache
+.vim/.plugs_for_dev
 local
 os
 host_specific/
