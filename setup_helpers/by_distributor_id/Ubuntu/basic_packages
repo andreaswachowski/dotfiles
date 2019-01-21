@@ -1,1 +1,1 @@
-vim git tmux fzf cmake g++ python python-dev shellcheck xclip automake
+vim git tmux fzf cmake g++ python python-dev shellcheck xclip automake libncurses5-dev libncursesw5-dev
