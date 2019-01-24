@@ -109,7 +109,7 @@ syntax on
 
 " Prevent weird black color shading with gruvbox. Needs to be set after syntax on
 " http://stackoverflow.com/questions/4325682/vim-colorschemes-not-changing-background-color?lq=1
-hi Normal ctermbg=0
+hi Normal ctermbg=NONE
 hi nonText ctermbg=NONE
 
 hi TabLine ctermfg=White ctermbg=Black
