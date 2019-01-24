@@ -1,0 +1,16 @@
+@namespace url('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul');
+
+/* Hide tab bar in FF Quantum */
+/* Helpful when using Tree Style Tabs, as suggested on
+ * https://news.ycombinator.com/item?id=18836189 */
+@-moz-document url("chrome://browser/content/browser.xul") {
+  #TabsToolbar {
+    visibility: collapse !important;
+    margin-bottom: 21px !important;
+  }
+
+  #sidebar-box[sidebarcommand='treestyletab_piro_sakura_ne_jp-sidebar-action']
+    #sidebar-header {
+    visibility: collapse !important;
+  }
+}
