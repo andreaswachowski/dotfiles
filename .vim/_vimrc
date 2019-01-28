@@ -165,12 +165,14 @@ nmap <c-p> :Files<Enter>
 " -- Plugin-specific pre-load settings ------------------------------------
 "  (Have to be defined before the plugin is loaded)
 
-let g:notes_directories = ['~/Documents/Dropbox/notes']
+let g:fzf_tags_command = 'ctags -R --options=$HOME/.ctags'
 " nmap <silent> <leader>n :FZF ~/Documents/Dropbox/notes<CR>
 nmap <silent> <leader>n :call fzf#run({'source': 'find ~/Documents/Dropbox/notes -type f',
     \ 'sink': 'edit' })<Cr>
 " nmap <silent> <leader>n :call fzf#run({'source': 'find ~/Documents/ownCloud/2018/notes ~/Documents/Dropbox/notes -type f',
 "    \ 'sink': 'edit' })<Cr>
+
+let g:notes_directories = ['~/Documents/Dropbox/notes']
 let g:notes_suffix = '.txt'
 let g:notes_smart_quotes = 0
 let g:netrw_alto = 1 " split below the file browser
