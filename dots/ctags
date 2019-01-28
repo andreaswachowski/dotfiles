@@ -1,4 +1,6 @@
 --recurse=yes
 --exclude=.git
+--exclude=node_modules
+--exclude=build
 --exclude=log
 --exclude=tmp
