@@ -299,4 +299,4 @@ autocmd BufWritePre javascript,c,cpp,java,html,ruby,text,taskpaper,slim,css,scss
 
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
-map <Leader>tj :w<Bar>execute 'silent !tmux send-keys -t {top-right} C-u node_modules/.bin/jest\ % Enter'<Bar>redraw!<C-M>
+map <Leader>tj :w<Bar>execute 'silent !tmux send-keys -t {top-right} C-u yarn\ test\ --coverage\ --collectCoverageFrom\ %:r:r.js\ % Enter'<Bar>redraw!<C-M>
