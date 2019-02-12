@@ -296,6 +296,8 @@ endfunc
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre javascript,c,cpp,java,html,ruby,text,taskpaper,slim,css,scss :%s/\s\+$//e
 
+nmap <Leader>Fi :set foldmethod=indent<CR>
+nmap <Leader>Fm :set foldmethod=manual<CR>
 
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
