@@ -3,11 +3,11 @@ if !has('conceal')
 endif
 
 syntax match glogPrefix "^fugitive:.*\.git//" conceal nextgroup=GlogGitHash
-syntax match glogGitHash /......../ nextgroup=GlogGitHashEnd contained
+syntax match glogGitHash /.\{-8}/ nextgroup=GlogGitHashEnd contained
 syntax match glogGitHashEnd "[^|]*" conceal contained
 syntax match glogSeparator "|" conceal
 syntax match glogAuthor /[^\|]*/ conceal contained
-syntax match timeStampDate "\d\d\d\d-\d\d-\d\d"
+syntax match timeStampDate "\d\{-4}-\d\d-\d\d"
 syntax match timeStampHourMinutes "\d\d:\d\d"
 syntax match timeStampSeconds ":\d\d "me=e-1 conceal
 syntax match timeStampTimeZone /\v\+\d{-4} / conceal
