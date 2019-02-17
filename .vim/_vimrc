@@ -302,3 +302,9 @@ nmap <Leader>Fm :set foldmethod=manual<CR>
 " ViM autocommands for binary plist files:
 " source ~/.vim/plist.vim
 map <Leader>tj :w<Bar>execute 'silent !tmux send-keys -X -t {top-right} cancel; tmux send-keys -t {top-right} C-u yarn\ test\ --coverage\ --collectCoverageFrom\ %:r:r.js\ % Enter'<Bar>redraw!<C-M>
+
+" Debug syntax highlighting
+" http://vim.wikia.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
