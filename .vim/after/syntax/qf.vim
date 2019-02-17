@@ -1,3 +1,7 @@
+if !has('conceal')
+  finish
+endif
+
 syntax match glogPrefix "^fugitive:.*\.git//" conceal nextgroup=GlogGitHash
 syntax match glogGitHash /......../ nextgroup=GlogGitHashEnd contained
 syntax match glogGitHashEnd "[^|]*" conceal contained
