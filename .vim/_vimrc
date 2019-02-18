@@ -308,3 +308,6 @@ map <Leader>tj :w<Bar>execute 'silent !tmux send-keys -X -t {top-right} cancel; 
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Highlight git conflicts (https://vimways.org/2018/vim-and-git/)
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
