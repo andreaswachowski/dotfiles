@@ -172,6 +172,8 @@ nmap <silent> <leader>n :call fzf#run({'source': 'find ~/Documents/Dropbox/notes
     \ 'sink': 'edit' })<Cr>
 " nmap <silent> <leader>n :call fzf#run({'source': 'find ~/Documents/ownCloud/2018/notes ~/Documents/Dropbox/notes -type f',
 "    \ 'sink': 'edit' })<Cr>
+command!      -bang -nargs=* Rgg                        call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".expand("<cword>"), 1, <bang>0)'
+nmap <Leader>f :Rgg<CR>
 
 let g:notes_directories = ['~/Documents/Dropbox/notes']
 let g:notes_suffix = '.txt'
