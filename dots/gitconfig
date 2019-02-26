@@ -15,7 +15,7 @@
 	dc = diff --cached
 	st = status
 	br = branch
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ai) %C(bold blue)<%an>%Creset'
 	la = !git l --all && 0
 	lg = log --oneline --graph --decorate
 	lga = log --oneline --graph --decorate --all
