@@ -248,6 +248,8 @@ let g:prettier#autoformat = 0
 " endif
 
 let g:rustfmt_autosave = 1
+
+let g:tern_map_keys=1
 " -------------------------------------------------------------------------
 " Store temporary files in a central spot to ease
 " clean-up after machine crashes
