@@ -42,7 +42,7 @@ if (s:development=="true")
   Plug 'Yggdroot/indentLine'
 
   Plug 'w0rp/ale'
-  Plug 'Valloric/YouCompleteMe'
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
   Plug 'vim-scripts/dbext.vim'
   Plug 'vim-scripts/TVO--The-Vim-Outliner'

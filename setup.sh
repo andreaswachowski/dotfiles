@@ -274,9 +274,6 @@ EOF
 esac
 
 vim +PlugInstall
-# YouCompleteMe is not necessarily configured for all machines on which
-# this script runs
-cd $VIM_PLUGIN_DIR/YouCompleteMe && ./install.py --clang-completer
 
 # Rationale for the following patch: See comment "Problems deleting unsaved
 # buffer" at http://vim.wikia.com/wiki/Script:356
