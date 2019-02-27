@@ -13,7 +13,6 @@ filetype off
 " echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 
 let mapleader = ","
-let maplocalleader = ";"
 
 " Workaround for https://github.com/vim/vim/issues/3117
 if has('python3') && !has('patch-8.1.201')
@@ -252,6 +251,7 @@ let g:prettier#autoformat = 0
 
 let g:rustfmt_autosave = 1
 
+let tern_map_prefix=";"
 let g:tern_map_keys=1
 " -------------------------------------------------------------------------
 " Store temporary files in a central spot to ease
