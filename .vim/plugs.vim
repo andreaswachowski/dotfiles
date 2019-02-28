@@ -45,7 +45,6 @@ if (s:development=="true")
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
 
   Plug 'vim-scripts/dbext.vim'
-  Plug 'vim-scripts/TVO--The-Vim-Outliner'
 
   Plug 'elzr/vim-json'
 
