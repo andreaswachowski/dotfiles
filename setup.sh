@@ -331,9 +331,7 @@ if [ -f $DOTFILES/os/setup.sh ]; then
 fi
 
 cat <<EOF
-1) Remember to npm install inside ~/.vim/bundle/tern_for_vim for each node version
-
-2) csslint:
+1) csslint:
 git clone git@github.com:andreaswachowski/csslint.git
 git co -b add-svg-properties
 npm install

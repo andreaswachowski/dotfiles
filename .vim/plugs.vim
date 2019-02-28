@@ -86,7 +86,7 @@ if (s:development=="true")
   " http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
   Plug 'pangloss/vim-javascript'
   Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'ternjs/tern_for_vim'
+  Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'isRuslan/vim-es6'
 
   " TypeScript
