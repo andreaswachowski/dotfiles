@@ -56,11 +56,11 @@ if (s:development=="true")
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 
   " Ruby etc.
-  Plug 'tpope/vim-rvm'
-  Plug 'vim-ruby/vim-ruby'
-  Plug 'thoughtbot/vim-rspec'
-  Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-endwise'
+  " Plug 'tpope/vim-rvm'
+  " Plug 'vim-ruby/vim-ruby'
+  " Plug 'thoughtbot/vim-rspec'
+  " Plug 'tpope/vim-rails'
+  " Plug 'tpope/vim-endwise'
 
   " CSS related bundles
   Plug 'hail2u/vim-css3-syntax'
