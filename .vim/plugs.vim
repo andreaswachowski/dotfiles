@@ -55,6 +55,8 @@ if (s:development=="true")
     \ 'do': 'yarn install',
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 
+  Plug 'udalov/kotlin-vim'
+
   " Ruby etc.
   " Plug 'tpope/vim-rvm'
   " Plug 'vim-ruby/vim-ruby'
