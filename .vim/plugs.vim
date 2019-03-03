@@ -78,7 +78,6 @@ if (s:development=="true")
   Plug 'isRuslan/vim-es6'
 
   " React
-  Plug 'mxw/vim-jsx'
   Plug 'justinj/vim-react-snippets'
   Plug 'pgilad/vim-react-proptypes-snippets'
 
