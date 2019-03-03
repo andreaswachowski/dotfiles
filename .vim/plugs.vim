@@ -47,8 +47,6 @@ if (s:development=="true")
 
   Plug 'vim-scripts/dbext.vim'
 
-  Plug 'elzr/vim-json'
-
   Plug 'docunext/closetag.vim'
 
   Plug 'prettier/vim-prettier', {
