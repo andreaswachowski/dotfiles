@@ -32,7 +32,6 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'benmills/vimux'
 Plug 'mbbill/undotree'
 Plug 'suan/vim-instant-markdown'
-Plug 'xolox/vim-misc'
 
 if (s:development=="true")
   Plug 'editorconfig/editorconfig-vim'
