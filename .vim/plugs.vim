@@ -69,7 +69,6 @@ if (s:development=="true")
 
   " Templating engines
   Plug 'tpope/vim-haml'
-  Plug 'tpope/vim-liquid'
 
   Plug 'mhinz/vim-rfc'
   Plug 'vim-scripts/rfc-syntax'
