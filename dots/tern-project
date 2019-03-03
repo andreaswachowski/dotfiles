@@ -1,0 +1,15 @@
+{
+  "libs": [
+    "browser"
+  ],
+  "plugins": {
+      "modules": {},
+      "es_modules": {},
+      "requirejs": {},
+      "commonjs": {},
+      "node": {},
+      "node_resolve": {}
+  },
+  "loadEagerly": [],
+  "dontLoad": []
+}
