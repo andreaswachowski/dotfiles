@@ -1,4 +1,6 @@
+tap 'caskroom/homebrew-cask' || true
 tap 'universal-ctags/universal-ctags' || true
+
 brew 'universal-ctags', args: ['HEAD']
 brew 'bash'
 brew 'bash-completion@2'
@@ -24,3 +26,14 @@ brew 'fd'
 brew 'tidy-html5'
 brew 'poppler'
 brew 'jq'
+
+# Casks
+# cask 'google-chrome-canary'
+# cask 'dropbox'
+# cask 'slack'
+# cask '1password'
+# cask 'iterm2'
+# cask 'calibre'
+# cask 'dash'
+# cask 'firefox'
+# cask 'anki'
