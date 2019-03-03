@@ -43,6 +43,7 @@ if (s:development=="true")
 
   Plug 'w0rp/ale'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
+  Plug 'sheerun/vim-polyglot'
 
   Plug 'vim-scripts/dbext.vim'
 
