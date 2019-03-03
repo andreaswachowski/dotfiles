@@ -64,7 +64,6 @@ if (s:development=="true")
   Plug 'hail2u/vim-css3-syntax'
   Plug 'cakebaker/scss-syntax.vim'
   Plug 'bolasblack/csslint.vim'
-  " Plug 'groenewege/vim-less'
 
   Plug 'mhinz/vim-rfc'
   Plug 'vim-scripts/rfc-syntax'
