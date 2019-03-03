@@ -1,5 +1,8 @@
 tap 'caskroom/homebrew-cask' || true
 tap 'universal-ctags/universal-ctags' || true
+tap 'homebrew/bundle' || true
+
+brew 'mas'
 
 brew 'universal-ctags', args: ['HEAD']
 brew 'bash'
@@ -18,12 +21,14 @@ brew 'tree'
 brew 'wget'
 brew 'ripgrep'
 brew 'fd'
+brew 'tldr'
+
+cask 'docker'
 
 brew 'git'
 brew 'tig'
 
 brew 'imagemagick'
-brew 'tldr'
 
 brew 'node'
 brew 'yarn'
@@ -33,12 +38,17 @@ brew 'poppler'
 brew 'jq'
 
 # Casks
-# cask 'google-chrome-canary'
-# cask 'dropbox'
-# cask 'slack'
-# cask '1password'
-# cask 'iterm2'
-# cask 'calibre'
-# cask 'dash'
-# cask 'firefox'
-# cask 'anki'
+cask 'dropbox'
+cask 'gimp'
+cask 'google-chrome'
+cask 'slack'
+cask '1password'
+cask 'iterm2'
+cask 'calibre'
+cask 'dash'
+cask 'firefox'
+cask 'anki'
+
+# Mas
+
+mas 'Affinity Photo', id: 824183456
