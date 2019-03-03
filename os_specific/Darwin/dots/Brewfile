@@ -1,7 +1,8 @@
+tap 'universal-ctags/universal-ctags' || true
+brew 'universal-ctags', args: ['HEAD']
 brew 'bash'
 brew 'bash-completion@2'
 brew 'bat'
-brew 'ctags'
 brew 'ctop'
 brew 'git'
 brew 'tmux'
