@@ -95,9 +95,6 @@ if (s:development=="true")
   Plug 'justinj/vim-react-snippets'
   Plug 'pgilad/vim-react-proptypes-snippets'
 
-  " CoffeeScript
-  " Plug 'kchmck/vim-coffee-script'
-
   " Z80 Assembly
   " Plug 'cpcsdk/vim-z80-democoding'
 
