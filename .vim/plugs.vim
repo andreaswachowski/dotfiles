@@ -67,9 +67,6 @@ if (s:development=="true")
   " Plug 'groenewege/vim-less'
   Plug 'wavded/vim-stylus'
 
-  " Templating engines
-  Plug 'tpope/vim-haml'
-
   Plug 'mhinz/vim-rfc'
   Plug 'vim-scripts/rfc-syntax'
   Plug 'kana/vim-tabpagecd'
