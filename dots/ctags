@@ -1,9 +1,32 @@
 --recurse=yes
---exclude=.git
+
+# https://www.reddit.com/r/vim/comments/2yw2cx/best_setup_for_automatic_generation_of_tags_files/
 --exclude=node_modules
 --exclude=build
 --exclude=log
 --exclude=tmp
+--exclude=.git
+--exclude=.svn
+--exclude=.hg
+--exclude=bundle
+--exclude=min
+--exclude=vendor
+--exclude=\*.min.\*
+--exclude=\*.map
+--exclude=\*.swp
+--exclude=\*.bak
+--exclude=\*.pyc
+--exclude=\*.class
+--exclude=\*.sln
+--exclude=\*.Master
+--exclude=\*.csproj
+--exclude=\*.csproj.user
+--exclude=\*.cache
+--exclude=\*.dll
+--exclude=\*.pdb
+--exclude=tags
+--exclude=cscope.\*
+--exclude=\*.tar.\*
 
 --languages=-javascript
 --langdef=js
