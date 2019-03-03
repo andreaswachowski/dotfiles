@@ -87,9 +87,6 @@ if (s:development=="true")
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'isRuslan/vim-es6'
 
-  " TypeScript
-  Plug 'leafgarland/typescript-vim'
-
   " React
   Plug 'mxw/vim-jsx'
   Plug 'justinj/vim-react-snippets'
