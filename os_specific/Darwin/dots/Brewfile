@@ -1,5 +1,6 @@
 tap 'caskroom/homebrew-cask' || true
 tap 'universal-ctags/universal-ctags' || true
+tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' || true
 
 brew 'mas'
@@ -23,7 +24,7 @@ brew 'ripgrep'
 brew 'fd'
 brew 'tldr'
 
-cask 'docker'
+cask 'docker-edge'
 
 brew 'git'
 brew 'tig'
