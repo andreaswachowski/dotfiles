@@ -269,7 +269,7 @@ This file automatically created by ~/dotfiles/setup.sh to indicate
 to vim that development plugins shall be used. see plugs.vim
 EOF
     ;;
-  [nN]* ) exit;;
+  [nN]* ) ;;
   *) ;;
 esac
 
