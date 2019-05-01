@@ -3,4 +3,7 @@ if [ "${BASH_VERSINFO}" -ge 4 ] && [ -f `brew --prefix`/share/bash-completion/ba
 	. `brew --prefix`/share/bash-completion/bash_completion
 fi
 
+# https://stackoverflow.com/questions/34326437/java-home-is-set-to-an-invalid-directory-while-running-gradlew-on-osx
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
