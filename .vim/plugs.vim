@@ -40,9 +40,11 @@ if (s:development=="true")
   " Plug 'rizzatti/dash.vim'
   Plug 'Yggdroot/indentLine'
 
+
   Plug 'w0rp/ale'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
   Plug 'sheerun/vim-polyglot'
+  " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
   Plug 'vim-scripts/dbext.vim'
 
@@ -79,6 +81,10 @@ if (s:development=="true")
   " React
   Plug 'justinj/vim-react-snippets'
   Plug 'pgilad/vim-react-proptypes-snippets'
+
+	" TypeScript
+	Plug 'Shougo/vimproc.vim', { 'do' : 'make', }
+  Plug 'Quramy/tsuquyomi' 
 
   " Z80 Assembly
   " Plug 'cpcsdk/vim-z80-democoding'
