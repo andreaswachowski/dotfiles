@@ -1,0 +1,9 @@
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/gitlab -C "john@example.com"
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/github -C "john@example.com"
+sudo apt-get install r-base
+Install rstudio
+
+sudo add-apt-repository ppa:nextcloud-devs/client
+sudo apt-get update
+sudo apt-get install nextcloud-client
+
