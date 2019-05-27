@@ -10,6 +10,13 @@ sudo apt-get install r-base
 # https://www.rstudio.com/products/rstudio/download/#download
 Install rstudio
 
+# TexLive
+sudo apt-get install perl-tk
+sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended xzdec
+sudo apt-get install pandoc
+tlmgr init-usertree
+sudo tlmgr option repository ftp://tug.org/historic/systems/texlive/2017/tlnet-final
+
 sudo add-apt-repository ppa:nextcloud-devs/client
 sudo apt-get update
 sudo apt-get install nextcloud-client
