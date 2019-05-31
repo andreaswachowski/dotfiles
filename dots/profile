@@ -32,11 +32,6 @@ export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Use ignoreboth instead of ignoredups so that tmux-resurrect history save
-# commands will not be saved. See
-# https://github.com/tmux-plugins/tmux-resurrect
-export HISTCONTROL=ignoreboth
-
 if [ -z "$BASH" ]; then
   if [ "`id -u`" -eq 0 ]; then
     export PS1='[\w] # '

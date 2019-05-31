@@ -54,8 +54,11 @@ fi
 # (see http://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize )
 shopt -s histappend
 HISTFILESIZE= # Never truncate the file
-# don't add duplicates and space-prefixed commands to the history:
-HISTIGNORE=ignoreboth
+# Use ignoreboth instead of ignoredups so that tmux-resurrect history save
+# commands will not be saved. See
+# https://github.com/tmux-plugins/tmux-resurrect
+HISTCONTROL=ignoreboth
+HISTIGNORE='ls:bg:fg:history'
 HOSTNAME="$(hostname)"
 HOSTNAME_SHORT="${HOSTNAME%%.*}"
 HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
