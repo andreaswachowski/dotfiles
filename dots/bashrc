@@ -29,7 +29,7 @@ else
   PROMPT_CHAR="$"
 fi
 
-if which git >/dev/null 2>&1; then
+if command -v git >/dev/null 2>&1; then
   function gitprompt {
     BRANCH=$(git branch 2>/dev/null | cut -f2 -d* -s | cut -b 2-)
     if [ "$BRANCH" ]; then
@@ -88,6 +88,7 @@ fi
 set -o vi
 
 if [ -f ~/.fzf.bash ]; then
+  # shellcheck source=/dev/null
   source ~/.fzf.bash
   # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
   export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,coverage,dist}/*" 2> /dev/null'
