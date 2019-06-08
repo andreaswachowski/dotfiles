@@ -34,9 +34,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 if [ -z "$BASH" ]; then
   if [ "`id -u`" -eq 0 ]; then
-    export PS1='[\w] # '
+    PS1='[\w] # '
   else
-    export PS1='[\w] $ '
+    PS1='[\w] $ '
   fi
 fi
 
