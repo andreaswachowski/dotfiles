@@ -9,3 +9,5 @@ dscacheutil -flushcache
 lastscreenshot() {
   open "`ls -t ~/Desktop/Screen\ Shot\ * | head -1`"
 }
+
+locate() { mdfind "kMDItemDisplayName == '$@'wc"; }
