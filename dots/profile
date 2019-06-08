@@ -9,11 +9,13 @@
 
 # this will be removable after decommissioning the other NASs
 if [ -f /Apps/opt/etc/profile ]; then
+  # shellcheck source=/dev/null
   . /Apps/opt/etc/profile
 fi
 
 # for the new NAS
 if [ -f /opt/etc/profile ]; then
+  # shellcheck source=/dev/null
   . /opt/etc/profile
 fi
 
@@ -33,7 +35,7 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 if [ -z "$BASH" ]; then
-  if [ "`id -u`" -eq 0 ]; then
+  if [ "$(id -u)" -eq 0 ]; then
     PS1='[\w] # '
   else
     PS1='[\w] $ '
@@ -43,16 +45,21 @@ fi
 # -------------------------------------------------------------------------
 OS_SPECIFIC_PROFILE=~/dotfiles/os/dots/profile
 if [ -f $OS_SPECIFIC_PROFILE ]; then
-  source $OS_SPECIFIC_PROFILE
+  # shellcheck source=/dev/null
+  . $OS_SPECIFIC_PROFILE
 fi
 
 HOST_SPECIFIC_PROFILE=~/dotfiles/local/dots/profile
 if [ -f $HOST_SPECIFIC_PROFILE ]; then
-  source $HOST_SPECIFIC_PROFILE
+  # shellcheck source=/dev/null
+  . $HOST_SPECIFIC_PROFILE
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# shellcheck source=/dev/null
+[ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 export NVM_DIR="$HOME/.nvm"
+# shellcheck source=/dev/null
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# shellcheck source=/dev/null
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
