@@ -44,10 +44,13 @@
 [include]
 	path = ~/dotfiles/local/dots/gitconfig
 
-[includeIf "gitdir:~/WebstormProjects/sun-catalog/*"]
+[includeIf "gitdir:~/WebstormProjects/201901/*"]
    path = ~/dotfiles/identity_specific/2019_01/gitconfig
  
 [includeIf "gitdir:~/dotfiles/"]
+   path = ~/dotfiles/identity_specific/private/gitconfig
+
+[includeIf "gitdir:~/Documents/git_projects/"]
    path = ~/dotfiles/identity_specific/private/gitconfig
 
 [diff]
