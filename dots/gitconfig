@@ -57,3 +57,6 @@
 	algorithm = patience
 [rerere]
 	enabled = true
+[color "diff"]
+	old = "#FF0000"
+	new = "#8AE234"
