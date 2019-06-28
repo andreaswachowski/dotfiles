@@ -60,3 +60,7 @@
 [color "diff"]
 	old = "#FF0000"
 	new = "#8AE234"
+[color "status"]
+	changed = "#FF0000"
+	untracked = "#FF0000"
+	added = "#8AE234"
