@@ -6,5 +6,6 @@ dir="`git rev-parse --git-dir`"
 trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
   grep -v node_modules | \
+  grep -v cryptol.vim | \
   ctags --tag-relative -L - -f"$dir/$$.tags" # --languages=-javascript,sql
 mv "$dir/$$.tags" "$dir/tags"
