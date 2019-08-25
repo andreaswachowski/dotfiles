@@ -17,6 +17,14 @@ compile() {
   echo "Checking with otool -L src/vim | grep Rub; ls -l src/vim"
   echo
   otool -L src/vim | grep Rub; ls -l src/vim
+  printf "make install (Y/n)? "
+  read -r answer
+  answer=${answer:-Y}
+  case $answer in
+    [yY]* ) make install;;
+    [nN]* ) exit;;
+    *) ;;
+  esac
 }
 
 if git fetch; then
