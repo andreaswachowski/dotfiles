@@ -2,10 +2,10 @@
 # See http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 set -e
 PATH="/usr/local/bin:$PATH"
-dir="`git rev-parse --git-dir`"
+dir="$(git rev-parse --git-dir)"
 trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
   grep -v node_modules | \
   grep -v cryptol.vim | \
-  ctags --tag-relative -L - -f"$dir/$$.tags" # --languages=-javascript,sql
+  ctags --tag-relative=yes -L - -f"$dir/$$.tags" --options="$HOME/.ctags"
 mv "$dir/$$.tags" "$dir/tags"
