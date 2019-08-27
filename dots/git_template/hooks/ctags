@@ -7,5 +7,5 @@ trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
   grep -v node_modules | \
   grep -v cryptol.vim | \
-  ctags --tag-relative=yes -L - -f"$dir/$$.tags" --options="$HOME/.ctags.d"
+  ctags --tag-relative=yes -L - -f"$dir/$$.tags"
 mv "$dir/$$.tags" "$dir/tags"
