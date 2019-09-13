@@ -1,10 +1,12 @@
 set -e
 
 finish() {
+  rv=$?
   cd - >/dev/null
+  exit $rv
 }
 
-trap finish EXIT
+trap finish EXIT INT TERM
 
 cd ~/local/src/vim
 
