@@ -1,10 +1,12 @@
 set -e
 
 finish() {
+  rv=$?
   cd - >/dev/null
+  exit $rv
 }
 
-trap finish EXIT
+trap finish EXIT INT TERM
 
 cd ~/local/src/vim
 
@@ -12,11 +14,13 @@ compile() {
   git merge
   configure_vim.sh
   make -j 4
-  echo "vim should dynamically link to the system-provided Ruby lib, or ruby will segfault"
-  echo "If desired, test with ':ruby 1' inside vim"
-  echo "Checking with otool -L src/vim | grep Rub; ls -l src/vim"
-  echo
-  # otool -L src/vim | grep Rub; ls -l src/vim
+  echo "Check ruby inside vim: vim --cmd 'ruby 1' --cmd 'q!'"
+  if ! vim --cmd 'ruby 1' --cmd 'q!'; then
+    echo "ruby errors inside vim, exiting (is the *system-provided* ruby library used?)."
+  fi
+  if [ ! -f src/vim ]; then
+    echo "No vim executable produced, exiting."
+  fi
   printf "make install (Y/n)? "
   read -r answer
   answer=${answer:-Y}

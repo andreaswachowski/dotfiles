@@ -15,10 +15,10 @@ export OBJC=/usr/bin/llvm-gcc
 # Need to disable GUI on Mac
 #
 # YouCompleteMe will crash on Ruby completion unless I use the system provided Ruby library
-# perhaps because 
+# perhaps because
 # a) YCM is compiled against that (I don't see it though)
 # b) vim is statically binding the rvm-lib and therefore the call to load a lib fails
-# 
+#
 #	In other words, I cannot use the RVM-provided Ruby:
 # --with-ruby-command=/Users/andreas/.rvm/rubies/ruby-2.2.3/bin/ruby \
 # See https://www.andreas-wachowski.de/wordpress/?p=815
