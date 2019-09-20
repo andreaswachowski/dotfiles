@@ -19,27 +19,25 @@ compile() {
     echo "ruby errors inside vim, exiting (is the *system-provided* ruby library used?)."
   fi
   if [ ! -f src/vim ]; then
-    echo "No vim executable produced, exiting."
+    echo "No vim executable produced!"
   fi
-  printf "make install (Y/n)? "
-  read -r answer
-  answer=${answer:-Y}
-  case $answer in
-    [yY]* ) make install;;
-    [nN]* ) exit;;
-    *) ;;
-  esac
 }
 
 if git fetch; then
   git log --oneline --graph --all --decorate master..origin/master
   # http://alvinalexander.com/linux-unix/shell-script-how-prompt-read-user-input-bash
-  printf "Continue (Y/n)? "
+  printf "Compile (Y/n)? "
   read -r answer
   answer=${answer:-Y}
   case $answer in
     [yY]* ) compile;;
-    [nN]* ) exit;;
+    *) ;;
+  esac
+  printf "Install (Y/n)? "
+  read -r answer
+  answer=${answer:-Y}
+  case $answer in
+    [yY]* ) make install;;
     *) ;;
   esac
 else
