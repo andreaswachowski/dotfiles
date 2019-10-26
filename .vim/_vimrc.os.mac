@@ -2,3 +2,14 @@
 if has("gui_running")
   set nomacatsui anti tenc=macroman gfn=Monaco:h13
 endif
+
+function! AltCommand(path, vim_command)
+  let l:alternate = system("alt " . a:path)
+  if empty(l:alternate)
+    echo "No alternate file for " . a:path . " found!"
+  else
+    exec a:vim_command . " " . l:alternate
+  endif
+endfunction
+
+noremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
