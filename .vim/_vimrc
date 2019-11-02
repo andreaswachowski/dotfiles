@@ -114,6 +114,9 @@ hi nonText ctermbg=NONE
 
 hi TabLine ctermfg=White ctermbg=Black
 hi TabLineSel ctermfg=Black ctermbg=White
+" Tabs and special characters with "set list" are too dark (":help listchars"):
+hi! link NonText GruvboxFg2
+hi! link SpecialKey GruvboxFg2
 
 " https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
 if &term =~ "italic"
