@@ -29,6 +29,7 @@ augroup markdown
 augroup END
 
 au BufNewFile,BufReadPost *.toc setlocal filetype=text noexpandtab sw=8 ts=8 sts=8
+au BufEnter *.toc let b:SuperTabNoCompleteAfter=['^', '\s', '\<[0-9]*']
 
 " For Transcribe!
 au BufEnter *.xsc setlocal tw=0
