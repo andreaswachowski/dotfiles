@@ -1,1 +1,2 @@
 au FileType javascript UltiSnipsAddFiletypes javascript.es6
+au FileType typescriptreact UltiSnipsAddFiletypes javascript.es6
