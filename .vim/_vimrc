@@ -319,3 +319,14 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " Highlight git conflicts (https://vimways.org/2018/vim-and-git/)
 autocmd BufEnter *.ts,*.json,*.js,*.css,*.scss,*.md,*.txt,*.htm,*.rb,*.c,*.cpp,*.cc,*.h match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+function! AltCommand(path, vim_command)
+  let l:alternate = system("alt " . a:path)
+  if empty(l:alternate)
+    echo "No alternate file for " . a:path . " found!"
+  else
+    exec a:vim_command . " " . l:alternate
+  endif
+endfunction
+
+noremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
