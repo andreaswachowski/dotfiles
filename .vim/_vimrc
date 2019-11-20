@@ -219,6 +219,8 @@ let g:ale_linters = {
 \  'ruby': ['rubocop', 'reek'],
 \  'css': ['stylelint']
 \}
+let b:ale_fixers = ['black']
+let b:ale_fix_on_save = 1
 
 " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 " make YCM compatible with UltiSnips (using supertab)
