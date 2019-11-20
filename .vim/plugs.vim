@@ -86,6 +86,8 @@ if (s:development=="true")
 	Plug 'Shougo/vimproc.vim', { 'do' : 'make', }
   Plug 'Quramy/tsuquyomi' 
 
+  Plug 'psf/black'
+
   " Z80 Assembly
   " Plug 'cpcsdk/vim-z80-democoding'
 
