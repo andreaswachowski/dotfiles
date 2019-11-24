@@ -62,7 +62,6 @@ if (s:development=="true")
 
   " CSS related bundles
   Plug 'hail2u/vim-css3-syntax'
-  Plug 'bolasblack/csslint.vim'
 
   Plug 'mhinz/vim-rfc'
   Plug 'vim-scripts/rfc-syntax'
