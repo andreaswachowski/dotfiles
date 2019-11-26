@@ -10,6 +10,7 @@
 # http://lists.gnu.org/archive/html/bug-bash/2012-06/msg00028.html
 # scp breaks when it encounters output, so all echos etc. must be
 # avoided, and explicitly only happen when in interactive mode
+
 if [ -z "$PS1" ]; then
   return
 fi
@@ -91,7 +92,7 @@ if [ -f ~/.fzf.bash ]; then
   # shellcheck source=/dev/null
   source ~/.fzf.bash
   # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
-  export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!.ipynb_checkpoints" -g "!*.pyc" -g "!{.git,node_modules,coverage,dist}/*" 2> /dev/null'
+  export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!.ipynb_checkpoints" -g "!*.pyc" -g "!.mypy_cache" -g "!{.git,node_modules,coverage,dist}/*" 2> /dev/null'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   # bind -x '"\C-p": vim $(fzf);'
 fi
