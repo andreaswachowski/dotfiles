@@ -44,7 +44,7 @@ if (s:development=="true")
   Plug 'w0rp/ale'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
   Plug 'sheerun/vim-polyglot'
-  " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+  Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
   Plug 'vim-scripts/dbext.vim'
 
