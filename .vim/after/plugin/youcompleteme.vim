@@ -19,4 +19,10 @@ if exists( "g:loaded_youcompleteme" )
   " option, too. Otherwise, YCM removes all Syntastic checkers for c and cpp,
   " amongst others.
   let g:ycm_show_diagnostics_ui = 0
+
+  nmap <silent> gt :YcmCompleter GoTo<CR>
+  nmap <silent> gd :YcmCompleter GoToDefinition<CR>
+  nmap <silent> gD :YcmCompleter GetDoc<CR>
+  nmap <silent> gi :YcmCompleter GoToImplementation<CR>
+  nmap <silent> gr :YcmCompleter GoToReferences<CR>
 endif
