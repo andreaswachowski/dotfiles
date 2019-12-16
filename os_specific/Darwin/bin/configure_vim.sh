@@ -25,10 +25,24 @@ export OBJC=/usr/bin/llvm-gcc
 
 rvm use system # make sure the system-default Ruby is enabled
 
+# Same problem with Python: If vim is compiled against the anaconda-installed Python
+# and YouCompleteMe against a different version, then vim crashes on startup.
+# (and with ultisnips, vim crashes when switching to insert mode)
+
+printf "Python to be used in compilation: $(which python). Is this alright (y/N)?"
+read -r answer
+answer=${answer:-Y}
+case $answer in
+[nN]* ) echo "Aborting."; exit;;
+*) ;;
+esac
+
+
 make distclean
 ./configure --prefix=$HOME/local \
 	--enable-gui=no \
 	--enable-multibyte \
 	--enable-rubyinterp \
-        --enable-python3interp
+        --enable-python3interp \
+	--enable-fail-if-missing
 rvm use default # switch back to desired Ruby
