@@ -91,6 +91,9 @@ au BufReadPost quickfix  set nowrap
 
 " -- Color Settings -------------------------------------------------------
 if &term =~ "xterm-256color" || &term =~ "screen-256color" || &term =~ "dtterm"
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 elseif  &term =~ "rxvt-unicode"
   set t_Co=88
 "2010-04-03: The following two lines don't help on Linux - my term is
@@ -225,6 +228,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsUsePythonVersion=3
 let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
