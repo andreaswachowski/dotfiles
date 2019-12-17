@@ -90,7 +90,7 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 au BufReadPost quickfix  set nowrap
 
 " -- Color Settings -------------------------------------------------------
-if &term =~ "xterm-256color" || &term =~ "screen-256color" || &term =~ "dtterm"
+if &term =~ "256color" || &term =~ "dtterm"
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
