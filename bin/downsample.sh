@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# https://stackoverflow.com/questions/17885946/how-to-reduce-the-size-of-mp3s-in-linux
+# lame --mp3input -b 64 --resample 22.50 "$f" "out/$f" 
+# https://tritondigitalcommunity.force.com/s/article/Choosing-Audio-Bitrate-Settings
 if [ $# -lt 1 ]; then
   echo "Usage: $(basename $0) <directory>"
   exit 1
