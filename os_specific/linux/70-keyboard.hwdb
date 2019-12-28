@@ -1,0 +1,24 @@
+# Copy this to /etc/udev/hwdb.d/70-keyboard.hwdb
+
+# ls -l /dev/input/by-id/usb-Apple*Kbd
+# systemd-hwdb update; udevadm trigger /dev/input/eventxx
+evdev:input:b0003v05ACp0221e0111*
+ KEYBOARD_KEY_700e2=leftmeta # Map Super to left alt key
+ KEYBOARD_KEY_700e3=leftalt  # Map Alt to left cmd key
+ KEYBOARD_KEY_70039=esc      # Map caps lock to escape
+ KEYBOARD_KEY_70029=capslock # Map escape to caps lock
+ KEYBOARD_KEY_700e7=rightalt # Map right cmd key to right alt
+ KEYBOARD_KEY_700e6=rightmeta # Map right alt key to right meta
+
+# To make the function keys behave, use
+# echo 2 > /sys/module/hid_apple/parameters/fnmode
+# (see https://unix.stackexchange.com/questions/121395/on-an-apple-keyboard-under-linux-how-do-i-make-the-function-keys-work-without-t )
+
+ # The Apple keyboard, unlike Cherry, has no COMPOSE key (70065)
+ # left of the right CTRL key.
+
+# ls -l /dev/input/by-id/usb-Cherry*
+# systemd-hwdb update; udevadm trigger /dev/input/eventxx
+evdev:input:b0003v046Ap0001e0111*
+ KEYBOARD_KEY_70039=esc      # Map caps lock to escape
+ KEYBOARD_KEY_70029=capslock # Map escape to caps lock
