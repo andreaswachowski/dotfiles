@@ -16,11 +16,11 @@ for month in 01_january 02_february 03_march 04_march 05_may 06_june 07_july 08_
 do
   mkdir $month
 done
-mkdir -p doc/magazines/{acm_computing_surveys,cacm,ieee_computer,ieee_software,mit_technology_review}
-mkdir -p finanzen/{t-mobile,targobank,telekom,vattenfall,vtb,steuererklärung,flatex,diba,quicken2017,anlage}
+mkdir -p doc/magazines/{acm_computing_surveys,cacm}
+mkdir -p finanzen/{t-mobile,targobank,telekom,vattenfall,vtb,steuererklärung,flatex,diba,finanzmanager,anlage}
 mkdir -p fortbildung/{lectures,books,exercises,anki,youtube}
 
-NOTES=~/Documents/Dropbox/notes/$YEAR
+NOTES=~/Documents/ownCloud/notes/$YEAR
 mkdir "$NOTES"
 cd "$NOTES"
 mkdir -p reading/articles
