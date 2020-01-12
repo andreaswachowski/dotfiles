@@ -2,9 +2,9 @@
 --langmap=kotlin:+.kt
 --langmap=kotlin:+.kts
 --regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private[^ ]*|protected)?[ \t]*class[ \t]+([a-zA-Z0-9_]+)/\4/c,classes/
---regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private[^ ]*|protected)?[ \t]*enum class[ \t]+([a-zA-Z0-9_]+)/\4/e,enum classes/
+--regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private[^ ]*|protected)?[ \t]*enum class[ \t]+([a-zA-Z0-9_]+)/\4/e,enumClasses/
 --regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private[^ ]*|protected)?[ \t]*object[ \t]+([a-zA-Z0-9_]+)/\4/o,objects/
---regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private[^ ]*|protected)?[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*data class[ \t]+([a-zA-Z0-9_]+)/\6/d,data classes/
+--regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private[^ ]*|protected)?[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*data class[ \t]+([a-zA-Z0-9_]+)/\6/d,dataClasses/
 --regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy)[ \t]*)*(private[^ ]*|protected)?[ \t]*interface[ \t]+([a-zA-Z0-9_]+)/\4/i,interfaces/
 --regex-kotlin=/^[ \t]*type[ \t]+([a-zA-Z0-9_]+)/\1/T,types/
 --regex-kotlin=/^[ \t]*((abstract|final|sealed|implicit|lazy|private[^ ]*(\[[a-z]*\])*|protected)[ \t]*)*fun[ \t]+([a-zA-Z0-9_]+)/\4/m,methods/
