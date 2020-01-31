@@ -10,8 +10,6 @@
 \set PROMPT2 '... > '
 \encoding unicode
 
-\timing
-
 \x auto
 \set VERBOSITY verbose
 \set HISTFILE ~/.psql_history- :HOST - :DBNAME
