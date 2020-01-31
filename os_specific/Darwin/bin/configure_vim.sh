@@ -31,7 +31,7 @@ rvm use system # make sure the system-default Ruby is enabled
 
 printf "Make sure Python is installed via brew, and that this package and not Xcode's Python is linked. Python to be used in compilation: $(which python). Is this alright (y/N)? "
 read -r answer
-answer=${answer:-Y}
+answer=${answer:-N}
 case $answer in
 [nN]* ) echo "Aborting."; exit;;
 *) ;;
