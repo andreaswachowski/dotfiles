@@ -33,7 +33,7 @@ printf "Make sure Python is installed via brew, and that this package and not Xc
 read -r answer
 answer=${answer:-N}
 case $answer in
-[nN]* ) echo "Aborting."; exit;;
+[nN]* ) echo "Aborting."; exit 1;;
 *) ;;
 esac
 
