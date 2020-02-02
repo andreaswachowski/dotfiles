@@ -29,7 +29,10 @@ rvm use system # make sure the system-default Ruby is enabled
 # and YouCompleteMe against a different version, then vim crashes on startup.
 # (and with ultisnips, vim crashes when switching to insert mode)
 
-printf "Make sure Python is installed via brew, and that this package and not Xcode's Python is linked. Python to be used in compilation: $(which python). Is this alright (y/N)? "
+printf "Make sure Python is installed via brew, and that this package\
+ and not Xcode's Python is linked.\
+ Python to be used in compilation: %s.\
+ Is this alright (y/N)? " "$(command -v python)"
 read -r answer
 answer=${answer:-N}
 case $answer in
@@ -48,7 +51,7 @@ trap finish EXIT INT TERM
 cd ~/local/src/vim
 
 make distclean
-./configure --prefix=$HOME/local \
+./configure --prefix="$HOME"/local \
 	--enable-gui=no \
 	--enable-multibyte \
 	--enable-rubyinterp \
