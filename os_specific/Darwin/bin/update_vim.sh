@@ -13,7 +13,7 @@ cd ~/local/src/vim
 compile() {
   git merge
   configure_vim.sh
-  make -j 4
+  make -j "$(nproc)"
   echo "Check ruby inside vim: vim --cmd 'ruby 1' --cmd 'q!'"
   if ! vim --cmd 'ruby 1' --cmd 'q!'; then
     echo "ruby errors inside vim, exiting (is the *system-provided* ruby library used?)."
