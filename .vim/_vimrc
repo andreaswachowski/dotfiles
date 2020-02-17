@@ -322,7 +322,6 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 autocmd BufEnter *.ts,*.json,*.js,*.css,*.scss,*.md,*.txt,*.htm,*.rb,*.c,*.cpp,*.cc,*.h match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env']
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 function! AltCommand(path, vim_command)
   let l:alternate = system("alt " . a:path)
