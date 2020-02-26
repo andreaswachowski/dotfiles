@@ -1,6 +1,6 @@
 " AlignMapsPlugin:   Alignment maps based upon <Align.vim> and <AlignMaps.vim>
 " Maintainer:        Charles E. Campbell. <NdrOchipS@PcampbellAfamily.Mbiz>
-" Date:              Jan 11, 2016
+" Date:              Jan 18, 2019
 "
 " NOTE: the code herein needs vim 7.0 or later
 " Copyright:    Copyright (C) 1999-2013 Charles E. Campbell {{{1
@@ -37,7 +37,7 @@ if &cp || exists("g:loaded_AlignMapsPlugin")
  finish
 endif
 let s:keepcpo                = &cpo
-let g:loaded_AlignMapsPlugin = "v46d"
+let g:loaded_AlignMapsPlugin = "v46e"
 set cpo&vim
 
 " =====================================================================
@@ -120,7 +120,7 @@ nnoremap <silent> <script> <Plug>AM_a<		<SID>WS:AlignCtrl mIp1P1=l << >><CR>:'a,
 nnoremap <silent> <script> <Plug>AM_a(      <SID>WS:AlignCtrl mIp0P1=l<CR>:'a,.Align [(,]<CR>:sil 'y+1,'z-1s/\(\s\+\),/,\1/ge<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_a=		<SID>WS:AlignCtrl mIp1P1=l<CR>:AlignCtrl g :=<CR>:'a,'zAlign :=<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_abox	<SID>WS:let g:alignmaps_iws=substitute(getline("'a"),'^\(\s*\).*$','\1','e')<CR>:'a,'z-1s/^\s\+//e<CR>:'a,'z-1s/^.*$/@&@/<CR>:AlignCtrl m=p01P0w @<CR>:'a,.Align<CR>:'a,'z-1s/@/ * /<CR>:'a,'z-1s/@$/*/<CR>'aYP:s/./*/g<CR>0r/'zkYp:s/./*/g<CR>0r A/<Esc>:exe "'a-1,'z-1s/^/".g:alignmaps_iws."/e"<CR><SID>WE
-nnoremap <silent> <script> <Plug>AM_acom	<SID>WS:'a,.s/\/[*/]\/\=/@&@/e<CR>:'a,.s/\*\//@&/e<CR>:'y,'zs/^\( *\) @/\1@/e<CR>'zk:call AlignMaps#StdAlign(2)<CR>:'y,'zs/^\(\s*\) @/\1/e<CR>:'y,'zs/ @//eg<CR><SID>WE
+nnoremap <silent> <script> <Plug>AM_acom	<SID>WS:'a,.s/@/<Char-0xff>/eg<CR>:'a,.s/\/[*/]\/\=/@&@/e<CR>:'a,.s/\*\//@&/e<CR>:'y,'zs/^\( *\) @/\1@/e<CR>'zk:call AlignMaps#StdAlign(2)<CR>:'y,'zs/^\(\s*\) @/\1/e<CR>:'y,'zs/ @//eg<CR>:'y,'zs/<Char-0xff>/@/eg<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_adcom	<SID>WS:'a,.v/^\s*\/[/*]/s/\/[*/]\*\=/@&@/e<CR>:'a,.v/^\s*\/[/*]/s/\*\//@&/e<CR>:'y,'zv/^\s*\/[/*]/s/^\( *\) @/\1@/e<CR>'zk:call AlignMaps#StdAlign(3)<cr>:'y,'zv/^\s*\/[/*]/s/^\(\s*\) @/\1/e<CR>:'y,'zs/ @//eg<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_aocom	<SID>WS:AlignPush<CR>:AlignCtrl g /[*/]<CR>:exe "norm \<Plug>AM_acom"<cr>:AlignPop<CR><SID>WE
 nnoremap <silent> <script> <Plug>AM_ascom	<SID>WS:'a,.s/\/[*/]/@&@/e<CR>:'a,.s/\*\//@&/e<CR>:silent! 'a,.g/^\s*@\/[*/]/s/@//ge<CR>:AlignCtrl v ^\s*\/[*/]<CR>:AlignCtrl g \/[*/]<CR>'zk:call AlignMaps#StdAlign(2)<cr>:'y,'zs/^\(\s*\) @/\1/e<CR>:'y,'zs/ @//eg<CR><SID>WE

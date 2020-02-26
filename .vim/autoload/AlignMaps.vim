@@ -1,7 +1,7 @@
 " AlignMaps.vim : support functions for AlignMaps
 "   Author: Charles E. Campbell
-"     Date: Oct 24, 2016
-"  Version: 46d	ASTRO-ONLY
+"     Date: Jan 18, 2019
+"  Version: 46e	ASTRO-ONLY
 " Copyright:    Copyright (C) 1999-2012 Charles E. Campbell {{{1
 "               Permission is hereby granted to use and distribute this code,
 "               with or without modifications, provided that this copyright
@@ -16,7 +16,7 @@
 if &cp || exists("g:loaded_AlignMaps")
  finish
 endif
-let g:loaded_AlignMaps= "v46d"
+let g:loaded_AlignMaps= "v46e"
 let s:keepcpo         = &cpo
 set cpo&vim
 
