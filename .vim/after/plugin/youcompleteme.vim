@@ -20,7 +20,7 @@ if exists( "g:loaded_youcompleteme" )
   " amongst others.
   let g:ycm_show_diagnostics_ui = 0
 
-  nmap <silent> gt :YcmCompleter GoTo<CR>
+  nmap <silent> kt :YcmCompleter GoTo<CR> " kt, because gt is standard for "Go to the next tab page"
   nmap <silent> gd :YcmCompleter GoToDefinition<CR>
   nmap <silent> gD :YcmCompleter GetDoc<CR>
   nmap <silent> gi :YcmCompleter GoToImplementation<CR>
