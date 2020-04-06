@@ -41,7 +41,7 @@ if (s:development=="true")
   Plug 'Yggdroot/indentLine'
 
 
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
   Plug 'sheerun/vim-polyglot'
 
