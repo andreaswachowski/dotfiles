@@ -115,6 +115,8 @@ syntax on
 hi Normal ctermbg=NONE
 hi nonText ctermbg=NONE
 
+hi Folded guifg=#DDDDDD
+
 hi TabLine ctermfg=White ctermbg=Black guifg=White guibg=Black
 hi TabLineSel ctermfg=Black ctermbg=White guifg=Black guibg=White
 " Tabs and special characters with "set list" are too dark (":help listchars"):
