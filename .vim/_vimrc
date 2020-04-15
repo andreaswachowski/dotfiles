@@ -224,6 +224,16 @@ let g:ale_linters = {
 \  'css': ['stylelint']
 \}
 
+let g:ale_fixers = {
+\ 'css': ['prettier'],
+\ 'scss': ['prettier'],
+\ 'javascript': ['prettier'],
+\ 'typescriptreact': ['prettier'],
+\ 'typescript': ['prettier']
+\}
+
+let g:ale_fix_on_save = 1
+
 " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -241,18 +251,6 @@ let g:indentconsistencycop_CheckOnLoad = 0
 let g:indentconsistencycop_AutoRunCmd = 'IndentRangeConsistencyCop'
 
 nmap <silent> <leader>D <Plug>DashSearch
-
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#semi = 'true'
-let g:prettier#config#single_quote = 'true' 
-let g:prettier#config#trailing_comma = 'none'
-
-let g:prettier#autoformat = 0
-" if v:version >= 800 && exists('*job_start')
-"   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-" else
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql Prettier
-" endif
 
 let g:rustfmt_autosave = 1
 
