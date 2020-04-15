@@ -219,6 +219,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
 \ 'typescriptreact': ['eslint','tsserver','typecheck','xo'],
+\ 'typescript': ['eslint','tsserver','typecheck','xo'],
 \  'ruby': ['rubocop', 'reek'],
 \  'css': ['stylelint']
 \}
