@@ -1,1 +1,1 @@
-echo "$(ls -tr ~/Desktop/Screen\ Shot\ 20* | tail -1)"
+echo "$(ls -tr ~/Desktop/Screenshot\ 20* | tail -1)"
