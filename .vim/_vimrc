@@ -24,11 +24,13 @@ if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
 endif
 
 set mouse=a
-if has("mouse_sgr")
-    set ttymouse=sgr
-else
-    set ttymouse=xterm2
-end
+if !has('nvim') " :help nvim-features-removed
+  if has("mouse_sgr")
+      set ttymouse=sgr
+  else
+      set ttymouse=xterm2
+  end
+endif
 
 source ~/.vim/plugs.vim
 source $HOME/.vim/tabline.vim
