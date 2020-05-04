@@ -34,6 +34,9 @@ Plug 'mbbill/undotree'
 Plug 'suan/vim-instant-markdown'
 
 if (s:development=="true")
+  if has('nvim')
+    Plug 'floobits/floobits-neovim'
+  endif
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'majutsushi/tagbar'
