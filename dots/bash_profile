@@ -36,14 +36,14 @@ if [ $(echo "$SSH_AUTH_SOCK" | wc -l) -gt 1 ]; then
   echo Warning, more than one ssh agent socket found, using first: echo $SSH_AUTH_SOCK
   SSH_AUTH_SOCK=$(echo "$SSH_AUTH_SOCK" | head -1)
 fi
-[ -z "$SSH_AGENT_PID" -a "`echo $SSH_AUTH_SOCK | cut -d. -f2`" ] && SSH_AGENT_PID=$((`echo $SSH_AUTH_SOCK | cut -d. -f2` + 1))
+[ -z "$SSH_AGENT_PID" -a "$(echo $SSH_AUTH_SOCK | cut -d. -f2)" ] && SSH_AGENT_PID=$(($(echo $SSH_AUTH_SOCK | cut -d. -f2) + 1))
 [ -n "$SSH_AUTH_SOCK" ] && export SSH_AUTH_SOCK
 [ -n "$SSH_AGENT_PID" ] && export SSH_AGENT_PID
 
 # start agent if necessary
 # if [ -z "$SSH_AGENT_PID" ] && [ -z "$SSH_TTY" ]; then  # if no agent & not in ssh
 if [ -z "$SSH_AGENT_PID" ]; then  # if no agent
-  eval `ssh-agent -s` > /dev/null
+  eval $(ssh-agent -s) > /dev/null
 fi
 
 # setup addition of keys when needed
