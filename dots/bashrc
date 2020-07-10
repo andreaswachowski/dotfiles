@@ -68,7 +68,6 @@ HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
 # See https://github.com/tmux-plugins/tmux-resurrect/issues/86
 # PROMPT_COMMAND="history -a"
 trap 'history -a $HISTFILE' DEBUG
-trap 'cat $HISTFILE >> $HOME/.bash_history' EXIT
 
 OS_SPECIFIC_BASHRC=~/dotfiles/os/dots/bashrc
 if [ -f $OS_SPECIFIC_BASHRC ]; then
