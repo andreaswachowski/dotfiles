@@ -31,7 +31,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'benmills/vimux'
 Plug 'mbbill/undotree'
-Plug 'suan/vim-instant-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 if (s:development=="true")
   if has('nvim')
