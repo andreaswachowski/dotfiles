@@ -40,6 +40,8 @@ if (s:development=="true")
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-dadbod'
+  Plug 'kristijanhusak/vim-dadbod-ui'
+  " Plug 'kristijanhusak/vim-dadbod-completion'
   Plug 'majutsushi/tagbar'
   " Plug 'rizzatti/dash.vim'
   Plug 'Yggdroot/indentLine'
