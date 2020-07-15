@@ -39,6 +39,7 @@ if (s:development=="true")
   endif
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
+  Plug 'tpope/vim-dadbod'
   Plug 'majutsushi/tagbar'
   " Plug 'rizzatti/dash.vim'
   Plug 'Yggdroot/indentLine'
@@ -47,8 +48,6 @@ if (s:development=="true")
   Plug 'dense-analysis/ale'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
   Plug 'sheerun/vim-polyglot'
-
-  Plug 'vim-scripts/dbext.vim'
 
   Plug 'docunext/closetag.vim'
 
