@@ -30,7 +30,7 @@ make distclean
 	--enable-gui=no \
 	--enable-multibyte \
 	--enable-rubyinterp \
-	--with-client-server \
+        --with-clientserver \
 	--enable-python3interp \
 	--enable-fail-if-missing
 # rvm use default # switch back to desired Ruby
