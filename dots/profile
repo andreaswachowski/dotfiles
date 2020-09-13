@@ -28,11 +28,18 @@ export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for 
 
 # -------------------------------------------------------------------------
 # PATH
-export PATH="$HOME/bin:$HOME/local/bin:$HOME/dotfiles/local/bin:$HOME/dotfiles/os/bin:$HOME/dotfiles/bin:$HOME/dotfiles/bin/remarkable/host:$PATH"
-export PATH="$HOME/Documents/git_projects/csslint/dist:$PATH"
-export PATH="$HOME/.rvm/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.cargo/bin:\
+$HOME/.yarn/bin:\
+$HOME/.rvm/bin:\
+$HOME/Documents/git_projects/csslint/dist:\
+$HOME/bin:\
+$HOME/local/bin:\
+$HOME/dotfiles/local/bin:\
+$HOME/dotfiles/os/bin:\
+$HOME/dotfiles/bin:\
+$HOME/dotfiles/bin/remarkable/host:\
+$PATH"
+export PATH
 
 if [ -z "$BASH" ]; then
   if [ "$(id -u)" -eq 0 ]; then
