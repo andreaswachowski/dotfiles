@@ -10,3 +10,6 @@
 [submodule "dots/tmux/plugins/tmux-battery"]
 	path = dots/tmux/plugins/tmux-battery
 	url = https://git::@github.com/tmux-plugins/tmux-battery
+[submodule "bin/remarkable"]
+	path = bin/remarkable
+	url = git@github.com:reHackable/scripts.git
