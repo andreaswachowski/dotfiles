@@ -27,6 +27,12 @@ brew 'ripgrep'
 brew 'fd'
 brew 'tldr'
 
+# Kubernetes
+brew 'kubectl'
+brew 'kubectx'
+brew 'helm'
+brew 'stern'
+
 cask 'docker-edge'
 
 brew 'git'
