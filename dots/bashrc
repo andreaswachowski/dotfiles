@@ -94,9 +94,10 @@ if [ -f ~/.fzf.bash ]; then
   # http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
   fzf1_='rg --files --no-ignore --hidden '
   fzf2_='--follow -g "!.ipynb_checkpoints" -g "!*.pyc" -g "!.mypy_cache" '
-  fzf3_='-g "!{.git,node_modules,build,htmlcov,coverage,dist,venv}/*" '
-  fzf4_='2> /dev/null'
-  export FZF_DEFAULT_COMMAND=$fzf1_$fzf2_$fzf3_$fzf4_
+  fzf3_='-g "!tags" '
+  fzf4_='-g "!{.git,.pytest_cache,node_modules,build,htmlcov,coverage,dist,venv}/*" '
+  fzf5_='2> /dev/null'
+  export FZF_DEFAULT_COMMAND=$fzf1_$fzf2_$fzf3_$fzf4_$fzf5_
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   # bind -x '"\C-p": vim $(fzf);'
 fi
