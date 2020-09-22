@@ -16,6 +16,8 @@ if [ -z "$PS1" ]; then
 fi
 
 alias be="bundle exec"
+alias k="kubectl"
+alias kx="kubectx"
 alias dc="docker-compose"
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
 if command -v xdg-open >/dev/null; then
