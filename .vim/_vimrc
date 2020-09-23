@@ -182,6 +182,7 @@ let g:fzf_tags_command = 'ctags -R --options=$HOME/.ctags.d'
 nmap <silent> <leader>n :call fzf#run(fzf#wrap({'source': 'find ~/Documents/ownCloud/notes -type f'}))<Cr>
 command!      -bang -nargs=* Rgg                        call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".expand("<cword>"), 1, <bang>0)'
 nmap <Leader>f :Rgg<CR>
+let g:fzf_preview_window = ''
 
 let g:notes_directories = ['~/Documents/Dropbox/notes']
 let g:notes_suffix = '.txt'
