@@ -197,18 +197,21 @@ let g:tskelMapGoToNextTag = ""
 " See https://github.com/tpope/vim-markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'ruby']
 
-silent let s:agprg = system('which rg')
-if s:agprg != ""
-  let g:ackprg = 'rg --vimgrep'
-endif
-
 set wildignore+=*.jpg,*.png,*.o
 
 let g:GetLatestVimScripts_allowautoinstall=1
 
 let g:vroom_use_vimux=1
 
-" For YouCompleteMe
+" Grepper -----------------------------------------------------------------
+nnoremap <leader>gg :Grepper -tool git<cr>
+nnoremap <leader>gr :Grepper -tool rg<cr>
+nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
+let g:grepper = {}
+let g:grepper.tools = ['git', 'rg', 'grep']
+command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
+
+" YouCompleteMe -----------------------------------------------------------
 let g:ycm_extra_conf_globlist = ['~/*']
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
