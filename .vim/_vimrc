@@ -7,6 +7,9 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
+" Ensure exit from CTRL-P window is fast
+set timeout timeoutlen=1000 ttimeoutlen=5
+
 filetype off
 
 " Output the syntax highlighting item under the cursor
