@@ -12,6 +12,15 @@ set timeout timeoutlen=1000 ttimeoutlen=5
 
 filetype off
 
+" -------------------------------------------------------------------------
+" Store temporary files in a central spot to ease
+" clean-up after machine crashes
+" https://github.com/tpope/vim-obsession/issues/18
+let vimtmp = $HOME . '/tmp/vim/' . getpid()
+silent! call mkdir(vimtmp, "p", 0700)
+let &backupdir=vimtmp
+let &directory=vimtmp
+
 " Output the syntax highlighting item under the cursor
 " echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 
@@ -177,7 +186,7 @@ nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 nmap <c-p> :Files<Enter>
 
-" -- Plugin-specific pre-load settings ------------------------------------
+" == Plugin-specific pre-load settings ====================================
 "  (Have to be defined before the plugin is loaded)
 
 let g:fzf_tags_command = 'ctags -R --options=$HOME/.ctags.d'
@@ -206,7 +215,7 @@ let g:GetLatestVimScripts_allowautoinstall=1
 
 let g:vroom_use_vimux=1
 
-" Grepper -----------------------------------------------------------------
+" -- Grepper --------------------------------------------------------------
 nnoremap <leader>gg :Grepper -tool git<cr>
 nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
@@ -214,16 +223,29 @@ let g:grepper = {}
 let g:grepper.tools = ['git', 'rg', 'grep']
 command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
 
-" YouCompleteMe -----------------------------------------------------------
+" -- YouCompleteMe --------------------------------------------------------
 let g:ycm_extra_conf_globlist = ['~/*']
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
       \ 'text': 1
       \}
 
+" http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'taskpaper': 1,
+      \ 'text': 1
+      \}
+
+" -- Fugitive -------------------------------------------------------------
 " Include (mailmap'ed) author and a date indication in the fugitive Glog quickfix entries
 let g:fugitive_summary_format = '%aN %ai %s'
 
+" -- ALE ------------------------------------------------------------------
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -245,18 +267,15 @@ let g:ale_fixers = {
 
 let g:ale_fix_on_save = 1
 
-" http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
+" -- UltiSnips ------------------------------------------------------------
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsUsePythonVersion=3
 let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+
+" -- Other Plugins ------------------------------------------------------
 
 let g:indentconsistencycop_CheckOnLoad = 0
 let g:indentconsistencycop_AutoRunCmd = 'IndentRangeConsistencyCop'
@@ -268,15 +287,10 @@ let g:rustfmt_autosave = 1
 let tern_map_prefix=";"
 let g:tern_map_keys=1
 let g:tern_show_loc_after_rename=0
-" -------------------------------------------------------------------------
-" Store temporary files in a central spot to ease
-" clean-up after machine crashes
-" https://github.com/tpope/vim-obsession/issues/18
-let vimtmp = $HOME . '/tmp/vim/' . getpid()
-silent! call mkdir(vimtmp, "p", 0700)
-let &backupdir=vimtmp
-let &directory=vimtmp
 
+let g:dbs = {
+\ 'dev': 'postgresql://reco:recopwd@localhost:5432/postgres',
+\ }
 " -------------------------------------------------------------------------
 " MoveFiles, see http://stackoverflow.com/questions/10884520/move-file-within-vim
 function! MoveFile(newspec)
