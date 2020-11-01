@@ -1,4 +1,8 @@
+#!/usr/bin/env bash
+
 set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 
 finish() {
   rv=$?
@@ -12,7 +16,7 @@ cd ~/local/src/vim
 
 compile() {
   git merge
-  configure_vim.sh
+  "$SCRIPT_DIR"/configure_vim.sh
   make -j "$(nproc)"
   echo "Check ruby inside vim: vim --cmd 'ruby 1' --cmd 'q!'"
   if ! vim --cmd 'ruby 1' --cmd 'q!'; then

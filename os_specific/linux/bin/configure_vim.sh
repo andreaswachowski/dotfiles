@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 export CFLAGS="-g"
 export CPPFLAGS="-g"
 export CXXFLAGS="-g"
