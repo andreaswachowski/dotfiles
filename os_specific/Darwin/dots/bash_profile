@@ -1,3 +1,5 @@
+export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
+
 alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 # https://superuser.com/questions/31744/how-to-get-git-completion-bash-to-work-on-mac-os-x/482943#482943
