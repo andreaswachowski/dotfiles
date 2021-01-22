@@ -12,7 +12,7 @@ finish() {
 
 trap finish EXIT INT TERM
 
-cd ~/local/src/vim
+cd /usr/local/src/vim
 
 compile() {
   git merge

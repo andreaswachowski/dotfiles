@@ -26,11 +26,12 @@ export CXXFLAGS="-g"
 # rvm use system # make sure the system-default Ruby is enabled
 
 make distclean
-./configure --prefix=$HOME/local \
+./configure --prefix=/usr/local \
 	--enable-gui=no \
 	--enable-multibyte \
 	--enable-rubyinterp \
         --with-clientserver \
 	--enable-python3interp \
+	--with-python3-command=python3 \
 	--enable-fail-if-missing
 # rvm use default # switch back to desired Ruby
