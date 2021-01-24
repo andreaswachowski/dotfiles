@@ -9,16 +9,18 @@ if [ -z "$TMUX" ] && [ -r ~/.bash_functions ]; then
   . ~/.bash_functions
 fi
 
-for os_specific_file in ~/dotfiles/os/dots/bash_profile ~/dotfiles/os/dots/bash_functions
+for f in bash_profile bash_functions
 do
-  if [ -f $os_specific_file ]; then
+  os_specific_file="$HOME/.config/bash/$f.os.$(uname -s)"
+  if [ -f "$os_specific_file" ]; then
     . $os_specific_file
   fi
 done
 
-for host_specific_file in ~/dotfiles/local/dots/bash_profile ~/dotfiles/local/dots/bash_functions
+for f in bash_profile bash_functions
 do
-  if [ -f $host_specific_file ]; then
+  host_specific_file="$HOME/.config/bash/$f.host.$(uname -s)"
+  if [ -f "$host_specific_file" ]; then
     . $host_specific_file
   fi
 done

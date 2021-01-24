@@ -1,0 +1,70 @@
+# vi: filetype=sh
+
+# bashrc might be sourced for non-interactive shells, in particular scp,
+# see http://lists.gnu.org/archive/html/bug-bash/2012-06/msg00028.html
+# scp breaks when it encounters output, so all echos etc. must be avoided,
+# and explicitly only happen when in interactive mode
+#
+# I also put aliases and anything else not needed for non-interactive
+# shells here:
+
+case "$-" in *i*)
+  alias less="less -R"
+  alias a2ps="a2ps --medium=a4"
+  alias urxvt="urxvt --perl-lib $HOME/bin -pe tabbed -geometry 120x40+0+0"
+
+  alias start_mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM start"
+  alias stop_mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
+
+  alias cdkanban="cd ~/Documents/qa-kanban"
+  alias cdrails="cd ~/Documents/rails-app"
+  alias blender=/Applications/blender.app/Contents/MacOS/blender
+
+  #- Helpify settings -------------------------------------------------------
+  #  alias be="bundle exec"
+  #  #alias bec="bundle exec cucumber --require features"
+  #  alias server="be rails server"
+  #  #alias solr="be rake sunspot:solr:run"
+  #  alias solr="/usr/local/bin/solr /Users/andreas/Documents/Startup/helpify/solr/"
+  #  alias tst="COVERAGE=true bec;COVERAGE=true rspec"
+  #
+  #  echo mailcatcher running?
+  #- End Helpify settings ---------------------------------------------------
+
+  #- Rails settings ---------------------------------------------------------
+  # Nifty tab naming for iTerm 2 and Rails
+  # See http://superuser.com/questions/175799/does-bash-have-a-hook-that-is-run-before-executing-a-command
+
+  # source /usr/local/Cellar/git/2.4.3/etc/bash_completion.d/git-prompt.sh
+
+  #Clear out PROMPT_COMMAND to avoid conflicts
+  #export PROMPT_COMMAND=
+  #export PS1="\h:\w\$ "
+  #source ~/bin/preexec.bash
+  #
+  #preexec () {
+  #	local cmd="$*";
+  #	echo "$cmd"
+  #	case $cmd in
+  #		"bundle exec rails server"|server)
+  #			echo -e "\033];Server\007"
+  #			;;
+#		"bundle exec rake sunspot:solr:run"|solr|/usr/local/bin/solr)
+  #			echo -e "\033];Solr\007"
+  #			;;
+  #	esac
+  #}
+  #
+  #precmd () {
+  #	echo -e "\033];$(__git_ps1 " [%s]")\007"
+  #}
+  #
+  #preexec_install
+
+  #- End Rails settings -----------------------------------------------------
+
+  # - Enable crontab editing on Mac OS X ------------------------------------
+  # http://superuser.com/questions/359580/error-adding-cronjobs-in-mac-os-x-lion
+  alias crontab="VIM_CRONTAB=true crontab"
+  ;;
+esac

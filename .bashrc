@@ -10,10 +10,10 @@
 # http://lists.gnu.org/archive/html/bug-bash/2012-06/msg00028.html
 # scp breaks when it encounters output, so all echos etc. must be
 # avoided, and explicitly only happen when in interactive mode
+# https://www.reddit.com/r/openSUSE/comments/7u3050/why_does_opensuse_chose_to_source_homebashrc_in/
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1078124
 
-if [ -z "$PS1" ]; then
-  return
-fi
+[ -z "$PS1" ] && return
 
 alias be="bundle exec"
 alias k="kubectl"
@@ -71,20 +71,20 @@ HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
 # PROMPT_COMMAND="history -a"
 trap 'history -a $HISTFILE' DEBUG
 
-OS_SPECIFIC_BASHRC=~/dotfiles/os/dots/bashrc
-if [ -f $OS_SPECIFIC_BASHRC ]; then
+OS_SPECIFIC_BASHRC=~/.config/bash/bashrc.os.$(uname -s)
+if [ -f "$OS_SPECIFIC_BASHRC" ]; then
   # shellcheck disable=SC1090
-  source $OS_SPECIFIC_BASHRC
+  source "$OS_SPECIFIC_BASHRC"
 fi
 
-HOST_SPECIFIC_BASHRC=~/dotfiles/local/dots/bashrc
-if [ -f $HOST_SPECIFIC_BASHRC ]; then
+HOST_SPECIFIC_BASHRC=~/.config/bash/bashrc.host.$(uname -n)
+if [ -f "$HOST_SPECIFIC_BASHRC" ]; then
   # shellcheck disable=SC1090
-  source $HOST_SPECIFIC_BASHRC
+  source "$HOST_SPECIFIC_BASHRC"
 fi
 
 # shellcheck disable=SC1090
-. "$HOME/dotfiles/bin/z.sh"
+. "$HOME/.config/bash/z.sh"
 
 set -o vi
 

@@ -1,0 +1,11 @@
+# vi: filetype=sh
+case "$-" in *i*)
+	alias a2ps="a2ps --medium=a4"
+	alias vless=/usr/local/bin/vimpager
+
+	# If I use this line, I can't login anymore:
+	#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib:/usr/local/64bit/lib
+
+	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+	;;
+esac

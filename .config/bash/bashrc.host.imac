@@ -1,0 +1,9 @@
+# vi: filetype=sh
+case "$-" in *i*)
+
+   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+   # - Enable crontab editing on Mac OS X ------------------------------------
+   # http://superuser.com/questions/359580/error-adding-cronjobs-in-mac-os-x-lion
+   alias crontab="VIM_CRONTAB=true crontab"
+   ;;
+esac
