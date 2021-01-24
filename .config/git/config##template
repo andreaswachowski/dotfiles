@@ -24,8 +24,12 @@
 	# http://stackoverflow.com/questions/12219604/list-git-tag-names-dates-and-messages
 	tagv = for-each-ref --format='%(refname:short) %(objecttype) %(objectname) %(authordate:format:%Y-%m-%d-%H:%M:%S) %(subject) %(body)' refs/tags
 
+{% if yadm.os == "Darwin" %}
 [credential]
+	helper = osxkeychain
+{% else %}
 	helper = cache
+{% endif %}
 
 [fetch]
 	prune = true
@@ -34,9 +38,6 @@
 	default = simple
 [init]
 	templatedir = ~/.config/git/template
-
-[include]
-	path = ~/dotfiles/os/dots/gitconfig
 
 [include]
 	path = ~/dotfiles/local/dots/gitconfig
