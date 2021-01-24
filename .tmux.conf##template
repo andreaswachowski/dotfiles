@@ -69,8 +69,8 @@ bind -r J resize-pane -D 5
 
 bind C-x setw synchronize-panes
 
-if-shell "[ -f ~/dotfiles/os/dots/tmux.conf ]" 'source ~/dotfiles/os/dots/tmux.conf'
-if-shell "[ -f ~/dotfiles/local/dots/tmux.conf ]" 'source ~/dotfiles/local/dots/tmux.conf'
+if-shell "[ -f ~/.config/tmux/tmux.conf.os.{{ yadm.os }} ]" 'source ~/.config/tmux/tmux.conf.os.{{ yadm.os }}'
+if-shell "[ -f ~/.config/tmux/tmux.conf.host.{{ yadm.hostname }} ]" 'source ~/.config/tmux/tmux.conf.host.{{ yadm.hostname }}'
 
 # Initialize TMUX plugin manager and run all available plugins
 # (keep this line at the very bottom of tmux.conf)
