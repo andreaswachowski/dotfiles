@@ -1,0 +1,2 @@
+# vi: syntax=sh
+export TODOTXT_DEFAULT_ACTION=ls

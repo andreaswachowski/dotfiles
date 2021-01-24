@@ -50,13 +50,13 @@ if [ -z "$BASH" ]; then
 fi
 
 # -------------------------------------------------------------------------
-OS_SPECIFIC_PROFILE=~/dotfiles/os/dots/profile
+OS_SPECIFIC_PROFILE=~/.config/sh/profile.os.$(uname -s)
 if [ -f $OS_SPECIFIC_PROFILE ]; then
   # shellcheck source=/dev/null
   . $OS_SPECIFIC_PROFILE
 fi
 
-HOST_SPECIFIC_PROFILE=~/dotfiles/local/dots/profile
+HOST_SPECIFIC_PROFILE=~/.config/sh/profile.host.$(uname -n)
 if [ -f $HOST_SPECIFIC_PROFILE ]; then
   # shellcheck source=/dev/null
   . $HOST_SPECIFIC_PROFILE
