@@ -40,9 +40,6 @@
 	templatedir = ~/.config/git/template
 
 [include]
-	path = ~/dotfiles/local/dots/gitconfig
-
-[include]
 	path = ~/dotfiles/identity_specific/gitconfig
 
 [diff]
