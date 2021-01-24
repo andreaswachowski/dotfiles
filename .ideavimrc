@@ -1,0 +1,6 @@
+" https://github.com/JetBrains/ideavim
+set surround
+set commentary
+set ideajoin
+
+source ~/.vimrc
