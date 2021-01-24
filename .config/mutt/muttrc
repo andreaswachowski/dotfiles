@@ -157,7 +157,7 @@ set reverse_name	= yes
 set signature           = ~/.mutt/signature
 
 # colors!
-source ~/.mutt-colors-solarized-dark-256.muttrc
+source ~/.config/mutt/mutt-colors-solarized-dark-256.muttrc
 
 push <show-version>
 
