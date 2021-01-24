@@ -44,6 +44,19 @@ else
   export PS1='\h:\w$(date +'%H:%M:%S') $PROMPT_CHAR '
 fi
 
+# Bash functions
+if [ -r ~/.bash_functions ]; then
+  . ~/.bash_functions
+fi
+os_specific_file="$HOME/.config/bash/bash_functions.os.$(uname -s)"
+if [ -f "$os_specific_file" ]; then
+  . $os_specific_file
+fi
+host_specific_file="$HOME/.config/bash/bash_functions.host.$(uname -s)"
+if [ -f "$host_specific_file" ]; then
+  . $host_specific_file
+fi
+
 # See "I have [bash] history back to ~2003" on https://news.ycombinator.com/item?id=10162189
 # (for a different take, see http://mywiki.wooledge.org/BashFAQ/088 )
 # According to my initial test, and according to one tweet in the discussion, on OS X, it is necessary

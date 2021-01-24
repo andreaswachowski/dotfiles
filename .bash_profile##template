@@ -5,25 +5,15 @@ if [ -z "$TMUX" ] && [ -r ~/.profile ]; then
   . ~/.profile;
 fi
 
-if [ -z "$TMUX" ] && [ -r ~/.bash_functions ]; then
-  . ~/.bash_functions
+os_specific_file="$HOME/.config/bash/bash_profile.os.$(uname -s)"
+if [ -f "$os_specific_file" ]; then
+  . $os_specific_file
 fi
 
-for f in bash_profile bash_functions
-do
-  os_specific_file="$HOME/.config/bash/$f.os.$(uname -s)"
-  if [ -f "$os_specific_file" ]; then
-    . $os_specific_file
-  fi
-done
-
-for f in bash_profile bash_functions
-do
-  host_specific_file="$HOME/.config/bash/$f.host.$(uname -s)"
-  if [ -f "$host_specific_file" ]; then
-    . $host_specific_file
-  fi
-done
+host_specific_file="$HOME/.config/bash/bash_profile.host.$(uname -s)"
+if [ -f "$host_specific_file" ]; then
+  . $host_specific_file
+fi
 
 # ---------------------------------------------------------------------------
 #
@@ -62,7 +52,7 @@ fi
 
 {% if yadm.distro == "openSUSE" %}
 # Normally we source .bashrc when the shell is interactive.
-# On openSUSE, however, $HOME/.bashrc was already sourced by /etc/profile (!)
+# On openSUSE, however, $HOME/.bashrc was sourced already by /etc/profile (!)
 {% else %}
 # Only read .bashrc when shell is interactive
 case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi;; esac
