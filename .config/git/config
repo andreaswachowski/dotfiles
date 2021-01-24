@@ -33,7 +33,7 @@
 [push]
 	default = simple
 [init]
-	templatedir = ~/.git_template
+	templatedir = ~/.config/git/template
 
 [include]
 	path = ~/dotfiles/os/dots/gitconfig
