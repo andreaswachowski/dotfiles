@@ -1,5 +1,5 @@
 # vi: syntax=sh
-export PATH=$HOME/bin:$HOME/local/bin:$HOME/bin/dvd:$PATH
+export PATH=$HOME/bin/dvd:$PATH
 
 # Amarok development
 export PATH=$HOME/kde/bin:$PATH
