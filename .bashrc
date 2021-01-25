@@ -97,7 +97,7 @@ if [ -f "$HOST_SPECIFIC_BASHRC" ]; then
 fi
 
 # shellcheck disable=SC1090
-. "$HOME/.config/bash/z.sh"
+. "$HOME/bin/z.sh"
 
 set -o vi
 
