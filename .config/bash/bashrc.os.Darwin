@@ -1,3 +1,6 @@
 if [ "${BASH_VERSINFO}" -ge 4 ] && [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 	. $(brew --prefix)/share/bash-completion/bash_completion
 fi
+# https://superuser.com/questions/31744/how-to-get-git-completion-bash-to-work-on-mac-os-x/482943#482943
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+[ -r "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && . "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
