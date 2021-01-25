@@ -10,7 +10,7 @@ if [ -f "$os_specific_file" ]; then
   . $os_specific_file
 fi
 
-host_specific_file="$HOME/.config/bash/bash_profile.host.$(uname -s)"
+host_specific_file="$HOME/.config/bash/bash_profile.host.$(uname -n)"
 if [ -f "$host_specific_file" ]; then
   . $host_specific_file
 fi
