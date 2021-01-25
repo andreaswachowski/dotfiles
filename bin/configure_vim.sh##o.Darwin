@@ -20,7 +20,7 @@ ruby --version
 printf "Make sure Python is installed via brew, and that this package\
  and not Xcode's Python is linked.\
  Python to be used in compilation: %s.\
- Is this alright (y/N)? " "$(command -v python)"
+ Is this alright (y/N)? " "$(command -v python3)"
 read -r answer
 answer=${answer:-N}
 case $answer in
