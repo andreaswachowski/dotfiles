@@ -41,7 +41,7 @@ if git fetch; then
   read -r answer
   answer=${answer:-Y}
   case $answer in
-    [yY]* ) make install;;
+    [yY]* ) sudo make install;;
     *) ;;
   esac
 else
