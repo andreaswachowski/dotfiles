@@ -1,10 +1,5 @@
 set -g @continuum-boot-options 'iterm'
 
-# In order to use "open" from inside tmux, use reattach-to-user-namespace.
-# Requires "brew install reattach-to-user-namespace"
-# See http://www.elmund.io/osx/2015/07/10/open-command-in-osx-tmux/
-set -g default-command "reattach-to-user-namespace ${SHELL}"
-
 # https://unix.stackexchange.com/questions/318281/how-to-copy-and-paste-with-a-mouse-with-tmux
 # macOS only
 set -g mouse on
