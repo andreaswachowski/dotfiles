@@ -5,7 +5,6 @@
 	interactive = auto
 
 [core]
-	excludesfile = ~/.gitignore
 	editor = vim
 
 [alias]
