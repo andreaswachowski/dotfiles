@@ -1,6 +1,7 @@
 set nocompatible
 set modeline
 set number
+set nojoinspaces
 
 set tabstop=8
 set softtabstop=2
