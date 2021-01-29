@@ -1,16 +1,14 @@
-@namespace url('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul');
+/*
+ * Prerequisite:
+ * in about:config, set toolkit.legacyUserProfileCustomizations.stylesheets to true
+ *
+ * This file's location on
+ * MacOS: ~/Library/Application Support/Firefox/Profiles/<profile-dir>/chrome/userChrome.css
+ */
+Toolbar { visibility: collapse; }
 
-/* Hide tab bar in FF Quantum */
-/* Helpful when using Tree Style Tabs, as suggested on
- * https://news.ycombinator.com/item?id=18836189 */
-@-moz-document url("chrome://browser/content/browser.xul") {
-  #TabsToolbar {
-    visibility: collapse !important;
-    margin-bottom: 21px !important;
-  }
+#sidebar-header { visibility: collapse; }
 
-  #sidebar-box[sidebarcommand='treestyletab_piro_sakura_ne_jp-sidebar-action']
-    #sidebar-header {
-    visibility: collapse !important;
-  }
-}
+/* https://superuser.com/questions/1424478/can-i-hide-native-tabs-at-the-top-of-firefox */
+/* remove tabs, but preserve menu and minimize/maximize/close buttons */
+#tabbrowser-tabs {  visibility: collapse;}
