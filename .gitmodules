@@ -13,3 +13,9 @@
 [submodule "bin/remarkable"]
 	path = bin/remarkable
 	url = git@github.com:reHackable/scripts.git
+[submodule "local/src/vim"]
+	path = local/src/vim
+	url = git@github.com:vim/vim.git
+[submodule "local/src/alt"]
+	path = local/src/alt
+	url = git@github.com:uptech/alt.git
