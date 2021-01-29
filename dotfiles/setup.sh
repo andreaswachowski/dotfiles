@@ -275,22 +275,6 @@ esac
 
 vim +PlugInstall
 
-# Rationale for the following patch: See comment "Problems deleting unsaved
-# buffer" at http://vim.wikia.com/wiki/Script:356
-DBEXT=$VIM_PLUGIN_DIR/dbext.vim
-if [ -d "${DBEXT}" ]; then
-  grep -q "call s:DB_checkModeline" $DBEXT/plugin/dbext.vim
-  if [ $? -eq 1 ]; then
-    cp $DOTFILES/vim_dbext_patch.diff $DBEXT
-    cd $DBEXT
-    patch -p0 < vim_dbext_patch.diff
-    if [ $? -eq 0 ]; then
-      rm $DBEXT/vim_dbext_patch.diff
-    fi
-    cd -
-  fi
-fi
-
 # Setup terminfo entries
 # https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
 which tic 2>&1 >/dev/null
