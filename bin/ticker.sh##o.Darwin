@@ -1,0 +1,19 @@
+#!/bin/sh
+# vi: tw=0
+
+for PAIR in etheur xrpeur
+do
+  TIMESTAMP=$(date +"%Y%m%d_%H%M")
+  TMPFILE=/tmp/last_price_$PAIR
+  APIRESPONSE=${TMPFILE}_$TIMESTAMP.raw
+  WGET_LOG=${TMPFILE}_$TIMESTAMP.log
+  if ! /usr/local/bin/wget -o "$WGET_LOG" -O "$APIRESPONSE" https://www.bitstamp.net/api/v2/ticker_hour/$PAIR/
+  then
+    mv "$WGET_LOG" "${TMPFILE}_$TIMESTAMP.failed_wget.log"
+    exit 1
+  fi
+  (json_pp < "$APIRESPONSE" || mv "$APIRESPONSE" "${TMPFILE}_$TIMESTAMP.failed_json_pp.json") \
+    | /usr/bin/grep last \
+    | /usr/bin/sed -E 's/^ *"last" : "([0-9.]*)",?$/\1/' > $TMPFILE
+  rm -f "$WGET_LOG" "$APIRESPONSE"
+done
