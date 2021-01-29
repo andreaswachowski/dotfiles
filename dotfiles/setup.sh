@@ -257,24 +257,6 @@ function link {
   fi
 }
 
-VIM_PLUGIN_DIR=~/.vim/plugged
-
-link $DOTFILES/.vim ~/.vim
-
-read -p "Use vim plugins for development (Y/n)? " answer
-answer=${answer:-Y}
-case $answer in
-  [yY]* ) cat >~/.vim/.plugs_for_dev <<EOF
-This file automatically created by ~/dotfiles/setup.sh to indicate
-to vim that development plugins shall be used. see plugs.vim
-EOF
-    ;;
-  [nN]* ) ;;
-  *) ;;
-esac
-
-vim +PlugInstall
-
 # Setup terminfo entries
 # https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
 which tic 2>&1 >/dev/null
