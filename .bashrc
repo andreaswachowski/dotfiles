@@ -118,4 +118,8 @@ if [ -f ~/.fzf.bash ]; then
       fd --type d --hidden --follow --exclude ".git" . "$1"
     }
   }
+
+  command -v pytest >/dev/null && {
+    _fzf_setup_completion path pytest
+  }
 fi
