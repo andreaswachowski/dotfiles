@@ -288,6 +288,10 @@ let tern_map_prefix=";"
 let g:tern_map_keys=1
 let g:tern_show_loc_after_rename=0
 
+" do not auto close current preview window when change from markdown buffer to
+" another buffer
+let g:mkdp_auto_close = 0
+
 let g:dbs = {
 \ 'dev': 'postgresql://reco:recopwd@localhost:5432/postgres',
 \ }
