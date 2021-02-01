@@ -3,24 +3,30 @@
 # Further sources:
 # * http://stevelosh.com/blog/2012/10/the-homely-mutt/
 # * https://pbrisbin.com/posts/mutt_gmail_offlineimap/
-source "gpg -d ~/.mutt/andreaswachowskigmail.gpg |"
+source "gpg -d ~/.config/mutt/passwords.gpg |"
 
 set editor              = "vim"                                        # use vim as the default editor
 
 set from                = "Andreas Wachowski <andreas.wachowski@gmail.com>"
 set edit_headers        = yes
 
+set ssl_starttls=yes
+set ssl_force_tls=yes
+
+set realname='Andreas Wachowski'
 # Gmail info
 set imap_user           = "andreas.wachowski@gmail.com"
 set imap_keepalive      = 30
 unset imap_passive                                                     # allow mutt to open new imap connection automatically
-set folder              = ~/.mail
-set spoolfile           = "+gmail/INBOX"
-set mbox                = "+gmail/[Google Mail].All Mail"
-set postponed           = "+gmail/[Google Mail].Drafts"
-set header_cache        = ~/.mutt/andreas.wachowski/headers
-set message_cachedir    = ~/.mutt/andreas.wachowski/bodies
-set certificate_file    = ~/.mutt/certificates
+set folder              = "imaps://imap.gmail.com"
+set spoolfile           = "+INBOX"
+set mbox                = "+[Gmail]/All Mail"
+set postponed           = "+[Gmail]/Drafts"
+set record              = "+[Gmail]/Sent Mail"
+set trash               = "+[Gmail]/Trash"
+set header_cache        = ~/.cache/mutt/headers
+set message_cachedir    = ~/.cache/mutt/bodies
+set certificate_file    = ~/.cache/mutt/certificates
 set smtp_url            = "smtp://andreas.wachowski@smtp.gmail.com:587/"
 set move                = no                                           # Don't ask me to move messages out of my inbox when I quit.
 unset record
@@ -149,12 +155,12 @@ folder-hook "+gmail/[Google Mail].Trash" macro index,pager y <save-message>=gmai
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
 # Contact aliases, could also use `goobook`.
-set alias_file		= ~/.mutt/aliases
+set alias_file		= ~/.config/mutt/aliases
 set sort_alias		= alias
 set reverse_alias	= yes
 set reverse_name	= yes
 
-set signature           = ~/.mutt/signature
+set signature           = ~/.config/mutt/signature
 
 # colors!
 source ~/.config/mutt/mutt-colors-solarized-dark-256.muttrc
