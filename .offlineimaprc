@@ -199,7 +199,7 @@ ui = TTYUI
 # for "filename" knob.
 #
 enabled = yes
-filename = ~/.mutt/muttrc.mailboxes
+filename = ~/.config/mutt/muttrc.mailboxes
 header = "mailboxes "
 peritem = "+%(accountname)s/%(foldername)s"
 sep = " "
