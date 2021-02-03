@@ -28,6 +28,7 @@ brew 'ripgrep'
 brew 'fd'
 brew 'tldr'
 
+brew 'docbook' # to compile the mutt info page
 brew 'urlview'
 
 # Kubernetes

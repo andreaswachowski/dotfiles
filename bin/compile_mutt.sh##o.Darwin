@@ -1,0 +1,21 @@
+# Required for building mutt documentation, see
+# "brew info docbook" and mutt/doc/devel-notes.txt
+XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+
+cd ~/local/src/mutt
+
+./prepare --prefix=$HOME/local \
+  --enable-sidebar \
+  --enable-hcache \
+  --enable-imap \
+  --enable-smtp \
+  --with-slang \
+  --with-gss \
+  --with-sasl \
+  --with-homespool \
+  --with-ssl=/usr/local/opt/openssl@1.1 \
+  --with-tokyocabinet \
+  --enable-gpgme
+
+make -j "$(nproc)"
+make install
