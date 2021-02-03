@@ -1,0 +1,13 @@
+cd ~/local/src/mutt && ./prepare --prefix=$HOME/local \
+	--disable-doc \
+	--enable-sidebar \
+	--enable-hcache \
+	--enable-imap \
+	--enable-smtp \
+	--with-slang \
+	--with-gss \
+	--with-sasl \
+	--with-homespool \
+	--with-ssl=/usr/local/opt/openssl@1.1 \
+	--with-tokyocabinet \
+	--enable-gpgme

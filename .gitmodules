@@ -19,3 +19,6 @@
 [submodule "local/src/alt"]
 	path = local/src/alt
 	url = git@github.com:uptech/alt.git
+[submodule "local/src/mutt"]
+	path = local/src/mutt
+	url = git@gitlab.com:muttmua/mutt.git
