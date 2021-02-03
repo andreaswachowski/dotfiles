@@ -28,7 +28,6 @@ brew 'ripgrep'
 brew 'fd'
 brew 'tldr'
 
-brew 'mutt'
 brew 'urlview'
 
 # Kubernetes
