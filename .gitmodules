@@ -1,27 +1,27 @@
 [submodule ".tmux/plugins/tmux-continuum"]
 	path = .tmux/plugins/tmux-continuum
-	url = git@github.com:tmux-plugins/tmux-continuum.git
+	url = https://github.com/tmux-plugins/tmux-continuum.git
 [submodule ".tmux/plugins/tmux-resurrect"]
 	path = .tmux/plugins/tmux-resurrect
-	url = git@github.com:tmux-plugins/tmux-resurrect.git
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
 [submodule ".tmux/plugins/tmux-battery"]
 	path = .tmux/plugins/tmux-battery
-	url = git@github.com:tmux-plugins/tmux-battery.git
+	url = https://github.com/tmux-plugins/tmux-battery.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
-	url = git@github.com:tmux-plugins/tpm.git
+	url = https://github.com/tmux-plugins/tpm.git
 [submodule "bin/remarkable"]
 	path = bin/remarkable
-	url = git@github.com:reHackable/scripts.git
+	url = https://github.com/reHackable/scripts.git
 [submodule "local/src/vim"]
 	path = local/src/vim
-	url = git@github.com:vim/vim.git
+	url = https://github.com/vim/vim.git
 [submodule "local/src/alt"]
 	path = local/src/alt
-	url = git@github.com:uptech/alt.git
+	url = https://github.com/uptech/alt.git
 [submodule "local/src/mutt"]
 	path = local/src/mutt
-	url = git@gitlab.com:muttmua/mutt.git
+	url = https://github.com/muttmua/mutt.git
 [submodule ".local/share/yadm/archive-repo"]
 	path = .local/share/yadm/archive-repo
 	url = https://gogs.andreas-wachowski.net/andreas/yadm-archive.git
