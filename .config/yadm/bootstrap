@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Because Git submodule commands cannot operate without a work tree, they must
+# be run from within $HOME (assuming this is the root of your dotfiles)
+cd "$HOME"
+
+echo "Init submodules"
+yadm submodule update --init
+
+if command -v vim >/dev/null 2>&1; then
+  echo "Bootstraping Vim"
+  vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
