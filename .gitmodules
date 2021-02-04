@@ -22,3 +22,6 @@
 [submodule "local/src/mutt"]
 	path = local/src/mutt
 	url = git@gitlab.com:muttmua/mutt.git
+[submodule ".local/share/yadm/archive-repo"]
+	path = .local/share/yadm/archive-repo
+	url = https://gogs.andreas-wachowski.net/andreas/yadm-archive.git
