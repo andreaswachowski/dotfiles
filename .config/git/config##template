@@ -42,7 +42,7 @@
 	templatedir = ~/.config/git/template
 
 [include]
-	path = ~/dotfiles/identity_specific/gitconfig
+	path = ~/.config/git/identities/config
 
 [diff]
 	algorithm = patience
