@@ -124,6 +124,13 @@ if [ -f ~/.fzf.bash ]; then
   }
 fi
 
+# yadm encrypt/decrypt will issue a
+# "gpg: Inappropriate ioctl for device" error and bail out
+# unless GPG_TTY is set. 
+# https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html
+# https://unix.stackexchange.com/questions/257061/gentoo-linux-gpg-encrypts-properly-a-file-passed-through-parameter-but-throws-i/257065#257065
+export GPG_TTY=$(tty)
+
 command -v nvm >/dev/null && {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
