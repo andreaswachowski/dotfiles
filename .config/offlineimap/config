@@ -86,6 +86,7 @@ accounts = gmail
 # sync run never "finishes" due to a timer, you will never sync your additional
 # accounts if this is 1.
 #
+# DEPRECATED, SEE http://www.offlineimap.org/configuration/2016/01/29/why-i-m-not-using-maxconnctions.html
 #maxsyncaccounts = 1
 
 
@@ -293,14 +294,6 @@ remoterepository = Gmail-Remote
 #
 #presynchook = imapfilter -c someotherconfig.lua
 #postsynchook = notifysync.sh
-
-
-# This option stands in the [Account Test] section.
-#
-# The historical backend is 'plain' which writes out the state in plain text
-# files. See manual.
-#
-status_backend = sqlite
 
 
 # This option stands in the [Account Test] section.
@@ -563,7 +556,7 @@ synclabels = yes
 #
 type = GmailMaildir
 
-localfolders = ~/.mail/gmail
+localfolders = ~/Mail/gmail
 
 # [Repository RemoteExample]
 
@@ -1021,6 +1014,7 @@ auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN
 # cases, it may slow things down.  The safe answer is 1.  You should
 # probably never set it to a value more than 5.
 #
+# DEPRECATED, SEE http://www.offlineimap.org/configuration/2016/01/29/why-i-m-not-using-maxconnctions.html
 #maxconnections = 2
 
 
@@ -1263,8 +1257,9 @@ type = Gmail
 # Specify the Gmail user name. This is the only mandatory parameter.
 #
 remoteuser = andreas.wachowski@gmail.com
-remotepassfile = ~/.offlineimap.gmailpasswd
+remotepassfile = ~/.config/offlineimap/passwords/andreas.wachowski@gmail.com
 # Requires openssl installed with homebrew:
+realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
 
 
