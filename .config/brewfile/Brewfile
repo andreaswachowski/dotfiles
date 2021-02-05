@@ -30,6 +30,7 @@ brew 'tldr'
 
 brew 'docbook' # to compile the mutt info page
 brew 'urlview'
+brew 'offlineimap'
 
 # Kubernetes
 brew 'kubectl'
