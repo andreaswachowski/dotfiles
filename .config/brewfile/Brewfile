@@ -4,7 +4,7 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' || true
 tap 'uptech/homebrew-oss' || true
 
-brew install uptech/oss/alt
+brew 'uptech/oss/alt'
 
 brew 'mas'
 
