@@ -34,6 +34,7 @@ brew 'tldr'
 brew 'docbook' # to compile the mutt info page
 brew 'urlview'
 brew 'isync'
+brew 'msmtp'
 
 # Kubernetes
 brew 'kubectl'
