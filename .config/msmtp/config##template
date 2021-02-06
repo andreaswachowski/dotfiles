@@ -1,3 +1,5 @@
+# Test with
+# echo "this is some content" | msmtp -a andreas.wachowski@gmail.com -- andreas.wachowski@gmail.com
 defaults
 auth on
 tls on
