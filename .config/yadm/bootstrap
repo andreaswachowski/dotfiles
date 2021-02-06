@@ -11,3 +11,30 @@ if command -v vim >/dev/null 2>&1; then
   echo "Bootstraping Vim"
   vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+    if ! command -v brew >/dev/null 2>&1; then
+        echo "Installing homebrew"
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+
+    # In Posix sh, echo flags are undefined
+    if [ "$(echo -n)" = "-n" ]; then
+        n=""
+        # c="\c"
+    else
+        n="-n"
+        # c=""
+    fi
+
+    echo $n "Install apps in Brewfile (y/n)? "
+    read -r answer
+    if [ "$answer" != "${answer#[Yy]}" ] ;then
+        if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
+            echo "Updating homebrew bundle"
+            brew bundle --file=~/.config/brewfile/Brewfile
+        fi
+    fi
+fi
