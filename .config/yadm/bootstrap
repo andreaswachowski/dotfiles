@@ -38,3 +38,5 @@ if [ "$system_type" = "Darwin" ]; then
         fi
     fi
 fi
+
+GPG_TTY=$(tty) yadm --yadm-archive "$HOME/.local/share/yadm/archive-repo/archive" decrypt
