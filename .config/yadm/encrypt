@@ -1,4 +1,3 @@
 .config/mutt/passwords.gpg
 .config/git/identities/*
 .config/mbsync/passwords/*
-.config/offlineimap/passwords/*
