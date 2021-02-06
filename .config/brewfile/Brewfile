@@ -20,6 +20,8 @@ brew 'tmux'
 brew 'coreutils'
 brew 'less'
 brew 'ncdu'
+# https://stackoverflow.com/questions/24675167/ca-certificates-mac-os-x
+brew 'openssl' # to install /usr/local/etc/openssl/cert.pem for mbsync/isync
 brew 'openssh'
 brew 'p7zip'
 brew 'the_silver_searcher'

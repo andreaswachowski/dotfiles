@@ -2,7 +2,15 @@ Create Slave
 SyncState *
 
 IMAPAccount andreas.wachowski@gmail.com
+{% if yadm.os == "Linux" %}
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+{% endif %}
+{% if yadm.os == "Darwin" %}
+CertificateFile /usr/local/etc/openssl/cert.pem
+# Without AuthMechas, tries PLAIN-CLIENTTOKEN which yields
+# Error: SASL(-7): invalid parameter supplied ...
+AuthMechs PLAIN
+{% endif %}
 SSLType IMAPS
 Host imap.gmail.com
 User andreas.wachowski@gmail.com
