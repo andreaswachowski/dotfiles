@@ -35,6 +35,10 @@ if [ "$system_type" = "Darwin" ]; then
         if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
             echo "Updating homebrew bundle"
             brew bundle --file=~/.config/brewfile/Brewfile
+        else
+            echo "Install minimal dependencies"
+            echo brew install coreutils bash bash-completion@2 gnupg
+            brew install coreutils bash bash-completion@2 gnupg
         fi
     fi
 fi
