@@ -7,13 +7,15 @@ source "gpg -d ~/.config/mutt/passwords.gpg |"
 
 set editor              = "vim"                                        # use vim as the default editor
 
-set from                = "Andreas Wachowski <andreas.wachowski@gmail.com>"
+set from                = andreas.wachowski@gmail.com
+set realname            = "Andreas Wachowski"
 set edit_headers        = yes
 
 set ssl_starttls=yes
 set ssl_force_tls=yes
 
-set realname='Andreas Wachowski'
+set sendmail = "msmtp -a andreas.wachowski@gmail.com"
+
 # Gmail info
 set imap_user           = "andreas.wachowski@gmail.com"
 set imap_keepalive      = 30
@@ -31,7 +33,7 @@ set smtp_url            = "smtp://andreas.wachowski@smtp.gmail.com:587/"
 set move                = no                                           # Don't ask me to move messages out of my inbox when I quit.
 unset record
 
-mailboxes `ls -Q ~/Mail/gmail | sed 's/"/"+gmail\//' | tr '\n' ' '`
+mailboxes `ls -Q ~/Mail/gmail | sed 's/"/"+gmail\//' | paste -sd ' '`
 
 #set tmpdir             = "/tmp"
 
