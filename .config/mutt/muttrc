@@ -18,12 +18,12 @@ set realname='Andreas Wachowski'
 set imap_user           = "andreas.wachowski@gmail.com"
 set imap_keepalive      = 30
 unset imap_passive                                                     # allow mutt to open new imap connection automatically
-set folder              = "imaps://imap.gmail.com"
-set spoolfile           = "+INBOX"
-set mbox                = "+[Gmail]/All Mail"
-set postponed           = "+[Gmail]/Drafts"
-set record              = "+[Gmail]/Sent Mail"
-set trash               = "+[Gmail]/Trash"
+set folder             = ~/Mail                                   # mailbox location
+set spoolfile           = "+gmail/INBOX"
+set mbox                = "+gmail/[Google Mail].All Mail"
+set postponed           = "+gmail/[Google Mail].Drafts"
+set record              = "+gmail/[Google Mail].Sent Mail"
+set trash               = "+gmail/[Google Mail].Trash"
 set header_cache        = ~/.cache/mutt/headers
 set message_cachedir    = ~/.cache/mutt/bodies
 set certificate_file    = ~/.cache/mutt/certificates
@@ -31,11 +31,11 @@ set smtp_url            = "smtp://andreas.wachowski@smtp.gmail.com:587/"
 set move                = no                                           # Don't ask me to move messages out of my inbox when I quit.
 unset record
 
-#set folder             = ~/Mail                                       # mailbox location
+# mailboxes are automatically updated and written in a mutt-readable format by
+# offlineimap, see [mbnames] section in ~/.config/offlineimap/config
+source ~/.config/mutt/muttrc.mailboxes
+
 #set tmpdir             = "/tmp"
-#set record             = "+sent"
-#set mbox               = "+mbox"
-#set postponed          = "+postponed"
 
 set quit
 set wait_key            = no                                           # Don't ask me to press a key to continue after I did a shell escape and came back
@@ -78,9 +78,6 @@ set sidebar_width          = 40
 
 set status_chars        = " *%A"
 set status_format       = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
-
-# mailboxes set up by offlineimap
-source ~/.config/mutt/muttrc.mailboxes
 
 set pager_index_lines   = 10                                           # number of index lines to show
 set pager_context       = 5                                            # When going to the next page, keep the bottom two lines of this page on top so that I have some context
