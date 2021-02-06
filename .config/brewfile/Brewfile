@@ -8,9 +8,10 @@ brew install uptech/oss/alt
 
 brew 'mas'
 
-brew 'universal-ctags', args: ['HEAD']
 brew 'bash'
+brew 'gnupg'
 brew 'bash-completion@2'
+brew 'universal-ctags', args: ['HEAD']
 brew 'bat'
 brew 'ctop'
 brew 'curl-openssl'
