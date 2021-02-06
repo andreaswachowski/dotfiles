@@ -1,0 +1,24 @@
+Create Slave
+SyncState *
+
+IMAPAccount andreas.wachowski@gmail.com
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLType IMAPS
+Host imap.gmail.com
+User andreas.wachowski@gmail.com
+PassCmd "gpg -d ~/.config/mbsync/passwords/andreas.wachowski@gmail.com.gpg"
+PipelineDepth 50
+
+MaildirStore gmail-local
+# The trailing "/" is important
+Path ~/Mail/gmail/
+Inbox ~/Mail/gmail/INBOX
+Flatten .
+
+IMAPStore gmail-remote
+Account andreas.wachowski@gmail.com
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns * !scriptlabels*
