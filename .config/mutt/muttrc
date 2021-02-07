@@ -88,6 +88,7 @@ unset markers                                                          # In the 
 
 
 # Custom keybindings
+bind index g noop # to avoid neomutt warning in next line
 bind index gg       first-entry
 bind index G        last-entry
 bind index <space>  collapse-thread
@@ -103,6 +104,7 @@ bind pager K previous-undeleted
 bind pager J next-undeleted
 bind pager k previous-line
 bind pager j next-line
+bind pager g noop # to avoid neomutt warning in next line
 bind pager gg       top
 bind pager G        bottom
 
