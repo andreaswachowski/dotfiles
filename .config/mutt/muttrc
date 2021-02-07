@@ -33,7 +33,7 @@ set smtp_url            = "smtp://andreas.wachowski@smtp.gmail.com:587/"
 set move                = no                                           # Don't ask me to move messages out of my inbox when I quit.
 unset record
 
-mailboxes `ls -Q ~/Mail/gmail | sed 's/"/"+gmail\//' | paste -sd ' '`
+mailboxes `ls -1 ~/Mail/gmail | sed 's/.*/"+gmail\/&"/' | paste -sd ' ' -`
 
 #set tmpdir             = "/tmp"
 
