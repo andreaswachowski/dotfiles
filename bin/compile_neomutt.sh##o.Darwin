@@ -1,0 +1,21 @@
+#!/bin/sh
+export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+
+cd ~/local/src/neomutt
+./configure \
+    --with-ui=slang \
+    --full-doc \
+    --gpgme \
+    --lua \
+    --with-lua=/usr/local/Cellar/lua/5.4.2 \
+    --notmuch \
+    --gss \
+    --ssl \
+    --with-ssl=/usr/local/opt/openssl@1.1 \
+    --sqlite \
+    --tokyocabinet \
+    --sasl \
+    --prefix=$HOME/local
+
+make -j "$(nproc)"
+make install
