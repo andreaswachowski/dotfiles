@@ -3,6 +3,7 @@
 # Further sources:
 # * http://stevelosh.com/blog/2012/10/the-homely-mutt/
 # * https://pbrisbin.com/posts/mutt_gmail_offlineimap/
+# * https://blog.flaport.net/configuring-neomutt-for-email.html
 source "gpg -d ~/.config/mutt/passwords.gpg |"
 
 set editor              = "vim"                                        # use vim as the default editor
@@ -143,8 +144,9 @@ macro index,pager d "<save-message>=gmail/[Google Mail].Trash<enter>" "Trash"
 macro index,pager e  "<save-message>=gmail/[Google Mail].All Mail<enter>" "Archive conversation"
 
 # Sync email
-macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index O "<shell-escape>mbsync -V gmail<enter>"
+# macro index N "<shell-escape>mbsync -V gmail-newsletters<enter>"
+# macro index I "<shell-escape>mbsync -V gmail-inbox<enter>"
 
 #folder-hook +INBOX 'macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"'
 folder-hook "+gmail/[Google Mail].Trash" macro index,pager y <save-message>=gmail/INBOX<enter> "Move to inbox"
