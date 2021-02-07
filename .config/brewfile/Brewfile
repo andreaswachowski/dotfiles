@@ -43,8 +43,6 @@ brew 'kubectx'
 brew 'helm'
 brew 'stern'
 
-cask 'docker-edge'
-
 brew 'git'
 brew 'tig'
 
@@ -67,6 +65,7 @@ cask 'carbon-copy-cloner'
 cask 'coconutbattery'
 cask 'dash'
 cask 'deadbeef-devel'
+cask 'docker-edge'
 cask 'dosbox-app'
 cask 'dropbox'
 cask 'firefox'
