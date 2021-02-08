@@ -11,6 +11,7 @@ trap finish EXIT INT TERM
 cd ~/local/src/vim
 
 compile() {
+  git checkout master
   git merge
   configure_vim.sh
   make -j "$(nproc)"
