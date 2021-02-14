@@ -7,6 +7,7 @@
 source "gpg -d ~/.config/mutt/passwords.gpg |"
 
 set editor              = "vim"                                        # use vim as the default editor
+set mailcap_path        = ~/.config/mutt/mailcap
 
 set from                = andreas.wachowski@gmail.com
 set realname            = "Andreas Wachowski"
