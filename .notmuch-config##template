@@ -53,7 +53,7 @@ primary_email=andreas.wachowski@gmail.com
 #
 [new]
 tags=unread;inbox;
-ignore=.uidvalidity;.mbsyncstate
+ignore=.uidvalidity;.mbsyncstate;.Spotlight-V100;.Trashes;.fseventsd
 
 # Search configuration
 #
