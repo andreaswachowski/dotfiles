@@ -144,7 +144,7 @@ macro index,pager d "<save-message>=gmail/[Google Mail].Trash<enter>" "Trash"
 macro index,pager e  "<save-message>=gmail/[Google Mail].All Mail<enter>" "Archive conversation"
 
 # Sync email
-macro index O "<shell-escape>mbsync -V gmail<enter><shell-escape>notmuch new<enter>"
+macro index O "<shell-escape>mbsync gmail<enter><shell-escape>notmuch new<enter>"
 # macro index N "<shell-escape>mbsync -V gmail-newsletters<enter><shell-escape>notmuch new<enter>"
 # macro index I "<shell-escape>mbsync -V gmail-inbox<enter><shell-escape>notmuch new<enter>"
 # From https://github.com/LukeSmithxyz/mutt-wizard/blob/master/share/mutt-wizard.muttrc#L76
