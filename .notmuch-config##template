@@ -15,7 +15,7 @@
 path=/home/andreas/Mail
 {% endif %}
 {% if yadm.os == "Darwin" %}
-path=/Users/andreas/Mail
+path=/Volumes/mail
 {% endif %}
 
 # User configuration
