@@ -4,7 +4,10 @@
 #
 # Note: "-x" is required because Ms@ is otherwise unknown.
 #
+# Also see TERMINFO EXTENSIONS in the tmux man page (for "Ms" in particular)
+# The "use" directive is explained in the "Similar Terminals"
+# section in the terminfo manpage (for the "@" after Ms)
 tmux-256color|tmux with 256 colors,
   ritm=\E[23m, rmso=\E[27m, sitm=\E[3m, smso=\E[7m, Ms@,
   khome=\E[1~, kend=\E[4~,
-  use=xterm-256color, use=screen-256color,
+  use=screen-256color-italic,
