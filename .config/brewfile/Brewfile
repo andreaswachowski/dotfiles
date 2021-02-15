@@ -1,4 +1,4 @@
-tap 'caskroom/homebrew-cask' || true
+tap 'homebrew/homebrew-cask' || true
 tap 'universal-ctags/universal-ctags' || true
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' || true
@@ -64,7 +64,7 @@ cask 'calibre'
 cask 'carbon-copy-cloner'
 cask 'coconutbattery'
 cask 'dash'
-cask 'deadbeef-devel'
+cask 'deadbeef'
 cask 'docker-edge'
 cask 'dosbox-app'
 cask 'dropbox'
