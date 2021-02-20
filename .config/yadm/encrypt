@@ -2,3 +2,4 @@
 .config/git/identities/*
 .config/mbsync/passwords/*
 .config/msmtp/passwords/*
+.ssh/*
