@@ -10,6 +10,7 @@ brew 'mas'
 
 brew 'bash'
 brew 'gnupg'
+brew 'pinentry-mac'
 brew 'bash-completion@2'
 brew 'universal-ctags', args: ['HEAD']
 brew 'bat'
