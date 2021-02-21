@@ -3,3 +3,4 @@
 .config/mbsync/passwords/*
 .config/msmtp/passwords/*
 .ssh/*
+.gnupg/*
