@@ -49,3 +49,5 @@ else
   echo git fetch failed. Fix this and try again.
   exit 1
 fi
+
+vim '+PlugUpdate' '+qall'
