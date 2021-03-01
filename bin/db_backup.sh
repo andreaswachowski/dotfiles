@@ -1,28 +1,32 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -x
 
 # for use with cron, eg:
-# 0 3 * * * postgres /var/db/db_backup.sh foo_db
+# 0 3 * * * db_backup.sh /path/to/specific_db_backup.sh owncloud
 
 if [[ -z "$1" ]]; then
-    echo "Usage: $0 <db_name> [pg_dump args]"
+    echo "Usage: $0 <db_backup_script> <db_backup_dir>"
     exit 1
 fi
 
+DB_BACKUP_SCRIPT="$1"; shift
 DB="$1"; shift
-DUMP_ARGS=$@
-DIR="/var/db/backups/$DB"
+DIR="/share/mysql_backup/cumin/$DB"
 
-KEEP_DAILY=7
+GZIP=/opt/bin/gzip
+
+KEEP_DAILY=30
 KEEP_WEEKLY=5
 KEEP_MONTHLY=12
 
 function rotate {
     rotation=$1
-    fdate=`date +%Y-%m-%d -d $date`
-    file=$DIR/daily/*$fdate*.gz
-    mkdir -p $DIR/$rotation/ || abort
+    fdate=$(date +%Y-%m-%d -d "$date")
+    file=$DIR/daily/*$fdate*.gz # In Assignment, globs are *not* expanded
+    # In the if-statement, $file must be unquoted to be expanded
     if [ -f $file ]; then
-        cp $file $DIR/$rotation/ || abort
+        cp -p $file "$DIR/$rotation/" || abort
     else
         echo
     fi
@@ -31,7 +35,7 @@ function rotate {
 function prune {
     dir=$DIR/$1
     keep=$2
-    ls $dir | sort -rn | awk " NR > $keep" | while read f; do rm $dir/$f; done
+    ls "$dir" | sort -rn | awk " NR > $keep" | while read f; do rm "$dir/$f"; done
 }
 
 function abort {
@@ -39,18 +43,18 @@ function abort {
     exit 1
 }
 
-mkdir -p $DIR/daily || abort
-mkdir -p $DIR/weekly || abort
-mkdir -p $DIR/monthly || abort
-mkdir -p $DIR/yearly || abort
+mkdir -p "$DIR/daily" || abort
+mkdir -p "$DIR/weekly" || abort
+mkdir -p "$DIR/monthly" || abort
+mkdir -p "$DIR/yearly" || abort
 
-date=`date +%Y-%m-%d` || abort
-day=`date -d $date +%d` || abort
-weekday=`date -d $date +%w` || abort
-month=`date -d $date +%m` || abort
+date=$(date +%Y-%m-%d) || abort
+day=$(date -d "$date" +%d) || abort
+weekday=$(date -d "$date" +%w) || abort
+month=$(date -d "$date" +%m) || abort
 
 # Do the daily backup
-/usr/bin/pg_dump $DB $DUMP_ARGS | gzip > $DIR/daily/${DB}_$date.sql.gz
+$DB_BACKUP_SCRIPT | $GZIP > "$DIR/daily/${DB}_$date.sql.gz"
 test ${PIPESTATUS[0]} -eq 0 || abort
 
 # Perform rotations
