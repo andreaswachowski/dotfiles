@@ -11,9 +11,7 @@ if [[ -z "$1" ]]; then
 fi
 
 DATE=/opt/bin/date
-FIND=/opt/bin/find
 GZIP=/opt/bin/gzip
-SED=/opt/bin/sed
 
 DB_BACKUP_SCRIPT="$1"; shift
 DB="$1"; shift
@@ -62,11 +60,10 @@ function rotate {
     esac
 
     if [ -f "$most_recent_backup" ]; then
-      date_of_most_recent_backup=$(basename $most_recent_backup .sql.gz | sed "s/${DB}_//" -)
+      date_of_most_recent_backup=$(basename "$most_recent_backup" .sql.gz | sed "s/${DB}_//" -)
 
-      date_greater_or_equal "$date_of_most_recent_backup" "$earliest" 
-      if [ $? -eq 0 ]; then
-          cp -p $most_recent_backup "$DIR/$rotation/" || abort
+      if date_greater_or_equal "$date_of_most_recent_backup" "$earliest"; then
+          cp -p "$most_recent_backup" "$DIR/$rotation/" || abort
       fi
     # else
     #  echo No backup found for $rotation rotation from $earliest
