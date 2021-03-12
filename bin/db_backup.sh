@@ -39,23 +39,25 @@ function rotate {
     # For example, if the weekly rotation run's on Sunday, and only backups
     # until Thursday exist, then we shall rotate Thursday's (ie the most
     # recent) backup as this week's backup.
+    # If the monthly rotation happens on the 1st of each month, then
+    # copy the backup of the 1st to the monthly folder. If that backup
+    # is not available, use the most recent backup *from the previous month*,
+    # if that exist. Else do nothing.
+    most_recent_backup=$(ls -t $DIR/daily/${DB}_*.sql.gz 2>/dev/null | head -1)
     case $rotation in
       weekly)
         # monday of current week (because rotation on Sunday)
         earliest=$($DATE -dlast-monday +%Y-%m-%d)
-        most_recent_backup=$(ls -t $DIR/daily/${DB}_*.sql.gz 2>/dev/null | head -1)
         ;;
       monthly)
-        # first day of previous month
-        earliest=$($DATE --date="$(date +'%Y-%m-01') - 1 month" +%Y-%m-01)
-        previous_month=$($DATE --date="$(date +'%Y-%m-01') - 1 month" +%m)
-        most_recent_backup=$(ls -t $DIR/daily/${DB}_*-${previous_month}-*.sql.gz 2>/dev/null | head -1)
+        # Second day of previous month. Why 2nd? When the most recent
+        # backup is from the 1st of last month, then that backup has
+        # already been copied during the execution on the 1st of last month.
+        earliest=$($DATE --date="$(date +'%Y-%m-02') - 1 month" +%Y-%m-01)
         ;;
       yearly)
-        # first day of previous year
-        earliest=$($DATE --date="$(date +'%Y-%m-01') - 1 year" +%Y-01-01)
-        previous_year=$($DATE --date="$(date +'%Y-%m-01') - 1 year" +%Y)
-        most_recent_backup=$(ls -t $DIR/daily/${DB}_${previous_year}-*.sql.gz  2>/dev/null | head -1)
+        # Second day of previous year (rationale: see above)
+        earliest=$($DATE --date="$(date +'%Y-%m-02') - 1 year" +%Y-01-01)
         ;;
     esac
 
@@ -65,8 +67,6 @@ function rotate {
       if date_greater_or_equal "$date_of_most_recent_backup" "$earliest"; then
           cp -p "$most_recent_backup" "$DIR/$rotation/" || abort
       fi
-    # else
-    #  echo No backup found for $rotation rotation from $earliest
     fi
 }
 
