@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 # for use with cron, eg:
 # 0 3 * * * db_backup.sh /path/to/specific_db_backup.sh owncloud
 
@@ -92,10 +90,12 @@ weekday=$($DATE -d "$date" +%w) || abort
 month=$($DATE -d "$date" +%m) || abort
 
 # Do the daily backup
-SQL_DUMP=/tmp/${DB}_$date.sql
+SQL_DUMP=$DIR/daily/${DB}_$date.sql
 $DB_BACKUP_SCRIPT > "$SQL_DUMP"
 if [ -s "$SQL_DUMP" ]; then
-  $GZIP "$SQL_DUMP" && mv $SQL_DUMP.gz "$DIR/daily/${DB}_$date.sql.gz"
+  $GZIP "$SQL_DUMP"
+else
+  rm -f "$SQL_DUMP"
 fi
 
 # Perform rotations
