@@ -9,6 +9,9 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
+SED=/opt/bin/sed
+SORT=/opt/bin/sort
+AWK=/opt/bin/awk
 DATE=/opt/bin/date
 GZIP=/opt/bin/gzip
 
@@ -59,7 +62,7 @@ function rotate {
     esac
 
     if [ -f "$most_recent_backup" ]; then
-      date_of_most_recent_backup=$(basename "$most_recent_backup" .sql.gz | sed "s/${DB}_//" -)
+      date_of_most_recent_backup=$(basename "$most_recent_backup" .sql.gz | $SED "s/${DB}_//" -)
 
       if date_greater_or_equal "$date_of_most_recent_backup" "$earliest"; then
           cp -p "$most_recent_backup" "$DIR/$rotation/" || abort
@@ -72,7 +75,7 @@ function rotate {
 function prune {
     dir=$DIR/$1
     keep=$2
-    ls "$dir" | sort -rn | awk " NR > $keep" | while read f; do rm "$dir/$f"; done
+    ls "$dir" | $SORT -rn | $AWK " NR > $keep" | while read f; do rm "$dir/$f"; done
 }
 
 function abort {
