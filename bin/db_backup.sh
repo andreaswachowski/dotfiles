@@ -34,7 +34,7 @@ function date_greater_or_equal {
 function rotate {
     rotation=$1
     # The rotation function shall be robust against missing backups.
-    # For example, if the weekly rotation run's on Sunday, and only backups
+    # For example, if the weekly rotation runs on Sunday, and only backups
     # until Thursday exist, then we shall rotate Thursday's (ie the most
     # recent) backup as this week's backup.
     case $rotation in
