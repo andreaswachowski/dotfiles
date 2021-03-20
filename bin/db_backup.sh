@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 # for use with cron, eg:
 # 0 3 * * * db_backup.sh /path/to/specific_db_backup.sh owncloud
 
@@ -34,7 +35,7 @@ function date_greater_or_equal {
 function rotate {
     rotation=$1
     # The rotation function shall be robust against missing backups.
-    # For example, if the weekly rotation runs on Sunday, and only backups
+    # For example, if the weekly rotation run's on Sunday, and only backups
     # until Thursday exist, then we shall rotate Thursday's (ie the most
     # recent) backup as this week's backup.
     case $rotation in
@@ -45,14 +46,14 @@ function rotate {
         ;;
       monthly)
         # first day of previous month
-        earliest=$($DATE --date="$(date +'%Y-%m-01') - 1 month" +%Y-%m-01)
-        previous_month=$($DATE --date="$(date +'%Y-%m-01') - 1 month" +%m)
+        earliest=$($DATE --date="$($DATE +'%Y-%m-01') - 1 month" +%Y-%m-01)
+        previous_month=$($DATE --date="$($DATE +'%Y-%m-01') - 1 month" +%m)
         most_recent_backup=$(ls -t $DIR/daily/${DB}_*-${previous_month}-*.sql.gz 2>/dev/null | head -1)
         ;;
       yearly)
         # first day of previous year
-        earliest=$($DATE --date="$(date +'%Y-%m-01') - 1 year" +%Y-01-01)
-        previous_year=$($DATE --date="$(date +'%Y-%m-01') - 1 year" +%Y)
+        earliest=$($DATE --date="$($DATE +'%Y-%m-01') - 1 year" +%Y-01-01)
+        previous_year=$($DATE --date="$($DATE +'%Y-%m-01') - 1 year" +%Y)
         most_recent_backup=$(ls -t $DIR/daily/${DB}_${previous_year}-*.sql.gz  2>/dev/null | head -1)
         ;;
     esac
