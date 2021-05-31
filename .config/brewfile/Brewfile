@@ -3,11 +3,13 @@ tap 'universal-ctags/universal-ctags' || true
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' || true
 tap 'uptech/homebrew-oss' || true
+tap 'filippo.io/age https://filippo.io/age' || true
 
 brew 'uptech/oss/alt'
 
 brew 'mas'
 
+brew 'age'
 brew 'bash'
 brew 'gnupg'
 brew 'pinentry-mac'
