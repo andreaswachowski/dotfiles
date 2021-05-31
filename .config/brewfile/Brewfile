@@ -25,6 +25,7 @@ brew 'ncdu'
 brew 'openssl' # to install /usr/local/etc/openssl/cert.pem for mbsync/isync
 brew 'openssh'
 brew 'p7zip'
+brew 'sops'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'wget'
