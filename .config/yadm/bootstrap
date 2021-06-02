@@ -41,6 +41,10 @@ if [ "$system_type" = "Darwin" ]; then
             brew install coreutils bash bash-completion@2 gnupg
         fi
     fi
+
+    tic $HOME/dotfiles/share/terminfo/screen-256color-italic.terminfo
+    tic -xs $HOME/dotfiles/share/terminfo/tmux-256color.terminfo
+    tic $HOME/dotfiles/share/terminfo/xterm-256color-italic.terminfo
 fi
 
 GPG_TTY=$(tty) yadm --yadm-archive "$HOME/.local/share/yadm/archive-repo/archive" decrypt
