@@ -50,10 +50,6 @@ if [ -z "$SSH_TTY" ] ; then                     # if not using ssh
 fi
 # ---------------------------------------------------------------------------
 
-{% if yadm.hostname == "anwa-sumbook" %}
-eval "$(rbenv init -)"
-{% endif %}
-
 {% if yadm.distro == "openSUSE" %}
 # Normally we source .bashrc when the shell is interactive.
 # On openSUSE, however, $HOME/.bashrc was sourced already by /etc/profile (!)
