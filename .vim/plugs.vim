@@ -61,8 +61,9 @@ if (s:development=="true")
 
   " Ruby etc.
   " Plug 'tpope/vim-rvm'
+  Plug 'vim-test/vim-test'
   " Plug 'thoughtbot/vim-rspec'
-  " Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-rails'
   " Plug 'tpope/vim-endwise'
 
   " CSS related bundles
