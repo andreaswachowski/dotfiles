@@ -52,6 +52,7 @@ if (s:development=="true")
   " Plug 'rizzatti/dash.vim'
   Plug 'Yggdroot/indentLine'
 
+  " Plug 'ludovicchabant/vim-gutentags'
 
   Plug 'dense-analysis/ale'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer' }
@@ -64,6 +65,8 @@ if (s:development=="true")
   Plug 'vim-test/vim-test'
   " Plug 'thoughtbot/vim-rspec'
   Plug 'tpope/vim-rails'
+  " Using https://github.com/lzap/gem-ripper-tags instead of gem-ctags
+  " Plug 'tpope/gem-ctags'
   " Plug 'tpope/vim-endwise'
 
   " CSS related bundles
