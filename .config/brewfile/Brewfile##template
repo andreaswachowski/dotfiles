@@ -60,6 +60,8 @@ brew 'tidy-html5'
 brew 'poppler'
 brew 'jq'
 
+brew 'saulpw/vd/visidata'
+
 # Casks
 cask '0xed'
 cask '1password'
