@@ -20,7 +20,6 @@ alias k="kubectl"
 alias kx="kubectx"
 alias dc="docker-compose"
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
-command -v vd >/dev/null && alias vds="vd --csv-delimiter=';'"
 command -v xdg-open >/dev/null && alias open="xdg-open"
 
 # Prompt initialization
