@@ -1,0 +1,23 @@
+# vi:filetype=brewfile
+
+# -------------------------------------------------------------------------
+# Minimal requirements
+# This includes dependencies for the dotfiles and essential programs
+brew 'bash'
+brew 'gnupg'
+brew 'pinentry-mac'
+brew 'bash-completion@2'
+brew 'fzf'
+brew 'tmux'
+brew 'coreutils'
+brew 'the_silver_searcher'
+brew 'ripgrep'
+brew 'git'
+brew 'node' # for yarn
+brew 'yarn' # for vim's markdown-preview
+
+cask '1password'
+cask 'carbon-copy-cloner'
+cask 'firefox'
+cask 'istat-menus'
+cask 'iterm2'

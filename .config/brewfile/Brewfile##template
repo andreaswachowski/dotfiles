@@ -1,3 +1,4 @@
+# vi:filetype=brewfile
 tap 'homebrew/homebrew-cask' || true
 tap 'universal-ctags/universal-ctags' || true
 tap 'homebrew/cask-versions'
@@ -7,21 +8,18 @@ tap 'filippo.io/age https://filippo.io/age' || true
 
 brew 'uptech/oss/alt'
 
+{% include "Brewfile.minimal" %}
+
+# -------------------------------------------------------------------------
+# Additional stuff
 brew 'mas'
 
 brew 'age'
-brew 'bash'
-brew 'gnupg'
-brew 'pinentry-mac'
-brew 'bash-completion@2'
 brew 'universal-ctags', args: ['HEAD']
 brew 'bat'
 brew 'cmake' # required to install YouCompleteMe
 brew 'ctop'
 brew 'curl-openssl'
-brew 'fzf'
-brew 'tmux'
-brew 'coreutils'
 brew 'less'
 brew 'ncdu'
 # https://stackoverflow.com/questions/24675167/ca-certificates-mac-os-x
@@ -29,10 +27,8 @@ brew 'openssl' # to install /usr/local/etc/openssl/cert.pem for mbsync/isync
 brew 'openssh'
 brew 'p7zip'
 brew 'sops'
-brew 'the_silver_searcher'
 brew 'tree'
 brew 'wget'
-brew 'ripgrep'
 brew 'fd'
 brew 'tldr'
 
@@ -48,13 +44,9 @@ brew 'kubectx'
 brew 'helm'
 brew 'stern'
 
-brew 'git'
 brew 'tig'
 
 brew 'imagemagick'
-
-brew 'node'
-brew 'yarn'
 
 brew 'tidy-html5'
 brew 'poppler'
@@ -64,20 +56,15 @@ brew 'saulpw/vd/visidata'
 
 # Casks
 cask '0xed'
-cask '1password'
 cask 'authy'
-cask 'carbon-copy-cloner'
 cask 'deadbeef'
 cask 'docker-edge'
-cask 'firefox'
 cask 'flux'
 cask 'gimp'
 cask 'google-chrome'
 cask 'google-chrome-canary'
 cask 'grandperspective'
 cask 'imageoptim'
-cask 'istat-menus'
-cask 'iterm2'
 cask 'nextcloud'
 cask 'pgadmin4'
 cask 'sequel-pro'

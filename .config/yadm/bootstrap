@@ -33,12 +33,11 @@ if [ "$system_type" = "Darwin" ]; then
     read -r answer
     if [ "$answer" != "${answer#[Yy]}" ] ;then
         if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
-            echo "Updating homebrew bundle"
+            echo "Installing complete bundle"
             brew bundle --file=~/.config/brewfile/Brewfile
         else
-            echo "Install minimal dependencies"
-            echo brew install coreutils bash bash-completion@2 gnupg
-            brew install coreutils bash bash-completion@2 gnupg
+            echo "Installing minimal bundle"
+            brew bundle --file=~/.config/brewfile/Brewfile.minimal
         fi
     fi
 
