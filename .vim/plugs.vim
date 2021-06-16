@@ -67,7 +67,7 @@ if (s:development=="true")
   Plug 'tpope/vim-rails'
   " Using https://github.com/lzap/gem-ripper-tags instead of gem-ctags
   " Plug 'tpope/gem-ctags'
-  " Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-endwise'
 
   " CSS related bundles
   Plug 'hail2u/vim-css3-syntax'
