@@ -120,6 +120,10 @@ if [ -f ~/.fzf.bash ]; then
   command -v pytest >/dev/null && {
     _fzf_setup_completion path pytest
   }
+
+  command -v rspec >/dev/null && {
+    _fzf_setup_completion path rspec
+  }
 fi
 
 # yadm encrypt/decrypt will issue a
