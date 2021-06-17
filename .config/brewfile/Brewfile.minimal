@@ -10,6 +10,7 @@ brew 'bash-completion@2'
 brew 'fzf'
 brew 'tmux'
 brew 'coreutils'
+brew 'gcal' # 
 brew 'the_silver_searcher'
 brew 'ripgrep'
 brew 'git'
