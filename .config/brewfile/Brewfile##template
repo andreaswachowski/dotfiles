@@ -73,7 +73,7 @@ cask 'slack'
 {% if yadm.hostname == "macbook" %}
 cask 'anki'
 cask 'coconutbattery'
-# cask 'dash'
+cask 'dash'
 cask 'dosbox-app'
 cask 'dropbox'
 cask 'kid3'
