@@ -7,10 +7,11 @@ brew 'bash'
 brew 'gnupg'
 brew 'pinentry-mac'
 brew 'bash-completion@2'
+brew 'fd' # fast find, used for fzf aliases
 brew 'fzf'
 brew 'tmux'
 brew 'coreutils'
-brew 'gcal' # 
+brew 'gcal' # for $HOME/bin/cal
 brew 'the_silver_searcher'
 brew 'ripgrep'
 brew 'git'

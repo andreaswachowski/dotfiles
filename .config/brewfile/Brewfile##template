@@ -29,7 +29,6 @@ brew 'p7zip'
 brew 'sops'
 brew 'tree'
 brew 'wget'
-brew 'fd'
 brew 'tldr'
 
 brew 'docbook' # to compile the mutt info page
