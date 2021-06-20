@@ -120,10 +120,6 @@ if [ -f ~/.fzf.bash ]; then
   command -v pytest >/dev/null && {
     _fzf_setup_completion path pytest
   }
-
-  command -v rspec >/dev/null && {
-    _fzf_setup_completion path rspec
-  }
 fi
 
 # yadm encrypt/decrypt will issue a
@@ -159,4 +155,12 @@ unset __conda_setup
 
 {% if yadm.hostname == "anwa-sumbook" %}
 eval "$(rbenv init -)"
+command -v rspec >/dev/null && {
+  echo hallo
+  _fzf_complete_rspec() {
+    _fzf_complete -- "$@" < <(fd _spec.rb spec)
+  }
+
+  complete -F _fzf_complete_rspec -o default -o bashdefault rspec
+}
 {% endif %}
