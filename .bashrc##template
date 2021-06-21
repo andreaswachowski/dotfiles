@@ -156,7 +156,6 @@ unset __conda_setup
 {% if yadm.hostname == "anwa-sumbook" %}
 eval "$(rbenv init -)"
 command -v rspec >/dev/null && {
-  echo hallo
   _fzf_complete_rspec() {
     _fzf_complete -- "$@" < <(fd _spec.rb spec)
   }
