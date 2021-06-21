@@ -9,4 +9,10 @@ fi
 BRANCH=$1
 git fetch origin $BRANCH
 git reset --hard FETCH_HEAD
-git clean -df
+printf "Clean everything (y/N)? "
+read -r answer
+answer=${answer:-N}
+case $answer in
+	[yY]* ) git clean -df;;
+	*) ;;
+esac
