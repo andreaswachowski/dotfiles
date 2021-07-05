@@ -123,8 +123,10 @@ set background=dark " if set, must come before highlight commands
 let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 
+
 syntax on
 
+" Override some colorscheme settings
 " Prevent weird black color shading with gruvbox. Needs to be set after syntax on
 " http://stackoverflow.com/questions/4325682/vim-colorschemes-not-changing-background-color?lq=1
 hi Normal ctermbg=NONE
@@ -139,6 +141,7 @@ hi! link NonText GruvboxFg2
 hi! link SpecialKey GruvboxFg2
 " Comments are too dark
 hi! link Comment GruvboxFg2
+hi! LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=#AAAAAA guibg=NONE
 
 " https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
 if &term =~ "italic"
