@@ -335,7 +335,7 @@ endfunc
 
 " Remove trailing spaces
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd BufWritePre javascript,c,cpp,java,html,ruby,text,taskpaper,slim,css,scss :%s/\s\+$//e
+autocmd FileType javascript,c,cpp,java,html,ruby,text,taskpaper,slim,css,scss autocmd BufWritePre <buffer> %s/\s\+$//e
 
 autocmd BufEnter commit.msg setlocal tw=72
 
