@@ -46,6 +46,7 @@ if (s:development=="true")
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-dadbod'
+  Plug 'tpope/vim-abolish'
   Plug 'kristijanhusak/vim-dadbod-ui'
   " Plug 'kristijanhusak/vim-dadbod-completion'
   Plug 'majutsushi/tagbar'
