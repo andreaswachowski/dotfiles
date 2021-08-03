@@ -153,7 +153,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 {% endif %}
 
-{% if yadm.hostname == "anwa-sumbook" %}
+{% if yadm.hostname == "sc-wachowski" %}
 eval "$(rbenv init -)"
 command -v rbenv >/dev/null && {
   # Required by rbenv-default-gems,
