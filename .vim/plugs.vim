@@ -15,6 +15,7 @@ endif
 call plug#begin()
 Plug 'morhetz/gruvbox'
 
+Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-obsession'
 " Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-bundler'
