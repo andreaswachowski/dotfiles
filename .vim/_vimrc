@@ -71,11 +71,9 @@ set sessionoptions+=sesdir
 " machines.
 set sessionoptions-=options
 
-let s:host_specific_pre_setup = expand("<sfile>").".host.pre.".hostname()
-if findfile(s:host_specific_pre_setup,"<sfile>:%h") != ""
-  source `=expand(s:host_specific_pre_setup)`
+if filereadable(expand("$HOME/.vim/_vimrc.local.pre"))
+  source `=expand("$HOME/.vim/_vimrc.local.pre")`
 endif
-unlet s:host_specific_pre_setup
 
 if &term =~ "dtterm" || &term =~ "xterm"|| &term =~ "rxvt-unicode"
   if has("terminfo")
@@ -157,31 +155,13 @@ source <sfile>.handling_gzip
 source <sfile>.tip343_large_files
 source <sfile>.tip112_indentation_helper
 
-" -- OS-specific settings -------------------------------------------------
-let s:os = "unknown"
-if has("mac")
-  let s:os="mac"
-elseif has("unix")
-  let s:os="unix"
-elseif has("win32")
-  let s:os="win32"
-" else nothing specific to be done.
+if filereadable(expand("$HOME/.vim/_vimrc.os"))
+  source `=expand("$HOME/.vim/_vimrc.os")`
 endif
-if s:os != "unknown"
-  let s:os_specific_setup = expand("<sfile>").".os.".s:os
-  if findfile(s:os_specific_setup,"<sfile>:%h") != ""
-    source `=expand(s:os_specific_setup)`
-  endif
-  unlet s:os_specific_setup
-endif
-unlet s:os
 
-" -- host-specific settings -----------------------------------------------
-let s:host_specific_setup = expand("<sfile>").".host.".hostname()
-if findfile(s:host_specific_setup,"<sfile>:%h") != ""
-  source `=expand(s:host_specific_setup)`
+if filereadable(expand("$HOME/.vim/_vimrc.local"))
+  source `=expand("$HOME/.vim/_vimrc.local")`
 endif
-unlet s:host_specific_setup
 
 " Vim Tip 173: Quick movement between split windows
 nmap <c-l> <c-w>l
