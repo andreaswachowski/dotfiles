@@ -61,3 +61,15 @@ git-most-changed() {
 which-process-on-port() {
   lsof -n -i4TCP:$1 -i6TCP:$1
 }
+
+# With openssh v8.8, specifically commit
+# https://github.com/openssh/openssh-portable/commit/f64f8c00d158acc1359b8a096835849b23aa2e86
+# it is possible to use "SetEnv TERM=screen" in ~/.ssh/config
+# Otherwise, use this function
+function ssh {
+   if [[ "${TERM}" = screen* || tmux* ]]; then
+     env TERM=screen ssh "$@"
+   else
+     ssh "$@"
+   fi
+}
