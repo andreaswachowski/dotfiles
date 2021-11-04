@@ -7,6 +7,9 @@ tap 'uptech/homebrew-oss' || true
 tap 'filippo.io/age https://filippo.io/age' || true
 
 brew 'uptech/oss/alt'
+{% if yadm.hostname == "sc-wachowski" %}
+brew tap elastic/tap
+{% endif %}
 
 {% include "Brewfile.minimal" %}
 
