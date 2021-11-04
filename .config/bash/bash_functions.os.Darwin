@@ -1,3 +1,4 @@
+# vi:filetype=bash
 # http://apple.stackexchange.com/questions/66611/how-to-change-computer-name-so-terminal-displays-it-in-mac-os-x-mountain-lion
 initHostname() {
 sudo scutil --set ComputerName "$1"
@@ -11,3 +12,13 @@ lastscreenshot() {
 }
 
 locate() { mdfind "kMDItemDisplayName == '$@'wc"; }
+
+fspec() {
+  local spec
+  spec=$(fd _spec.rb spec | fzf)
+
+  if [ -n "$spec" ]; then
+    echo rspec $(echo $spec)
+    rspec $(echo $spec)
+  fi
+}
