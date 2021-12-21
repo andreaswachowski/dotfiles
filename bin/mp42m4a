@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+   echo Usage: $0 filename [filename [...]]
+   exit 1
+fi
+
+for var in "$@"
+do
+	ORIG_FILENAME=$(basename "$var")
+	EXTENSION="${ORIG_FILENAME##*.}"
+	M4A_FILENAME="${ORIG_FILENAME%.*}".m4a
+
+	ffmpeg -i "$ORIG_FILENAME" -vn -acodec copy "$M4A_FILENAME"
+done

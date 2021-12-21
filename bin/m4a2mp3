@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+   echo Usage: $0 filename [filename [...]]
+   exit 1
+fi
+# See http://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
+for var in "$@"
+do
+	ORIG_FILENAME=$(basename "$var")
+	EXTENSION="${ORIG_FILENAME##*.}"
+	MP3_FILENAME="${ORIG_FILENAME%.*}".mp3
+	WAV_FILENAME="${ORIG_FILENAME%.*}".wav
+
+	echo AAC: "$ORIG_FILENAME"
+	echo MP3: "$MP3_FILENAME"
+	faad "$ORIG_FILENAME"
+	if [ $? -eq 0 ];then
+	  lame --vbr-new -V 0 "$WAV_FILENAME" "$MP3_FILENAME"
+	  if [ $? -eq 0 ];then
+		  rm "$WAV_FILENAME"
+	  fi
+	fi
+done

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+   echo Usage: "$0 {mp3|flac} filename"
+   exit 1
+fi
+
+# Command name is expected to be of the form <src_extension>2<target_extension>
+# For example, 2flac
+#TARGET_EXTENSION=$(basename ${0#*2})
+
+# See http://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
+ORIG_FILENAME=$(basename "$2")
+TARGET_EXTENSION=$1
+NEW_FILENAME="${ORIG_FILENAME%.*}".flac
+WAV_FILENAME="${ORIG_FILENAME%.*}".wav
+SRC_EXTENSION="${ORIG_FILENAME##*.}"
+
+echo ORIG_FILENAME: $ORIG_FILENAME
+echo SRC_EXTENSION: $SRC_EXTENSION
+echo TARGET_EXTENSION: $TARGET_EXTENSION
+
+echo ORIG: "$ORIG_FILENAME"
+echo NEW: "$NEW_FILENAME"
+
+if [ "$0" ~ "*flac" ]; then
+	CMD="flac \"$WAV_FILENAME\" -o \"$NEW_FILENAME\""
+elif [ "$0" ~ "*mp3" ]; then
+   CMD="lame --vbr-new -V 0 \"$WAV_FILENAME\" \"$MP3_FILENAME\""
+else
+	echo Unknown extension, abort
+	exit 1
+fi
+echo $CMD
+exit 1
+
+faad "$ORIG_FILENAME"
+if [ $? -eq 0 ];then
+	flac "$WAV_FILENAME" -o "$NEW_FILENAME"
+  if [ $? -eq 0 ];then
+	  rm "$WAV_FILENAME"
+  fi
+fi
