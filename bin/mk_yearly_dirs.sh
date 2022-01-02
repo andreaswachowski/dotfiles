@@ -17,7 +17,7 @@ do
   mkdir $month
 done
 mkdir -p doc/magazines/{acm_computing_surveys,cacm}
-mkdir -p finanzen/{t-mobile,targobank,telekom,vattenfall,vtb,steuererklärung,flatex,diba,finanzmanager,anlage}
+mkdir -p finanzen/{eon,t-mobile,targobank,telekom,dkb,vattenfall,vtb,steuererklärung,smartbroker,barclays,finanzmanager,anlage}
 mkdir -p fortbildung/{lectures,books,exercises,anki,youtube}
 
 NOTES=~/Documents/ownCloud/notes/$YEAR
