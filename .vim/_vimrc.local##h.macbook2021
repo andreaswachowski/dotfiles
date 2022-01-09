@@ -1,0 +1,4 @@
+let wiki_2 = {}
+let wiki_2.path = '~/Documents/owncloud/vimwiki'
+
+let g:vimwiki_list = [wiki_2]
