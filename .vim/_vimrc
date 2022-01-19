@@ -174,7 +174,10 @@ nmap <c-p> :Files<Enter>
 "  (Have to be defined before the plugin is loaded)
 
 let g:fzf_tags_command = 'ctags -R --options=$HOME/.ctags.d'
-nmap <silent> <leader>n :call fzf#run(fzf#wrap({'source': 'find ~/Documents/git_projects/notes -type f'}))<Cr>
+nmap <silent> <leader>n :call fzf#run(fzf#wrap(
+      \ {'source': 'find ~/Documents/git_projects/notes ~/Documents/work -type f 
+      \ -name \*.txt -o -name \*.md -o -name \*.taskpaper -o -name \*.otl'
+      \ }))<Cr>
 command!      -bang -nargs=* Rgg                        call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".expand("<cword>"), 1, <bang>0)'
 nmap <Leader>f :Rgg<CR>
 let g:fzf_preview_window = ''
