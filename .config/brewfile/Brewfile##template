@@ -5,6 +5,7 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' || true
 tap 'uptech/homebrew-oss' || true
 tap 'filippo.io/age https://filippo.io/age' || true
+tap 'archivebox/archivebox'
 
 brew 'uptech/oss/alt'
 {% if yadm.hostname == "sc-wachowski" %}
@@ -38,6 +39,8 @@ brew 'sops'
 brew 'tree'
 brew 'wget'
 brew 'tldr'
+
+brew 'archivebox'
 
 brew 'docbook' # to compile the mutt info page
 brew 'urlview'
