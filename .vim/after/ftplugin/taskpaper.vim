@@ -268,4 +268,4 @@ set foldtext=MyFoldText()
 
 endif " if !exists("loaded_vimoutliner_functions")
 " End Vim Outliner Functions
-" vim600: set foldmethod=marker foldlevel=0:
+" vim: set foldmethod=marker foldlevel=0:
