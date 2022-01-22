@@ -285,6 +285,10 @@ let g:mkdp_auto_close = 0
 let g:dbs = {
 \ 'dev': 'postgresql://reco:recopwd@localhost:5432/postgres',
 \ }
+
+" Ensure that .otl files will be associated with votl filetype
+let g:vimwiki_global_ext = 0
+
 " -------------------------------------------------------------------------
 " MoveFiles, see http://stackoverflow.com/questions/10884520/move-file-within-vim
 function! MoveFile(newspec)
