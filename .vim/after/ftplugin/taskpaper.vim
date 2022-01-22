@@ -1,9 +1,9 @@
-setlocal foldlevel=20
-setlocal foldcolumn=1			" turns on "+" at the beginning of close folds
-setlocal foldmethod=expr
-setlocal foldexpr=MyFoldLevel(v:lnum)
-setlocal indentexpr=
-setlocal nocindent
+" setlocal foldlevel=20
+" setlocal foldcolumn=1			" turns on "+" at the beginning of close folds
+" setlocal foldmethod=expr
+" setlocal foldexpr=MyFoldLevel(v:lnum)
+" setlocal indentexpr=
+" setlocal nocindent
 
 " Vim Outliner Functions {{{1
 
@@ -268,4 +268,5 @@ set foldtext=MyFoldText()
 
 endif " if !exists("loaded_vimoutliner_functions")
 " End Vim Outliner Functions
+"}}}1
 " vim: set foldmethod=marker foldlevel=0:
