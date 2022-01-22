@@ -50,7 +50,7 @@ function! MyFoldText()
     elseif exists('g:vo_fold_length')
         let l:foldlength = g:vo_fold_length
     else
-        let l:foldlength = 58
+        let l:foldlength = 76
     endif
     " I have this as an option, if the user wants to set "…" as the padding
     " string, or some other string, like "(more)"
