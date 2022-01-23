@@ -44,6 +44,7 @@ if (s:development=="true")
   if has('nvim')
     Plug 'floobits/floobits-neovim'
   endif
+  Plug 'junegunn/vader.vim'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-dadbod'
