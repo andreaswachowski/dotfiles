@@ -4,6 +4,7 @@
 # Minimal requirements
 # This includes dependencies for the dotfiles and essential programs
 brew 'bash'
+brew 'direnv'
 brew 'gnupg'
 brew 'pinentry-mac'
 brew 'bash-completion@2'
