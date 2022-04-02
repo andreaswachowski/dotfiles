@@ -1,0 +1,1 @@
+rvm_configure_flags=--with-readline-dir=/opt/homebrew/opt/readline
