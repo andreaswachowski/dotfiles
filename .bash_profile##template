@@ -15,6 +15,14 @@ if [ -f "$host_specific_file" ]; then
   . $host_specific_file
 fi
 
+if [ "$(uname -p)" == "arm" -a "$(uname -s)" == "Darwin" ] ; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if [ "$(uname -p)" != "arm" -a "$(uname -s)" == "Darwin" ] ; then
+  eval "$(/usr/local/homebrew/bin/brew shellenv)"
+fi
+
 # ---------------------------------------------------------------------------
 #
 # setup ssh-agent
