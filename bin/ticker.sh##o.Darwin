@@ -1,13 +1,19 @@
 #!/bin/sh
 # vi: tw=0
 
+if [ "$(uname -m)" = "arm64" ]; then 
+  WGET=/opt/homebrew/bin/wget
+else
+  WGET=/usr/local/bin/wget
+fi
+
 for PAIR in etheur xrpeur
 do
   TIMESTAMP=$(date +"%Y%m%d_%H%M")
   TMPFILE=/tmp/last_price_$PAIR
   APIRESPONSE=${TMPFILE}_$TIMESTAMP.raw
   WGET_LOG=${TMPFILE}_$TIMESTAMP.log
-  if ! /usr/local/bin/wget -o "$WGET_LOG" -O "$APIRESPONSE" https://www.bitstamp.net/api/v2/ticker_hour/$PAIR/
+  if ! $WGET -o "$WGET_LOG" -O "$APIRESPONSE" https://www.bitstamp.net/api/v2/ticker_hour/$PAIR/
   then
     mv "$WGET_LOG" "${TMPFILE}_$TIMESTAMP.failed_wget.log"
     exit 1
