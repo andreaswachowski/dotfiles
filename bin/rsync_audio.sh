@@ -71,10 +71,12 @@ done
 shift $(("$OPTIND" - 1))
 
 
-case "$(hostname)" in
+case "$(hostname -s)" in
   salt) SRC=/audio/audiolibrary
+    ICONV_SRC=UTF8
     ;;
-  anwa-macbook) SRC=/Volumes/audio/audiolibrary
+  macbook2021) SRC=/Users/andreas/audio
+    ICONV_SRC=UTF8-MAC
     ;;
   *) echo "Unknown source. Aborting"
     exit 1
@@ -82,7 +84,7 @@ case "$(hostname)" in
 esac
 
 if [ -z "$DEST" ]; then
-  DEST=cumin
+  DEST=proxmox
 fi
 
 if [ -n "$1" ]; then
@@ -90,14 +92,15 @@ if [ -n "$1" ]; then
 fi
 
 case "$DEST" in
-  cumin) ROOT=/share/audio/audiolibrary
+  proxmox) ROOT=/audio/audiolibrary
+    ICONV_DEST=UTF8
     ;;
   imac) ROOT=/Volumes/HDD2/audio/audiolibrary
-    ICONV="--iconv=UTF8,UTF8-MAC"
+    ICONV_DEST=UTF8-MAC
     RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
     ;;
-  anwa-macbook) ROOT=/Volumes/audio/audiolibrary
-    ICONV="--iconv=UTF8,UTF8-MAC"
+  macbook2021) ROOT=/Users/andreas/audio
+    ICONV_DEST=UTF8-MAC
     RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
     ;;
   *) echo "Unknown destination $DEST, aborting."
@@ -105,6 +108,7 @@ case "$DEST" in
     ;;
 esac
 
+ICONV="--iconv=$ICONV_SRC,$ICONV_DEST"
 #rsync -av --exclude '*__thumb*' --delete-after /audio/ cumin:/share/audio
 #rsync -av --iconv=UTF8,UTF8-MAC --exclude '*__thumb*' --delete-after /audio/ imac:/Volumes/HDD2/audio
 
