@@ -19,6 +19,7 @@ done
 mkdir -p doc/magazines/{acm_computing_surveys,cacm}
 mkdir -p finanzen/{eon,t-mobile,telekom,dkb,vattenfall,vtb,steuererklärung,smartbroker,barclays,finanzmanager,anlage,rechnungen}
 mkdir -p fortbildung/{lectures,books,exercises,anki,youtube}
+mkdir -p wohnung
 
 NOTES=~/Documents/ownCloud/notes/$YEAR
 mkdir "$NOTES"
