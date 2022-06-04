@@ -40,6 +40,11 @@ brew 'tree'
 brew 'wget'
 brew 'tldr'
 
+# GNU tools
+brew 'coreutils' # cp, install
+brew 'gmake'
+brew 'findutils'
+
 brew 'archivebox'
 
 brew 'docbook' # to compile the mutt info page
