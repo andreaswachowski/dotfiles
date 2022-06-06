@@ -21,7 +21,7 @@ set -g @plugin 'tmux-plugins/tmux-battery'
 
 # Options
 
-# don't use login shell to avoid duplicated PATH settings
+# Login shell yes or no? Pro: rvm requires it. Contra: It triggers duplicated PATH settings
 # (even if I had excluded duplications via "[ -z $TMUX ] && ..."
 # in bash_profile, tmux still prepended the system paths from /etc/profile
 # to my already defined PATH.
