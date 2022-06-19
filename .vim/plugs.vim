@@ -45,6 +45,7 @@ if (s:development=="true")
     Plug 'floobits/floobits-neovim'
   endif
   Plug 'junegunn/vader.vim'
+  Plug 'junegunn/vim-easy-align'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-dadbod'
