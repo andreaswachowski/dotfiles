@@ -21,6 +21,7 @@ fi
 
 set -o vi
 export EDITOR=vim
+export LANG=en_US.UTF8
 export VISUAL=vim # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
 export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for git log
 # -erX was necessary for color since around git 2.14.1 (but git itself might not be the reason)
