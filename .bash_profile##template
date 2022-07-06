@@ -20,7 +20,7 @@ if [ "$(uname -p)" == "arm" -a "$(uname -s)" == "Darwin" ] ; then
 fi
 
 if [ "$(uname -p)" != "arm" -a "$(uname -s)" == "Darwin" ] ; then
-  eval "$(/usr/local/homebrew/bin/brew shellenv)"
+  eval "$(/usr/local/Homebrew/bin/brew shellenv)"
 fi
 
 # ---------------------------------------------------------------------------
