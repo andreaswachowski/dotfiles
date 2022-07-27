@@ -169,5 +169,7 @@ command -v rspec >/dev/null && {
   }
 
   complete -F _fzf_complete_rspec -o default -o bashdefault rspec
+  complete -F _fzf_complete_rspec -o default -o bashdefault be rspec
+  complete -F _fzf_complete_rspec -o default -o bashdefault bundle exec rspec
 }
 {% endif %}
