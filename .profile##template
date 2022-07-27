@@ -30,12 +30,13 @@ export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for 
 
 # -------------------------------------------------------------------------
 # PATH
-{% if yadm.hostname == "sc-wachowski" %}
-PATH="/usr/local/opt/mysql@5.6/bin:\
-$HOME/.cargo/bin:\
-{% else %}
+# {% if yadm.hostname == "sc-wachowski" %}
+# PATH="/usr/local/opt/mysql@5.6/bin:\
+# $HOME/.cargo/bin:\
+# {% else %}
+# PATH="$HOME/.cargo/bin:\
+# {% endif %}
 PATH="$HOME/.cargo/bin:\
-{% endif %}
 $HOME/.yarn/bin:\
 $HOME/.rvm/bin:\
 $HOME/Documents/git_projects/csslint/dist:\
@@ -48,11 +49,11 @@ $HOME/dotfiles/bin/remarkable/host:\
 $PATH"
 export PATH
 
-{% if yadm.hostname == "sc-wachowski" %}
-export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
+# {% if yadm.hostname == "sc-wachowski" %}
+# export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
+# export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
 
-{% endif %}
+# {% endif %}
 if [ -z "$BASH" ]; then
   if [ "$(id -u)" -eq 0 ]; then
     PS1='[\w] # '
