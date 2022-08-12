@@ -6,9 +6,10 @@ tap 'homebrew/bundle' || true
 tap 'uptech/homebrew-oss' || true
 tap 'filippo.io/age https://filippo.io/age' || true
 tap 'archivebox/archivebox'
+tap 'homebrew-ffmpeg/ffmpeg'
 
 brew 'uptech/oss/alt'
-{% if yadm.hostname == "sc-wachowski" %}
+{% if yadm.hostname == "DELT-C02FN533MD6P" %}
 brew tap elastic/tap
 {% endif %}
 
@@ -29,6 +30,7 @@ brew 'bat'
 brew 'cmake' # required to install YouCompleteMe
 brew 'ctop'
 brew 'curl-openssl'
+brew 'homebrew-ffmpeg/ffmpeg/ffmpeg'
 brew 'less'
 brew 'ncdu'
 # https://stackoverflow.com/questions/24675167/ca-certificates-mac-os-x
