@@ -92,6 +92,9 @@ if [ -n "$1" ]; then
 fi
 
 case "$DEST" in
+  salt) ROOT=/audio/audiolibrary
+    ICONV_DEST=UTF8
+    ;;
   proxmox) ROOT=/audio/audiolibrary
     ICONV_DEST=UTF8
     ;;
