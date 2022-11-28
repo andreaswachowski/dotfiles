@@ -58,3 +58,7 @@
 	added = "#8AE234"
 [pull]
 	rebase = true
+[remote "origin"]
+	fetch = +refs/notes/*:refs/notes/*
+[notes]
+	displayRef = refs/notes/*
