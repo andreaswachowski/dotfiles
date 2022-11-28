@@ -1,3 +1,4 @@
+# vi: filetype=gitconfig
 [color]
 	status = auto
 	diff = auto
