@@ -16,8 +16,9 @@ for month in 01_january 02_february 03_march 04_april 05_may 06_june 07_july 08_
 do
   mkdir $month
 done
-mkdir -p doc/magazines/{acm_computing_surveys,cacm}
-mkdir -p finanzen/{eon,t-mobile,telekom,dkb,vattenfall,vtb,steuererklärung,smartbroker,barclays,finanzmanager,anlage,rechnungen}
+mkdir -p doc/magazines/{acm_computing_surveys,cacm,the_atlantic}
+mkdir -p finanzen/{heizung,dkb,strom,steuererklärung,smartbroker,barclays,finanzmanager,anlage,rechnungen}
+mkdir -p finanzen/rechnungen/telekom/{festnetz,mobilfunk}
 mkdir -p fortbildung/{lectures,books,exercises,anki,youtube}
 mkdir -p wohnung
 mkdir -p briefe_und_karten
