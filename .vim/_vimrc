@@ -2,6 +2,8 @@ set nocompatible
 set modeline
 set number
 set nojoinspaces
+" When very big files have to be edited, this is helpful
+" set nobackup nowritebackup
 
 set tabstop=8
 " set softtabstop=2
