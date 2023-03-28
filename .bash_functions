@@ -25,6 +25,14 @@ lint-stats() {
   $linter-lint $2 | awk '{ print $3 }' | sort | uniq -c | sort -n
 }
 
+branch-stats() {
+  git for-each-ref  --sort='-authorname' --format=' %(authorname) %09 %(refname)'  'refs/remotes'  | cut -f1 | uniq -c | sort -nr
+}
+
+my-branches() {
+git for-each-ref  --sort='-authordate' --format=' %(authordate) %(authorname) %09 %(refname)'  'refs/remotes'  | grep "$(git config user.name)"
+}
+
 scss-lint-stats() {
   lint-stats scss
 }
