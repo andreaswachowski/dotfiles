@@ -24,8 +24,10 @@
 	lga = log --oneline --graph --decorate --all
 	# http://stackoverflow.com/questions/424071/list-all-the-files-for-a-commit-in-git
 	shownames = diff-tree --no-commit-id --name-only -r
+	subup = submodule update --init --recursive
 	# http://stackoverflow.com/questions/12219604/list-git-tag-names-dates-and-messages
 	tagv = for-each-ref --format='%(refname:short) %(objecttype) %(objectname) %(authordate:format:%Y-%m-%d-%H:%M:%S) %(subject) %(body)' refs/tags
+	wdiff = diff --word-diff
 
 {% if yadm.os == "Darwin" %}
 [credential]
