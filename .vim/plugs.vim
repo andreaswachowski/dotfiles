@@ -82,6 +82,8 @@ if (s:development=="true")
 
   " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
   Plug 'ervandew/supertab'
+  " if neovim complains about a missing python3 provider, try
+  " python3 -m pip install --user --upgrade pynvim
   Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
   " JavaScript, see
