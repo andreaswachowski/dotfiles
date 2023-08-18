@@ -21,6 +21,7 @@ alias kx="kubectx"
 alias yvim="GIT_DIR=$HOME/.local/share/yadm/repo.git GIT_WORK_TREE=$HOME vim"
 alias dc="docker-compose"
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
+command -v nvim >/dev/null && alias vim="nvim"
 command -v xdg-open >/dev/null && alias open="xdg-open"
 
 # Prompt initialization
