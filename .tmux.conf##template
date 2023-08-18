@@ -77,6 +77,10 @@ bind -r J resize-pane -D 5
 
 bind C-x setw synchronize-panes
 
+# Open panes in current directory
+bind '"' split-window -v -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+
 if-shell "[ -f ~/.config/tmux/tmux.conf.os ]" 'source ~/.config/tmux/tmux.conf.os'
 if-shell "[ -f ~/.config/tmux/tmux.conf.host ]" 'source ~/.config/tmux/tmux.conf.host'
 
