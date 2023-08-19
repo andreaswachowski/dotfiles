@@ -41,9 +41,9 @@ Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 if (s:development=="true")
-  if has('nvim')
-    Plug 'floobits/floobits-neovim'
-  endif
+  " if has('nvim')
+  "   Plug 'floobits/floobits-neovim'
+  " endif
   Plug 'junegunn/vader.vim'
   Plug 'junegunn/vim-easy-align'
   Plug 'editorconfig/editorconfig-vim'
