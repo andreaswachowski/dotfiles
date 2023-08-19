@@ -47,6 +47,11 @@ if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
   source $VIMRUNTIME/macros/matchit.vim
 endif
 
+if has('nvim')
+  " see default-mappings
+  unmap Y
+endif
+
 set mouse=a
 if !has('nvim') " :help nvim-features-removed
   if has("mouse_sgr")
