@@ -39,6 +39,9 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'benmills/vimux'
 Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+if has('nvim') " requires jobstart, hence neovim only
+  Plug 'seanbreckenridge/yadm-git.vim'
+end
 
 if (s:development=="true")
   " if has('nvim')
