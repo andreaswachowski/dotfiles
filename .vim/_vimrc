@@ -2,8 +2,6 @@ set nocompatible
 set modeline
 set number
 set nojoinspaces
-" neovim's thin bar becomes black and invisible, use block cursor instead
-set guicursor=i-ci-ve:block
 " When very big files have to be edited, this is helpful
 " set nobackup nowritebackup
 
@@ -45,11 +43,6 @@ endif
 
 if filereadable(expand("$VIMRUNTIME/macros/matchit.vim"))
   source $VIMRUNTIME/macros/matchit.vim
-endif
-
-if has('nvim')
-  " see default-mappings
-  unmap Y
 endif
 
 set mouse=a
