@@ -145,6 +145,13 @@ export NVM_DIR="$HOME/.nvm"
 alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
 alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
 export BASH_SILENCE_DEPRECATION_WARNING=1
+command -v pnpm >/dev/null && {
+	export PNPM_HOME="/Users/andreas/Library/pnpm"
+	case ":$PATH:" in
+		*":$PNPM_HOME:"*) ;;
+		*) export PATH="$PNPM_HOME:$PATH" ;;
+	esac
+}
 {% endif %}
 
 {% if yadm.hostname == "anwa-macbook" %}
