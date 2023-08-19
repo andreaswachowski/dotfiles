@@ -31,3 +31,6 @@
 [submodule ".vim/pack/thirdparty/start/vimoutliner"]
 	path = .vim/pack/thirdparty/start/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
+[submodule "/Users/andreas/.tmux/plugins/tmux-gruvbox"]
+	path = /Users/andreas/.tmux/plugins/tmux-gruvbox
+	url = https://github.com/egel/tmux-gruvbox.git
