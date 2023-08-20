@@ -136,8 +136,10 @@ syntax on
 " Override some colorscheme settings
 " Prevent weird black color shading with gruvbox. Needs to be set after syntax on
 " http://stackoverflow.com/questions/4325682/vim-colorschemes-not-changing-background-color?lq=1
-hi Normal ctermbg=NONE
-hi nonText ctermbg=NONE
+" https://github.com/ellisonleao/gruvbox.nvim/issues/16#issuecomment-856913899
+" https://github.com/ellisonleao/gruvbox.nvim/issues/16
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
 hi Folded guifg=#DDDDDD
 
