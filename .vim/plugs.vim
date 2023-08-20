@@ -81,7 +81,6 @@ if (s:development=="true")
 
   Plug 'mhinz/vim-rfc'
   Plug 'vim-scripts/rfc-syntax'
-  Plug 'kana/vim-tabpagecd'
 
   " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
   Plug 'ervandew/supertab'
