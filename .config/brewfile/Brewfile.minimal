@@ -13,7 +13,6 @@ brew 'fzf'
 brew 'tmux'
 brew 'coreutils'
 brew 'gcal' # for $HOME/bin/cal
-brew 'the_silver_searcher'
 brew 'ripgrep'
 brew 'git'
 brew 'node' # for yarn
