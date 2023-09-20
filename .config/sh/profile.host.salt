@@ -18,7 +18,5 @@ export TODOTXT_DEFAULT_ACTION=ls
 # For reportlib, for OCR2PDF
 export PYTHONPATH=/home/andreas/local/lib64/python2.7/site-packages
 
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-
 #Enable core dumps
 ulimit -c unlimited

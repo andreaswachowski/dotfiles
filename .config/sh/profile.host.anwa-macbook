@@ -1,7 +1,6 @@
 # vi: filetype=sh
 # For Homebrew:
 # shellcheck disable=SC1091
-# shellcheck source=/Users/andreas/.rvm/scripts/rvm
 
 PATH="$HOME/bin/dvd:\
 /usr/local/mysql/bin:\
@@ -16,6 +15,3 @@ export TERM=screen-256color-italic
 export VIM_APP_DIR=$HOME/local
 
 locate() { mdfind "kMDItemDisplayName == '$@'wc"; }
-
-[ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
