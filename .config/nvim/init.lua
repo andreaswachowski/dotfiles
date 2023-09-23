@@ -61,6 +61,9 @@ require("lazy").setup({
       -- Glog quickfix entries
       vim.g.fugitive_summary_format = "%aN %ai %s"
     end
+  },
+  { 'andreaswachowski/yadm-git.vim',
+    dependencies = { 'tpope/vim-fugitive' }
   }
 
 }, {})
