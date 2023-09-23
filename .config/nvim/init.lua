@@ -5,7 +5,7 @@ let &packpath = &runtimepath
 ]])
 
 --neovim's thin bar becomes black and invisible, use block cursor instead
-vim.cmd([[set guicursor=i-ci-ve:block]])
+vim.o.guicursor = "i-ci-ve:block"
 
 -- neovim has "nnoremap Y y$" (see default-mappings), undo that
 vim.cmd([[unmap Y]])
