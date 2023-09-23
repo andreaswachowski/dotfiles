@@ -47,7 +47,22 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require("lazy").setup({
-  { 'tpope/vim-obsession' }
+  { 'tpope/vim-obsession' },
+  { 'tpope/vim-fugitive',
+    keys = {
+      { "<Bslash>cs", "<cmd>Git<cr>", desc = "Git status" },
+      { "<Bslash>cc", "<cmd>Git commit<cr>", desc = "Git commit" },
+      { "<Bslash>cv", "<cmd>Gdiff<cr>", desc = "Git diff" },
+      { "<Bslash>cl", "<cmd>Gclog<cr>", desc = "Git log" },
+      { "<Bslash>cb", "<cmd>Git blame<cr>", desc = "Git blame" },
+    },
+    config = function()
+      -- Include (mailmap'ed) author and a date indication in the fugitive
+      -- Glog quickfix entries
+      vim.g.fugitive_summary_format = "%aN %ai %s"
+    end
+  }
+
 }, {})
 
 --[[ Approach:
