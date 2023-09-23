@@ -4,6 +4,8 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 ]])
 
+vim.g.mapleader = ','
+
 --neovim's thin bar becomes black and invisible, use block cursor instead
 vim.o.guicursor = "i-ci-ve:block"
 
@@ -29,5 +31,5 @@ let &directory=vimtmp
 --   Once done, remove "source ~/.vimrc" above.
 --]]
 
--- analyzed up to line 40
+-- analyzed up to line 51
 vim.cmd([[source ~/.vimrc]])
