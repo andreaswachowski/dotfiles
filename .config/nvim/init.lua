@@ -1,3 +1,4 @@
+vim.cmd([[
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
@@ -8,3 +9,4 @@ set guicursor=i-ci-ve:block
 unmap Y
 
 source ~/.vimrc
+]])
