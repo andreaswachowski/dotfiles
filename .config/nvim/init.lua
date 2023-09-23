@@ -7,6 +7,9 @@ let &packpath = &runtimepath
 --neovim's thin bar becomes black and invisible, use block cursor instead
 vim.o.guicursor = "i-ci-ve:block"
 
+-- line numbers helps during pair programming
+vim.o.number = true
+
 -- neovim has "nnoremap Y y$" (see default-mappings), undo that
 vim.cmd([[unmap Y]])
 
@@ -15,4 +18,6 @@ vim.cmd([[unmap Y]])
 --   Note down line reached to mark progress.
 --   Once done, remove "source ~/.vimrc" above.
 --]]
+
+-- analyzed up to line 18
 vim.cmd([[source ~/.vimrc]])
