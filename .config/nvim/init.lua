@@ -29,5 +29,5 @@ let &directory=vimtmp
 --   Once done, remove "source ~/.vimrc" above.
 --]]
 
--- analyzed up to line 27
+-- analyzed up to line 40
 vim.cmd([[source ~/.vimrc]])

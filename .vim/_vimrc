@@ -27,6 +27,9 @@ let &directory=vimtmp
 " Output the syntax highlighting item under the cursor
 " echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 " https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+" NEOVIM MIGRATION: Don't migrate this for now, it probably won't work with
+" Treesitter.
+" https://vi.stackexchange.com/questions/39781/how-to-get-the-highlight-group-of-the-word-under-the-cursor-in-neovim-with-trees
 com! CheckHighlightUnderCursor echo {l,c,n ->
         \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
         \  .'trans<' . synIDattr(synID(l, c, 0), n)             . '> '
