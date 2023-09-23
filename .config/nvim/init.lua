@@ -1,12 +1,18 @@
+--set paths during transition from ~/.vimrc
 vim.cmd([[
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-
-" neovim's thin bar becomes black and invisible, use block cursor instead
-set guicursor=i-ci-ve:block
-
-" see default-mappings
-unmap Y
-
-source ~/.vimrc
 ]])
+
+--neovim's thin bar becomes black and invisible, use block cursor instead
+vim.cmd([[set guicursor=i-ci-ve:block]])
+
+-- neovim has "nnoremap Y y$" (see default-mappings), undo that
+vim.cmd([[unmap Y]])
+
+--[[ Approach:
+--   Read .vimrc and copy over only what I need
+--   Note down line reached to mark progress.
+--   Once done, remove "source ~/.vimrc" above.
+--]]
+vim.cmd([[source ~/.vimrc]])
