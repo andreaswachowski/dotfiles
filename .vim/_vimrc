@@ -57,7 +57,9 @@ if !has('nvim') " :help nvim-features-removed
   end
 endif
 
+if !has('nvim') " :help nvim-features-removed
 source ~/.vim/plugs.vim
+endif
 source $HOME/.vim/tabline.vim
 source ~/.vim/delete_inactive_buffers.vim
 

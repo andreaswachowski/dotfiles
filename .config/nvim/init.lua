@@ -1,8 +1,8 @@
 --set paths during transition from ~/.vimrc
-vim.cmd([[
+--[[vim.cmd([[
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-]])
+]]
 
 vim.g.mapleader = ','
 
@@ -31,5 +31,5 @@ let &directory=vimtmp
 --   Once done, remove "source ~/.vimrc" above.
 --]]
 
--- analyzed up to line 51
+-- analyzed up to line 60
 vim.cmd([[source ~/.vimrc]])
