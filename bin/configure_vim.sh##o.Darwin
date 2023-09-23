@@ -6,11 +6,6 @@ export CC=/usr/bin/llvm-gcc
 export CXX=/usr/bin/llvm-g++
 export OBJC=/usr/bin/llvm-gcc
 
-command -v ruby | \
-  grep rbenv/shims && \
-  echo "rbenv shim detected, restart shell without it" && \
-  exit 1
-
 which ruby
 ruby --version
 
@@ -50,4 +45,3 @@ make distclean
 	--enable-rubyinterp \
 	--enable-python3interp \
 	--enable-fail-if-missing
-# rvm use default # switch back to desired Ruby

@@ -14,6 +14,13 @@ trap finish EXIT INT TERM
 
 cd ~/local/src/vim
 
+if type vim | grep -q aliased
+then
+  type vim
+  echo "Ensure vim is resolving to the compiled and installed vim executable. Aborting."
+  exit 1
+fi
+
 compile() {
   git checkout master
   git merge
