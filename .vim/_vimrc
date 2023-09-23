@@ -319,16 +319,19 @@ command! -nargs=1 -complete=file -bar MoveFile call MoveFile('<args>')
 " -------------------------------------------------------------------------
 
 
-if has("multi_byte")
-  if &termencoding == ""
-    let &termencoding = &encoding
+if !has('nvim')
+  " termencoding is removed in neovim, encoding/fileencoding default to utf-8
+  if has("multi_byte")
+    if &termencoding == ""
+      let &termencoding = &encoding
+    endif
+    set encoding=utf-8                     " better default than latin1
+    setglobal fileencoding=utf-8           " change default file encoding when writing new files
   endif
   set encoding=utf-8                     " better default than latin1
+  set fileencoding=utf-8                     " better default than latin1
   setglobal fileencoding=utf-8           " change default file encoding when writing new files
 endif
-set encoding=utf-8                     " better default than latin1
-set fileencoding=utf-8                     " better default than latin1
-setglobal fileencoding=utf-8           " change default file encoding when writing new files
 
 " Helpful to get rid of the space when typing
 " dabbreviations:
