@@ -168,6 +168,8 @@ if !has('nvim')
   endif
 endif
 
+" For Neovim, see https://github.com/equalsraf/neovim-qt/issues/219
+" :help ginit.vim
 if has("gui_running")
   set guioptions-=m " remove menu bar
   set guioptions-=T " remove tool bar
