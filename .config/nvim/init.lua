@@ -87,7 +87,10 @@ require("lazy").setup({
       vim.o.background = "dark" -- or "light" for dark mode
       vim.cmd.colorscheme 'gruvbox'
     end
-  }
+  },
+
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth'
 }, {})
 
 --[[ Approach:
