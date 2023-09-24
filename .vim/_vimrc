@@ -89,13 +89,15 @@ if filereadable(expand("$HOME/.vim/_vimrc.local.pre"))
   source `=expand("$HOME/.vim/_vimrc.local.pre")`
 endif
 
-if &term =~ "dtterm" || &term =~ "xterm"|| &term =~ "rxvt-unicode"
-  if has("terminfo")
-    set t_Sf=<Esc>[3%p1%dm
-    set t_Sb=<Esc>[4%p1%dm
-  else
-    set t_Sf=<Esc>[3%dm
-    set t_Sb=<Esc>[4%dm
+if !has('nvim')
+  if &term =~ "dtterm" || &term =~ "xterm"|| &term =~ "rxvt-unicode"
+    if has("terminfo")
+      set t_Sf=<Esc>[3%p1%dm
+      set t_Sb=<Esc>[4%p1%dm
+    else
+      set t_Sf=<Esc>[3%dm
+      set t_Sb=<Esc>[4%dm
+    endif
   endif
 endif
 
@@ -117,50 +119,54 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 au BufReadPost quickfix  set nowrap
 
 " -- Color Settings -------------------------------------------------------
-if &term =~ "256color" || &term =~ "dtterm"
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-elseif  &term =~ "rxvt-unicode"
-  set t_Co=88
-"2010-04-03: The following two lines don't help on Linux - my term is
-"xterm, and I have 256 colors there. Will have to adapt this to work on all
-"machines; in the meantime just commenting it out.
-"elseif &term =~ "xterm"
-"  set t_Co=8
+if !has('nvim')
+  " Legacy color settings for normal vim. Don't use for neovim to get
+  " rid of cruft and start anew.
+
+  if &term =~ "256color" || &term =~ "dtterm"
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+  elseif  &term =~ "rxvt-unicode"
+    set t_Co=88
+    "2010-04-03: The following two lines don't help on Linux - my term is
+    "xterm, and I have 256 colors there. Will have to adapt this to work on all
+    "machines; in the meantime just commenting it out.
+    "elseif &term =~ "xterm"
+    "  set t_Co=8
+  endif
+
+  set background=dark " if set, must come before highlight commands
+
+  let g:gruvbox_contrast_dark="hard"
+  colorscheme gruvbox
+
+  syntax on
+
+  " Override some colorscheme settings
+  " Prevent weird black color shading with gruvbox. Needs to be set after syntax on
+  " http://stackoverflow.com/questions/4325682/vim-colorschemes-not-changing-background-color?lq=1
+  " https://github.com/ellisonleao/gruvbox.nvim/issues/16#issuecomment-856913899
+  " https://github.com/ellisonleao/gruvbox.nvim/issues/16
+  hi! Normal ctermbg=NONE guibg=NONE
+  hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+
+  hi Folded guifg=#DDDDDD
+
+  hi TabLine ctermfg=White ctermbg=Black guifg=White guibg=Black
+  hi TabLineSel ctermfg=Black ctermbg=White guifg=Black guibg=White
+  " Tabs and special characters with "set list" are too dark (":help listchars"):
+  hi! link NonText GruvboxFg2
+  hi! link SpecialKey GruvboxFg2
+  " Comments are too dark
+  hi! link Comment GruvboxFg2
+  hi! LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=#AAAAAA guibg=NONE
+
+  " https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
+  if &term =~ "italic"
+    hi Comment cterm=italic
+  endif
 endif
-
-set background=dark " if set, must come before highlight commands
-
-let g:gruvbox_contrast_dark="hard"
-colorscheme gruvbox
-
-
-syntax on
-
-" Override some colorscheme settings
-" Prevent weird black color shading with gruvbox. Needs to be set after syntax on
-" http://stackoverflow.com/questions/4325682/vim-colorschemes-not-changing-background-color?lq=1
-" https://github.com/ellisonleao/gruvbox.nvim/issues/16#issuecomment-856913899
-" https://github.com/ellisonleao/gruvbox.nvim/issues/16
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
-
-hi Folded guifg=#DDDDDD
-
-hi TabLine ctermfg=White ctermbg=Black guifg=White guibg=Black
-hi TabLineSel ctermfg=Black ctermbg=White guifg=Black guibg=White
-" Tabs and special characters with "set list" are too dark (":help listchars"):
-hi! link NonText GruvboxFg2
-hi! link SpecialKey GruvboxFg2
-" Comments are too dark
-hi! link Comment GruvboxFg2
-hi! LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=#AAAAAA guibg=NONE
-
-" https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/
-if &term =~ "italic"
-  hi Comment cterm=italic
-end
 
 if has("gui_running")
   set guioptions-=m " remove menu bar

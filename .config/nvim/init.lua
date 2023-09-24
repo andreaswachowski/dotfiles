@@ -64,8 +64,30 @@ require("lazy").setup({
   },
   { 'andreaswachowski/yadm-git.vim',
     dependencies = { 'tpope/vim-fugitive' }
+  },
+  -- Colorscheme
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    opts = {
+      contrast = "dark", -- background as dark as terminal
+      invert_tabline = true,
+      overrides = {
+        -- Lighten some grays. Start with dark4 (== #7c6f64 == rgb(124 111 100))
+        -- and add 50 each to R, G, and B, yielding rgb(174, 161, 150) = #95887d
+        SpecialKey = { fg = "#95887d" },
+        Whitespace = { fg = "#95887d" }, -- shown with "set list" (":help listchars"
+        LineNr = { fg = "#95887d" },
+        Comment = { fg = "#95887d" },
+        Folded = { fg = "#95887d" },
+      }
+    },
+    config = function(_, opts)
+      require('gruvbox').setup(opts)
+      vim.o.background = "dark" -- or "light" for dark mode
+      vim.cmd.colorscheme 'gruvbox'
+    end
   }
-
 }, {})
 
 --[[ Approach:
