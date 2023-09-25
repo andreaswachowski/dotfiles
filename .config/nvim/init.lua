@@ -119,6 +119,8 @@ require("lazy").setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.o.breakindent = true
+
 -- use vertical diff
 vim.o.diffopt = "internal,algorithm:patience,filler,closeoff,vertical"
 
