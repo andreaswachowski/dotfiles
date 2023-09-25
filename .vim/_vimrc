@@ -113,7 +113,7 @@ set exrc " enable reading of local .vimrc and .exrc files
 set winminheight=0 " minimize a window to just its status bar
 set textwidth=80
 set laststatus=2
-set diffopt=filler,vertical
+set diffopt=internal,algorithm:patience,filler,closeoff,vertical
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 au BufReadPost quickfix  set nowrap
