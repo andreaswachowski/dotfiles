@@ -61,6 +61,7 @@ require("lazy").setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- for a lua implementation, see robstumborg/yadm.nvim
   { 'andreaswachowski/yadm-git.vim',
     dependencies = { 'tpope/vim-fugitive' }
   },
