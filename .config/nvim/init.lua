@@ -43,7 +43,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   { 'tpope/vim-obsession' },
 
-  { 'tpope/vim-fugitive',
+  {
+    'tpope/vim-fugitive',
     keys = {
       { "<Bslash>cs", "<cmd>Git<cr>", desc = "Git status" },
       { "<Bslash>cc", "<cmd>Git commit<cr>", desc = "Git commit" },
@@ -62,7 +63,8 @@ require("lazy").setup({
   'tpope/vim-sleuth',
 
   -- for a lua implementation, see robstumborg/yadm.nvim
-  { 'andreaswachowski/yadm-git.vim',
+  {
+    'andreaswachowski/yadm-git.vim',
     dependencies = { 'tpope/vim-fugitive' }
   },
 
