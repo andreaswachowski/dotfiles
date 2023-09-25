@@ -42,6 +42,7 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require("lazy").setup({
   { 'tpope/vim-obsession' },
+
   { 'tpope/vim-fugitive',
     keys = {
       { "<Bslash>cs", "<cmd>Git<cr>", desc = "Git status" },
@@ -56,9 +57,14 @@ require("lazy").setup({
       vim.g.fugitive_summary_format = "%aN %ai %s"
     end
   },
+
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',
+
   { 'andreaswachowski/yadm-git.vim',
     dependencies = { 'tpope/vim-fugitive' }
   },
+
   -- Colorscheme
   {
     "ellisonleao/gruvbox.nvim",
@@ -83,8 +89,31 @@ require("lazy").setup({
     end
   },
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth'
+  {
+    -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
+    -- See `:help lualine.txt`
+    opts = {
+      options = {
+        theme = 'gruvbox',
+        component_separators = '|',
+        -- The section separator of the "progress" section disappears in insert
+        -- mode (why I don't know), shifting section x to the right, which is
+        -- irritating.
+        -- Disable section_separators to avoid the shifting (also saving space).
+        -- (Alternatively, one could include 'progress' in the preceding section)
+        section_separators = '',
+      },
+      sections = {
+        lualine_a = {'branch', 'diff', 'diagnostics'},
+        lualine_b = {'filename'},
+        lualine_c = {},
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      },
+    },
+  },
 }, {})
 
 -- [[ Setting options ]]
@@ -101,7 +130,6 @@ vim.o.mouse = 'a' -- enable mouse mode
 vim.o.number = true -- line numbers helps during pair programming
 vim.o.textwidth = 80 -- keep to "sane" width unless explicitly overridden
 vim.o.tildeop = true
-vim.o.statusline = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P"
 vim.o.visualbell = true
 vim.cmd([[set wildignore+=*.jpg,*.png,*.o]])
 -- vim.o.wildignore:append{'*.jpg', '*.png', '*.o'} doesn't work when
