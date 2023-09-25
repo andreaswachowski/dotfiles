@@ -6,12 +6,6 @@ let &packpath = &runtimepath
 
 vim.g.mapleader = ','
 
---neovim's thin bar becomes black and invisible, use block cursor instead
-vim.o.guicursor = "i-ci-ve:block"
-
--- line numbers helps during pair programming
-vim.o.number = true
-
 -- neovim has "nnoremap Y y$" (see default-mappings), undo that
 vim.cmd([[unmap Y]])
 
@@ -92,6 +86,27 @@ require("lazy").setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth'
 }, {})
+
+-- [[ Setting options ]]
+-- See `:help vim.o`
+
+-- use vertical diff
+vim.o.diffopt = "internal,algorithm:patience,filler,closeoff,vertical"
+
+--neovim's thin bar becomes black and invisible, use block cursor instead
+vim.o.guicursor = "i-ci-ve:block"
+
+vim.o.hlsearch = false   -- Set highlight on search
+vim.o.mouse = 'a' -- enable mouse mode
+vim.o.number = true -- line numbers helps during pair programming
+vim.o.textwidth = 80 -- keep to "sane" width unless explicitly overridden
+vim.o.tildeop = true
+vim.o.statusline = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P"
+vim.o.visualbell = true
+vim.cmd([[set wildignore+=*.jpg,*.png,*.o]])
+-- vim.o.wildignore:append{'*.jpg', '*.png', '*.o'} doesn't work when
+-- wildignore is empty
+vim.o.winminheight = 0 -- minimize a window to just its status bar
 
 --[[ Approach:
 --   Read .vimrc and copy over only what I need
