@@ -41,8 +41,14 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require("lazy").setup({
+  -- [[ Editing-related plugins ]]
+
   { 'tpope/vim-obsession' },
 
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',
+
+  -- [[ Git-related plugins ]]
   {
     'tpope/vim-fugitive',
     keys = {
@@ -59,15 +65,13 @@ require("lazy").setup({
     end
   },
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
   -- for a lua implementation, see robstumborg/yadm.nvim
   {
     'andreaswachowski/yadm-git.vim',
     dependencies = { 'tpope/vim-fugitive' }
   },
 
+  -- [[ LSP ]]
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
