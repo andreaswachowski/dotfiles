@@ -1,8 +1,7 @@
 # My dotfiles
 
 A lot of stuff collected since the initial Git-commit in 2010, when I imported
-my vim configuration (I previously used Subversion but, alas, didn't conserve
-the history during the migration).
+my vim configuration in Git.[^1]
 
 I'd suggest to only use this repository as a way to discover new ideas, and
 refrain from blindly copying it:
@@ -21,3 +20,8 @@ refrain from blindly copying it:
   not put that into a public repo). Speaking of that playbook,
   (full-mac-setup.md)[https://github.com/geerlingguy/mac-dev-playbook/blob/master/full-mac-setup.md]
   is a wonderful example of how I _should_ document my setup, but haven't.
+
+[^1]: I previously used Subversion and did not convert that repo to retain the
+    history in the new Git repo. The old
+    [legacy-dotfiles](https://github.com/andreaswachowski/legacy-dotfiles)
+    contain the Subversion history.
