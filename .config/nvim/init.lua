@@ -131,6 +131,9 @@ require("lazy").setup({
     },
   },
 
+  -- Useful plugin to show you pending keybinds.
+  { 'folke/which-key.nvim', opts = {} },
+
   -- Colorscheme
   {
     "ellisonleao/gruvbox.nvim",
