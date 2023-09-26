@@ -4,6 +4,11 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 ]]
 
+
+-- Setup globals that I expect to be always available.
+--  See `./lua/aw/globals.lua` for more information.
+require "aw.globals"
+
 vim.g.mapleader = ','
 
 -- neovim has "nnoremap Y y$" (see default-mappings), undo that
