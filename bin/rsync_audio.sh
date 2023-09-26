@@ -33,7 +33,7 @@ displayUsageScreen() {
 	           -h : Displays this screen
 	           -m : Performs a backup of the Amarok mysql database first
 	           -n : Appends "n" to rsync to perform a dry run
-	     -d host: Specifies the destination host. Default is cumin
+	     -d host: Specifies the destination host. Default is pve
 	HERE
 }
 
@@ -84,7 +84,7 @@ case "$(hostname -s)" in
 esac
 
 if [ -z "$DEST" ]; then
-  DEST=proxmox
+  DEST=pve
 fi
 
 if [ -n "$1" ]; then
@@ -95,7 +95,7 @@ case "$DEST" in
   salt) ROOT=/audio/audiolibrary
     ICONV_DEST=UTF8
     ;;
-  proxmox) ROOT=/audio/audiolibrary
+  pve) ROOT=/audio/audiolibrary
     ICONV_DEST=UTF8
     ;;
   imac) ROOT=/Volumes/HDD2/audio/audiolibrary
