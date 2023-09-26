@@ -129,6 +129,7 @@ require("lazy").setup({
   -- Colorscheme
   {
     "ellisonleao/gruvbox.nvim",
+    lazy = false,
     priority = 1000,
     opts = {
       contrast = "dark", -- background as dark as terminal
