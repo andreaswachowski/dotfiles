@@ -57,6 +57,9 @@ require("lazy").setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
+
   -- [[ Git-related plugins ]]
   {
     'tpope/vim-fugitive',
