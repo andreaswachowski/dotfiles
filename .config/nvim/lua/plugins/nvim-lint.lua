@@ -2,9 +2,12 @@ return {
   "mfussenegger/nvim-lint",
   config = function()
     local rubocop = require('lint').linters.rubocop
-    rubocop.cmd = 'bundle'
-    rubocop.args = { 'exec', 'rubocop', '--format', 'json', '--force-exclusion', '--stdin', vim.api.nvim_buf_get_name(0) }
-    rubocop.stdin = true
+    local fname = vim.api.nvim_buf_get_name(0)
+    if require("lspconfig").util.root_pattern("Gemfile")(fname) ~= nil then
+      rubocop.cmd = 'bundle'
+      rubocop.args = { 'exec', 'rubocop', '--format', 'json', '--force-exclusion', '--stdin', vim.api.nvim_buf_get_name(0) }
+      rubocop.stdin = true
+    end
     require('lint').linters_by_ft = {
       ruby = {
         "rubocop"
