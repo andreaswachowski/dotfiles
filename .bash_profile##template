@@ -1,6 +1,18 @@
 # vi: filetype=sh
 # See helpful info at
 # http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
+
+# Add homebrew to PATH *before* sourceing ~/.profile
+# which adds my own paths
+if [ "$(uname -s)" == "Darwin" ] ; then
+  if [ "$(uname -p)" == "arm" ] ; then
+    BREW_PREFIX=/opt
+  else
+    BREW_PREFIX=/usr/local
+  fi
+  eval "$($BREW_PREFIX/Homebrew/bin/brew shellenv)"
+fi
+
 if [ -z "$TMUX" ] && [ -r ~/.profile ]; then
   . ~/.profile;
 fi
@@ -13,14 +25,6 @@ fi
 host_specific_file="$HOME/.config/bash/bash_profile.host.$(uname -n)"
 if [ -f "$host_specific_file" ]; then
   . $host_specific_file
-fi
-
-if [ "$(uname -p)" == "arm" -a "$(uname -s)" == "Darwin" ] ; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-if [ "$(uname -p)" != "arm" -a "$(uname -s)" == "Darwin" ] ; then
-  eval "$(/usr/local/Homebrew/bin/brew shellenv)"
 fi
 
 # ---------------------------------------------------------------------------
