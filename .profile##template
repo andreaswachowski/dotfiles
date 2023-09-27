@@ -38,7 +38,6 @@ export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for 
 # {% endif %}
 PATH="$HOME/.cargo/bin:\
 $HOME/.yarn/bin:\
-$HOME/.rvm/bin:\
 $HOME/Documents/git_projects/csslint/dist:\
 $HOME/bin:\
 $HOME/local/bin:\
@@ -77,9 +76,6 @@ fi
 
 export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 export SOPS_AGE_RECIPIENTS="age1xnpatet4zu07tqyr7yzcvedw02au4gjp4rmqlfx0dax9w5xfjqpqpgvk88"
-
-# shellcheck source=/dev/null
-[ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 export NVM_DIR="$HOME/.nvm"
 # shellcheck source=/dev/null
