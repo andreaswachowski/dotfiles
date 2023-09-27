@@ -272,6 +272,8 @@ require("lazy").setup({
     end,
   },
 
+  { 'tpope/vim-rails' },
+
   {
     'andreaswachowski/taskpaper.vim',
     lazy = false,
