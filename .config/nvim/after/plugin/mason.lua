@@ -15,8 +15,16 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  local function quickfix()
+    vim.lsp.buf.code_action({
+      filter = function(a) return a.isPreferred end,
+      apply = true
+    })
+  end
+
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>qf', quickfix, '[Q]uick[f]ix (apply code action)')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -60,6 +68,7 @@ local servers = {
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
+  ruby_ls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -92,3 +101,59 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+
+-- [[ Ruby LSP Configuration }]
+-- https://github.com/Shopify/ruby-lsp/blob/main/EDITORS.md#neovim-lsp
+
+-- textDocument/diagnostic support until 0.10.0 is released
+---@diagnostic disable-next-line: lowercase-global
+_timers = {}
+local function setup_diagnostics(client, buffer)
+  if require("vim.lsp.diagnostic")._enable then
+    return
+  end
+
+  local diagnostic_handler = function()
+    local params = vim.lsp.util.make_text_document_params(buffer)
+    client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
+      if err then
+        local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
+        vim.lsp.log.error(err_msg)
+      end
+      if not result then
+        return
+      end
+      vim.lsp.diagnostic.on_publish_diagnostics(
+        nil,
+        vim.tbl_extend("keep", params, { diagnostics = result.items }),
+        { client_id = client.id }
+      )
+    end)
+  end
+
+  diagnostic_handler() -- to request diagnostics on buffer when first attaching
+
+  vim.api.nvim_buf_attach(buffer, false, {
+    on_lines = function()
+      if _timers[buffer] then
+        vim.fn.timer_stop(_timers[buffer])
+      end
+      _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
+    end,
+    on_detach = function()
+      if _timers[buffer] then
+        vim.fn.timer_stop(_timers[buffer])
+      end
+    end,
+  })
+end
+
+require('lspconfig').ruby_ls.setup({
+  -- We want both the diagnostics (for the code actions)
+  -- and the keyboard shortcuts from the general setup,
+  -- so combine them into one function
+  on_attach = function(client, bufnr)
+    setup_diagnostics(client, bufnr)
+    on_attach(client, bufnr)
+  end
+})
