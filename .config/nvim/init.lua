@@ -57,10 +57,12 @@ vim.o.winminheight = 0 -- minimize a window to just its status bar
 
 -- Vim Tip 173: Quick movement between split windows
 -- https://vim.fandom.com/wiki/Switch_between_Vim_window_splits_easily
-vim.keymap.set('n', '<c-l>', '<c-w>l', { noremap = true, silent = true })
-vim.keymap.set('n', '<c-h>', '<c-w>h', { noremap = true, silent = true })
-vim.keymap.set('n', '<c-k>', '<c-w>k', { noremap = true, silent = true })
-vim.keymap.set('n', '<c-j>', '<c-w>j', { noremap = true, silent = true })
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set('n', '<c-l>', '<c-w>l', opts)
+vim.keymap.set('n', '<c-h>', '<c-w>h', opts)
+vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
+vim.keymap.set('n', '<c-j>', '<c-w>j', opts)
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
