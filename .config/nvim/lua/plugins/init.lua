@@ -15,13 +15,19 @@ return {
   { 'akinsho/git-conflict.nvim', version = "*", config = true },
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  { 'tpope/vim-sleuth' },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {}
+  },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {}
+  },
 
   {
     -- Highlight, edit, and navigate code
