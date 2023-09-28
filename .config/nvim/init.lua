@@ -9,8 +9,6 @@ let &packpath = &runtimepath
 --  See `./lua/aw/globals.lua` for more information.
 require "aw.globals"
 
-vim.g.mapleader = ','
-
 local modules = {
   "config.options",
   "config.keymaps",

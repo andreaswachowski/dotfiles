@@ -1,5 +1,7 @@
 -- See `:help vim.o`
 
+vim.g.mapleader = ','
+
 vim.o.breakindent = true
 
 -- use vertical diff
