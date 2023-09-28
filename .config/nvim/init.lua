@@ -4,12 +4,8 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 ]]
 
-
--- Setup globals that I expect to be always available.
---  See `./lua/aw/globals.lua` for more information.
-require "aw.globals"
-
 local modules = {
+  "aw.globals",
   "config.options",
   "config.keymaps",
   "autocommands",
