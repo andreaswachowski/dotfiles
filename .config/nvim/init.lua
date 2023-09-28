@@ -12,10 +12,10 @@ require "aw.globals"
 vim.g.mapleader = ','
 
 local modules = {
-  "config.lazy",
   "config.options",
   "config.keymaps",
   "autocommands",
+  "config.lazy",
 }
 
 for _, module in ipairs(modules) do
