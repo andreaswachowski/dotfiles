@@ -41,7 +41,14 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
+  -- The order of sources matter (by default). That gives them priority
+  -- You can configure:
+  --   keyword_length
+  --   priority
+  --   max_item_count
+  --   ...?
   sources = {
+    { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },

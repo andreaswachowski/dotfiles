@@ -11,7 +11,7 @@ return {
       }
     },
 
-    -- Add LSP completion capabilities
-    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lua', -- Add Lua completion for Nvim
+    'hrsh7th/cmp-nvim-lsp', -- Add LSP completion capabilities
   },
 }
