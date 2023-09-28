@@ -71,21 +71,8 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ Autocommands ]]
--- commit.msg is added to the global .gitignore and serves as draft area for
--- commit messages
-vim.cmd([[autocmd BufEnter commit.msg setlocal tw=72 et sw=4 ts=4]])
 
-vim.api.nvim_create_augroup("_git", { clear = true })
-
--- Enable spell check and word wrap for git commits
-vim.api.nvim_create_autocmd("FileType", {
-  group = "_git",
-  pattern = "gitcommit",
-  callback = function()
-    vim.cmd("setlocal spell")
-    vim.cmd("setlocal wrap")
-  end,
-})
+require('autocommands')
 
 -- [[ Import other stuff ]]
 -- Show directories in tabline.
