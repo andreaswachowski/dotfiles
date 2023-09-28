@@ -75,6 +75,18 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- commit messages
 vim.cmd([[autocmd BufEnter commit.msg setlocal tw=72 et sw=4 ts=4]])
 
+vim.api.nvim_create_augroup("_git", { clear = true })
+
+-- Enable spell check and word wrap for git commits
+vim.api.nvim_create_autocmd("FileType", {
+  group = "_git",
+  pattern = "gitcommit",
+  callback = function()
+    vim.cmd("setlocal spell")
+    vim.cmd("setlocal wrap")
+  end,
+})
+
 -- [[ Import other stuff ]]
 -- Show directories in tabline.
 -- The idea is to handle one project per tab, using the buffer list for all
