@@ -11,6 +11,7 @@ return {
       }
     },
 
+    'onsails/lspkind.nvim', -- Show sources in completion list
     'hrsh7th/cmp-buffer',   -- Basic completion from buffer words
     'hrsh7th/cmp-path',     -- Filesystem path completion
     'hrsh7th/cmp-nvim-lua', -- Add Lua completion for Nvim

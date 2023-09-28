@@ -5,6 +5,11 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+local ok, lspkind = pcall(require, "lspkind")
+if not ok then
+  return
+end
+
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup {
   snippet = {
@@ -36,4 +41,17 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'buffer',  keyword_length = 5 },
   },
+  ---@diagnostic disable-next-line: missing-fields
+  formatting = {
+    format = lspkind.cmp_format {
+      with_text = true,
+      menu = {
+        buffer = "[buf]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[api]",
+        path = "[path]",
+        lusanip = "[snip]"
+      }
+    }
+  }
 }
