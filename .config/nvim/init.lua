@@ -11,9 +11,6 @@ require "aw.globals"
 
 vim.g.mapleader = ','
 
--- neovim has "nnoremap Y y$" (see default-mappings), undo that
-vim.cmd([[unmap Y]])
-
 --[[ Store temporary files in a central spot to ease
      clean-up after machine crashes
      https://github.com/tpope/vim-obsession/issues/18]]

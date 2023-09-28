@@ -2,6 +2,9 @@
 -- https://vim.fandom.com/wiki/Switch_between_Vim_window_splits_easily
 local opts = { noremap = true, silent = true }
 
+-- neovim has "nnoremap Y y$" (see default-mappings), undo that
+vim.keymap.del('n', 'Y')
+
 vim.keymap.set('n', '<c-l>', '<c-w>l', opts)
 vim.keymap.set('n', '<c-h>', '<c-w>h', opts)
 vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
