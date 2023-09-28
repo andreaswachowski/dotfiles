@@ -11,16 +11,6 @@ require "aw.globals"
 
 vim.g.mapleader = ','
 
---[[ Store temporary files in a central spot to ease
-     clean-up after machine crashes
-     https://github.com/tpope/vim-obsession/issues/18]]
-vim.cmd([[
-let vimtmp = $HOME . '/tmp/vim/' . getpid()
-silent! call mkdir(vimtmp, "p", 0700)
-let &backupdir=vimtmp
-let &directory=vimtmp
-]])
-
 require("config.lazy")
 
 -- [[ Setting options ]]

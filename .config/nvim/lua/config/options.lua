@@ -23,3 +23,13 @@ vim.cmd([[set wildignore+=*.jpg,*.png,*.o]])
 -- vim.o.wildignore:append{'*.jpg', '*.png', '*.o'} doesn't work when
 -- wildignore is empty
 vim.o.winminheight = 0 -- minimize a window to just its status bar
+
+--[[ Store temporary files in a central spot to ease
+     clean-up after machine crashes
+     https://github.com/tpope/vim-obsession/issues/18]]
+vim.cmd([[
+let vimtmp = $HOME . '/tmp/vim/' . getpid()
+silent! call mkdir(vimtmp, "p", 0700)
+let &backupdir=vimtmp
+let &directory=vimtmp
+]])
