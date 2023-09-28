@@ -5,6 +5,9 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+-- Disable distracting ins-completion-menu messages
+vim.opt.shortmess:append "c"
+
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
   return
