@@ -11,19 +11,19 @@ require "aw.globals"
 
 vim.g.mapleader = ','
 
-require("config.lazy")
+local modules = {
+  "config.lazy",
+  "config.options",
+  "config.keymaps",
+  "autocommands",
+}
 
--- [[ Setting options ]]
-
-require("config.options")
-
--- [[ Basic Keymaps ]]
-
-require("config.keymaps")
-
--- [[ Autocommands ]]
-
-require('autocommands')
+for _, module in ipairs(modules) do
+  local ok, err = pcall(require, module)
+  if not ok then
+    error("Error loading " .. module .. "\n\n" .. err)
+  end
+end
 
 -- [[ Import other stuff ]]
 -- Show directories in tabline.
