@@ -70,6 +70,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- [[ Autocommands ]]
+-- commit.msg is added to the global .gitignore and serves as draft area for
+-- commit messages
+vim.cmd([[autocmd BufEnter commit.msg setlocal tw=72 et sw=4 ts=4]])
+
 -- [[ Import other stuff ]]
 -- Show directories in tabline.
 -- The idea is to handle one project per tab, using the buffer list for all
