@@ -20,11 +20,6 @@ for _, module in ipairs(modules) do
 end
 
 -- [[ Import other stuff ]]
--- Show directories in tabline.
--- The idea is to handle one project per tab, using the buffer list for all
--- project-related files. Thus, each tab is set to a different tab-local
--- directory.
-vim.cmd([[source ~/.vim/tabline.vim]])
 -- Someday I might migrate from my custom solution to
 -- https://github.com/kazhala/close-buffers.nvim
 vim.cmd([[source ~/.vim/delete_inactive_buffers.vim]])

@@ -35,3 +35,9 @@ silent! call mkdir(vimtmp, "p", 0700)
 let &backupdir=vimtmp
 let &directory=vimtmp
 ]])
+
+-- Show directories in tabline.
+-- The idea is to handle one project per tab, using the buffer list for all
+-- project-related files. Thus, each tab is set to a different tab-local
+-- directory.
+vim.cmd([[source ~/.vim/tabline.vim]])
