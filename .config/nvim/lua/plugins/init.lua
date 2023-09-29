@@ -5,14 +5,14 @@ return {
 
   {
     'kylechui/nvim-surround',
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
+    event = 'VeryLazy',
     config = function()
-      require("nvim-surround").setup()
-    end
+      require('nvim-surround').setup()
+    end,
   },
 
-  { 'akinsho/git-conflict.nvim', version = "*", config = true },
+  { 'akinsho/git-conflict.nvim', version = '*', config = true },
 
   -- Detect tabstop and shiftwidth automatically
   { 'tpope/vim-sleuth' },
@@ -20,13 +20,13 @@ return {
   -- "gc" to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
-    opts = {}
+    opts = {},
   },
 
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
-    opts = {}
+    opts = {},
   },
 
   {
@@ -40,9 +40,9 @@ return {
 
   {
     'iamcco/markdown-preview.nvim',
-    ft = "markdown",
+    ft = 'markdown',
     build = function()
-      vim.fn["mkdp#util#install"]()
+      vim.fn['mkdp#util#install']()
     end,
   },
 

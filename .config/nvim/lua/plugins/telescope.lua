@@ -1,6 +1,6 @@
 -- Fuzzy Finder (files, lsp, etc)
 
-return  {
+return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
   dependencies = {
@@ -14,7 +14,7 @@ return  {
       --       refer to the README for telescope-fzf-native for more instructions.
       build = 'make',
       cond = function()
-        return vim.fn.executable 'make' == 1
+        return vim.fn.executable('make') == 1
       end,
     },
   },

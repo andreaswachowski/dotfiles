@@ -1,1 +1,1 @@
-require("autocommands.git")
+require('autocommands.git')
