@@ -13,9 +13,13 @@ return {
       }
       rubocop.stdin = true
       require('lint').linters_by_ft = {
-        ruby = {
-          'rubocop',
-        },
+        ansible = { 'ansible-lint' },
+        dockerfile = { 'hadolint' },
+        cpp = { 'clang-tidy' }, -- install with fmenezes/tap/clang-tidy
+        markdown = { 'vale' },
+        sh = { 'ShellCheck' },
+        json = { 'jsonlint' },
+        ruby = { 'rubocop' },
       }
       vim.api.nvim_create_autocmd(
         { 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' },
