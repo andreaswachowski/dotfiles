@@ -17,8 +17,10 @@ local on_attach = function(_, bufnr)
 
   local function quickfix()
     vim.lsp.buf.code_action({
-      filter = function(a) return a.isPreferred end,
-      apply = true
+      filter = function(a)
+        return a.isPreferred
+      end,
+      apply = true,
     })
   end
 
@@ -28,10 +30,22 @@ local on_attach = function(_, bufnr)
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  nmap(
+    'gI',
+    require('telescope.builtin').lsp_implementations,
+    '[G]oto [I]mplementation'
+  )
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap(
+    '<leader>ds',
+    require('telescope.builtin').lsp_document_symbols,
+    '[D]ocument [S]ymbols'
+  )
+  nmap(
+    '<leader>ws',
+    require('telescope.builtin').lsp_dynamic_workspace_symbols,
+    '[W]orkspace [S]ymbols'
+  )
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -40,8 +54,16 @@ local on_attach = function(_, bufnr)
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+  nmap(
+    '<leader>wa',
+    vim.lsp.buf.add_workspace_folder,
+    '[W]orkspace [A]dd Folder'
+  )
+  nmap(
+    '<leader>wr',
+    vim.lsp.buf.remove_workspace_folder,
+    '[W]orkspace [R]emove Folder'
+  )
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
@@ -61,7 +83,7 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  -- html = { filetypes = { 'html', 'twig', 'hbs' } },
 
   ruby_ls = {},
   lua_ls = {
@@ -80,22 +102,22 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
+local mason_lspconfig = require('mason-lspconfig')
 
-mason_lspconfig.setup {
+mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers),
-}
+})
 
-mason_lspconfig.setup_handlers {
+mason_lspconfig.setup_handlers({
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    require('lspconfig')[server_name].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end
-}
+    })
+  end,
+})
 
 -- [[ Ruby LSP Configuration }]
 -- https://github.com/Shopify/ruby-lsp/blob/main/EDITORS.md#neovim-lsp
@@ -104,26 +126,31 @@ mason_lspconfig.setup_handlers {
 ---@diagnostic disable-next-line: lowercase-global
 _timers = {}
 local function setup_diagnostics(client, buffer)
-  if require("vim.lsp.diagnostic")._enable then
+  if require('vim.lsp.diagnostic')._enable then
     return
   end
 
   local diagnostic_handler = function()
     local params = vim.lsp.util.make_text_document_params(buffer)
-    client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-      if err then
-        local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
-        vim.lsp.log.error(err_msg)
+    client.request(
+      'textDocument/diagnostic',
+      { textDocument = params },
+      function(err, result)
+        if err then
+          local err_msg =
+            string.format('diagnostics error - %s', vim.inspect(err))
+          vim.lsp.log.error(err_msg)
+        end
+        if not result then
+          return
+        end
+        vim.lsp.diagnostic.on_publish_diagnostics(
+          nil,
+          vim.tbl_extend('keep', params, { diagnostics = result.items }),
+          { client_id = client.id }
+        )
       end
-      if not result then
-        return
-      end
-      vim.lsp.diagnostic.on_publish_diagnostics(
-        nil,
-        vim.tbl_extend("keep", params, { diagnostics = result.items }),
-        { client_id = client.id }
-      )
-    end)
+    )
   end
 
   diagnostic_handler() -- to request diagnostics on buffer when first attaching
@@ -150,5 +177,5 @@ require('lspconfig').ruby_ls.setup({
   on_attach = function(client, bufnr)
     setup_diagnostics(client, bufnr)
     on_attach(client, bufnr)
-  end
+  end,
 })
