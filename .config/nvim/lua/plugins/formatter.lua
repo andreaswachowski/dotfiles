@@ -25,6 +25,8 @@ return {
     end
     formatter.setup({
       filetype = {
+        cpp = require('formatter.filetypes.cpp').clangformat,
+        sh = require('formatter.filetypes.sh').shfmt,
         lua = require('formatter.filetypes.lua').stylua,
         ruby = ruby_formatter,
         ['*'] = {
