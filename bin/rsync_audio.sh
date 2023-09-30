@@ -22,8 +22,8 @@
 # automatically
 
 displayUsageScreen() {
-	# <<- as opposed to << strips the leading tabs from the output
-	cat <<- HERE
+  # <<- as opposed to << strips the leading tabs from the output
+  cat <<-HERE
 	Usage: $ScriptName [-hmn] [-d host] [Subdirectory]
 
   Synchronizes audio files between hosts.
@@ -40,47 +40,54 @@ displayUsageScreen() {
 ScriptName=$(basename "$0")
 
 # -------------------------------------------------------------------------
-while getopts "hmnd:" OPT
-do
-    case "$OPT" in
-    d) DEST=$OPTARG
-       ;;
+while getopts "hmnd:" OPT; do
+  case "$OPT" in
+  d)
+    DEST=$OPTARG
+    ;;
 
-    m) mysqldump -u amarokuser -pbla32mar0K amarokdb | gzip > /audio/amarok.sql.gz
-       ;;
+  m)
+    mysqldump -u amarokuser -pbla32mar0K amarokdb | gzip >/audio/amarok.sql.gz
+    ;;
 
-    n) RSYNCOPTS=n
-       ;;
+  n)
+    RSYNCOPTS=n
+    ;;
 
-    h) displayUsageScreen
-       exit 1
-       ;;
+  h)
+    displayUsageScreen
+    exit 1
+    ;;
 
-    :) print -u2 "Incorrect Syntax: -${OPTARG} needs argument."
-       displayUsageScreen
-       exit 1
-       ;;
+  :)
+    print -u2 "Incorrect Syntax: -${OPTARG} needs argument."
+    displayUsageScreen
+    exit 1
+    ;;
 
-    \?) print -u2 "Incorrect Syntax: -${OPTARG} bad option."
-        displayUsageScreen
-        exit 1
-        ;;
-    esac
+  \?)
+    print -u2 "Incorrect Syntax: -${OPTARG} bad option."
+    displayUsageScreen
+    exit 1
+    ;;
+  esac
 done
 
 shift $(("$OPTIND" - 1))
 
-
 case "$(hostname -s)" in
-  salt) SRC=/audio/audiolibrary
-    ICONV_SRC=UTF8
-    ;;
-  macbook2021) SRC=/Users/andreas/audio
-    ICONV_SRC=UTF8-MAC
-    ;;
-  *) echo "Unknown source. Aborting"
-    exit 1
-    ;;
+salt)
+  SRC=/audio/audiolibrary
+  ICONV_SRC=UTF8
+  ;;
+macbook2021)
+  SRC=/Users/andreas/audio
+  ICONV_SRC=UTF8-MAC
+  ;;
+*)
+  echo "Unknown source. Aborting"
+  exit 1
+  ;;
 esac
 
 if [ -z "$DEST" ]; then
@@ -92,23 +99,28 @@ if [ -n "$1" ]; then
 fi
 
 case "$DEST" in
-  salt) ROOT=/audio/audiolibrary
-    ICONV_DEST=UTF8
-    ;;
-  pve) ROOT=/audio/audiolibrary
-    ICONV_DEST=UTF8
-    ;;
-  imac) ROOT=/Volumes/HDD2/audio/audiolibrary
-    ICONV_DEST=UTF8-MAC
-    RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
-    ;;
-  macbook2021) ROOT=/Users/andreas/audio
-    ICONV_DEST=UTF8-MAC
-    RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
-    ;;
-  *) echo "Unknown destination $DEST, aborting."
-    exit 1
-    ;;
+salt)
+  ROOT=/audio/audiolibrary
+  ICONV_DEST=UTF8
+  ;;
+pve)
+  ROOT=/audio/audiolibrary
+  ICONV_DEST=UTF8
+  ;;
+imac)
+  ROOT=/Volumes/HDD2/audio/audiolibrary
+  ICONV_DEST=UTF8-MAC
+  RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
+  ;;
+macbook2021)
+  ROOT=/Users/andreas/audio
+  ICONV_DEST=UTF8-MAC
+  RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
+  ;;
+*)
+  echo "Unknown destination $DEST, aborting."
+  exit 1
+  ;;
 esac
 
 ICONV="--iconv=$ICONV_SRC,$ICONV_DEST"
