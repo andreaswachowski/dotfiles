@@ -1,3 +1,16 @@
+local gitsigns_available, _ = pcall(require, 'gitsigns')
+
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+end
+
 return {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
@@ -15,7 +28,13 @@ return {
     },
     sections = {
       lualine_a = {},
-      lualine_b = { 'branch', 'diff', 'diagnostics' },
+      lualine_b = {
+        'branch',
+        -- diff_source() and { 'diff', source = diff_source } or 'diff',
+        gitsigns_available and { 'diff', source = diff_source }
+          or 'diff',
+        'diagnostics',
+      },
       lualine_c = { { 'filename', path = 1 } },
       lualine_x = { 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'progress' },
