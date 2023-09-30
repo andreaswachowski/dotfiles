@@ -79,6 +79,10 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
   bashls = {},
+  -- To get clang-tidy diagnostics, add the following to your project root:
+  -- https://github.com/cpp-best-practices/gui_starter_template/blob/main/.clang-tidy
+  -- (cf.
+  -- https://github.com/williamboman/nvim-lsp-installer/discussions/392#discussioncomment-2347401)
   clangd = {},
   -- gopls = {},
   html = { filetypes = { 'html' } },

@@ -15,7 +15,6 @@ return {
       require('lint').linters_by_ft = {
         ansible = { 'ansible-lint' },
         dockerfile = { 'hadolint' },
-        cpp = { 'clang-tidy' }, -- install with fmenezes/tap/clang-tidy
         markdown = { 'vale' },
         sh = { 'ShellCheck' },
         json = { 'jsonlint' },
