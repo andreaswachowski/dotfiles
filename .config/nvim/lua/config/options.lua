@@ -4,6 +4,9 @@ vim.g.mapleader = ','
 
 vim.o.breakindent = true
 
+-- do not auto-select an option even if only one is available
+vim.o.completeopt = 'menuone,noselect'
+
 -- use vertical diff
 vim.o.diffopt = 'internal,algorithm:patience,filler,closeoff,vertical'
 
