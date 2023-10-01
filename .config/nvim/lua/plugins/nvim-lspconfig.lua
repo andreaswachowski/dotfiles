@@ -2,6 +2,7 @@ return {
   -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   dependencies = {
+    { 'b0o/schemastore.nvim' },
     -- Automatically install LSPs to stdpath for neovim
     { 'williamboman/mason.nvim', config = true },
     { 'williamboman/mason-lspconfig.nvim' },
