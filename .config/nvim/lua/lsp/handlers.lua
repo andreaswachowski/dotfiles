@@ -9,6 +9,43 @@ end
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
+M.setup = function()
+  local signs = {
+
+    { name = 'DiagnosticSignError', text = '' },
+    { name = 'DiagnosticSignWarn', text = '' },
+    { name = 'DiagnosticSignHint', text = '' },
+    { name = 'DiagnosticSignInfo', text = '' },
+  }
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(
+      sign.name,
+      { texthl = sign.name, text = sign.text, numhl = '' }
+    )
+  end
+
+  local config = {
+    virtual_text = false, -- use trouble instead, or [d, ]d keymap
+    signs = {
+      active = signs, -- show signs
+    },
+    update_in_insert = true,
+    underline = true,
+    severity_sort = true,
+    float = {
+      focusable = true,
+      style = 'minimal',
+      border = nil,
+      source = 'always',
+      header = '',
+      prefix = '',
+    },
+  }
+
+  vim.diagnostic.config(config)
+end
+
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 M.on_attach = function(_, bufnr)
