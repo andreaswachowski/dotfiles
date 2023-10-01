@@ -84,6 +84,9 @@ mason_lspconfig.setup_handlers(build_lsp_configs())
 -- textDocument/diagnostic support until 0.10.0 is released
 ---@diagnostic disable-next-line: lowercase-global
 _timers = {}
+
+local log = require('vim.lsp.log')
+
 local function setup_diagnostics(client, buffer)
   if require('vim.lsp.diagnostic')._enable then
     return
@@ -98,7 +101,7 @@ local function setup_diagnostics(client, buffer)
         if err then
           local err_msg =
             string.format('diagnostics error - %s', vim.inspect(err))
-          vim.lsp.log.error(err_msg)
+          log.error(err_msg)
         end
         if not result then
           return
