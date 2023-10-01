@@ -100,6 +100,7 @@ local servers = {
   'pyright',
   -- rust_analyzer = {},
   'tsserver',
+  'yamlls',
 }
 
 -- Setup neovim lua configuration
