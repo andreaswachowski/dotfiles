@@ -28,7 +28,9 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete({}),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      -- I want to explicitly select the suggestion,
+      -- even if there's only one
+      select = false,
     }),
   }),
   -- The order of sources matter (by default). That gives them priority
