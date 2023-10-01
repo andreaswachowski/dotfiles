@@ -29,9 +29,11 @@ return {
     formatter.setup({
       filetype = {
         cpp = require('formatter.filetypes.cpp').clangformat,
-        sh = require('formatter.filetypes.sh').shfmt,
+        javascript = require('formatter.filetypes.javascript').prettier,
+        json = require('formatter.filetypes.json').prettier,
         lua = require('formatter.filetypes.lua').stylua,
         ruby = ruby_formatter,
+        sh = require('formatter.filetypes.sh').shfmt,
         ['*'] = {
           require('formatter.filetypes.any').remove_trailing_whitespace,
         },
