@@ -1,5 +1,8 @@
 return {
   'mhartington/formatter.nvim',
+  -- This commit implements try_node_modules
+  -- https://github.com/mhartington/formatter.nvim/pull/291
+  commit = 'e2f43a15ae71d7bd66f1a27577a346831b28c0b1',
   config = function()
     local formatter = require('formatter')
     local util = require('formatter.util')
