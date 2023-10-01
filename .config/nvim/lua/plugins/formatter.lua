@@ -30,11 +30,13 @@ return {
       filetype = {
         cpp = require('formatter.filetypes.cpp').clangformat,
         javascript = require('formatter.filetypes.javascript').prettier,
+        javascriptreact = require('formatter.filetypes.javascript').prettier,
         json = require('formatter.filetypes.json').prettier,
         lua = require('formatter.filetypes.lua').stylua,
         ruby = ruby_formatter,
         sh = require('formatter.filetypes.sh').shfmt,
         typescript = require('formatter.filetypes.typescript').prettier,
+        typescriptreact = require('formatter.filetypes.typescript').prettier,
         yaml = require('formatter.filetypes.yaml').prettier,
         ['*'] = {
           require('formatter.filetypes.any').remove_trailing_whitespace,
