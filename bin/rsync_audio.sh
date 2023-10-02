@@ -78,11 +78,11 @@ shift $(("$OPTIND" - 1))
 case "$(hostname -s)" in
 salt)
   SRC=/audio/audiolibrary
-  ICONV_SRC=UTF8
+  ICONV_SRC=UTF-8
   ;;
 macbook2021)
   SRC=/Users/andreas/audio
-  ICONV_SRC=UTF8-MAC
+  ICONV_SRC=UTF-8-MAC
   ;;
 *)
   echo "Unknown source. Aborting"
@@ -101,20 +101,20 @@ fi
 case "$DEST" in
 salt)
   ROOT=/audio/audiolibrary
-  ICONV_DEST=UTF8
+  ICONV_DEST=UTF-8
   ;;
 pve)
   ROOT=/audio/audiolibrary
-  ICONV_DEST=UTF8
+  ICONV_DEST=UTF-8
   ;;
 imac)
   ROOT=/Volumes/HDD2/audio/audiolibrary
-  ICONV_DEST=UTF8-MAC
+  ICONV_DEST=UTF-8-MAC
   RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
   ;;
 macbook2021)
   ROOT=/Users/andreas/audio
-  ICONV_DEST=UTF8-MAC
+  ICONV_DEST=UTF-8-MAC
   RSYNC_PATH="--rsync-path=/opt/Homebrew/bin/rsync"
   ;;
 *)
