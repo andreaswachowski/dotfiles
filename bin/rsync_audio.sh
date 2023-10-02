@@ -115,7 +115,7 @@ imac)
 macbook2021)
   ROOT=/Users/andreas/audio
   ICONV_DEST=UTF8-MAC
-  RSYNC_PATH="--rsync-path=/usr/local/bin/rsync"
+  RSYNC_PATH="--rsync-path=/opt/Homebrew/bin/rsync"
   ;;
 *)
   echo "Unknown destination $DEST, aborting."
