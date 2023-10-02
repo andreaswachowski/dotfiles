@@ -21,7 +21,7 @@ return {
         json = { 'jsonlint' },
         markdown = { 'vale' },
         ruby = { 'rubocop' },
-        sh = { 'ShellCheck' },
+        sh = { 'shellcheck' },
         typescript = { 'eslint' },
         typescriptreact = { 'eslint' },
       }
