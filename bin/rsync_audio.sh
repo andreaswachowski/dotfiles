@@ -128,4 +128,4 @@ ICONV="--iconv=$ICONV_SRC,$ICONV_DEST"
 #rsync -av --iconv=UTF8,UTF8-MAC --exclude '*__thumb*' --delete-after /audio/ imac:/Volumes/HDD2/audio
 
 echo rsync -av${RSYNCOPTS} ${ICONV} ${RSYNC_PATH} --exclude '*__thumb*' --exclude 'lost+found' --delete-after "$SRC${DIR:+/$DIR}/" "${DEST}:${ROOT}${DIR:+/$DIR}"
-rsync -av${RSYNCOPTS} ${ICONV} ${RSYNC_PATH} --exclude '.DS_Store' --exclude '*__thumb*' --exclude 'lost+found' --delete-after "$SRC${DIR:+/$DIR}/" "${DEST}:${ROOT}${DIR:+/$DIR}"
+rsync --mkpath -av${RSYNCOPTS} ${ICONV} ${RSYNC_PATH} --exclude '.DS_Store' --exclude '*__thumb*' --exclude 'lost+found' --delete-after "$SRC${DIR:+/$DIR}/" "${DEST}:${ROOT}${DIR:+/$DIR}"
