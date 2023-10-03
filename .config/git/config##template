@@ -13,6 +13,7 @@
 	can = commit --amend --no-edit
 	co = checkout
 	dc = diff --cached
+	sl = stash list --pretty=format:\"%gd - %cs - %s\"
 	st = status
 	br = branch
   loglastpull = diff --stat master@{1} master
