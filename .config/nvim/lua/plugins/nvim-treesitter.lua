@@ -4,11 +4,15 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'windwp/nvim-ts-autotag',
+    'RRethy/nvim-treesitter-endwise',
   },
   build = ':TSUpdate',
   config = function()
     require('nvim-treesitter.configs').setup({
       autotag = {
+        enable = true,
+      },
+      endwise = {
         enable = true,
       },
       auto_install = true,
