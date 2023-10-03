@@ -6,11 +6,11 @@
 # which adds my own paths
 if [ "$(uname -s)" == "Darwin" ]; then
   if [ "$(uname -p)" == "arm" ]; then
-    BREW_PREFIX=/opt
+    BREW_PREFIX=/opt/homebrew
   else
-    BREW_PREFIX=/usr/local
+    BREW_PREFIX=/usr/local/Homebrew
   fi
-  eval "$($BREW_PREFIX/Homebrew/bin/brew shellenv)"
+  eval "$($BREW_PREFIX/bin/brew shellenv)"
 fi
 
 if [ -z "$TMUX" ] && [ -r ~/.profile ]; then
