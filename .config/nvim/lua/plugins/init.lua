@@ -46,6 +46,7 @@ return {
     end,
   },
 
+  { 'pearofducks/ansible-vim' },
   { 'tpope/vim-rails' },
   { 'vim-test/vim-test' },
 }
