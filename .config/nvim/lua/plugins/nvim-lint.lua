@@ -13,7 +13,6 @@ return {
       }
       rubocop.stdin = true
       require('lint').linters_by_ft = {
-        ansible = { 'ansible-lint' },
         css = { 'stylelint' },
         dockerfile = { 'hadolint' },
         javascript = { 'eslint' },
@@ -24,6 +23,8 @@ return {
         sh = { 'shellcheck' },
         typescript = { 'eslint' },
         typescriptreact = { 'eslint' },
+        yaml = { 'yamllint' },
+        ['yaml.ansible'] = { 'ansible_lint' },
       }
       vim.api.nvim_create_autocmd(
         { 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' },
