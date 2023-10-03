@@ -12,8 +12,6 @@ return {
     end,
   },
 
-  { 'akinsho/git-conflict.nvim', version = '*', config = true },
-
   -- Detect tabstop and shiftwidth automatically
   { 'tpope/vim-sleuth' },
 
