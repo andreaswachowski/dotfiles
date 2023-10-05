@@ -15,6 +15,7 @@
 --  define the property 'filetypes' to the map in question.
 
 local servers = {
+  'ansiblels',
   'bashls',
   -- To get clang-tidy diagnostics, add the following to your project root:
   -- https://github.com/cpp-best-practices/gui_starter_template/blob/main/.clang-tidy
