@@ -7,7 +7,7 @@ return {
     -- and add 50 each to R, G, and B, yielding rgb(174, 161, 150) = #95887d
     local dark5 = '#95887d'
     local iterm2_bg = '#0e0e0e'
-    local palette = require('gruvbox.palette')
+    local colors = require('gruvbox').palette
     require('gruvbox').setup({
       contrast = 'dark', -- background as dark as terminal
       invert_tabline = true,
@@ -19,37 +19,37 @@ return {
         Folded = { fg = dark5 },
         SignColumn = { bg = '#0e0e0e' }, -- same as iTerm2 background"#0e0e0e"
         GruvboxRedSign = {
-          fg = palette.colors.bright_red,
+          fg = colors.bright_red,
           bg = iterm2_bg,
           reverse = false,
         },
         GruvboxGreenSign = {
-          fg = palette.colors.bright_green,
+          fg = colors.bright_green,
           bg = iterm2_bg,
           reverse = false,
         },
         GruvboxYellowSign = {
-          fg = palette.colors.bright_yellow,
+          fg = colors.bright_yellow,
           bg = iterm2_bg,
           reverse = false,
         },
         GruvboxBlueSign = {
-          fg = palette.colors.bright_blue,
+          fg = colors.bright_blue,
           bg = iterm2_bg,
           reverse = false,
         },
         GruvboxPurpleSign = {
-          fg = palette.colors.bright_purple,
+          fg = colors.bright_purple,
           bg = iterm2_bg,
           reverse = false,
         },
         GruvboxAquaSign = {
-          fg = palette.colors.bright_aqua,
+          fg = colors.bright_aqua,
           bg = iterm2_bg,
           reverse = false,
         },
         GruvboxOrangeSign = {
-          fg = palette.colors.bright_orange,
+          fg = colors.bright_orange,
           bg = iterm2_bg,
           reverse = false,
         },
