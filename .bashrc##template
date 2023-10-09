@@ -196,4 +196,18 @@ command -v rspec >/dev/null && {
   complete -F _fzf_complete_rspec -o default -o bashdefault be rspec
   complete -F _fzf_complete_rspec -o default -o bashdefault bundle exec rspec
 }
+
+# by default, ulimit -n is only 256. With that low setting, largeish vim
+# sessions will fail in git-conflict.nvim with
+#
+# Error detected while processing VimEnter Autocommands for "*":
+# Error executing lua callback: Vim:E903: Process failed to start: too many open files: "/usr/local/bin/git"
+# stack traceback:
+#
+#  [C]: in function 'jobstart'
+#  ...e/nvim/lazy/git-conflict.nvim/lua/git-conflict/utils.lua:25: in function 'job'
+#  ...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:173: in function 'get_git_root'
+#  ...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:410: in function 'fetch_conflicts'
+#  ...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:622: in function <...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:618>
+ulimit -n 2048
 {% endif %}
