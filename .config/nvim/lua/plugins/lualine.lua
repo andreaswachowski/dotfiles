@@ -81,7 +81,7 @@ return {
         'diagnostics',
       },
       lualine_c = {
-        { 'filename', path = 1, fmt = trunc(90, 30, 50, false) },
+        { 'filename', path = 1, fmt = trunc(90, 70, 50, false) },
       },
       lualine_x = {
         {
