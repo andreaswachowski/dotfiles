@@ -57,6 +57,8 @@ return {
         },
       },
     })
+  end,
+  init = function()
     vim.o.background = 'dark' -- or "light" for dark mode
     vim.cmd.colorscheme('gruvbox')
   end,
