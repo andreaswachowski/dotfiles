@@ -9,7 +9,7 @@ return {
     local iterm2_bg = '#0e0e0e'
     local colors = require('gruvbox').palette
     require('gruvbox').setup({
-      contrast = 'dark', -- background as dark as terminal
+      contrast = 'hard', -- background as dark as terminal
       invert_tabline = true,
       overrides = {
         SpecialKey = { fg = dark5 },
