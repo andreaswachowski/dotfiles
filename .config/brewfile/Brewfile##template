@@ -1,6 +1,5 @@
 # vi:filetype=brewfile
 tap 'homebrew/homebrew-cask' || true
-tap 'universal-ctags/universal-ctags' || true
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' || true
 tap 'uptech/homebrew-oss' || true
@@ -21,11 +20,6 @@ brew 'mas'
 
 brew 'age'
 brew 'ansible'
-# Make sure that universal-ctags is actually linked.
-# rbenv-ctags does not work with Xcode's ctags (and if it fails,
-# rbenv-default-gems will assume the ruby installation failed, thus not run
-# either)
-brew 'universal-ctags', args: ['HEAD']
 brew 'bat'
 brew 'cmake' # required to install YouCompleteMe
 brew 'ctop'
