@@ -6,12 +6,13 @@ return {
     -- Lighten some grays. Start with dark4 (== #7c6f64 == rgb(124 111 100))
     -- and add 50 each to R, G, and B, yielding rgb(174, 161, 150) = #95887d
     local dark5 = '#95887d'
+    local iterm2_bg = '#0e0e0e' -- same as iTerm profile
     local colors = require('gruvbox').palette
     require('gruvbox').setup({
       contrast = 'hard', -- background as dark as terminal
       invert_tabline = true,
       palette_overrides = {
-        dark0_hard = '#0e0e0e', -- same as iTerm profile
+        dark0_hard = iterm2_bg,
       },
       overrides = {
         SpecialKey = { fg = dark5 },
