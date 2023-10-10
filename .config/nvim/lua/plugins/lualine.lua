@@ -11,12 +11,7 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
     local win_width = vim.fn.winwidth(0)
     if hide_width and win_width < hide_width then
       return ''
-    elseif
-      trunc_width
-      and trunc_len
-      and win_width < trunc_width
-      and #str > trunc_len
-    then
+    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
       return str:sub(1, trunc_len) .. (no_ellipsis and '' or '…')
     end
     return str
@@ -28,15 +23,9 @@ local function trunc_branch(trunc_width, trunc_len, hide_width, no_ellipsis)
     local win_width = vim.fn.winwidth(0)
     if hide_width and win_width < hide_width then
       return ''
-    elseif
-      trunc_width
-      and trunc_len
-      and win_width < trunc_width
-      and #str > trunc_len
-    then
+    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
       if str:match('/') then
-        return string.sub(str:match('/.*'), 2, trunc_len)
-          .. (no_ellipsis and '' or '…')
+        return string.sub(str:match('/.*'), 2, trunc_len) .. (no_ellipsis and '' or '…')
       else
         return str:sub(1, trunc_len) .. (no_ellipsis and '' or '…')
       end
@@ -76,8 +65,7 @@ return {
       lualine_b = {
         { 'branch', fmt = trunc_branch(120, 15, 80, false) },
         -- diff_source() and { 'diff', source = diff_source } or 'diff',
-        gitsigns_available and { 'diff', source = diff_source }
-          or 'diff',
+        gitsigns_available and { 'diff', source = diff_source } or 'diff',
         'diagnostics',
       },
       lualine_c = {
