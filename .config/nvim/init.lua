@@ -25,4 +25,5 @@ end
 -- https://github.com/kazhala/close-buffers.nvim
 vim.cmd([[source ~/.vim/delete_inactive_buffers.vim]])
 -- vim.cmd([[source ~/.vimrc]])
+vim.cmd([[source ~/.vim/plist.vim]])
 -- vim: ts=2 sts=2 sw=2 et
