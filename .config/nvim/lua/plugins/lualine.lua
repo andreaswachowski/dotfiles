@@ -63,13 +63,13 @@ return {
     sections = {
       lualine_a = {},
       lualine_b = {
-        { 'branch', fmt = trunc_branch(120, 15, 80, false) },
         -- diff_source() and { 'diff', source = diff_source } or 'diff',
         gitsigns_available and { 'diff', source = diff_source } or 'diff',
         'diagnostics',
       },
       lualine_c = {
         { 'filename', path = 1, fmt = trunc(91, 40, 50, false) },
+        { 'branch', fmt = trunc_branch(120, 15, 80, false) },
       },
       lualine_x = {
         {
