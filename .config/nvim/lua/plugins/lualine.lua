@@ -17,7 +17,7 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
       and win_width < trunc_width
       and #str > trunc_len
     then
-      return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
+      return str:sub(1, trunc_len) .. (no_ellipsis and '' or '…')
     end
     return str
   end
@@ -36,9 +36,9 @@ local function trunc_branch(trunc_width, trunc_len, hide_width, no_ellipsis)
     then
       if str:match('/') then
         return string.sub(str:match('/.*'), 2, trunc_len)
-          .. (no_ellipsis and '' or '...')
+          .. (no_ellipsis and '' or '…')
       else
-        return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
+        return str:sub(1, trunc_len) .. (no_ellipsis and '' or '…')
       end
     end
     return str
@@ -81,7 +81,7 @@ return {
         'diagnostics',
       },
       lualine_c = {
-        { 'filename', path = 1, fmt = trunc(90, 70, 50, false) },
+        { 'filename', path = 1, fmt = trunc(91, 40, 50, false) },
       },
       lualine_x = {
         {
@@ -92,8 +92,8 @@ return {
             end
           end,
         },
-        'fileformat',
-        'filetype',
+        { 'fileformat', fmt = trunc(120, 1, 120, true) },
+        { 'filetype', fmt = trunc(90, 3, 70, true) },
       },
       lualine_y = { { 'progress', fmt = trunc(90, 3, 90, true) } },
       lualine_z = { 'location' },
