@@ -38,4 +38,5 @@ return {
   { 'pearofducks/ansible-vim' },
   { 'tpope/vim-rails' },
   { 'vim-test/vim-test' },
+  { 'skywind3000/asyncrun.vim' },
 }
