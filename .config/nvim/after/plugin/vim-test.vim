@@ -1,3 +1,4 @@
+let test#strategy = "asyncrun"
 autocmd FileType c,cpp,ruby,javascript,typescript,javascriptreact,typescriptreact nnoremap <buffer> <leader>t :TestNearest<CR>
 autocmd FileType c,cpp,ruby,javascript,typescript,javascriptreact,typescriptreact nnoremap <buffer> <leader>T :TestFile<CR>
 autocmd FileType c,cpp,ruby,javascript,typescript,javascriptreact,typescriptreact nnoremap <buffer> <leader>a :TestSuite<CR>
