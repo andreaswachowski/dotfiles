@@ -1,6 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
-  "LuaSnip": { "branch": "master", "commit": "cdbf6f41381e5ee4810b4b09284b603d8f18365d" },
+  "LuaSnip": { "branch": "master", "commit": "0df29db3543837f8b41597f2640397c5ec792b7b" },
   "ansible-vim": { "branch": "master", "commit": "93798e8c89c441d29d4678da0c0d5e1429eb43b0" },
   "asyncrun.vim": { "branch": "master", "commit": "61cc3081963a12048e00e89f8cedc8bd1cb83b8c" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
