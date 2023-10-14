@@ -127,7 +127,7 @@ fi
 
 # yadm encrypt/decrypt will issue a
 # "gpg: Inappropriate ioctl for device" error and bail out
-# unless GPG_TTY is set. 
+# unless GPG_TTY is set.
 # https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html
 # https://unix.stackexchange.com/questions/257061/gentoo-linux-gpg-encrypts-properly-a-file-passed-through-parameter-but-throws-i/257065#257065
 export GPG_TTY=$(tty)
@@ -161,6 +161,12 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 		*) export PATH="$PNPM_HOME:$PATH" ;;
 	esac
 }
+for llvmfile in lldb-vscode llvm-symbolizer
+do
+	if [[ ! -h "$(brew --prefix)/bin/${llvmfile}" ]]; then
+		ln -s $(brew --prefix)/opt/llvm/bin/${llvmfile} $(brew --prefix)/bin/
+	fi
+done
 {% endif %}
 
 {% if yadm.hostname == "anwa-macbook" %}
