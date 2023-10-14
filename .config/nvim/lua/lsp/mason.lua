@@ -70,8 +70,7 @@ local build_lsp_configs = function()
       local new_handler = function()
         require('lspconfig')[server].setup(opts)
       end
-      lsp_handlers =
-        vim.tbl_deep_extend('force', lsp_handlers, { [server] = new_handler })
+      lsp_handlers = vim.tbl_deep_extend('force', lsp_handlers, { [server] = new_handler })
     end
   end
   return lsp_handlers
@@ -95,25 +94,20 @@ local function setup_diagnostics(client, buffer)
 
   local diagnostic_handler = function()
     local params = vim.lsp.util.make_text_document_params(buffer)
-    client.request(
-      'textDocument/diagnostic',
-      { textDocument = params },
-      function(err, result)
-        if err then
-          local err_msg =
-            string.format('diagnostics error - %s', vim.inspect(err))
-          log.error(err_msg)
-        end
-        if not result then
-          return
-        end
-        vim.lsp.diagnostic.on_publish_diagnostics(
-          nil,
-          vim.tbl_extend('keep', params, { diagnostics = result.items }),
-          { client_id = client.id }
-        )
+    client.request('textDocument/diagnostic', { textDocument = params }, function(err, result)
+      if err then
+        local err_msg = string.format('diagnostics error - %s', vim.inspect(err))
+        log.error(err_msg)
       end
-    )
+      if not result then
+        return
+      end
+      vim.lsp.diagnostic.on_publish_diagnostics(
+        nil,
+        vim.tbl_extend('keep', params, { diagnostics = result.items }),
+        { client_id = client.id }
+      )
+    end)
   end
 
   diagnostic_handler() -- to request diagnostics on buffer when first attaching
