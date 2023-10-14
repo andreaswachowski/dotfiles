@@ -32,4 +32,6 @@ return {
   { 'pearofducks/ansible-vim' },
   { 'tpope/vim-rails' },
   { 'skywind3000/asyncrun.vim' },
+  'openjck/vim-yadm-files',
+  'Glench/Vim-Jinja2-Syntax',
 }
