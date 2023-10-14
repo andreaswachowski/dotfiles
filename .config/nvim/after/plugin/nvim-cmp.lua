@@ -1,9 +1,6 @@
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require('cmp')
-local luasnip = require('luasnip')
-require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup({})
 
 -- Disable distracting ins-completion-menu messages
 vim.opt.shortmess:append('c')
@@ -17,7 +14,7 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
