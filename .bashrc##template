@@ -132,6 +132,9 @@ fi
 # https://unix.stackexchange.com/questions/257061/gentoo-linux-gpg-encrypts-properly-a-file-passed-through-parameter-but-throws-i/257065#257065
 export GPG_TTY=$(tty)
 
+RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
+export RIPGREP_CONFIG_PATH
+
 {% if yadm.hostname == "DELT-C02FN533MD6P" %}
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
