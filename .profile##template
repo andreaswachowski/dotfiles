@@ -20,10 +20,10 @@ if [ -f /opt/etc/profile ]; then
 fi
 
 set -o vi
-export EDITOR=vim
+export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
-export VISUAL=vim # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
+export VISUAL=nvim        # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
 export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for git log
 # -erX was necessary for color since around git 2.14.1 (but git itself might not be the reason)
 # Also see http://eigenjoy.com/2008/07/23/mac-os-x-color-showing-escwhatever-for-git-diff-colors-and-more/
@@ -79,10 +79,10 @@ export SOPS_AGE_RECIPIENTS="age1xnpatet4zu07tqyr7yzcvedw02au4gjp4rmqlfx0dax9w5xf
 
 export NVM_DIR="$HOME/.nvm"
 # shellcheck source=/dev/null
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 # shellcheck source=/dev/null
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # If nvm installed with Homebrew, look in /usr/local:
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
