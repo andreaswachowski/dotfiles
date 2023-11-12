@@ -6,7 +6,7 @@
 	interactive = auto
 
 [core]
-	editor = vim
+	editor = nvim
 
 [alias]
 	ci = commit
