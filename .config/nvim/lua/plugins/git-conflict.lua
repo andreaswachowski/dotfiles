@@ -12,6 +12,13 @@ return {
         next = ']x', -- plugin default (but non-idiomatic): [x
         prev = '[x', -- plugin default (but non-idiomatic): ]x
       },
+      highlights = {
+        -- https://github.com/ellisonleao/gruvbox.nvim/discussions/239#discussioncomment-7154441
+        -- https://github.com/akinsho/git-conflict.nvim/issues/72#issuecomment-1774546983
+        current = 'DiffDelete', -- 'DiffText'
+        incoming = 'DiffAdd',
+        ancestor = nil,
+      },
     })
   end,
 }
