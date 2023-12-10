@@ -1,0 +1,6 @@
+# vim: filetype=muttrc
+
+source ~/.config/mutt/colors-gruvbox-shuber.muttrc
+source ~/.config/mutt/colors-gruvbox-shuber-extended.muttrc
+color sidebar_indicator  color234 color246
+color sidebar_highlight  white   color238
