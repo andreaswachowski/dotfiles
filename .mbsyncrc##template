@@ -1,5 +1,5 @@
-Create Slave
-Remove Slave
+Create Near
+Remove Near
 SyncState *
 
 IMAPAccount andreas.wachowski@gmail.com
@@ -28,6 +28,6 @@ IMAPStore gmail-remote
 Account andreas.wachowski@gmail.com
 
 Channel gmail
-Master :gmail-remote:
-Slave :gmail-local:
+Far :gmail-remote:
+Near :gmail-local:
 Patterns * !scriptlabels*
