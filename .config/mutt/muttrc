@@ -159,7 +159,6 @@ macro index,pager gd "<change-folder>=gmail/[Google Mail].Drafts<enter>"	"Go to 
 macro index,pager gl <change-folder>?				"Go to 'Label'"
 macro index,pager gi <change-folder>=gmail/INBOX<enter> 		"Go to inbox"
 macro index,pager gt "<change-folder>=gmail/[Google Mail].Sent Mail<enter>"	"Go to 'Sent Mail'"
-macro index,pager d "<save-message>=gmail/[Google Mail].Trash<enter>" "Trash"
 #macro index,pager +  <save-message>=gmail/[Google Mail].Important<enter> "Mark as important"
 #macro index,pager !  <save-message>=gmail/[Google Mail].Spam<enter> "Report spam"
 macro index,pager e  "<save-message>=gmail/[Google Mail].All Mail<enter>" "Archive conversation"
