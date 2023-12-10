@@ -64,7 +64,8 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 
 set date_format         = "%d.%m.%y %H:%M"                          # a simple date format
 # https://neomutt.org/guide/reference#index-format
-set index_format        = "[%Z]  %D  %-20.20F  %s"                     # format of the index view, show all flags, date, the sender and finally the subject
+set index_format        = "[%Z]  %D  %-30.30F  %s"                     # format of the index view, show all flags, date, the sender and finally the subject
+# set index_format="%4C[%Z] %{%b %d %R} %-20.20L (%?l?%4l&%4c?) %s"
 set sort                = threads                                      # like gmail
 set sort_aux            = reverse-last-date-received                   # like gmail
 set uncollapse_jump                                                    # don't collapse on an unread message
