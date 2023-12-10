@@ -126,9 +126,22 @@ bind  index,pager l  copy-message	                               # Label
 bind  index,pager m  save-message	                               # Move to
 
 # Sidebar Navigation
-bind index J  sidebar-next
-bind index K  sidebar-prev
-bind index L  sidebar-open
+# Careful, some CTRL-Shortcuts won't work.
+#
+# From https://github.com/neomutt/neomutt/issues/1448#issuecomment-440991425
+#
+#     Terminals intercept some of the keys so we never see them, e.g.
+#     Ctrl-C
+#     Ctrl-Z
+#     Ctrl-Q (flow control)
+#     Ctrl-S (flow control)
+#     Ctrl-O (MacOS eats this)
+
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Cl sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
 bind index,pager S sidebar-toggle-visible
 
 # Gmail macros
