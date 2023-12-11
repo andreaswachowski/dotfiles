@@ -30,4 +30,4 @@ Create Near
 Remove Near
 Expunge Both
 SyncState *
-Patterns * !scriptlabels*
+Patterns * !scriptlabels* !"[Google Mail]/All Mail"
