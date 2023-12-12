@@ -64,7 +64,7 @@ hdr_order from: to: cc: date: subject:                                 # and in 
 
 set date_format         = "%d.%m.%y %H:%M"                          # a simple date format
 # https://neomutt.org/guide/reference#index-format
-set index_format="%4C [%Z] %[%d.%m.%y %H:%M] %-30.30L %<M?(#%03M)> %?y?(%.20Y) ?%s"
+set index_format="%4C [%Z] %[%d.%m.%y %H:%M] %b %-30.30L %<M?(#%03M)> %?y?(%.20Y) ?%s"
 # set index_format="%4C[%Z] %{%b %d %R} %-20.20L (%?l?%4l&%4c?) %s"
 set sort                = threads                                      # like gmail
 set sort_aux            = reverse-last-date-received                   # like gmail
