@@ -6,7 +6,7 @@
 # * https://blog.flaport.net/configuring-neomutt-for-email.html
 source "gpg -d ~/.config/mutt/passwords.gpg |"
 
-set editor              = "vim"                                        # use vim as the default editor
+set editor              = "nvim"
 set mailcap_path        = ~/.config/mutt/mailcap
 
 set edit_headers        = yes
