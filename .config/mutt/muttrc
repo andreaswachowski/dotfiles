@@ -5,6 +5,7 @@
 # * https://pbrisbin.com/posts/mutt_gmail_offlineimap/
 # * https://blog.flaport.net/configuring-neomutt-for-email.html
 source "gpg -d ~/.config/mutt/passwords.gpg |"
+source ~/.config/mutt/aliases
 
 set editor              = "nvim"
 set mailcap_path        = ~/.config/mutt/mailcap
