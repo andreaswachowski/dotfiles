@@ -1,4 +1,6 @@
 # https://jdhao.github.io/2018/10/19/tmux_nvim_true_color/#iterm2-settings
+# For all 256 xterm colors (color<n>), see
+# https://web.archive.org/web/20190712111427/https://jonasjacek.github.io/colors/
 awk 'BEGIN{
     s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
     for (colnum = 0; colnum<77; colnum++) {
