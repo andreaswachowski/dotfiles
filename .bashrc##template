@@ -97,9 +97,6 @@ if [ -f "$HOST_SPECIFIC_BASHRC" ]; then
   source "$HOST_SPECIFIC_BASHRC"
 fi
 
-# shellcheck disable=SC1090
-. "$HOME/bin/z.sh"
-
 set -o vi
 
 if [ -f ~/.fzf.bash ]; then
@@ -220,3 +217,4 @@ command -v rspec >/dev/null && {
 #  ...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:622: in function <...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:618>
 ulimit -n 2048
 {% endif %}
+eval "$(zoxide init bash)"
