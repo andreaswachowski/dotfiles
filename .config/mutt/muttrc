@@ -173,6 +173,8 @@ macro index,pager e "<tag-thread><tag-prefix><clear-flag>N<tag-prefix><save-mess
 
 # Sync email
 macro index O '<shell-escape>check-mail.sh >/dev/null 2>&1 &<enter>' "Check for new mails"
+timeout-hook 'exec sync-mailbox'
+shutdown-hook 'exec sync-mailbox'
 # From https://github.com/LukeSmithxyz/mutt-wizard/blob/master/share/mutt-wizard.muttrc#L76
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>printf 'Enter a search term to find with notmuch: '; read x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"
 
