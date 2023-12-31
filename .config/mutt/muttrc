@@ -74,9 +74,9 @@ set date_format         = "%d.%m.%y %H:%M"                          # a simple d
 # https://www.reddit.com/r/neomutt/comments/nk3xs5/interesting_examples_of_index_format_how_to/
 # https://neomutt.org/guide/configuration.html#formatstrings-basics
 # set index_format="%4C [%Z] %<X?%X& > %[%d.%m.%y %H:%M] %-30.30b %-30.30L %<M?(#%03M)> %?y?(%.20Y) ?%s"
-folder-hook "+gmail/.*" "set index_format='%4C [%Z] %<X?%X& > %[%d.%m.%y %H:%M] %-30.30L %<M?(#%03M)> %?y?(%.20Y) ?%s'"
+folder-hook "+gmail/.*" "set index_format='%4C [%Z] %<X?%X& > %[%d.%m.%y %H:%M] %-30.30L %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
 # In addition, show mbox when searching
-folder-hook notmuch:// "set index_format='%4C [%Z] %<X?%X& > %[%d.%m.%y %H:%M] %-30.30b %-30.30L %<M?(#%03M)> %?y?(%.20Y) ?%s'"
+folder-hook notmuch:// "set index_format='%4C [%Z] %<X?%X& > %[%d.%m.%y %H:%M] %-30.30b %-30.30L %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
 set sort                = threads                                      # like gmail
 set sort_aux            = reverse-last-date-received                   # like gmail
 set uncollapse_jump                                                    # don't collapse on an unread message
