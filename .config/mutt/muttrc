@@ -93,7 +93,7 @@ set sidebar_visible        = yes
 set sidebar_folder_indent  = yes
 set sidebar_short_path     = yes
 # https://neomutt.org/guide/gettingstarted.html#2-4-3-2-%C2%A0sidebar-format-string
-set sidebar_format         = "%B%<F? [%F]>%* %<N?%N/>%S"
+set sidebar_format         = "%D%<F? [%F]>%* %<N?%N/>%S"
 set sidebar_width          = 40
 
 set status_chars        = " *%A"
