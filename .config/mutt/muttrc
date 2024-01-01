@@ -180,7 +180,7 @@ macro index,pager gt "<change-folder>=gmail/[Google Mail].Sent Mail<enter>"	"Go 
 #macro index,pager +  <save-message>=gmail/[Google Mail].Important<enter> "Mark as important"
 #macro index,pager !  <save-message>=gmail/[Google Mail].Spam<enter> "Report spam"
 # https://unix.stackexchange.com/questions/532358/how-to-archive-mail-by-year-in-mutt
-macro index,pager e "<tag-thread><tag-prefix><clear-flag>N<tag-prefix><save-message>=gmail/archives.`date +"%Y"`<enter>" "Archive conversation"
+macro index,pager e "<tag-thread><tag-prefix><clear-flag>N<tag-prefix><save-message><enter>" "Archive conversation"
 
 # Sync email
 macro index O '<shell-escape>check-mail.sh >/dev/null 2>&1 &<enter>' "Check for new mails"
@@ -192,6 +192,26 @@ macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>printf 'Enter
 #folder-hook +INBOX 'macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"'
 folder-hook "+gmail/[Google Mail].Trash" macro index,pager y <save-message>=gmail/INBOX<enter> "Move to inbox"
 # folder-hook +gmail/[Google Mail].Starred bind  index,pager y flag-message # "Toggle star"
+
+save-hook ~r01/01/2007-31/12/2007 =gmail/archives.2007
+save-hook ~r01/01/2008-31/12/2008 =gmail/archives.2008
+save-hook ~r01/01/2009-31/12/2009 =gmail/archives.2009
+save-hook ~r01/01/2010-31/12/2010 =gmail/archives.2010
+save-hook ~r01/01/2011-31/12/2011 =gmail/archives.2011
+save-hook ~r01/01/2012-31/12/2012 =gmail/archives.2012
+save-hook ~r01/01/2013-31/12/2013 =gmail/archives.2013
+save-hook ~r01/01/2014-31/12/2014 =gmail/archives.2014
+save-hook ~r01/01/2015-31/12/2015 =gmail/archives.2015
+save-hook ~r01/01/2016-31/12/2016 =gmail/archives.2016
+save-hook ~r01/01/2017-31/12/2017 =gmail/archives.2017
+save-hook ~r01/01/2018-31/12/2018 =gmail/archives.2018
+save-hook ~r01/01/2019-31/12/2019 =gmail/archives.2019
+save-hook ~r01/01/2020-31/12/2020 =gmail/archives.2020
+save-hook ~r01/01/2021-31/12/2021 =gmail/archives.2021
+save-hook ~r01/01/2022-31/12/2022 =gmail/archives.2022
+save-hook ~r01/01/2023-31/12/2023 =gmail/archives.2023
+save-hook ~r01/01/2024-31/12/2024 =gmail/archives.2024
+save-hook ~r01/01/2025-31/12/2025 =gmail/archives.2025
 
 # URLs
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
