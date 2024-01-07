@@ -7,3 +7,7 @@ text/html; /Applications/Firefox.app/Contents/MacOS/firefox %s & sleep 2; test=t
 text/html; w3m -v -F -dump -o display_link_number=1 -T text/html %s; edit=vim; compose=vim; nametemplate=%s.html; copiousoutput; needsterminal
 application/pdf; open %s; test=test -n "$DISPLAY"
 application/ms-tnef; tnef -w %s
+application/vnd.ms-excel; "/Applications/Microsoft\ Excel.app/Contents/MacOS/Microsoft\ Excel" %s & sleep 2; test=test -n "$DISPLAY"
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; "/Applications/Microsoft\ Excel.app/Contents/MacOS/Microsoft\ Excel" %s & sleep 2; test=test -n "$DISPLAY"
+application/msword; "/Applications/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word" %s & sleep 2; test=test -n "$DISPLAY"
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; "/Applications/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word" %s & sleep 2; test=test -n "$DISPLAY"
