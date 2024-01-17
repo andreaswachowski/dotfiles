@@ -184,7 +184,7 @@ macro index,pager gt "<change-folder>=gmail/[Google Mail].Sent Mail<enter>"	"Go 
 #macro index,pager +  <save-message>=gmail/[Google Mail].Important<enter> "Mark as important"
 #macro index,pager !  <save-message>=gmail/[Google Mail].Spam<enter> "Report spam"
 # https://unix.stackexchange.com/questions/532358/how-to-archive-mail-by-year-in-mutt
-macro index,pager e "<tag-thread><tag-prefix><clear-flag>N<tag-prefix><save-message><enter>" "Archive conversation"
+macro index,pager e "<tag-message><tag-prefix><clear-flag>N<tag-prefix><save-message><enter>" "Archive conversation"
 
 # Sync email
 macro index O '<shell-escape>check-mail.sh >/dev/null 2>&1 &<enter>' "Check for new mails"
