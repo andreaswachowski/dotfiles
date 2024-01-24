@@ -69,9 +69,7 @@ local build_lsp_configs = function()
     local require_ok, conf_opts = pcall(require, 'lsp.settings.' .. server)
     if require_ok then
       opts = vim.tbl_deep_extend('force', conf_opts, opts)
-      local new_handler = function()
-        require('lspconfig')[server].setup(opts)
-      end
+      local new_handler = function() require('lspconfig')[server].setup(opts) end
       lsp_handlers = vim.tbl_deep_extend('force', lsp_handlers, { [server] = new_handler })
     end
   end
@@ -90,9 +88,7 @@ _timers = {}
 local log = require('vim.lsp.log')
 
 local function setup_diagnostics(client, buffer)
-  if require('vim.lsp.diagnostic')._enable then
-    return
-  end
+  if require('vim.lsp.diagnostic')._enable then return end
 
   local diagnostic_handler = function()
     local params = vim.lsp.util.make_text_document_params(buffer)
@@ -101,9 +97,7 @@ local function setup_diagnostics(client, buffer)
         local err_msg = string.format('diagnostics error - %s', vim.inspect(err))
         log.error(err_msg)
       end
-      if not result then
-        return
-      end
+      if not result then return end
       vim.lsp.diagnostic.on_publish_diagnostics(
         nil,
         vim.tbl_extend('keep', params, { diagnostics = result.items }),
@@ -116,15 +110,11 @@ local function setup_diagnostics(client, buffer)
 
   vim.api.nvim_buf_attach(buffer, false, {
     on_lines = function()
-      if _timers[buffer] then
-        vim.fn.timer_stop(_timers[buffer])
-      end
+      if _timers[buffer] then vim.fn.timer_stop(_timers[buffer]) end
       _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
     end,
     on_detach = function()
-      if _timers[buffer] then
-        vim.fn.timer_stop(_timers[buffer])
-      end
+      if _timers[buffer] then vim.fn.timer_stop(_timers[buffer]) end
     end,
   })
 end
