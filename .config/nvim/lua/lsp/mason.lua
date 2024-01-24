@@ -120,6 +120,7 @@ local function setup_diagnostics(client, buffer)
 end
 
 require('lspconfig').ruby_ls.setup({
+  cmd = { vim.fn.expand('$HOME/.rbenv/shims/ruby-lsp') },
   -- We want both the diagnostics (for the code actions)
   -- and the keyboard shortcuts from the general setup,
   -- so combine them into one function
