@@ -7,6 +7,7 @@
 
 [core]
 	editor = nvim
+	attributesfile = ~/.config/git/attributes
 
 [alias]
 	ci = commit
