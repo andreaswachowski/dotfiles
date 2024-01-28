@@ -14,19 +14,19 @@ User andreas.wachowski@gmail.com
 PassCmd "gpg -d ~/.config/mbsync/passwords/andreas.wachowski@gmail.com.gpg"
 PipelineDepth 50
 
+IMAPStore gmail-remote
+Account andreas.wachowski@gmail.com
+
 MaildirStore gmail-local
 # The trailing "/" is important
 Path ~/Mail/gmail/
 Inbox ~/Mail/gmail/INBOX
 Flatten .
 
-IMAPStore gmail-remote
-Account andreas.wachowski@gmail.com
-
 Channel gmail
 Far :gmail-remote:
 Near :gmail-local:
-Create Near
+Create Both
 Remove Near
 Expunge Both
 SyncState *
