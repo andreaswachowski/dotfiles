@@ -41,6 +41,7 @@ unset record
 
 # https://neomutt.org/feature/notmuch#3-1-%C2%A0folders-url
 # https://xapian.org/docs/queryparser.html
+named-mailboxes "W9" "notmuch://?query=tag:w9 and not folder:/Trash/"
 named-mailboxes "Unread" "notmuch://?query=tag:unread and not folder:/Trash/"
 named-mailboxes "Unread in archives" "notmuch://?query=tag:unread and folder:/archives/"
 named-mailboxes "Unread newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and tag:newsletter"
