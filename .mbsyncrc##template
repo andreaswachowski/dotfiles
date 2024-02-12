@@ -14,14 +14,32 @@ User andreas.wachowski@gmail.com
 PassCmd "gpg -d ~/.config/mbsync/passwords/andreas.wachowski@gmail.com.gpg"
 PipelineDepth 50
 
+IMAPAccount andreas.wachowski@mailbox.org
+SSLType STARTTLS
+Host imap.mailbox.org
+# Available: AUTH=PLAIN AUTH=LOGIN AUTH=OAUTHBEARER AUTH=XOAUTH2
+AuthMechs PLAIN
+User andreas.wachowski@mailbox.org
+PassCmd "gpg --quiet --decrypt ~/.config/mbsync/passwords/andreas.wachowski@mailbox.org.gpg"
+PipelineDepth 5
+
 IMAPStore gmail-remote
 Account andreas.wachowski@gmail.com
+
+IMAPStore mailbox-org-remote
+Account andreas.wachowski@mailbox.org
 
 MaildirStore gmail-local
 # The trailing "/" is important
 Path ~/Mail/gmail/
 Inbox ~/Mail/gmail/INBOX
 Flatten .
+
+MaildirStore mailbox-org-local
+# The trailing "/" is important
+Path ~/Mail/mailbox.org/
+Inbox ~/Mail/mailbox.org/INBOX
+SubFolders Verbatim
 
 Channel gmail
 Far :gmail-remote:
@@ -31,3 +49,12 @@ Remove Near
 Expunge Both
 SyncState *
 Patterns * !scriptlabels* !"[Google Mail]/All Mail"
+
+Channel mailbox
+Far :mailbox-org-remote:
+Near :mailbox-org-local:
+Create Both
+Remove Near
+Expunge Both
+SyncState *
+Patterns * !Archives
