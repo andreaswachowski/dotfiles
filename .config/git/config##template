@@ -34,6 +34,7 @@
 	# http://stackoverflow.com/questions/12219604/list-git-tag-names-dates-and-messages
 	tagv = for-each-ref --format='%(refname:short) %(objecttype) %(objectname) %(authordate:format:%Y-%m-%d-%H:%M:%S) %(subject) %(body)' refs/tags
 	wdiff = diff --word-diff
+	staash = stash --all
 
 {% if yadm.os == "Darwin" %}
 [credential]
