@@ -73,3 +73,5 @@
 	fetch = +refs/notes/*:refs/notes/*
 [notes]
 	displayRef = refs/notes/*
+[branch]
+	sort = -committerdate
