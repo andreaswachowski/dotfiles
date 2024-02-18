@@ -1,4 +1,5 @@
-.config/mutt/passwords.gpg
+.config/mutt/passwords/*
+.config/mutt/aliases
 .config/mutt/tagfile.notmuch
 .config/git/identities/*
 .config/mbsync/passwords/*

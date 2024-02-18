@@ -4,7 +4,6 @@
 # * http://stevelosh.com/blog/2012/10/the-homely-mutt/
 # * https://pbrisbin.com/posts/mutt_gmail_offlineimap/
 # * https://blog.flaport.net/configuring-neomutt-for-email.html
-source "gpg -d ~/.config/mutt/passwords.gpg |"
 source ~/.config/mutt/aliases
 
 set editor              = "nvim"
@@ -24,6 +23,7 @@ set from                = andreas.wachowski@gmail.com
 set realname            = "Andreas Wachowski"
 
 set imap_user           = "andreas.wachowski@gmail.com"
+source "gpg -d ~/.config/mutt/passwords/andreas.wachowski@gmail.com.gpg |"
 set imap_keepalive      = 30
 unset imap_passive                                                     # allow mutt to open new imap connection automatically
 set folder             = ~/Mail                                   # mailbox location
