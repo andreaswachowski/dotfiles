@@ -17,6 +17,7 @@
 	sl = stash list --pretty=format:\"%gd - %cs - %s\"
 	st = status
 	br = branch
+	fpush = push --force-with-lease
   loglastpull = diff --stat master@{1} master
 	l = log --color=always --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(green)C:%ci %C(green)A:%ai %C(bold blue)<%an>%Creset'
 	# log today (use | grep "A:<date>" for author date)
