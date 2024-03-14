@@ -215,6 +215,6 @@ command -v rspec >/dev/null && {
 #  ...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:173: in function 'get_git_root'
 #  ...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:410: in function 'fetch_conflicts'
 #  ...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:622: in function <...l/share/nvim/lazy/git-conflict.nvim/lua/git-conflict.lua:618>
-ulimit -n 2048
+ulimit -n 65536
 {% endif %}
 eval "$(zoxide init bash)"
