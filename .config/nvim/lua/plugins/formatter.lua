@@ -51,6 +51,7 @@ return {
         sh = require('formatter.filetypes.sh').shfmt,
         typescript = require('formatter.filetypes.typescript').prettier,
         typescriptreact = require('formatter.filetypes.typescript').prettier,
+        vue = require('formatter.filetypes.vue').prettier,
         yaml = require('formatter.filetypes.yaml').prettier,
         ['*'] = {
           require('formatter.filetypes.any').remove_trailing_whitespace,
