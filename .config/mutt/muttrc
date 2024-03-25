@@ -29,6 +29,7 @@ unset imap_passive                                                     # allow m
 
 # -- Gmail
 # https://gist.github.com/miguelmota/9456162
+# source ~/.config/mutt/account.org.mailbox.andreas.wachowski
 source ~/.config/mutt/account.com.gmail.andreas.wachowski
 
 set folder             = ~/Mail/                                   # mailbox location
