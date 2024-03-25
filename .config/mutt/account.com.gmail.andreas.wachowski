@@ -19,7 +19,6 @@ set trash               = "+[Google Mail].Trash"
 set header_cache        = ~/.cache/mutt/gmail/headers
 set message_cachedir    = ~/.cache/mutt/gmail/bodies
 set certificate_file    = ~/.cache/mutt/certificates
-set move                = no                                           # Don't ask me to move messages out of my inbox when I quit.
 unset record
 
 mailboxes `ls -1 ~/Mail/gmail | sed 's/.*/"+\/&"/' | paste -sd ' ' -`

@@ -20,7 +20,6 @@ set trash               = "+Trash"
 set header_cache        = ~/.cache/mutt/mailbox.org/headers
 set message_cachedir    = ~/.cache/mutt/mailbox.org/bodies
 set certificate_file    = ~/.cache/mutt/certificates
-set move                = no # Don't ask me to move messages out of my inbox when I quit.
 unset record
 
 mailboxes ~/Mail/mailbox.org/INBOX

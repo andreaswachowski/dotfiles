@@ -14,6 +14,8 @@ set edit_headers        = yes
 set ssl_starttls=yes
 set ssl_force_tls=yes
 
+set move                = no # Don't ask me to move messages out of my inbox when I quit.
+
 # -- Accounts -------------------------------------------------------------
 
 # https://neomutt.org/feature/notmuch#3-1-%C2%A0folders-url
