@@ -11,7 +11,7 @@ AuthMechs PLAIN
 SSLType IMAPS
 Host imap.gmail.com
 User andreas.wachowski@gmail.com
-PassCmd "gpg -d ~/.config/mbsync/passwords/andreas.wachowski@gmail.com.gpg"
+PassCmd "pass andreas.wachowski@gmail.com"
 PipelineDepth 50
 
 IMAPAccount andreas.wachowski@mailbox.org
@@ -20,7 +20,7 @@ Host imap.mailbox.org
 # Available: AUTH=PLAIN AUTH=LOGIN AUTH=OAUTHBEARER AUTH=XOAUTH2
 AuthMechs PLAIN
 User andreas.wachowski@mailbox.org
-PassCmd "gpg --quiet --decrypt ~/.config/mbsync/passwords/andreas.wachowski@mailbox.org.gpg"
+PassCmd "pass andreas.wachowski@mailbox.org"
 PipelineDepth 5
 
 IMAPStore gmail-remote

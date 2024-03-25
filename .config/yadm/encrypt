@@ -1,8 +1,6 @@
-.config/mutt/passwords/*
+.password-store/*
 .config/mutt/aliases
 .config/mutt/tagfile.notmuch
 .config/git/identities/*
-.config/mbsync/passwords/*
-.config/msmtp/passwords/*
 !.gnupg/S.*
 .gnupg/*

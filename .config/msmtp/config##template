@@ -18,4 +18,4 @@ tls_starttls off
 tls_certcheck off
 from andreas.wachowski@gmail.com
 user andreas.wachowski@gmail.com
-passwordeval "gpg -qd ~/.config/msmtp/passwords/andreas.wachowski@gmail.com.gpg"
+passwordeval "pass andreas.wachowski@gmail.com"
