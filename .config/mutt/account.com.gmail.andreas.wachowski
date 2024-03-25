@@ -11,7 +11,7 @@ set imap_pass="pass andreas.wachowski@gmail.com |"
 set smtp_pass="pass andreas.wachowski@gmail.com |"
 
 set folder             = ~/Mail/gmail                                   # mailbox location
-set spoolfile           = "+INBOX"
+set spool_file          = "+INBOX"
 set mbox                = "+[Google Mail].All Mail"
 set postponed           = "+[Google Mail].Drafts"
 set record              = "+[Google Mail].Sent Mail"
