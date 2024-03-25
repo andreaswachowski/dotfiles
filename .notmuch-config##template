@@ -36,6 +36,7 @@ path=/Users/andreas/Mail
 [user]
 name=Andreas Wachowski
 primary_email=andreas.wachowski@gmail.com
+other_email=andreas.wachowski@mailbox.org
 
 # Configuration for "notmuch new"
 #
