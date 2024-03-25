@@ -58,3 +58,16 @@ Remove Near
 Expunge Both
 SyncState *
 Patterns * !Archives
+
+# https://superuser.com/questions/511906/push-entire-account-from-one-imap-server-to-another-imap-server
+
+Channel transfer
+Far :gmail-remote:
+Near :mailbox-org-remote:
+# Transfer all folders
+Patterns archives/*
+Create Near
+Sync Pull
+CopyArrivalDate yes
+# important otherwise you will get 'Error: store ... does not support in-box sync state'
+SyncState ~/.mail/imap-transfer
