@@ -28,7 +28,21 @@ return {
     end
     formatter.setup({
       filetype = {
-        cpp = require('formatter.filetypes.cpp').clangformat,
+        cpp = {
+          function()
+            return {
+              exe = 'clang-format',
+              args = {
+                '-assume-filename=',
+                vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
+                -- https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+                -- https://github.com/mhartington/formatter.nvim/issues/52
+                '--style="{BasedOnStyle: Chromium}"',
+              },
+              stdin = true,
+            }
+          end,
+        },
         javascript = require('formatter.filetypes.javascript').prettier,
         javascriptreact = require('formatter.filetypes.javascript').prettier,
         json = require('formatter.filetypes.json').prettier,
@@ -43,12 +57,7 @@ return {
         },
       },
     })
-    vim.keymap.set(
-      'n',
-      '<leader>f',
-      '<cmd>Format<cr>',
-      { noremap = true, silent = true }
-    )
+    vim.keymap.set('n', '<leader>f', '<cmd>Format<cr>', { noremap = true, silent = true })
     vim.cmd([[augroup FormatAutogroup
     autocmd!
     autocmd BufWritePost * FormatWrite
