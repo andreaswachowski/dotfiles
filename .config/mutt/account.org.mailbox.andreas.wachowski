@@ -1,14 +1,13 @@
 # vi: filetype=muttrc
 
-set sendmail = "msmtp -a andreas.wachowski@mailbox.org"
 
-set from                = info@andreas-wachowski.de
+set from                = "info@andreas-wachowski.de"
 set realname            = "Andreas Wachowski"
 
 set imap_user           = "andreas.wachowski@mailbox.org"
-set smtp_url            = "smtp://andreas.wachowski@smtp.mailbox.org:587/"
 set imap_pass="pass andreas.wachowski@mailbox.org |"
-set smtp_pass="pass andreas.wachowski@mailbox.org |"
+
+set sendmail = "msmtp -a andreas.wachowski@mailbox.org"
 
 set folder             = ~/Mail/mailbox.org
 
