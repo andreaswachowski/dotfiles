@@ -2,7 +2,7 @@
 
 set sendmail = "msmtp -a andreas.wachowski@mailbox.org"
 
-set from                = andreas.wachowski@mailbox.org
+set from                = info@andreas-wachowski.de
 set realname            = "Andreas Wachowski"
 
 set imap_user           = "andreas.wachowski@mailbox.org"
