@@ -41,24 +41,24 @@ mailboxes `ls -1 ~/Mail/gmail | grep -v INBO | sed 's/.*/"+\/&"/' | paste -sd ' 
 folder-hook "+[Google Mail].Trash" macro index,pager y <save-message>=INBOX<enter> "Move to inbox"
 # folder-hook +Google Mail].Starred bind  index,pager y flag-message # "Toggle star"
 
-save-hook ~r01/01/2007-31/12/2007 =archives.2007
-save-hook ~r01/01/2008-31/12/2008 =archives.2008
-save-hook ~r01/01/2009-31/12/2009 =archives.2009
-save-hook ~r01/01/2010-31/12/2010 =archives.2010
-save-hook ~r01/01/2011-31/12/2011 =archives.2011
-save-hook ~r01/01/2012-31/12/2012 =archives.2012
-save-hook ~r01/01/2013-31/12/2013 =archives.2013
-save-hook ~r01/01/2014-31/12/2014 =archives.2014
-save-hook ~r01/01/2015-31/12/2015 =archives.2015
-save-hook ~r01/01/2016-31/12/2016 =archives.2016
-save-hook ~r01/01/2017-31/12/2017 =archives.2017
-save-hook ~r01/01/2018-31/12/2018 =archives.2018
-save-hook ~r01/01/2019-31/12/2019 =archives.2019
-save-hook ~r01/01/2020-31/12/2020 =archives.2020
-save-hook ~r01/01/2021-31/12/2021 =archives.2021
-save-hook ~r01/01/2022-31/12/2022 =archives.2022
-save-hook ~r01/01/2023-31/12/2023 =archives.2023
-save-hook ~r01/01/2024-31/12/2024 =archives.2024
-save-hook ~r01/01/2025-31/12/2025 =archives.2025
-
+# From now on, archive directly to mailbox.org
 set folder = ~/Mail
+save-hook ~r01/01/2007-31/12/2007 =mailbox.org/archives.2007
+save-hook ~r01/01/2008-31/12/2008 =mailbox.org/archives.2008
+save-hook ~r01/01/2009-31/12/2009 =mailbox.org/archives.2009
+save-hook ~r01/01/2010-31/12/2010 =mailbox.org/archives.2010
+save-hook ~r01/01/2011-31/12/2011 =mailbox.org/archives.2011
+save-hook ~r01/01/2012-31/12/2012 =mailbox.org/archives.2012
+save-hook ~r01/01/2013-31/12/2013 =mailbox.org/archives.2013
+save-hook ~r01/01/2014-31/12/2014 =mailbox.org/archives.2014
+save-hook ~r01/01/2015-31/12/2015 =mailbox.org/archives.2015
+save-hook ~r01/01/2016-31/12/2016 =mailbox.org/archives.2016
+save-hook ~r01/01/2017-31/12/2017 =mailbox.org/archives.2017
+save-hook ~r01/01/2018-31/12/2018 =mailbox.org/archives.2018
+save-hook ~r01/01/2019-31/12/2019 =mailbox.org/archives.2019
+save-hook ~r01/01/2020-31/12/2020 =mailbox.org/archives.2020
+save-hook ~r01/01/2021-31/12/2021 =mailbox.org/archives.2021
+save-hook ~r01/01/2022-31/12/2022 =mailbox.org/archives.2022
+save-hook ~r01/01/2023-31/12/2023 =mailbox.org/archives.2023
+save-hook ~r01/01/2024-31/12/2024 =mailbox.org/archives.2024
+save-hook ~r01/01/2025-31/12/2025 =mailbox.org/archives.2025

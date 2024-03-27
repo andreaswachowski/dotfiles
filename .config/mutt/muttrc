@@ -100,13 +100,13 @@ unset imap_passive                                                     # allow m
 # Setup multiple accounts: https://gist.github.com/miguelmota/9456162
 
 # Default account
-source ~/.config/mutt/account.com.gmail.andreas.wachowski
+source ~/.config/mutt/account.org.mailbox.andreas.wachowski
 
 # Macros to switch between accounts
 # macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/account.com.gmail.andreas.wachowski<enter><change-folder>!<enter>'
 # macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/account.org.mailbox.andreas.wachowski<enter><change-folder>!<enter>'
-macro index <f2> '<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account.com.gmail.andreas.wachowski<enter><change-folder>!<enter>'
-macro index <f3> '<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account.org.mailbox.andreas.wachowski<enter><change-folder>!<enter>'
+macro index <f2> '<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account.org.mailbox.andreas.wachowski<enter><change-folder>!<enter>'
+macro index <f3> '<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account.com.gmail.andreas.wachowski<enter><change-folder>!<enter>'
 
 # -- Bindings -------------------------------------------------------------
 bind index g noop # to avoid neomutt warning in next line
