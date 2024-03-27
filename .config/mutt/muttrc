@@ -20,11 +20,11 @@ set move                = no # Don't ask me to move messages out of my inbox whe
 
 # https://neomutt.org/feature/notmuch#3-1-%C2%A0folders-url
 # https://xapian.org/docs/queryparser.html
-named-mailboxes "W9" "notmuch://?query=tag:w9 and not folder:/Trash/"
-named-mailboxes "Unread" "notmuch://?query=tag:unread and not folder:/Trash/"
-named-mailboxes "Unread in archives" "notmuch://?query=tag:unread and folder:/archives/"
-named-mailboxes "Unread newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and tag:newsletter"
-named-mailboxes "Unread w/o newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and not tag:newsletter"
+mailboxes -label "W9" "notmuch://?query=tag:w9 and not folder:/Trash/"
+mailboxes -label "Unread" "notmuch://?query=tag:unread and not folder:/Trash/"
+mailboxes -label "Unread in archives" "notmuch://?query=tag:unread and folder:/archives/"
+mailboxes -label "Unread newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and tag:newsletter"
+mailboxes -label "Unread w/o newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and not tag:newsletter"
 
 set imap_keepalive      = 30
 unset imap_passive                                                     # allow mutt to open new imap connection automatically
