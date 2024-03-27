@@ -1,0 +1,10 @@
+# vi: filetype=muttrc
+
+set folder             = ~/Mail
+# https://neomutt.org/feature/notmuch#3-1-%C2%A0folders-url
+# https://xapian.org/docs/queryparser.html
+mailboxes -label "W9" "notmuch://?query=tag:w9 and not folder:/Trash/"
+mailboxes -label "Unread" "notmuch://?query=tag:unread and not folder:/Trash/"
+mailboxes -label "Unread in archives" "notmuch://?query=tag:unread and folder:/archives/"
+mailboxes -label "Unread newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and tag:newsletter"
+mailboxes -label "Unread w/o newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and not tag:newsletter"

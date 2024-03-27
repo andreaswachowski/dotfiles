@@ -10,7 +10,7 @@ set smtp_url            = "smtp://andreas.wachowski@smtp.gmail.com:587/"
 set imap_pass="pass andreas.wachowski@gmail.com |"
 set smtp_pass="pass andreas.wachowski@gmail.com |"
 
-set folder             = ~/Mail/gmail                                   # mailbox location
+set folder             = ~/Mail/gmail
 set spool_file          = "+INBOX"
 set mbox                = "+[Google Mail].All Mail"
 set postponed           = "+[Google Mail].Drafts"
@@ -21,7 +21,10 @@ set message_cachedir    = ~/.cache/mutt/com.gmail.andreas.wachowski/bodies
 set certificate_file    = ~/.cache/mutt/com.gmail.andreas.wachowski/certificates
 unset record
 
-mailboxes `ls -1 ~/Mail/gmail | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
+mailboxes -label Inbox-Gmail +/INBOX
+source ~/.config/mutt/notmuch-mailboxes
+set folder = ~/Mail/gmail # reset after it was set to ~/Mail in notmuch-mailboxes
+mailboxes `ls -1 ~/Mail/gmail | grep -v INBO | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
 
 # bind index g noop # to avoid neomutt warning in next line
 # bind pager g noop # to avoid neomutt warning in next line
@@ -57,3 +60,5 @@ save-hook ~r01/01/2022-31/12/2022 =archives.2022
 save-hook ~r01/01/2023-31/12/2023 =archives.2023
 save-hook ~r01/01/2024-31/12/2024 =archives.2024
 save-hook ~r01/01/2025-31/12/2025 =archives.2025
+
+set folder = ~/Mail

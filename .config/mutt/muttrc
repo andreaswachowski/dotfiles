@@ -97,17 +97,16 @@ set folder             = ~/Mail/                                   # mailbox loc
 set imap_keepalive      = 30
 unset imap_passive                                                     # allow mutt to open new imap connection automatically
 
-# https://neomutt.org/feature/notmuch#3-1-%C2%A0folders-url
-# https://xapian.org/docs/queryparser.html
-mailboxes -label "W9" "notmuch://?query=tag:w9 and not folder:/Trash/"
-mailboxes -label "Unread" "notmuch://?query=tag:unread and not folder:/Trash/"
-mailboxes -label "Unread in archives" "notmuch://?query=tag:unread and folder:/archives/"
-mailboxes -label "Unread newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and tag:newsletter"
-mailboxes -label "Unread w/o newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and not tag:newsletter"
+# Setup multiple accounts: https://gist.github.com/miguelmota/9456162
 
-# https://gist.github.com/miguelmota/9456162
-# source ~/.config/mutt/account.org.mailbox.andreas.wachowski
+# Default account
 source ~/.config/mutt/account.com.gmail.andreas.wachowski
+
+# Macros to switch between accounts
+# macro index <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/account.com.gmail.andreas.wachowski<enter><change-folder>!<enter>'
+# macro index <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/account.org.mailbox.andreas.wachowski<enter><change-folder>!<enter>'
+macro index <f2> '<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account.com.gmail.andreas.wachowski<enter><change-folder>!<enter>'
+macro index <f3> '<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account.org.mailbox.andreas.wachowski<enter><change-folder>!<enter>'
 
 # -- Bindings -------------------------------------------------------------
 bind index g noop # to avoid neomutt warning in next line
