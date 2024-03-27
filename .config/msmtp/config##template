@@ -9,7 +9,7 @@ tls_trust_file /etc/ssl/certs/ca-certificates.crt
 {% if yadm.os == "Darwin" %}
 tls_trust_file /usr/local/etc/openssl/cert.pem
 {% endif %}
-logfile ~/.config/msmtp/msmtp.log
+logfile ~/.local/state/msmtp/msmtp.log
 
 account andreas.wachowski@gmail.com
 host smtp.gmail.com
