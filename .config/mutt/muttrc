@@ -16,33 +16,12 @@ set ssl_force_tls=yes
 
 set move                = no # Don't ask me to move messages out of my inbox when I quit.
 
-# -- Accounts -------------------------------------------------------------
-
-# https://neomutt.org/feature/notmuch#3-1-%C2%A0folders-url
-# https://xapian.org/docs/queryparser.html
-mailboxes -label "W9" "notmuch://?query=tag:w9 and not folder:/Trash/"
-mailboxes -label "Unread" "notmuch://?query=tag:unread and not folder:/Trash/"
-mailboxes -label "Unread in archives" "notmuch://?query=tag:unread and folder:/archives/"
-mailboxes -label "Unread newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and tag:newsletter"
-mailboxes -label "Unread w/o newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and not tag:newsletter"
-
-set imap_keepalive      = 30
-unset imap_passive                                                     # allow mutt to open new imap connection automatically
-
-# -- Gmail
-# https://gist.github.com/miguelmota/9456162
-# source ~/.config/mutt/account.org.mailbox.andreas.wachowski
-source ~/.config/mutt/account.com.gmail.andreas.wachowski
-
-set folder             = ~/Mail/                                   # mailbox location
-
 # -- General settings -----------------------------------------------------
 
 #set tmpdir             = "/tmp"
 
 set quit
 set wait_key            = no                                           # Don't ask me to press a key to continue after I did a shell escape and came back
-set mbox_type           = Maildir                                      # mailbox type
 set timeout             = 60                                           # idle time before scanning
 set mail_check          = 60                                           # minimum time between scans
 set mail_check_stats    = yes                                          # calculate message statistics of a mailbox (unread, flagged, total message count)
@@ -101,6 +80,34 @@ set menu_scroll                                                        # scroll 
 set tilde                                                              # show tildes like in vim
 unset markers                                                          # In the pager, don't display + at the beginning of wrapped lines; it's distracting
 
+# Contact aliases, could also use `goobook`.
+set alias_file		= ~/.config/mutt/aliases
+set sort_alias		= alias
+set reverse_alias	= yes
+set reverse_name	= yes
+
+set signature           = ~/.config/mutt/signature
+
+source ~/.config/mutt/colors
+
+# -- Accounts -------------------------------------------------------------
+
+set mbox_type           = Maildir                                      # mailbox type
+set folder             = ~/Mail/                                   # mailbox location
+set imap_keepalive      = 30
+unset imap_passive                                                     # allow mutt to open new imap connection automatically
+
+# https://neomutt.org/feature/notmuch#3-1-%C2%A0folders-url
+# https://xapian.org/docs/queryparser.html
+mailboxes -label "W9" "notmuch://?query=tag:w9 and not folder:/Trash/"
+mailboxes -label "Unread" "notmuch://?query=tag:unread and not folder:/Trash/"
+mailboxes -label "Unread in archives" "notmuch://?query=tag:unread and folder:/archives/"
+mailboxes -label "Unread newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and tag:newsletter"
+mailboxes -label "Unread w/o newsletter" "notmuch://?query=tag:unread and not folder:/Trash/ and not tag:newsletter"
+
+# https://gist.github.com/miguelmota/9456162
+# source ~/.config/mutt/account.org.mailbox.andreas.wachowski
+source ~/.config/mutt/account.com.gmail.andreas.wachowski
 
 # -- Bindings -------------------------------------------------------------
 bind index g noop # to avoid neomutt warning in next line
@@ -184,15 +191,5 @@ macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>printf 'Enter
 
 # URLs
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
-
-# Contact aliases, could also use `goobook`.
-set alias_file		= ~/.config/mutt/aliases
-set sort_alias		= alias
-set reverse_alias	= yes
-set reverse_name	= yes
-
-set signature           = ~/.config/mutt/signature
-
-source ~/.config/mutt/colors
 
 push <show-version>
