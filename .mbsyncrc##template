@@ -61,14 +61,14 @@ Patterns * !Archives
 
 # https://superuser.com/questions/511906/push-entire-account-from-one-imap-server-to-another-imap-server
 
-# Disabled since all archives have been transferred
-Channel transfer
-Far :gmail-remote:"[Google Mail]/Sent Mail"
-Near :mailbox-org-remote:Sent
-# Transfer all folders
-# Patterns * !archives* !scriptlabels* !"[Google Mail]/All Mail" !Junk !"[Google Mail]/Drafts" !"[Google Mail]/Spam" !"[Google Mail]/Trash" !Trash !Drafts
-Create Near
-Sync Pull
-CopyArrivalDate yes
-# important otherwise you will get 'Error: store ... does not support in-box sync state'
-SyncState ~/.mail/imap-transfer
+# # Disabled since all archives have been transferred
+# Channel transfer
+# Far :gmail-remote:"[Google Mail]/Sent Mail"
+# Near :mailbox-org-remote:Sent
+# # Transfer all folders
+# # Patterns * !archives* !scriptlabels* !"[Google Mail]/All Mail" !Junk !"[Google Mail]/Drafts" !"[Google Mail]/Spam" !"[Google Mail]/Trash" !Trash !Drafts
+# Create Near
+# Sync Pull
+# CopyArrivalDate yes
+# # important otherwise you will get 'Error: store ... does not support in-box sync state'
+# SyncState ~/.mail/imap-transfer
