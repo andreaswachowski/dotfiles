@@ -16,9 +16,9 @@ set mbox                = "+[Google Mail].All Mail"
 set postponed           = "+[Google Mail].Drafts"
 set record              = "+[Google Mail].Sent Mail"
 set trash               = "+[Google Mail].Trash"
-set header_cache        = ~/.cache/mutt/gmail/headers
-set message_cachedir    = ~/.cache/mutt/gmail/bodies
-set certificate_file    = ~/.cache/mutt/certificates
+set header_cache        = ~/.cache/mutt/com.gmail.andreas.wachowski/headers
+set message_cachedir    = ~/.cache/mutt/com.gmail.andreas.wachowski/bodies
+set certificate_file    = ~/.cache/mutt/com.gmail.andreas.wachowski/certificates
 unset record
 
 mailboxes `ls -1 ~/Mail/gmail | sed 's/.*/"+\/&"/' | paste -sd ' ' -`

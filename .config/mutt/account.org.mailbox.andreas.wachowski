@@ -17,8 +17,8 @@ set mbox                = "+mbox"
 set postponed           = "+Drafts"
 set record              = "+Sent"
 set trash               = "+Trash"
-set header_cache        = ~/.cache/mutt/mailbox.org/headers
-set message_cachedir    = ~/.cache/mutt/mailbox.org/bodies
+set header_cache        = ~/.cache/mutt/org.mailbox.andreas.wachowski/headers
+set message_cachedir    = ~/.cache/mutt/org.mailbox.andreas.wachowski/bodies
 set certificate_file    = ~/.cache/mutt/certificates
 unset record
 
