@@ -19,3 +19,12 @@ tls_certcheck off
 from andreas.wachowski@gmail.com
 user andreas.wachowski@gmail.com
 passwordeval "pass andreas.wachowski@gmail.com"
+
+account andreas.wachowski@mailbox.org
+host smtp.mailbox.org
+port 465
+tls_starttls off
+tls_certcheck off
+from info@andreas-wachowski.de
+user andreas.wachowski@mailbox.org
+passwordeval "pass andreas.wachowski@mailbox.org"
