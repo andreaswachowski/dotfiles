@@ -39,7 +39,7 @@ MaildirStore mailbox-org-local
 # The trailing "/" is important
 Path ~/Mail/mailbox.org/
 Inbox ~/Mail/mailbox.org/INBOX
-SubFolders Verbatim
+Flatten .
 
 Channel gmail
 Far :gmail-remote:
