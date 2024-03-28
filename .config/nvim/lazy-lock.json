@@ -25,7 +25,7 @@
   "mini.align": { "branch": "main", "commit": "f845218c5fea89e49074e48270dc5e1b9511a0f9" },
   "neodev.nvim": { "branch": "main", "commit": "6a533ed9d3435dcaa456380d833ea04da37ea2ed" },
   "neotest": { "branch": "master", "commit": "e07fe8241112274aae9947b98d255763738a1d52" },
-  "neotest-rspec": { "branch": "main", "commit": "8630acad9e84b8267646bc8712a4365af7a12f2b" },
+  "neotest-rspec": { "branch": "main", "commit": "1b6a43acf781785939628d524844dfc4fdfcde3e" },
   "nvim-cmp": { "branch": "main", "commit": "538e37ba87284942c1d76ed38dd497e54e65b891" },
   "nvim-dap": { "branch": "master", "commit": "e64ebf3309154b578a03c76229ebf51c37898118" },
   "nvim-dap-ui": { "branch": "master", "commit": "34160a7ce6072ef332f350ae1d4a6a501daf0159" },
