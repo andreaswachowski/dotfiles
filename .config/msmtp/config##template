@@ -25,6 +25,6 @@ host smtp.mailbox.org
 port 465
 tls_starttls off
 tls_certcheck off
-from info@andreas-wachowski.de
+from mail@andreas-wachowski.de
 user andreas.wachowski@mailbox.org
 passwordeval "pass andreas.wachowski@mailbox.org"
