@@ -37,7 +37,7 @@
   "nvim-treesitter-endwise": { "branch": "master", "commit": "60e8c288e011403f248b5f6478dde12bed8a6c55" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "d2a4ffc22d9d38d44edb73da007b3cf43451e9b4" },
   "nvim-ts-autotag": { "branch": "main", "commit": "531f48334c422222aebc888fd36e7d109cb354cd" },
-  "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
+  "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
   "schemastore.nvim": { "branch": "main", "commit": "91b56a811d87b9e7e0600c95f80ff2d08245bf61" },
   "taskpaper.vim": { "branch": "master", "commit": "0b4e8fea4cf33c6fdbd4f0f2a4f53ded61f40382" },
   "telescope-dap.nvim": { "branch": "master", "commit": "4e2d5efb92062f0b865fe59b200b5ed7793833bf" },
