@@ -170,14 +170,7 @@ macro index,pager \\ "<vfolder-from-query>"
 # Gmail macros
 macro index,pager I  <set-flag>O	"Mark as read"
 macro index,pager U  <clear-flag>O	"Mark as unread"
-macro index,pager ga "<change-folder>=gmail/[Google Mail].All Mail<enter>"	"Go to all mail"
-# macro index,pager gs "<change-folder>=[Google Mail]/Starred<enter>"	"Go to 'Starred'"
-macro index,pager gd "<change-folder>=gmail/[Google Mail].Drafts<enter>"	"Go to 'Drafts'"
 macro index,pager gl <change-folder>?				"Go to 'Label'"
-macro index,pager gi <change-folder>=gmail/INBOX<enter> 		"Go to inbox"
-macro index,pager gt "<change-folder>=gmail/[Google Mail].Sent Mail<enter>"	"Go to 'Sent Mail'"
-#macro index,pager +  <save-message>=gmail/[Google Mail].Important<enter> "Mark as important"
-#macro index,pager !  <save-message>=gmail/[Google Mail].Spam<enter> "Report spam"
 # https://unix.stackexchange.com/questions/532358/how-to-archive-mail-by-year-in-mutt
 macro index,pager e "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive conversation"
 

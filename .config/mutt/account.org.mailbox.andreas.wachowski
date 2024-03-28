@@ -46,4 +46,9 @@ save-hook ~r01/01/2023-31/12/2023 =archives.2023
 save-hook ~r01/01/2024-31/12/2024 =archives.2024
 save-hook ~r01/01/2025-31/12/2025 =archives.2025
 
+bind index,pager g noop # to avoid neomutt warning in next line
+macro index,pager gd "<change-folder>=mailbox.org/Drafts<enter>"	"Go to 'Drafts'"
+macro index,pager gi <change-folder>=mailbox.org/INBOX<enter> 		"Go to inbox"
+macro index,pager gt "<change-folder>=mailbox.org/Sent<enter>"	"Go to 'Sent Mail'"
+
 set folder = ~/Mail
