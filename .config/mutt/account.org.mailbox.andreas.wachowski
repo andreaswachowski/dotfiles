@@ -1,7 +1,7 @@
 # vi: filetype=muttrc
 
 
-set from                = "info@andreas-wachowski.de"
+set from                = "mail@andreas-wachowski.de"
 set realname            = "Andreas Wachowski"
 
 set imap_user           = "andreas.wachowski@mailbox.org"
