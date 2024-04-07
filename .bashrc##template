@@ -1,3 +1,4 @@
+# vi:filetype=sh
 # From http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980 :
 #
 # ~/.bashrc is the place to put stuff that applies only to bash itself,
