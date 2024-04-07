@@ -158,4 +158,8 @@ done
 {% include ".config/bash/bashrc_work.sh" %}
 {% endif %}
 
+{% if yadm.hostname == "DELT-C7D1WXVK73" %}
+{% include ".config/bash/bashrc_work.sh" %}
+{% endif %}
+
 eval "$(zoxide init bash)"
