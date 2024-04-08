@@ -45,6 +45,7 @@ brew 'tldr'
 # GNU tools
 brew 'coreutils' # cp, install
 brew 'gmake'
+brew 'gnu-tar'
 brew 'findutils'
 
 brew 'archivebox'

@@ -45,6 +45,7 @@ $HOME/dotfiles/local/bin:\
 $HOME/dotfiles/os/bin:\
 $HOME/dotfiles/bin:\
 $HOME/dotfiles/bin/remarkable/host:\
+/opt/homebrew/opt/gnu-tar/libexec/gnubin:\
 $PATH"
 export PATH
 
