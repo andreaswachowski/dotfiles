@@ -50,5 +50,5 @@
   "vim-rails": { "branch": "master", "commit": "3a155462d1c346e291595400ca238037d02a357f" },
   "vim-yadm-files": { "branch": "master", "commit": "35ef696c69fecfe21a4a7ffe0bdbd6d69634fa2b" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
-  "yadm-git.vim": { "branch": "master", "commit": "dbf067f99ccfc000659dfef846230148ee22e388" }
+  "yadm-git.vim": { "branch": "master", "commit": "60e025d93831ed3261b90ea7c3e427c054b77b59" }
 }
