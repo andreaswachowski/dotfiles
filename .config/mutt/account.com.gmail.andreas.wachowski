@@ -19,7 +19,6 @@ set trash               = "+[Google Mail].Trash"
 set header_cache        = ~/.cache/mutt/com.gmail.andreas.wachowski/headers
 set message_cachedir    = ~/.cache/mutt/com.gmail.andreas.wachowski/bodies
 set certificate_file    = ~/.cache/mutt/com.gmail.andreas.wachowski/certificates
-unset record
 
 mailboxes -label Inbox-Gmail +/INBOX
 source ~/.config/mutt/notmuch-mailboxes
