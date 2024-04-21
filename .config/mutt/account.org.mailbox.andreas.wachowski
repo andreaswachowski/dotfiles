@@ -21,6 +21,11 @@ set message_cachedir    = ~/.cache/mutt/org.mailbox.andreas.wachowski/bodies
 set certificate_file    = ~/.cache/mutt/certificates
 
 mailboxes -label Inbox-Mailbox ~/Mail/mailbox.org/INBOX
+
+folder-hook . "set sort=threads" # like gmail
+folder-hook . "set sort_aux=reverse-last-date-received" # like gmail
+folder-hook ~/Mail/mailbox.org/INBOX "set sort=date-received"
+
 source ~/.config/mutt/notmuch-mailboxes
 set folder = ~/Mail/mailbox.org # reset after it was set to ~/Mail in notmuch-mailboxes
 mailboxes `ls -1 ~/Mail/mailbox.org | grep -v INBO | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
