@@ -26,7 +26,7 @@ local servers = {
   'html',
   'jsonls',
   'lua_ls',
-  'ruby_ls',
+  'ruby_lsp',
   'pyright',
   -- rust_analyzer = {},
   'tsserver',
@@ -151,7 +151,7 @@ local function add_ruby_deps_command(client, bufnr)
   end, { nargs = '?', complete = function() return { 'all' } end })
 end
 
-require('lspconfig').ruby_ls.setup({
+require('lspconfig').ruby_lsp.setup({
   cmd = { vim.fn.expand('$HOME/.rbenv/shims/ruby-lsp') },
   -- We want both the diagnostics (for the code actions)
   -- and the keyboard shortcuts from the general setup,
