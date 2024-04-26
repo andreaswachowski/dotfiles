@@ -42,6 +42,11 @@ return {
         'typescript',
         'yaml',
       },
+      matchup = {
+        -- https://github.com/andymass/vim-matchup/issues/198
+        enable = true,
+        disable = { 'ruby' },
+      },
       textobjects = {
         select = {
           enable = true,

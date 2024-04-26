@@ -4,6 +4,8 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 ]]
 
+vim.cmd([[let g:matchup_matchparen_enabled = 0]])
+
 local modules = {
   'aw.globals',
   'config.options',
