@@ -8,7 +8,6 @@ return {
       javascriptreact = { 'eslint' },
       json = { 'jsonlint' },
       markdown = { 'vale' },
-      ruby = { 'rubocop' },
       sh = { 'shellcheck' },
       typescript = { 'eslint' },
       typescriptreact = { 'eslint' },
