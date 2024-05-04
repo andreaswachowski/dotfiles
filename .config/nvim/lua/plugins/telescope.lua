@@ -22,5 +22,5 @@ return {
       version = '^1.0.0',
     },
   },
-  config = function() require('telescope').load_extension('live_grep_args') end,
+  -- config is in after/plugin/telescope.lua !
 }

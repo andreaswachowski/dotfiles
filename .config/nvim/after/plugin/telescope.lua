@@ -4,6 +4,7 @@ local telescope = require('telescope')
 local lga_actions = require('telescope-live-grep-args.actions')
 
 telescope.setup({
+  config = function() require('telescope').load_extension('live_grep_args') end,
   defaults = {
     mappings = {
       i = {
