@@ -4,4 +4,5 @@ return {
   version = 'v2.*',
   -- install jsregexp (optional!).
   build = 'make install_jsregexp',
+  -- config is in after/plugin/luasnip.lua !
 }
