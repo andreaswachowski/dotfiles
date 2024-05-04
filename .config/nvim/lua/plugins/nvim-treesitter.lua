@@ -36,10 +36,22 @@ return {
       'markdown_inline',
       'python',
       'ruby',
+      'rust',
       'tsx',
       'typescript',
       'yaml',
     },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
+        scope_incremental = '<c-s>',
+        node_decremental = '<M-space>',
+      },
+    },
+    indent = { enable = true },
+    highlight = { enable = true },
     matchup = {
       -- https://github.com/andymass/vim-matchup/issues/198
       enable = true,
