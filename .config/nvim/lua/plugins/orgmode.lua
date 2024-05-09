@@ -12,6 +12,7 @@ return {
     require('orgmode').setup({
       org_agenda_files = { org_path('**/*.org'), org_path('**/*.org_archive') },
       org_default_notes_file = org_path('refile.org'),
+      org_todo_keywords = { 'TODO(t)', 'NEXT(n)', 'PROGRESS(p)', '|', 'DONE(d)', 'CANCELLED(c)' },
       org_capture_templates = {
         t = {
           description = 'Refile',
