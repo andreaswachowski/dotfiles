@@ -18,6 +18,10 @@ return {
           description = 'Refile',
           template = '* TODO %?\nCREATED: %U',
         },
+        n = {
+          description = 'Note',
+          template = '* %?\nCREATED: %U',
+        },
       },
     })
 
