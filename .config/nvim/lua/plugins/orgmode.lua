@@ -4,7 +4,9 @@ local org_path = function(path)
 end
 
 return {
-  'nvim-orgmode/orgmode',
+  -- 'nvim-orgmode/orgmode',
+  'andreaswachowski/orgmode',
+  dir = '~/Documents/git_projects/orgmode',
   event = 'VeryLazy',
   ft = { 'org', 'orgagenda' },
   config = function()
