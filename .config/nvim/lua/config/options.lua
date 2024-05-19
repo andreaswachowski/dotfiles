@@ -17,7 +17,6 @@ vim.o.hlsearch = false -- Set highlight on search
 vim.o.mouse = 'a' -- enable mouse mode
 vim.o.number = true -- line numbers helps during pair programming
 vim.wo.signcolumn = 'yes' -- otherwise too distracting with gitsigns
-vim.o.termguicolors = true
 vim.o.textwidth = 80 -- keep to "sane" width unless explicitly overridden
 vim.o.tildeop = true
 vim.o.timeoutlen = 300 -- wait for a mapped sequence to complete, default 1000
