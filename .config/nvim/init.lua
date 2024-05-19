@@ -6,6 +6,8 @@ let &packpath = &runtimepath
 
 vim.cmd([[let g:matchup_matchparen_enabled = 0]])
 
+-- vim.lsp.set_log_level('debug')
+
 local modules = {
   'aw.globals',
   'config.options',
