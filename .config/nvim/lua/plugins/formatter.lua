@@ -5,27 +5,6 @@ return {
   commit = 'e2f43a15ae71d7bd66f1a27577a346831b28c0b1',
   config = function()
     local formatter = require('formatter')
-    local util = require('formatter.util')
-    local fname = vim.api.nvim_buf_get_name(0)
-    local ruby_formatter = require('formatter.filetypes.ruby').rubocop
-    if require('lspconfig').util.root_pattern('Gemfile')(fname) ~= nil then
-      ruby_formatter = function()
-        return {
-          exe = 'bundle',
-          args = {
-            'exec',
-            'rubocop',
-            '--fix-layout',
-            '--stdin',
-            util.escape_path(util.get_current_buffer_file_path()),
-            '--format',
-            'files',
-            '--stderr',
-          },
-          stdin = true,
-        }
-      end
-    end
     formatter.setup({
       filetype = {
         cpp = {
@@ -47,7 +26,6 @@ return {
         javascriptreact = require('formatter.filetypes.javascript').prettier,
         json = require('formatter.filetypes.json').prettier,
         lua = require('formatter.filetypes.lua').stylua,
-        ruby = ruby_formatter,
         sh = require('formatter.filetypes.sh').shfmt,
         typescript = require('formatter.filetypes.typescript').prettier,
         typescriptreact = require('formatter.filetypes.typescript').prettier,
