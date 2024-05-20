@@ -43,6 +43,10 @@ return {
       prompts = prompts,
       auto_follow_cursor = false, -- Don't follow the cursor after getting response
       show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
+      history_path = vim.fn.stdpath('data') .. '/copilotchat_history', -- Default path to stored history
+      callback = function()
+        require('CopilotChat').save(vim.fn.stdpath('data') .. '/copilotchat_history')
+      end, -- Callback to use when ask response is received
       mappings = {
         -- Use tab for completion
         complete = {
