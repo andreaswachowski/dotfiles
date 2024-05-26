@@ -1,4 +1,14 @@
 local dap = require('dap')
+local dapui = require('dapui')
+
+require('dapui').setup()
+require('nvim-dap-virtual-text').setup()
+require('telescope').load_extension('dap')
+
+dap.listeners.after.event_initialized['dapui_config'] = function() dapui.open() end
+dap.listeners.after.event_terminated['dapui_config'] = function() dapui.close() end
+dap.listeners.after.event_exited['dapui_config'] = function() dapui.close() end
+
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-lldb-vscode
 dap.adapters.lldb = {
   type = 'executable',
@@ -63,18 +73,3 @@ dap.configurations.cpp = {
 
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
-
-require('dapui').setup()
-require('nvim-dap-virtual-text').setup()
-require('telescope').load_extension('dap')
-
-local dapui = require('dapui')
-dap.listeners.after.event_initialized['dapui_config'] = function()
-  dapui.open()
-end
-dap.listeners.after.event_terminated['dapui_config'] = function()
-  dapui.close()
-end
-dap.listeners.after.event_exited['dapui_config'] = function()
-  dapui.close()
-end
