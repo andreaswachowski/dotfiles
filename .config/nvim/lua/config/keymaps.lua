@@ -10,6 +10,23 @@ vim.keymap.set('n', '<c-h>', '<c-w>h', opts)
 vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
 vim.keymap.set('n', '<c-j>', '<c-w>j', opts)
 
+-- control split sizes
+
+-- Required: iTerm2 -> Profiles -> Edit -> Keys -> Left/Right Option key == Esc+ !
+-- ("Normal" and "Meta" do not work)
+vim.keymap.set('n', '<M-,>', '<c-w>5<', opts)
+vim.keymap.set('n', '<M-.>', '<c-w>5>', opts)
+vim.keymap.set('n', '<M-;>', '<c-w>+', opts)
+vim.keymap.set('n', '<M-/>', '<c-w>-', opts)
+
+-- https://stackoverflow.com/questions/7501092/can-i-map-alt-key-in-vim#15399297
+-- With iTerm2 and option keys configured to "normal", one must actually press
+-- the key to generate the character, then map that
+-- vim.keymap.set('n', '≤', '<c-w>5<', opts) -- <M-,>
+-- vim.keymap.set('n', '≥', '<c-w>5>', opts) -- <M-.>
+-- vim.keymap.set('n', '…', '<c-w>+', opts) -- <M-;>
+-- vim.keymap.set('n', '÷', '<c-w>-', opts) -- <T-/>
+
 -- Diagnostic keymaps
 vim.keymap.set( 'n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
