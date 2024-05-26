@@ -5,6 +5,10 @@ local opts = { noremap = true, silent = true }
 -- neovim has "nnoremap Y y$" (see default-mappings), undo that
 vim.keymap.del('n', 'Y')
 
+-- copy path of current buffer
+-- https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
+vim.keymap.set('n', 'cp', ':let @" = expand(\'%\')<cr>', opts)
+
 -- control split sizes
 
 -- Required: iTerm2 -> Profiles -> Edit -> Keys -> Left/Right Option key == Esc+ !
