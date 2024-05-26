@@ -5,11 +5,6 @@ local opts = { noremap = true, silent = true }
 -- neovim has "nnoremap Y y$" (see default-mappings), undo that
 vim.keymap.del('n', 'Y')
 
-vim.keymap.set('n', '<c-l>', '<c-w>l', opts)
-vim.keymap.set('n', '<c-h>', '<c-w>h', opts)
-vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
-vim.keymap.set('n', '<c-j>', '<c-w>j', opts)
-
 -- control split sizes
 
 -- Required: iTerm2 -> Profiles -> Edit -> Keys -> Left/Right Option key == Esc+ !

@@ -21,6 +21,8 @@ set -g @continuum-boot 'on'
 set -g @plugin 'egel/tmux-gruvbox'
 set -g @tmux-gruvbox 'dark' # or 'light'
 
+set -g @plugin 'christoomey/vim-tmux-navigator'
+
 # Options
 
 # Login shell yes or no? Pro: rvm requires it. Contra: It triggers duplicated PATH settings
