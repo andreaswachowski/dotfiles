@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# set -x
+
+# https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+
+if [ "$(uname -s)" != "Darwin" ]; then
+  echo Intended for MacOS only, aborting.
+  exit 1
+fi
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
+
+###############################################################################
+# General UI/UX                                                               #
+###############################################################################
+
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
+# Enable subpixel font rendering on non-Apple LCDs
+# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+defaults write -g AppleFontSmoothing -int 0
+
+###############################################################################
+# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+###############################################################################
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Trackpad: map bottom right corner to right-click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+# Disable “natural” (Lion-style) scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Enable full keyboard access for all controls
+# (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+# https://github.com/mathiasbynens/dotfiles/issues/1027
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# # Follow the keyboard focus while zoomed in
+# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+
+# Set keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# Set language and text formats
+# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+# `Inches`, `en_DE` with `en_US`, and `true` with `false`.
+defaults write NSGlobalDomain AppleFirstWeekday -dict gregorian 2
+defaults write NSGlobalDomain AppleLanguages -array "en-DE"
+defaults write NSGlobalDomain AppleLocale -string "en_DE@currency=eur"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+# Show language menu in the top right corner of the boot screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
+# Redirection see https://github.com/mathiasbynens/dotfiles/issues/1030
+sudo systemsetup -settimezone "Europe/Berlin" 2>/dev/null
