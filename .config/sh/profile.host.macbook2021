@@ -13,7 +13,6 @@ export ATLAS_OPTS="-Xmx512m -XX:MaxPermSize=160m"
 # For Documents/Startup
 export PATH=/usr/local/mysql/bin:$PATH:/usr/X11/bin:$HOME/bin/dvd
 
-export TERM=screen-256color-italic
 export VIM_APP_DIR=$HOME/local
 
 #export LC_CTYPE='en_US.UTF-8'
