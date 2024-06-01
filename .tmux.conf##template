@@ -10,7 +10,7 @@ set -g @resurrect-strategy-vim 'session'
 
 set -g @continuum-boot 'on'
 set -g @continuum-restore 'on'
-set -g @continuum-boot-options 'iterm'
+set -g @continuum-boot-options 'alacritty'
 
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-save-interval '30'
