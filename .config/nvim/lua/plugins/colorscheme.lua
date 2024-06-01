@@ -6,13 +6,13 @@ return {
     -- Lighten some grays. Start with dark4 (== #7c6f64 == rgb(124 111 100))
     -- and add 50 each to R, G, and B, yielding rgb(174, 161, 150) = #95887d
     local dark5 = '#95887d'
-    local iterm2_bg = '#0e0e0e' -- same as iTerm profile
+    local terminal_bg = '#0d0d0d' -- same as iTerm/alacritty profile
     local colors = require('gruvbox').palette
     require('gruvbox').setup({
       contrast = 'hard', -- background as dark as terminal
       invert_tabline = true,
       palette_overrides = {
-        dark0_hard = iterm2_bg,
+        dark0_hard = terminal_bg,
       },
       overrides = {
         SpecialKey = { fg = dark5 },
@@ -20,40 +20,40 @@ return {
         LineNr = { fg = dark5 },
         Comment = { fg = dark5 },
         Folded = { fg = dark5 },
-        SignColumn = { bg = '#0e0e0e' }, -- same as iTerm2 background"#0e0e0e"
+        SignColumn = { bg = terminal_bg }, -- same as terminal background
         GruvboxRedSign = {
           fg = colors.bright_red,
-          bg = iterm2_bg,
+          bg = terminal_bg,
           reverse = false,
         },
         GruvboxGreenSign = {
           fg = colors.bright_green,
-          bg = iterm2_bg,
+          bg = terminal_bg,
           reverse = false,
         },
         GruvboxYellowSign = {
           fg = colors.bright_yellow,
-          bg = iterm2_bg,
+          bg = terminal_bg,
           reverse = false,
         },
         GruvboxBlueSign = {
           fg = colors.bright_blue,
-          bg = iterm2_bg,
+          bg = terminal_bg,
           reverse = false,
         },
         GruvboxPurpleSign = {
           fg = colors.bright_purple,
-          bg = iterm2_bg,
+          bg = terminal_bg,
           reverse = false,
         },
         GruvboxAquaSign = {
           fg = colors.bright_aqua,
-          bg = iterm2_bg,
+          bg = terminal_bg,
           reverse = false,
         },
         GruvboxOrangeSign = {
           fg = colors.bright_orange,
-          bg = iterm2_bg,
+          bg = terminal_bg,
           reverse = false,
         },
       },
