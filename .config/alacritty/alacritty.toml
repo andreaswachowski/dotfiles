@@ -1,0 +1,54 @@
+import = ["~/.config/alacritty/gruvbox-modified.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[shell]
+program = "/opt/homebrew/bin/bash"
+# https://mnjm.github.io/posts/alacritty-and-tmux-preventing-duplicate-instances/
+args = [ "-l", "-c", "tmux attach || tmux" ]
+
+[font]
+size = 12
+
+[font.normal]
+family = "Monaco Nerd Font Mono"
+style = "Regular"
+
+[window]
+# allows meta-shortcuts in neovim but prevents entering Umlauts
+# option_as_alt = "Both"
+position = { x = 40, y = 40 }
+
+[window.dimensions]
+columns = 230
+lines = 60
+
+[[keyboard.bindings]]
+key = "Enter"
+mods = "Command"
+action = "ToggleFullscreen"
+
+# https://vi.stackexchange.com/questions/41982/mapping-a-command-key-in-neovim-alacritty
+
+# [[keyboard.bindings]]
+# key = "Comma"
+# mods = "Alt"
+# chars = "\x1b,"
+#
+# [[keyboard.bindings]]
+# key = "Period"
+# mods = "Alt"
+# chars = "\e."
+#
+# [[keyboard.bindings]]
+# key = ";"
+# mods = "Alt"
+# chars = "<80><fc><^H>;"
+# # command = { program = "nvim", args = ["--remote-send", "<M-;>"] }
+#
+# [[keyboard.bindings]]
+# key = "/"
+# mods = "Alt"
+# chars = "<80><fc><^H>/"
+# # command = { program = "nvim", args = ["--remote-send", "<M-/>"] }
