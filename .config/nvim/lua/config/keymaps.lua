@@ -11,20 +11,25 @@ vim.keymap.set('n', 'cp', ':let @" = expand(\'%\')<cr>', opts)
 
 -- control split sizes
 
--- Required: iTerm2 -> Profiles -> Edit -> Keys -> Left/Right Option key == Esc+ !
--- ("Normal" and "Meta" do not work)
-vim.keymap.set('n', '<M-,>', '<c-w>5<', opts)
-vim.keymap.set('n', '<M-.>', '<c-w>5>', opts)
-vim.keymap.set('n', '<M-;>', '<c-w>+', opts)
-vim.keymap.set('n', '<M-/>', '<c-w>-', opts)
-
--- https://stackoverflow.com/questions/7501092/can-i-map-alt-key-in-vim#15399297
--- With iTerm2 and option keys configured to "normal", one must actually press
--- the key to generate the character, then map that
--- vim.keymap.set('n', '≤', '<c-w>5<', opts) -- <M-,>
--- vim.keymap.set('n', '≥', '<c-w>5>', opts) -- <M-.>
--- vim.keymap.set('n', '…', '<c-w>+', opts) -- <M-;>
--- vim.keymap.set('n', '÷', '<c-w>-', opts) -- <T-/>
+if (vim.loop.os_uname().sysname == 'Darwin') then
+  -- https://stackoverflow.com/questions/7501092/can-i-map-alt-key-in-vim#15399297
+  -- With iTerm2 and option keys configured to "normal", one must actually press
+  -- the key to generate the character, then map that.
+  -- I cannot use the above solution because it prevents me from typing umlauts.
+  vim.keymap.set('n', '≤', '<c-w>5<', opts) -- <M-,>
+  vim.keymap.set('n', '≥', '<c-w>5>', opts) -- <M-.>
+  vim.keymap.set('n', '…', '<c-w>+', opts) -- <M-;>
+  vim.keymap.set('n', '÷', '<c-w>-', opts) -- <T-/>
+else
+  -- On Macos, on iTerm, these settings would require
+  -- iTerm2 -> Profiles -> Edit -> Keys -> Left/Right Option key == Esc+ !
+  -- ("Normal" and "Meta" do not work)
+  -- BUT with ESC+, Umlauts cannot be typed anymore.
+  vim.keymap.set('n', '<M-,>', '<c-w>5<', opts)
+  vim.keymap.set('n', '<M-.>', '<c-w>5>', opts)
+  vim.keymap.set('n', '<M-;>', '<c-w>+', opts)
+  vim.keymap.set('n', '<M-/>', '<c-w>-', opts)
+end
 
 -- Diagnostic keymaps
 vim.keymap.set( 'n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
