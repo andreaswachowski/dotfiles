@@ -6,16 +6,12 @@ local cmp = require('cmp')
 vim.opt.shortmess:append('c')
 
 local ok, lspkind = pcall(require, 'lspkind')
-if not ok then
-  return
-end
+if not ok then return end
 
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup({
   snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
+    expand = function(args) require('luasnip').lsp_expand(args.body) end,
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-n>'] = cmp.mapping.select_next_item(),
