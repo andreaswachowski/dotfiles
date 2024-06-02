@@ -50,7 +50,15 @@ cmp.setup({
         nvim_lua = '[api]',
         path = '[path]',
         lusanip = '[snip]',
+        ['vim-dadbod-completion'] = '[DB]',
       },
     }),
+  },
+})
+
+cmp.setup.filetype({ 'sql', 'mysql', 'psql' }, {
+  sources = {
+    { name = 'vim-dadbod-completion' },
+    { name = 'buffer' },
   },
 })
