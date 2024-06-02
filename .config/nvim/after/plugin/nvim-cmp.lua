@@ -38,6 +38,7 @@ cmp.setup({
     { name = 'orgmode' },
     { name = 'path' },
     { name = 'luasnip' },
+    { name = 'orgmode' },
     { name = 'buffer', keyword_length = 5 },
   },
   ---@diagnostic disable-next-line: missing-fields
@@ -50,6 +51,7 @@ cmp.setup({
         nvim_lua = '[api]',
         path = '[path]',
         lusanip = '[snip]',
+        orgmode = '[Org]',
         ['vim-dadbod-completion'] = '[DB]',
       },
     }),
