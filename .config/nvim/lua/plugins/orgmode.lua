@@ -16,10 +16,18 @@ return {
       org_default_notes_file = org_path('refile.org'),
       org_todo_keywords = { 'TODO(t)', 'NEXT(n)', 'PROGRESS(p)', '|', 'DONE(d)', 'CANCELLED(c)' },
       org_capture_templates = {
-        l = {
-          description = 'Log',
+        s = {
+          description = 'Sysadmin Log',
           template = '* %?\nCREATED: %U',
           target = org_path('sysadmin_log.org'),
+          datetree = {
+            tree_type = 'month',
+          },
+        },
+        f = {
+          description = 'Friction Log',
+          template = '* %?\nCREATED: %U',
+          target = org_path('friction_log.org'),
           datetree = {
             tree_type = 'month',
           },
