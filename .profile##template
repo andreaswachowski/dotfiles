@@ -30,13 +30,12 @@ export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for 
 
 # -------------------------------------------------------------------------
 # PATH
-# {% if yadm.hostname == "DELT-C02FN533MD6P" %}
-# PATH="/usr/local/opt/mysql@5.6/bin:\
-# $HOME/.cargo/bin:\
-# {% else %}
-# PATH="$HOME/.cargo/bin:\
-# {% endif %}
+{% if yadm.hostname == "DELT-C7D1WXVK73" %}
+PATH="/opt/homebrew/opt/mysql@8.0/bin:\
+$HOME/.cargo/bin:\
+{% else %}
 PATH="$HOME/.cargo/bin:\
+{% endif %}
 $HOME/.yarn/bin:\
 $HOME/Documents/git_projects/csslint/dist:\
 $HOME/bin:\
