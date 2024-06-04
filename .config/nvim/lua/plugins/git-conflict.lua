@@ -9,8 +9,6 @@ return {
         theirs = 'ct',
         none = 'c0',
         both = 'cb',
-        next = ']x', -- plugin default (but non-idiomatic): [x
-        prev = '[x', -- plugin default (but non-idiomatic): ]x
       },
       highlights = {
         -- https://github.com/ellisonleao/gruvbox.nvim/discussions/239#discussioncomment-7154441
