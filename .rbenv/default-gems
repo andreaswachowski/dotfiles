@@ -1,1 +1,4 @@
+# In case ruby is installed with libedit instead of readline
+rb-readline
 bundler
+pry-stack_explorer
