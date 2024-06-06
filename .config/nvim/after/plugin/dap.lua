@@ -4,6 +4,7 @@ local dapui = require('dapui')
 require('dapui').setup()
 require('nvim-dap-virtual-text').setup()
 require('telescope').load_extension('dap')
+require('dap-ruby').setup()
 
 dap.listeners.after.event_initialized['dapui_config'] = function() dapui.open() end
 dap.listeners.after.event_terminated['dapui_config'] = function() dapui.close() end
