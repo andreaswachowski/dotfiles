@@ -75,9 +75,7 @@ return {
         {
           'encoding',
           fmt = function(str)
-            if str ~= 'utf-8' then
-              return str
-            end
+            if str ~= 'utf-8' then return str end
           end,
         },
         { 'fileformat', fmt = trunc(120, 1, 120, true) },
