@@ -48,11 +48,6 @@ $HOME/dotfiles/bin/remarkable/host:\
 $PATH"
 export PATH
 
-# {% if yadm.hostname == "DELT-C02FN533MD6P" %}
-# export LDFLAGS="-L/usr/local/opt/mysql@5.6/lib"
-# export CPPFLAGS="-I/usr/local/opt/mysql@5.6/include"
-
-# {% endif %}
 if [ -z "$BASH" ]; then
   if [ "$(id -u)" -eq 0 ]; then
     PS1='[\w] # '
