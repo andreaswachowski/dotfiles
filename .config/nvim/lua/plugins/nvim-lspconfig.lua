@@ -2,12 +2,13 @@ return {
   -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'b0o/schemastore.nvim' },
     -- Automatically install LSPs to stdpath for neovim
-    { 'williamboman/mason.nvim', config = true },
-    { 'williamboman/mason-lspconfig.nvim' },
+    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    { 'b0o/schemastore.nvim' },
+    'williamboman/mason-lspconfig.nvim',
 
-    -- Additional lua configuration, makes nvim stuff amazing!
-    'folke/neodev.nvim',
+    -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    { 'folke/neodev.nvim', opts = {} },
   },
 }
