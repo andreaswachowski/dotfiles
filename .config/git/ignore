@@ -11,6 +11,9 @@ tags
 .Spotlight-V100
 .Trashes
 dots/tmux/resurrect/
+docker-compose.override.yml
+.projections.json
+.ignore
 
 # mailmap to configure vim-fugitive
 .mailmap
