@@ -34,6 +34,7 @@ require('nvim-treesitter.configs').setup({
   },
   incremental_selection = {
     enable = true,
+    disable = { 'org' }, -- conflicts with checklist toggle
     keymaps = {
       init_selection = '<c-space>',
       node_incremental = '<c-space>',
