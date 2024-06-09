@@ -21,8 +21,6 @@ set -g @continuum-boot 'on'
 set -g @plugin 'egel/tmux-gruvbox'
 set -g @tmux-gruvbox 'dark' # or 'light'
 
-set -g @plugin 'christoomey/vim-tmux-navigator'
-
 # Options
 
 # Login shell yes or no? Pro: rvm requires it. Contra: It triggers duplicated PATH settings
@@ -69,6 +67,7 @@ bind-key C-a send-prefix
 # Order session list alphabetically
 bind s choose-tree -sZ -O name
 
+# move around panes with hjkl, as one would in vim after pressing ctrl-w
 bind h select-pane -L
 bind l select-pane -R
 bind k select-pane -U
