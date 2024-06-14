@@ -9,6 +9,8 @@ export NVM_DIR="$HOME/.nvm"
   esac
 }
 
+alias bo="bundle open \`bundle list --name-only | fzf\`"
+
 eval "$(rbenv init -)"
 command -v rbenv >/dev/null && {
   # Required by rbenv-default-gems,
