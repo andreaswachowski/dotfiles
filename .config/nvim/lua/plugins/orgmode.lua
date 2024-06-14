@@ -18,7 +18,7 @@ return {
       org_capture_templates = {
         s = {
           description = 'Sysadmin Log',
-          template = '* %?\nCREATED: %U',
+          template = '* %?\n  CREATED: %U',
           target = org_path('sysadmin_log.org'),
           datetree = {
             tree_type = 'month',
@@ -26,7 +26,7 @@ return {
         },
         f = {
           description = 'Friction Log',
-          template = '* %?\nCREATED: %U',
+          template = '* %?\n  CREATED: %U',
           target = org_path('friction_log.org'),
           datetree = {
             tree_type = 'month',
@@ -34,11 +34,11 @@ return {
         },
         t = {
           description = 'Refile',
-          template = '* TODO %?\nCREATED: %U',
+          template = '* TODO %?\n  CREATED: %U',
         },
         n = {
           description = 'Note',
-          template = '* %?\nCREATED: %U',
+          template = '* %?\n  CREATED: %U',
         },
       },
     })
