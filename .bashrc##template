@@ -154,10 +154,6 @@ for llvmfile in lldb-vscode llvm-symbolizer; do
 done
 {% endif %}
 
-{% if yadm.hostname == "DELT-C02FN533MD6P" %}
-{% include ".config/bash/bashrc_work.sh" %}
-{% endif %}
-
 {% if yadm.hostname == "DELT-C7D1WXVK73" %}
 {% include ".config/bash/bashrc_work.sh" %}
 {% endif %}
