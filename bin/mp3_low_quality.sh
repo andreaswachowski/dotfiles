@@ -68,15 +68,10 @@ else
   DIRECTORY=.
 fi
 
-FILES=$(mdfind -onlyin "$DIRECTORY" "kMDItemFSName==*.mp3&&kMDItemAudioBitRate<${MAX_BITRATE}000")
-
-IFS=$'\n' read -r -d '' -a FILE_ARRAY <<<"$FILES"
-
 echo "Filename;Bitrate (kbps);Sample Rate (Hz)"
 
 get_bitrate_and_samplerate_with_mdls() {
-  FILE="$1"
-  mdls -name kMDItemAudioBitRate -name kMDItemAudioSampleRate -raw "$FILE" | xargs -0
+  mdls -name kMDItemAudioBitRate -name kMDItemAudioSampleRate -name kMDItemFSName -raw "$@" | tr '\0' ';'
 }
 
 get_bitrate_and_samplerate_with_ffprobe() {
@@ -84,15 +79,17 @@ get_bitrate_and_samplerate_with_ffprobe() {
   ffprobe -v error -select_streams a:0 -show_entries stream=bit_rate,sample_rate -of default=noprint_wrappers=1:nokey=1 "$FILE" | tr '\n' ' '
 }
 
-for FILE in "${FILE_ARRAY[@]}"; do
-  if [ -f "$FILE" ]; then
-    BITRATE_SAMPLERATE=$(get_bitrate_and_samplerate_with_$ANALYZE_CMD "$FILE")
-    IFS=' ' read -r BITRATE SAMPLE_RATE <<<"$BITRATE_SAMPLERATE"
+# https://www.shellcheck.net/wiki/SC2044
+while IFS= read -r -d '' DIRECTORY; do
+  FILES=$(mdfind -onlyin "$DIRECTORY" "kMDItemFSName==*.mp3&&kMDItemAudioBitRate<${MAX_BITRATE}000")
+  IFS=$'\n' read -r -d '' -a DIR_FILES <<<"$FILES"
 
-    # Convert bitrate to kbps
-    BITRATE_KBPS=$((BITRATE / 1000))
-
-    # Display the filename and quality information
-    echo "$FILE;${BITRATE_KBPS};${SAMPLE_RATE}"
+  if [ ${#DIR_FILES[@]} -gt 0 ]; then
+    BITRATE_SAMPLERATE_FILENAME=$(get_bitrate_and_samplerate_with_$ANALYZE_CMD "${DIR_FILES[@]}")
+    echo "$BITRATE_SAMPLERATE_FILENAME" | awk -v dir="$DIRECTORY" -F';' '{
+        for (i = 1; i <= NF; i += 3) {
+          print dir "/" $(i+2) ";" $i/1000 ";" $(i+1)
+        }
+    }'
   fi
-done
+done < <(find "$DIRECTORY" -type f -name '*.mp3' -print0 | xargs -0 -n1 dirname | sort -u | tr '\n' '\0')
