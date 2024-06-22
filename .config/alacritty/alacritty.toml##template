@@ -4,7 +4,12 @@ import = ["~/.config/alacritty/gruvbox-modified.toml"]
 TERM = "xterm-256color"
 
 [shell]
+{% if yadm.os == "Darwin" %}
 program = "/opt/homebrew/bin/bash"
+{% else %}
+program = "/usr/bin/bash"
+{% endif %}
+
 # https://mnjm.github.io/posts/alacritty-and-tmux-preventing-duplicate-instances/
 args = [ "-l", "-c", "tmux attach || tmux" ]
 
