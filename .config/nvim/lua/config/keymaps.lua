@@ -5,6 +5,10 @@ local opts = { noremap = true, silent = true }
 -- neovim has "nnoremap Y y$" (see default-mappings), undo that
 vim.keymap.del('n', 'Y')
 
+-- remap incrementing numbers from <C-A> to <C-B>
+-- (<C-I> is not possible, see https://unix.stackexchange.com/questions/656758/remap-vim-ctrl-a-to-ctrl-i)
+vim.keymap.set({ 'n', 'v', 'i' }, '<C-B>', '<C-A>', opts)
+
 -- copy path of current buffer
 -- https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 vim.keymap.set('n', 'cp', ':let @" = expand(\'%\')<cr>', opts)
