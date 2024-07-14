@@ -6,8 +6,11 @@ local opts = { noremap = true, silent = true }
 vim.keymap.del('n', 'Y')
 
 -- remap incrementing numbers from <C-A> to <C-B>
+-- <C-A> is taken as tmux prefix
 -- (<C-I> is not possible, see https://unix.stackexchange.com/questions/656758/remap-vim-ctrl-a-to-ctrl-i)
-vim.keymap.set({ 'n', 'v', 'i' }, '<C-B>', '<C-A>', opts)
+-- <C-b> not possible because it's a navigation command
+-- see "help CTRL-" and press <C-D>, most all CTRL-combinations are already taken
+-- vim.keymap.set({ 'n', 'v', 'i' }, '<m-s-A>', '<C-A>', opts)
 
 -- copy path of current buffer
 -- https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
