@@ -159,3 +159,4 @@ done
 {% endif %}
 
 eval "$(zoxide init bash)"
+eval "$($HOME/.local/bin/mise activate bash)"
