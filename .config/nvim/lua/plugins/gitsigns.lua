@@ -6,7 +6,7 @@ return {
     {
       'seanbreckenridge/gitsigns-yadm.nvim',
       opts = {
-        shell_timeout_ms = 1000,
+        shell_timeout_ms = 2000,
       },
     },
   },
