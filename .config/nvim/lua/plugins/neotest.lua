@@ -14,13 +14,13 @@ return {
     -- https://github.com/ChristianChiarulli/nvim/blob/c75f913d66cdde3f6dadfc8207bf0a526e8b8d08/lua/user/extras/neotest.lua#L19
     local wk = require('which-key')
     -- stylua: ignore
-    wk.register({
-      ['<leader>tt'] = { "<cmd>lua require'neotest'.run.run()<cr>", 'Test Nearest' },
-      ['<leader>tf'] = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", 'Test File', },
-      ['<leader>td'] = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", 'Debug Test', },
-      ['<leader>ts'] = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Toggle Summary" },
-      ['<leader>tS'] = { "<cmd>lua require('neotest').run.stop()<cr>", 'Test Stop' },
-      ['<leader>ta'] = { "<cmd>lua require('neotest').run.attach()<cr>", 'Attach Test' },
+    wk.add({
+      { "<leader>tt", "<cmd>lua require'neotest'.run.run()<cr>", desc = 'Test Nearest' },
+      { "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = 'Test File', },
+      { "<leader>td", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", desc = 'Debug Test', },
+      { "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", desc = "Toggle Summary" },
+      { "<leader>tS", "<cmd>lua require('neotest').run.stop()<cr>", desc = 'Test Stop' },
+      { "<leader>ta", "<cmd>lua require('neotest').run.attach()<cr>", desc = 'Attach Test' },
     })
     require('neotest').setup({
       adapters = {
