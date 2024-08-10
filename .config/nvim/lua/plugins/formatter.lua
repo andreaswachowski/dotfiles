@@ -26,7 +26,21 @@ return {
         javascriptreact = require('formatter.filetypes.javascript').prettier,
         json = require('formatter.filetypes.json').prettier,
         lua = require('formatter.filetypes.lua').stylua,
-        sh = require('formatter.filetypes.sh').shfmt,
+        sh = {
+          require('formatter.filetypes.sh').shfmt,
+
+          function()
+            return {
+              -- According to shfmt's man page, similar to
+              -- https://google.github.io/styleguide/shellguide.html
+              args = {
+                '--indent 2',
+                '--case-indent',
+                '--binary-next-line',
+              },
+            }
+          end,
+        },
         typescript = require('formatter.filetypes.typescript').prettier,
         typescriptreact = require('formatter.filetypes.typescript').prettier,
         vue = require('formatter.filetypes.vue').prettier,
