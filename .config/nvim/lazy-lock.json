@@ -63,7 +63,7 @@
   "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
   "vim-matchup": { "branch": "master", "commit": "ff3bea611696f5cfdfe61a939149daadff41f2af" },
   "vim-obsession": { "branch": "master", "commit": "fe9d3e1a9a50171e7d316a52e1e56d868e4c1fe5" },
-  "vim-rails": { "branch": "master", "commit": "8972461e64c7c4bf049f2f86ea1bc571e8077b55" },
+  "vim-rails": { "branch": "master", "commit": "2fba7907f585819a8653f0bc7dd7f437a822d9c6" },
   "vim-tmux-navigator": { "branch": "master", "commit": "5b3c701686fb4e6629c100ed32e827edf8dad01e" },
   "vim-yadm-files": { "branch": "master", "commit": "35ef696c69fecfe21a4a7ffe0bdbd6d69634fa2b" },
   "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" },
