@@ -5,7 +5,7 @@
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
   "Vim-Jinja2-Syntax": { "branch": "master", "commit": "2c17843b074b06a835f88587e1023ceff7e2c7d1" },
   "ansible-vim": { "branch": "master", "commit": "3329367d2e5f90d203c8d340c53fa83c60a1ad41" },
-  "asyncrun.vim": { "branch": "master", "commit": "182c636909cfd41e1d72e1278a7db6a4e5271b81" },
+  "asyncrun.vim": { "branch": "master", "commit": "d6ba5dc77dfab73ebeeea16e4f6fbd65400e6905" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
   "cmp-nvim-lua": { "branch": "main", "commit": "f12408bdb54c39c23e67cab726264c10db33ada8" },
