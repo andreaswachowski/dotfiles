@@ -8,14 +8,14 @@ CertificateFile /usr/local/etc/openssl/cert.pem
 # Error: SASL(-7): invalid parameter supplied ...
 AuthMechs PLAIN
 {% endif %}
-SSLType IMAPS
+TLSType IMAPS
 Host imap.gmail.com
 User andreas.wachowski@gmail.com
 PassCmd "pass andreas.wachowski@gmail.com"
 PipelineDepth 50
 
 IMAPAccount andreas.wachowski@mailbox.org
-SSLType STARTTLS
+TLSType STARTTLS
 Host imap.mailbox.org
 # Available: AUTH=PLAIN AUTH=LOGIN AUTH=OAUTHBEARER AUTH=XOAUTH2
 AuthMechs PLAIN
