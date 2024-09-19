@@ -66,6 +66,6 @@
   "vim-rails": { "branch": "master", "commit": "2fba7907f585819a8653f0bc7dd7f437a822d9c6" },
   "vim-tmux-navigator": { "branch": "master", "commit": "5b3c701686fb4e6629c100ed32e827edf8dad01e" },
   "vim-yadm-files": { "branch": "master", "commit": "35ef696c69fecfe21a4a7ffe0bdbd6d69634fa2b" },
-  "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" },
+  "which-key.nvim": { "branch": "main", "commit": "fb070344402cfc662299d9914f5546d840a22126" },
   "yadm.nvim": { "branch": "master", "commit": "8226580be2b3af9f8cccdbec5c9ba604145cb8b2" }
 }
