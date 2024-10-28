@@ -3,9 +3,12 @@
 background = "#0d0d0d"
 foreground = "#ddd2d1"
 
+# normal and bright red are virtually indistinguishable. I can't make
+# the dark red darker, the contrast is too low for me.
+
 [colors.normal]
 black = "#0d0d0d"
-red = "#cc241d"
+red = "#f92b24"
 green = "#98971a"
 yellow = "#d79921"
 blue = "#458588"
