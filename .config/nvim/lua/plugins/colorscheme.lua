@@ -14,6 +14,9 @@ return {
       palette_overrides = {
         dark0_hard = terminal_bg,
       },
+      italic = {
+        strings = false,
+      },
       overrides = {
         SpecialKey = { fg = dark5 },
         Whitespace = { fg = dark5 }, -- shown with "set list" (":help listchars"
