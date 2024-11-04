@@ -55,7 +55,7 @@
   "telescope-undo.nvim": { "branch": "main", "commit": "51be9ae7c42fc27c0b05505e3a0162e0f05fbb6a" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "vim-bundler": { "branch": "master", "commit": "c261509e78fc8dc55ad1fcf3cd7cdde49f35435c" },
-  "vim-dadbod": { "branch": "master", "commit": "7888cb7164d69783d3dce4e0283decd26b82538b" },
+  "vim-dadbod": { "branch": "master", "commit": "fe5a55e92b2dded7c404006147ef97fb073d8b1b" },
   "vim-dadbod-completion": { "branch": "master", "commit": "880f7e9f2959e567c718d52550f9fae1aa07aa81" },
   "vim-dadbod-ssh": { "branch": "master", "commit": "9bce775ee76c3dd6d7508dcd9eb276b36133d710" },
   "vim-dadbod-ui": { "branch": "master", "commit": "f29c85ab42861c6ef683289b0c6a51e0d436dcf6" },
