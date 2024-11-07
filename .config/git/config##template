@@ -1,7 +1,7 @@
 # vi: filetype=gitconfig
 [color]
 	status = auto
-	diff = auto
+	diff = always
 	branch = auto
 	interactive = auto
 
@@ -18,8 +18,8 @@
 	st = status
 	br = branch
 	fpush = push --force-with-lease
-  loglastpull = diff --stat master@{1} master
-	l = log --color=always --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(green)C:%ci %C(green)A:%ai %C(bold blue)<%an>%Creset'
+	loglastpull = diff --stat master@{1} master
+	l = log --color=always --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(green)C:%ci %C(green)A:%ai %C(bold blue)<%ae>%Creset <%ce>'
 	# log today (use | grep "A:<date>" for author date)
 	lt = l --since="yesterday"
 	# list branches, but with dates (in descending order)
