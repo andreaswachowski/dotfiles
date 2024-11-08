@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+
+def tokenize(query)
+  tokens = []
+  buffer = ""
+
+  query.each_char do |char|
+    case char
+    when '{', '}', '(', ')', ':'
+      # Flush any accumulated buffer as an attribute before brace or parenthesis
+      tokens << buffer.strip unless buffer.strip.empty?
+      buffer.clear
+      tokens << char
+    when ' ', "\n", "\r", "\t"
+      # End of a token, add buffer if not empty and clear it
+      unless buffer.strip.empty?
+        tokens << buffer.strip
+        buffer.clear
+      end
+    else
+      # Accumulate characters in the buffer
+      buffer << char
+    end
+  end
+  # Add any remaining buffer as the last token
+  tokens << buffer.strip unless buffer.strip.empty?
+
+  tokens
+end
+
+def pretty_print_graphql(query)
+  tokens = tokenize(query)
+  indent = 0
+  formatted_query = ""
+
+  tokens.each_with_index do |token, i|
+    next_token = tokens[i + 1]  # Look ahead to the next token if it exists
+
+    case token
+    when '{'
+      # Opening brace after an attribute or another brace
+      formatted_query.rstrip!  # Remove any trailing whitespace before brace
+      formatted_query << " {\n"
+      indent += 2
+      formatted_query << ' ' * indent
+    when '}'
+      # Closing brace, decrease indentation and start on a new line
+      indent -= 2
+      formatted_query.rstrip!  # Remove trailing spaces before closing brace
+      formatted_query << "\n" << ' ' * indent << "}"
+      # If the next token isn't '}' or the last token, add a newline with the
+      # current indent
+      formatted_query << "\n" << ' ' * indent if next_token && next_token != '}'
+    when '(', ')'
+      formatted_query.rstrip!  # Remove any trailing whitespace before parenthesis
+      formatted_query << token
+    when ':'
+      formatted_query.rstrip!  # Remove any trailing whitespace before colon
+      formatted_query << token << ' '
+    else
+      # Regular attribute
+      formatted_query << token
+      if next_token == '{'
+        # Space before an opening brace
+        formatted_query << ' '
+      elsif next_token == '}'
+        # Newline before a closing brace
+        formatted_query << "\n" << ' ' * indent
+      else
+        # Separate attributes on the same level with newline
+        formatted_query << "\n" << ' ' * indent
+      end
+    end
+  end
+
+  puts formatted_query
+end
+
+# Read the query from standard input
+input_query = $stdin.read
+pretty_print_graphql(input_query)
