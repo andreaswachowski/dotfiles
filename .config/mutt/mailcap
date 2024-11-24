@@ -16,3 +16,4 @@ application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; "/Application
 application/msword; "/Applications/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word" %s & sleep 2; test=test -n "$DISPLAY"
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; "/Applications/Microsoft\ Word.app/Contents/MacOS/Microsoft\ Word" %s & sleep 2; test=test -n "$DISPLAY"
 application/gzip; gunzip -c %s | sed 's/\\r$//'; copiousoutput; nametemplate=%s.xml.gz
+application/zip; unzip -c %s | less; copiousoutput; nametemplate=%s.zip
