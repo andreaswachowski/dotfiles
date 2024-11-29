@@ -81,13 +81,11 @@ return {
         show_diff = {
           normal = 'gmd',
         },
-        -- Show the prompt
-        show_system_prompt = {
-          normal = 'gmp',
+        show_info = {
+          normal = 'gmi',
         },
-        -- Show the user selection
-        show_user_selection = {
-          normal = 'gms',
+        show_context = {
+          normal = 'gmc',
         },
       },
     },
