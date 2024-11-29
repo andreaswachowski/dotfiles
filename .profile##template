@@ -24,9 +24,6 @@ export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 export VISUAL=nvim        # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
-export LESS="-erFX $LESS" # "-FX" make less exit if output is <1page. Handy for git log
-# -erX was necessary for color since around git 2.14.1 (but git itself might not be the reason)
-# Also see http://eigenjoy.com/2008/07/23/mac-os-x-color-showing-escwhatever-for-git-diff-colors-and-more/
 
 # -------------------------------------------------------------------------
 # PATH
