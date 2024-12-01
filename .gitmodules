@@ -19,9 +19,6 @@
 [submodule "local/src/alt"]
 	path = local/src/alt
 	url = https://github.com/uptech/alt.git
-[submodule ".local/share/yadm/archive-repo"]
-	path = .local/share/yadm/archive-repo
-	url = https://gitea.andreas-wachowski.net/andreas/yadm-archive.git
 [submodule "local/src/neomutt"]
 	path = local/src/neomutt
 	url = https://github.com/neomutt/neomutt.git
