@@ -1,6 +1,0 @@
-.password-store/*
-.config/mutt/aliases
-.config/mutt/tagfile.notmuch
-.config/git/identities/*
-!.gnupg/S.*
-.gnupg/*
