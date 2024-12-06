@@ -68,8 +68,8 @@ return {
         'diagnostics',
       },
       lualine_c = {
-        { 'filename', path = 1, fmt = trunc(120, 40, 50, false) },
-        { 'branch', fmt = trunc_branch(120, 15, 80, false) },
+        { 'filename', path = 1, fmt = trunc(100, 80, 50, false) },
+        { 'branch', fmt = trunc_branch(120, 15, 100, false) },
       },
       lualine_x = {
         {
@@ -79,7 +79,7 @@ return {
           end,
         },
         { 'fileformat', fmt = trunc(120, 1, 120, true) },
-        { 'filetype', fmt = trunc(90, 3, 70, true) },
+        { 'filetype', fmt = trunc(90, 3, 120, true) },
       },
       lualine_y = { { 'progress', fmt = trunc(90, 3, 90, true) } },
       lualine_z = { 'location' },
