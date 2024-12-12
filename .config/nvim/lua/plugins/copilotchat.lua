@@ -27,7 +27,7 @@ return {
     dir = nil, -- IS_DEV and "~/Projects/research/CopilotChat.nvim" or nil,
     'CopilotC-Nvim/CopilotChat.nvim',
     -- version = "v2.8.0",
-    branch = 'canary', -- Use the canary branch if you want to test the latest features but it might be unstable
+    branch = 'main',
     -- Do not use branch and version together, either use branch or version
     dependencies = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
