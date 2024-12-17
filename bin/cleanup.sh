@@ -5,6 +5,7 @@ FIND=$(command -v find)
 
 VIMSWAPDIR=$HOME/tmp/vim
 REGEX="$(echo $(pgrep vim) "$VIMSWAPDIR" | tr ' ' '|')"
+USER=$(whoami)
 
 DRY_RUN=false
 
@@ -43,8 +44,8 @@ esac
 # see http://stackoverflow.com/questions/762348/how-can-i-exclude-all-permission-denied-messages-from-find
 # for a discussion on the error output redirection
 
-$FIND $FIND_OPTS -type f -user andreas ! -regex ".*($REGEX)" $ACTION 2> >(grep -v 'Permission denied' >&2)
-$FIND $FIND_OPTS -type d -user andreas ! -regex ".*($REGEX)" $ACTION 2> >(grep -v 'Permission denied' >&2)
+$FIND $FIND_OPTS -type f -user $USER ! -regex ".*($REGEX)" $ACTION 2> >(grep -v 'Permission denied' >&2)
+$FIND $FIND_OPTS -type d -user $USER ! -regex ".*($REGEX)" $ACTION 2> >(grep -v 'Permission denied' >&2)
 
 $FIND $HOME/{Downloads,tmp} -mindepth 1 \
   -mount -mtime +60 ! -name '$HOME/tmp/vim/*' $ACTION 2> >(grep -v 'Permission denied' >&2)
