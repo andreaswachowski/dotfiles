@@ -1,4 +1,4 @@
-# vi: filetype=tmux
+# vi: filetype=tmux tw=0
 # https://github.com/gpakosz/.tmux
 
 # Plugins
