@@ -9,19 +9,16 @@ set -g @resurrect-processes 'ssh'
 set -g @resurrect-strategy-vim 'session'
 set -g @resurrect-strategy-nvim 'session'
 
-set -g @continuum-boot 'on'
-set -g @continuum-restore 'on'
-set -g @continuum-boot-options 'alacritty'
+set -g @plugin 'egel/tmux-gruvbox'
+set -g @tmux-gruvbox 'dark' # or 'light'
 
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-save-interval '30'
 set -g @continuum-restore 'on'
 set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'alacritty'
 
 # set -g @plugin 'tmux-plugins/tmux-battery'
-set -g @plugin 'egel/tmux-gruvbox'
-set -g @tmux-gruvbox 'dark' # or 'light'
-
 # Options
 
 # Login shell yes or no? Pro: rvm requires it. Contra: It triggers duplicated PATH settings
