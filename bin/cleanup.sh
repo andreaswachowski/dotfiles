@@ -50,5 +50,5 @@ $FIND $FIND_OPTS -type d -user $USER ! -regex ".*($REGEX)" $ACTION 2> >(grep -v 
 $FIND $HOME/{Downloads,tmp} -mindepth 1 \
   -mount -mtime +60 ! -name '$HOME/tmp/vim/*' $ACTION 2> >(grep -v 'Permission denied' >&2)
 $FIND $HOME/Desktop -mindepth 1 -type f \
-  \( -name 'Screen Shot *' -o -name 'Screenshot *' -o -name 'Screen Rec*' \) \
+  \( -name 'Screen Shot *' -o -name 'Screenshot *' -o -name 'Screen Rec*' -o -name '*.png' \) \
   -mount -mtime +60 $ACTION
