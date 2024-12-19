@@ -70,14 +70,17 @@ which-process-on-port() {
   lsof -n -i4TCP:$1 -i6TCP:$1
 }
 
-# With openssh v8.8, specifically commit
+# Usually, "SendEnv TERM" in ~/.ssh/config is enough to export tmux-256color or similar
+# to the destination. Since openssh v8.8, specifically commit
 # https://github.com/openssh/openssh-portable/commit/f64f8c00d158acc1359b8a096835849b23aa2e86
-# it is possible to use "SetEnv TERM=screen" in ~/.ssh/config
-# Otherwise, use this function
+# it is also possible to specify a separate TERM with "SetEnv TERM=screen" in ~/.ssh/config.
 function ssh {
-   if [[ "${TERM}" = screen* || tmux* ]]; then
-     env TERM=screen ssh "$@"
-   else
-     ssh "$@"
-   fi
+  local ssh_bin
+  ssh_bin=$(which ssh)
+  if [[ "${TERM}" == screen* || "${TERM}" == tmux* || "${TERM}" == alacritty* ]]; then
+    "$ssh_bin" "$@"
+  else
+    # Default to a save TERM value
+    TERM=screen "$ssh_bin" "$@"
+  fi
 }
