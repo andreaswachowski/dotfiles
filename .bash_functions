@@ -21,16 +21,16 @@ togif() {
 
 lint-stats() {
   linter=$1 # linter is tested with 'haml' and 'scss'
-  dir=$2 # possibly empty
+  dir=$2    # possibly empty
   $linter-lint $2 | awk '{ print $3 }' | sort | uniq -c | sort -n
 }
 
 branch-stats() {
-  git for-each-ref  --sort='-authorname' --format=' %(authorname) %09 %(refname)'  'refs/remotes'  | cut -f1 | uniq -c | sort -nr
+  git for-each-ref --sort='-authorname' --format=' %(authorname) %09 %(refname)' 'refs/remotes' | cut -f1 | uniq -c | sort -nr
 }
 
 my-branches() {
-git for-each-ref  --sort='-authordate' --format=' %(authordate) %(authorname) %09 %(refname)'  'refs/remotes'  | grep "$(git config user.name)"
+  git for-each-ref --sort='-authordate' --format=' %(authordate) %(authorname) %09 %(refname)' 'refs/remotes' | grep "$(git config user.name)"
 }
 
 scss-lint-stats() {
@@ -39,7 +39,7 @@ scss-lint-stats() {
 
 # http://stackoverflow.com/questions/18364146/show-all-commits-whose-diff-contain-specific-string
 git-commits-containing-pattern() {
-  git rev-list HEAD | while read rev; do   if git show -p $rev | grep "$1" >/dev/null; then echo $rev; fi; done
+  git rev-list HEAD | while read rev; do if git show -p $rev | grep "$1" >/dev/null; then echo $rev; fi; done
 }
 
 browser-sync-rails() {
