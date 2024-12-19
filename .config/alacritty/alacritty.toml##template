@@ -2,7 +2,7 @@
 import = ["~/.config/alacritty/gruvbox-modified.toml"]
 
 [env]
-TERM = "xterm-256color"
+TERM = "alacritty"
 
 [terminal.shell]
 {% if yadm.os == "Darwin" %}
