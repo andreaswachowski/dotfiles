@@ -1,0 +1,18 @@
+# vi: filetype=muttrc
+
+
+set folder             = ~/Mail/archive
+
+mailboxes `ls -1 ~/Mail/archive | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
+
+save-hook ~r01/01/1999-31/12/1999 =1999
+save-hook ~r01/01/2000-31/12/2000 =2000
+save-hook ~r01/01/2001-31/12/2001 =2001
+save-hook ~r01/01/2002-31/12/2002 =2002
+save-hook ~r01/01/2003-31/12/2003 =2003
+save-hook ~r01/01/2004-31/12/2004 =2004
+save-hook ~r01/01/2005-31/12/2005 =2005
+save-hook ~r01/01/2005-31/12/2006 =2006
+save-hook ~r01/01/2007-31/12/2007 =2007
+
+set folder = ~/Mail
