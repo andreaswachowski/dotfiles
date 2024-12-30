@@ -5,9 +5,12 @@ set folder             = ~/Mail/archive
 
 mailboxes `ls -1 ~/Mail/archive | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
 
-set record              = "=Local.Sent"
+set record              = "+Sent"
+set spool_file          = "+Inbox"
+set postponed           = "+Drafts"
+set trash               = "+Trash"
 
-folder-hook "=Local.Sent" "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30t %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
+folder-hook "=Sent" "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30t %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
 
 save-hook ~r01/01/1996-31/12/1996 =1996
 save-hook ~r01/01/1997-31/12/1997 =1997
