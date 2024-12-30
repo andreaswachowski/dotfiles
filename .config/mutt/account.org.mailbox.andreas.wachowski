@@ -25,6 +25,7 @@ mailboxes -label Inbox-Mailbox ~/Mail/mailbox.org/INBOX
 folder-hook . "set sort=threads" # like gmail
 folder-hook . "set sort_aux=reverse-last-date-received" # like gmail
 folder-hook ~/Mail/mailbox.org/INBOX "set sort=date-received"
+folder-hook "=Sent" "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30t %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
 
 source ~/.config/mutt/notmuch-mailboxes
 set folder = ~/Mail/mailbox.org # reset after it was set to ~/Mail in notmuch-mailboxes
