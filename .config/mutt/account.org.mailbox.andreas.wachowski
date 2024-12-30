@@ -30,25 +30,27 @@ source ~/.config/mutt/notmuch-mailboxes
 set folder = ~/Mail/mailbox.org # reset after it was set to ~/Mail in notmuch-mailboxes
 mailboxes `ls -1 ~/Mail/mailbox.org | grep -v INBO | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
 
-save-hook ~r01/01/2007-31/12/2007 =archives.2007
-save-hook ~r01/01/2008-31/12/2008 =archives.2008
-save-hook ~r01/01/2009-31/12/2009 =archives.2009
-save-hook ~r01/01/2010-31/12/2010 =archives.2010
-save-hook ~r01/01/2011-31/12/2011 =archives.2011
-save-hook ~r01/01/2012-31/12/2012 =archives.2012
-save-hook ~r01/01/2013-31/12/2013 =archives.2013
-save-hook ~r01/01/2014-31/12/2014 =archives.2014
-save-hook ~r01/01/2015-31/12/2015 =archives.2015
-save-hook ~r01/01/2016-31/12/2016 =archives.2016
-save-hook ~r01/01/2017-31/12/2017 =archives.2017
-save-hook ~r01/01/2018-31/12/2018 =archives.2018
-save-hook ~r01/01/2019-31/12/2019 =archives.2019
-save-hook ~r01/01/2020-31/12/2020 =archives.2020
-save-hook ~r01/01/2021-31/12/2021 =archives.2021
-save-hook ~r01/01/2022-31/12/2022 =archives.2022
-save-hook ~r01/01/2023-31/12/2023 =archives.2023
-save-hook ~r01/01/2024-31/12/2024 =archives.2024
-save-hook ~r01/01/2025-31/12/2025 =archives.2025
+save-hook ~r01/01/2007-31/12/2007 =Archive.2007
+save-hook ~r01/01/2008-31/12/2008 =Archive.2008
+save-hook ~r01/01/2009-31/12/2009 =Archive.2009
+save-hook ~r01/01/2010-31/12/2010 =Archive.2010
+save-hook ~r01/01/2011-31/12/2011 =Archive.2011
+save-hook ~r01/01/2012-31/12/2012 =Archive.2012
+save-hook ~r01/01/2013-31/12/2013 =Archive.2013
+save-hook ~r01/01/2014-31/12/2014 =Archive.2014
+save-hook ~r01/01/2015-31/12/2015 =Archive.2015
+save-hook ~r01/01/2016-31/12/2016 =Archive.2016
+save-hook ~r01/01/2017-31/12/2017 =Archive.2017
+save-hook ~r01/01/2018-31/12/2018 =Archive.2018
+save-hook ~r01/01/2019-31/12/2019 =Archive.2019
+save-hook ~r01/01/2020-31/12/2020 =Archive.2020
+save-hook ~r01/01/2021-31/12/2021 =Archive.2021
+save-hook ~r01/01/2022-31/12/2022 =Archive.2022
+save-hook ~r01/01/2023-31/12/2023 =Archive.2023
+save-hook ~r01/01/2024-31/12/2024 =Archive.2024
+save-hook ~r01/01/2025-31/12/2025 =Archive.2025
+save-hook ~r01/01/2025-31/12/2025 =Archive.2026
+save-hook ~r01/01/2025-31/12/2025 =Archive.2027
 
 bind index,pager g noop # to avoid neomutt warning in next line
 macro index,pager gd "<change-folder>=mailbox.org/Drafts<enter>"	"Go to 'Drafts'"
