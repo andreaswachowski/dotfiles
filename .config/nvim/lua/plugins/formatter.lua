@@ -46,7 +46,11 @@ return {
         vue = require('formatter.filetypes.vue').prettier,
         yaml = require('formatter.filetypes.yaml').prettier,
         ['*'] = {
-          require('formatter.filetypes.any').remove_trailing_whitespace,
+          function()
+            -- base64 encoded mail might need an empty line at EOF
+            if vim.bo.filetype == 'mail' then return nil end
+            return require('formatter.filetypes.any').remove_trailing_whitespace
+          end,
         },
       },
     })
