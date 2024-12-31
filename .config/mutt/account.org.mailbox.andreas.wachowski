@@ -3,6 +3,10 @@
 
 set from                = "mail@andreas-wachowski.de"
 set realname            = "Andreas Wachowski"
+alternates andreas.wachowski@googlemail.com
+alternates andreas.wachowski@gmail.com
+alternates andreas.wachowski@xing.com
+alternates andreas.wachowski@gmx.de
 
 set imap_user           = "andreas.wachowski@mailbox.org"
 set imap_pass="pass andreas.wachowski@mailbox.org |"
