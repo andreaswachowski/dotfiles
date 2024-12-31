@@ -3,6 +3,8 @@
 
 set from                = "mail@andreas-wachowski.de"
 set realname            = "Andreas Wachowski"
+
+# Alternates are needed for %L to work and show recipients instead of the sender
 alternates andreas.wachowski@googlemail.com
 alternates andreas.wachowski@gmail.com
 alternates andreas.wachowski@xing.com

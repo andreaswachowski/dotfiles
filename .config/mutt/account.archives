@@ -4,6 +4,8 @@
 set folder             = ~/Mail/archive
 
 set from = 'andreas.wachowski@gmx.de'
+
+# Alternates are needed for %L to work and show recipients instead of the sender
 alternates udmb@rz.uni-karlsruhe.de
 alternates amw7043@fisher.UnivNorthCo.EDU
 alternates wach8050@blue.unco.edu
