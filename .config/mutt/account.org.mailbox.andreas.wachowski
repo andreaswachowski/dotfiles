@@ -56,8 +56,11 @@ save-hook ~r01/01/2022-31/12/2022 =Archive.2022
 save-hook ~r01/01/2023-31/12/2023 =Archive.2023
 save-hook ~r01/01/2024-31/12/2024 =Archive.2024
 save-hook ~r01/01/2025-31/12/2025 =Archive.2025
-save-hook ~r01/01/2025-31/12/2025 =Archive.2026
-save-hook ~r01/01/2025-31/12/2025 =Archive.2027
+save-hook ~r01/01/2026-31/12/2026 =Archive.2026
+save-hook ~r01/01/2027-31/12/2027 =Archive.2027
+save-hook ~r01/01/2028-31/12/2028 =Archive.2028
+save-hook ~r01/01/2029-31/12/2029 =Archive.2029
+save-hook ~r01/01/2030-31/12/2030 =Archive.2030
 
 bind index,pager g noop # to avoid neomutt warning in next line
 macro index,pager gd "<change-folder>=mailbox.org/Drafts<enter>"	"Go to 'Drafts'"
