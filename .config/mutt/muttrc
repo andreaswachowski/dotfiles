@@ -58,7 +58,7 @@ set include                                                            # always 
 set forward_format      = "Fwd: %s"                                    # when forwarding email, simply add a Fwd to the subject
 set wrap = 78
 set smart_wrap                                                         # dont wrap mid word
-set hidden_tags = "inbox,replied,unread,attachment,newsletter"
+set hidden_tags = "inbox,replied,unread,attachment,signed,encrypted,newsletter"
 
 auto_view text/html                                                    # autoview html
 alternative_order text/plain text/enriched text/html                   # save html for last
