@@ -43,6 +43,10 @@ set certificate_file    = ~/.cache/mutt/certificates
 mailboxes -label Inbox-Mailbox ~/Mail/mailbox.org/INBOX
 
 folder-hook . "set sort=threads" # like gmail
+
+# Do not use "reverse-last-date-received". That would use "Received"
+# In some cases, the received date is years off the email's "Date: " value.
+# That's when I sent from Gmx and (much) later pushed those to Gmail.
 folder-hook . "set sort_aux=reverse-last-date-received" # like gmail
 folder-hook ~/Mail/mailbox.org/INBOX "set sort=date-received"
 folder-hook "=Sent" "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30t %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
@@ -51,30 +55,42 @@ source ~/.config/mutt/notmuch-mailboxes
 set folder = ~/Mail/mailbox.org # reset after it was set to ~/Mail in notmuch-mailboxes
 mailboxes `ls -1 ~/Mail/mailbox.org | grep -v INBO | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
 
-save-hook ~r01/01/2007-31/12/2007 =Archive.2007
-save-hook ~r01/01/2008-31/12/2008 =Archive.2008
-save-hook ~r01/01/2009-31/12/2009 =Archive.2009
-save-hook ~r01/01/2010-31/12/2010 =Archive.2010
-save-hook ~r01/01/2011-31/12/2011 =Archive.2011
-save-hook ~r01/01/2012-31/12/2012 =Archive.2012
-save-hook ~r01/01/2013-31/12/2013 =Archive.2013
-save-hook ~r01/01/2014-31/12/2014 =Archive.2014
-save-hook ~r01/01/2015-31/12/2015 =Archive.2015
-save-hook ~r01/01/2016-31/12/2016 =Archive.2016
-save-hook ~r01/01/2017-31/12/2017 =Archive.2017
-save-hook ~r01/01/2018-31/12/2018 =Archive.2018
-save-hook ~r01/01/2019-31/12/2019 =Archive.2019
-save-hook ~r01/01/2020-31/12/2020 =Archive.2020
-save-hook ~r01/01/2021-31/12/2021 =Archive.2021
-save-hook ~r01/01/2022-31/12/2022 =Archive.2022
-save-hook ~r01/01/2023-31/12/2023 =Archive.2023
-save-hook ~r01/01/2024-31/12/2024 =Archive.2024
-save-hook ~r01/01/2025-31/12/2025 =Archive.2025
-save-hook ~r01/01/2026-31/12/2026 =Archive.2026
-save-hook ~r01/01/2027-31/12/2027 =Archive.2027
-save-hook ~r01/01/2028-31/12/2028 =Archive.2028
-save-hook ~r01/01/2029-31/12/2029 =Archive.2029
-save-hook ~r01/01/2030-31/12/2030 =Archive.2030
+# Use "date-sent" (not received) because that is displayed on screen
+save-hook ~d01/01/1996-31/12/1996 =Archive.1996
+save-hook ~d01/01/1997-31/12/1997 =Archive.1997
+save-hook ~d01/01/1998-31/12/1998 =Archive.1998
+save-hook ~d01/01/1999-31/12/1999 =Archive.1999
+save-hook ~d01/01/2000-31/12/2000 =Archive.2000
+save-hook ~d01/01/2001-31/12/2001 =Archive.2001
+save-hook ~d01/01/2002-31/12/2002 =Archive.2002
+save-hook ~d01/01/2003-31/12/2003 =Archive.2003
+save-hook ~d01/01/2004-31/12/2004 =Archive.2004
+save-hook ~d01/01/2005-31/12/2005 =Archive.2005
+save-hook ~d01/01/2006-31/12/2006 =Archive.2006
+save-hook ~d01/01/2007-31/12/2007 =Archive.2007
+save-hook ~d01/01/2008-31/12/2008 =Archive.2008
+save-hook ~d01/01/2009-31/12/2009 =Archive.2009
+save-hook ~d01/01/2010-31/12/2010 =Archive.2010
+save-hook ~d01/01/2011-31/12/2011 =Archive.2011
+save-hook ~d01/01/2012-31/12/2012 =Archive.2012
+save-hook ~d01/01/2013-31/12/2013 =Archive.2013
+save-hook ~d01/01/2014-31/12/2014 =Archive.2014
+save-hook ~d01/01/2015-31/12/2015 =Archive.2015
+save-hook ~d01/01/2016-31/12/2016 =Archive.2016
+save-hook ~d01/01/2017-31/12/2017 =Archive.2017
+save-hook ~d01/01/2018-31/12/2018 =Archive.2018
+save-hook ~d01/01/2019-31/12/2019 =Archive.2019
+save-hook ~d01/01/2020-31/12/2020 =Archive.2020
+save-hook ~d01/01/2021-31/12/2021 =Archive.2021
+save-hook ~d01/01/2022-31/12/2022 =Archive.2022
+save-hook ~d01/01/2023-31/12/2023 =Archive.2023
+save-hook ~d01/01/2024-31/12/2024 =Archive.2024
+save-hook ~d01/01/2025-31/12/2025 =Archive.2025
+save-hook ~d01/01/2026-31/12/2026 =Archive.2026
+save-hook ~d01/01/2027-31/12/2027 =Archive.2027
+save-hook ~d01/01/2028-31/12/2028 =Archive.2028
+save-hook ~d01/01/2029-31/12/2029 =Archive.2029
+save-hook ~d01/01/2030-31/12/2030 =Archive.2030
 
 bind index,pager g noop # to avoid neomutt warning in next line
 macro index,pager gd "<change-folder>=mailbox.org/Drafts<enter>"	"Go to 'Drafts'"
