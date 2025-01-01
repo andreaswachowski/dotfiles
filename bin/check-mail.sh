@@ -26,7 +26,7 @@ for email in "$ARCHIVE_PATH/"{new,cur}/*; do
     year=$(grep -m1 '^Date:' "$email" | awk '{print $5}')
     if [[ -n "$year" ]] && [[ "$year" =~ ^20.* ]]; then
       mmkdir "$ARCHIVE_PATH.$year"
-      mrefile -v "$email" "$ARCHIVE_PATH.$year/cur"
+      mrefile -v "$email" "$ARCHIVE_PATH.$year"
     else
       echo Cannot move "$email"
     fi
