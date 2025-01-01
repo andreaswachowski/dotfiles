@@ -33,6 +33,6 @@ for email in "$ARCHIVE_PATH/"{new,cur}/*; do
   fi
 done
 
-# mbsync gmail
+mbsync gmail
 notmuch new
 notmuch tag --batch --input="${HOME}/.config/mutt/tagfile.notmuch"
