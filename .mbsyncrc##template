@@ -48,7 +48,7 @@ Create Both
 Remove Near
 Expunge Both
 SyncState *
-Patterns * !scriptlabels* !"[Google Mail]/All Mail"
+Patterns * !scriptlabels* !"[Google Mail]/Chats"
 
 Channel mailbox
 Far :mailbox-org-remote:
