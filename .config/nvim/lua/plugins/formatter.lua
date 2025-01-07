@@ -49,7 +49,7 @@ return {
           function()
             -- base64 encoded mail might need an empty line at EOF
             if vim.bo.filetype == 'mail' then return nil end
-            return require('formatter.filetypes.any').remove_trailing_whitespace
+            return require('formatter.filetypes.any').remove_trailing_whitespace()
           end,
         },
       },
