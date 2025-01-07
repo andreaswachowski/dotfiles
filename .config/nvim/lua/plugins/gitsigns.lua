@@ -19,7 +19,13 @@ return {
       topdelete = { text = '‾' },
       changedelete = { text = '~' },
     },
-    _on_attach_pre = function(_, callback) require('gitsigns-yadm').yadm_signs(callback) end,
+    _on_attach_pre = function(_, callback)
+      local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+
+      if ft == 'org' then return nil end
+
+      require('gitsigns-yadm').yadm_signs(callback)
+    end,
     on_attach = function(bufnr)
       vim.keymap.set(
         'n',
