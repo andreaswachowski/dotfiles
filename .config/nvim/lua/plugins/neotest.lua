@@ -4,6 +4,7 @@ return {
     'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
+    'alfaix/neotest-gtest',
     'antoinemadec/FixCursorHold.nvim',
     'olimorris/neotest-rspec',
     'nvim-neotest/neotest-plenary',
