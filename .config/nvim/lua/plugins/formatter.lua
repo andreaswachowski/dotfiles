@@ -7,6 +7,14 @@ return {
     local formatter = require('formatter')
     formatter.setup({
       filetype = {
+        -- Install cmake-format to the project with
+        --
+        --     python3 -m venv venv
+        --     source venv/bin/activate
+        --     python3 -m pip install cmakelang
+        --
+        -- Later, activate the venv before starting the editing session.
+        cmake = require('formatter.filetypes.cmake').cmakeformat,
         cpp = {
           function()
             return {
