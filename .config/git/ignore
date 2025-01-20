@@ -14,6 +14,7 @@ dots/tmux/resurrect/
 docker-compose.override.yml
 .projections.json
 .ignore
+$HOME/Documents/git_projects/work/*/.mise.toml
 
 # mailmap to configure vim-fugitive
 .mailmap
