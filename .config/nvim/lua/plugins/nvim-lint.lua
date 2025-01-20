@@ -4,13 +4,13 @@ return {
     require('lint').linters_by_ft = {
       css = { 'stylelint' },
       dockerfile = { 'hadolint' },
-      javascript = { 'eslint' },
-      javascriptreact = { 'eslint' },
+      javascript = { 'eslint_d' },
+      javascriptreact = { 'eslint_d' },
       json = { 'jsonlint' },
       markdown = { 'vale' },
       sh = { 'shellcheck' },
-      typescript = { 'eslint' },
-      typescriptreact = { 'eslint' },
+      typescript = { 'eslint_d' },
+      typescriptreact = { 'eslint_d' },
       yaml = { 'yamllint' },
       ['yaml.ansible'] = { 'ansible_lint' },
     }
