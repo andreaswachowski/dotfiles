@@ -31,7 +31,7 @@ SHA256=$FILENAME.sha256sum
 curl -L "https://github.com/neovim/neovim/releases/download/nightly/$FILENAME" >"$FILENAME"
 curl -L "https://github.com/neovim/neovim/releases/download/nightly/$SHA256" >"$SHA256"
 
-sha256sum --check <"$SHA256" || exit 1
+sha256sum --check "$SHA256" || exit 1
 
 tar zxf "$FILENAME"
 
