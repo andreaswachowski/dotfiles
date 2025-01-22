@@ -1,3 +1,3 @@
 return {
-  cmd = { 'clangd', '--compile-commands-dir=build' },
+  cmd = { 'clangd', '--compile-commands-dir=Debug' },
 }
