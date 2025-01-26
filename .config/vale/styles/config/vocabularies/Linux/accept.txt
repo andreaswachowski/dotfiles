@@ -1,0 +1,9 @@
+rg
+htop
+iftop
+iotop
+nvtop
+asitop
+btop
+perf
+wavemon

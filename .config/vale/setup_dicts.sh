@@ -1,12 +1,31 @@
 #!/usr/bin/env bash
 
-DICT_URL="https://cgit.freedesktop.org/libreoffice/dictionaries/plain/dictionaries"
-LANGS=("de_DE" "en_US" "fr_FR")
+DICT_URL="https://cgit.freedesktop.org/libreoffice/dictionaries/tree"
+DICT_DIR=~/.config/vale/styles/config/dictionaries
 
-for LANG in "${LANGS[@]}"; do
-  curl -O "$DICT_URL/${LANG:0:2}/${LANG}_frami.dic"
-  curl -O "$DICT_URL/${LANG:0:2}/${LANG}_frami.aff"
-  mkdir -p ~/.config/vale/config/styles/dictionaries
-  mv "${LANG}_frami.dic" ~/.config/vale/styles/config/dictionaries/"$LANG".dic
-  mv "${LANG}_frami.aff" ~/.config/vale/styles/config/dictionaries/"$LANG".aff
+declare -A dicts=(
+  ["de/de_DE_frami"]="de_DE"
+  ["en/en_US"]="en_US"
+  ["fr_FR/fr"]="fr_FR"
+)
+
+if [ ! -d $DICT_DIR ]; then
+  mkdir -p $DICT_DIR
+fi
+
+for dict in "${!dicts[@]}"; do
+  for ext in dic aff; do
+    curl -O "$DICT_URL/$dict.${ext}"
+    src_file="${dict##*/}.${ext}"
+    dest_file="$DICT_DIR/${dicts[${dict}]}.${ext}"
+    if file -I "$src_file" | grep 8859 >/dev/null; then
+      # The German de_DE_frami.aff is in ISO-8859-1, and unless its UTF-8,
+      # vale bails while compiling the expression "[^aeiouhlräüö]lig".
+      echo "Converting $src_file from ISO-8859-1 to UTF-8"
+      iconv -f iso-8859-1 -t utf-8 "$src_file" >"$dest_file"
+      rm "$src_file"
+    else
+      mv "$src_file" "$dest_file"
+    fi
+  done
 done
