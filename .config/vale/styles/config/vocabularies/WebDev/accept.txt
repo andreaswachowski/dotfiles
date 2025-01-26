@@ -1,0 +1,8 @@
+Artifactory
+Colima
+Docusaurus
+Gemfile
+Sidekiq
+eslint
+pnpm
+rubocop
