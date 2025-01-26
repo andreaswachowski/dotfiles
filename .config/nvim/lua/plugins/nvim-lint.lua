@@ -9,6 +9,7 @@ return {
       json = { 'jsonlint' },
       markdown = { 'vale' },
       sh = { 'shellcheck' },
+      text = { 'vale' },
       typescript = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
       yaml = { 'yamllint' },
