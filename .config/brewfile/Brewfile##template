@@ -28,6 +28,8 @@ brew 'ansible'
 brew 'universal-ctags', args: ['HEAD']
 brew 'bat'
 brew 'cmake' # required to install YouCompleteMe
+brew 'atop'
+brew 'btop'
 brew 'ctop'
 brew 'curl-openssl'
 brew 'homebrew-ffmpeg/ffmpeg/ffmpeg'
@@ -71,6 +73,8 @@ brew 'poppler'
 brew 'jq'
 
 brew 'saulpw/vd/visidata'
+
+brew llama.cpp
 
 # Casks
 cask 'authy'
