@@ -1,8 +1,17 @@
-Artifactory
-Colima
+# https://vale.sh/docs/keys/vocab
+Dockerfiles?
 Docusaurus
 Gemfile
-Sidekiq
+Jira
+Mattermost
+[Aa]pp[Ss]ignal
+[Aa]rtifactory
+[Cc]olima
+[Gg]it[Ll]ab
+[Pp]ulumi
+[Ss]idekiq
+backport(s|ed|ing)?
 eslint
+namespace
 pnpm
 rubocop
