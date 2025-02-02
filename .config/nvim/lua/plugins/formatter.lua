@@ -15,21 +15,7 @@ return {
         --
         -- Later, activate the venv before starting the editing session.
         cmake = require('formatter.filetypes.cmake').cmakeformat,
-        cpp = {
-          function()
-            return {
-              exe = 'clang-format',
-              args = {
-                '-assume-filename=',
-                vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
-                -- https://clang.llvm.org/docs/ClangFormatStyleOptions.html
-                -- https://github.com/mhartington/formatter.nvim/issues/52
-                '--style="{BasedOnStyle: Chromium}"',
-              },
-              stdin = true,
-            }
-          end,
-        },
+        cpp = require('formatter.filetypes.cpp').clangformat,
         javascript = require('formatter.filetypes.javascript').prettier,
         javascriptreact = require('formatter.filetypes.javascript').prettier,
         json = require('formatter.filetypes.json').prettier,
