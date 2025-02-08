@@ -19,8 +19,9 @@ brew 'node' # for yarn
 brew 'yarn' # for vim's markdown-preview
 
 cask '1password'
+cask 'alacritty'
 cask 'carbon-copy-cloner'
 cask 'firefox'
 cask 'hammerspoon'
 cask 'istat-menus'
-cask 'alacritty'
+cask 'karabiner-elements'
