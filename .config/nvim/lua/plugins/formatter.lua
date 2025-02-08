@@ -19,7 +19,18 @@ return {
         javascript = require('formatter.filetypes.javascript').prettier,
         javascriptreact = require('formatter.filetypes.javascript').prettier,
         json = require('formatter.filetypes.json').prettier,
-        lua = require('formatter.filetypes.lua').stylua,
+        lua = {
+          function()
+            local file = vim.api.nvim_buf_get_name(0)
+            local content = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
+            if content:find('-- noformat') then return nil end
+            return {
+              exe = 'stylua',
+              args = { '-' },
+              stdin = true,
+            }
+          end,
+        },
         sh = {
           require('formatter.filetypes.sh').shfmt,
 
