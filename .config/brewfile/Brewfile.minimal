@@ -21,5 +21,6 @@ brew 'yarn' # for vim's markdown-preview
 cask '1password'
 cask 'carbon-copy-cloner'
 cask 'firefox'
+cask 'hammerspoon'
 cask 'istat-menus'
 cask 'alacritty'
