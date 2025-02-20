@@ -1,55 +1,56 @@
 {
-  "profiles": [
-    {
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "Right Cmd → Hyper Key (⌃⌥⇧⌘)",
-            "manipulators": [
-              {
-                "from": { "key_code": "right_command" },
-                "to": [
-                  {
-                    "key_code": "left_shift",
-                    "modifiers": ["left_command", "left_control", "left_option"]
-                  }
-                ],
-                "type": "basic",
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Right Cmd → Hyper Key (⌃⌥⇧⌘)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "is_keyboard": true,
+                                                "product_id": 835,
+                                                "vendor_id": 1452
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "key_code": "right_command" },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
                         "is_keyboard": true,
                         "product_id": 835,
                         "vendor_id": 1452
-                      }
+                    },
+                    "ignore": true,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "escape" }]
+                        }
                     ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "devices": [
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 835,
-            "vendor_id": 1452
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "caps_lock" },
-              "to": [{ "key_code": "escape" }]
-            }
-          ]
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
-      ],
-      "name": "Default profile",
-      "selected": true,
-      "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
-    }
-  ]
+    ]
 }
