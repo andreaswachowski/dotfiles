@@ -1,17 +1,6 @@
 # vi: filetype=sh
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
-export JIRA_HOME=/Users/andreas/local/atlassian-jira-current
-export PATH=$PATH:$HOME/local/atlassian-plugin-sdk-3.10.3/bin
-
-# For Homebrew:
-export PATH=$PATH:/usr/local/sbin
-
-# For atlassian tools
-export MAVEN_OPTS=-Xmx256m
-export ATLAS_OPTS="-Xmx512m -XX:MaxPermSize=160m"
-
-# For Documents/Startup
-export PATH=/usr/local/mysql/bin:$PATH:/usr/X11/bin:$HOME/bin/dvd
+export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
 export VIM_APP_DIR=$HOME/local
 
