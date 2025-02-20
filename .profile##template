@@ -65,7 +65,7 @@ if [ -f $OS_SPECIFIC_PROFILE ]; then
   . $OS_SPECIFIC_PROFILE
 fi
 
-HOST_SPECIFIC_PROFILE=~/.config/sh/profile.host.$(uname -n)
+HOST_SPECIFIC_PROFILE=~/.config/sh/profile.host.$(uname -n | cut -d. -f1)
 if [ -f $HOST_SPECIFIC_PROFILE ]; then
   # shellcheck source=/dev/null
   . $HOST_SPECIFIC_PROFILE
