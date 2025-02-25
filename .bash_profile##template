@@ -17,15 +17,13 @@ if [ -z "$TMUX" ] && [ -r ~/.profile ]; then
   . ~/.profile
 fi
 
-os_specific_file="$HOME/.config/bash/bash_profile.os.$(uname -s)"
-if [ -f "$os_specific_file" ]; then
-  . $os_specific_file
-fi
+bash_profile_os=~/.config/bash/bash_profile-os
+# shellcheck disable=SC1090
+[[ -f $bash_profile_os ]] && source "$bash_profile_os"
 
-host_specific_file="$HOME/.config/bash/bash_profile.host.$(uname -n)"
-if [ -f "$host_specific_file" ]; then
-  . $host_specific_file
-fi
+bash_profile_local=~/.config/bash/bash_profile-local
+# shellcheck disable=SC1090
+[[ -r $bash_profile_local ]] && source "$bash_profile_local"
 
 # ---------------------------------------------------------------------------
 #

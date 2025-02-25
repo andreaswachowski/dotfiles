@@ -84,3 +84,11 @@ function ssh {
     TERM=screen "$ssh_bin" "$@"
   fi
 }
+
+bash_functions_os="$HOME/.config/bash/bash_functions-os"
+# shellcheck disable=SC1090
+[[ -r $bash_functions_os ]] && source "$bash_functions_os"
+
+bash_functions_local="$HOME/.config/bash/bash_functions-local"
+# shellcheck disable=SC1090
+[[ -r $bash_functions_local ]] && source "$bash_functions_local"
