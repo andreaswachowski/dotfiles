@@ -1,4 +1,6 @@
 # vi:filetype=sh
+#
+# shellcheck shell=bash
 # From http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980 :
 #
 # ~/.bashrc is the place to put stuff that applies only to bash itself,
@@ -19,7 +21,7 @@
 alias be="bundle exec"
 alias k="kubectl"
 alias kx="kubectx"
-alias yvim="GIT_DIR=$HOME/.local/share/yadm/repo.git GIT_WORK_TREE=$HOME vim"
+alias yvim='GIT_DIR=$HOME/.local/share/yadm/repo.git GIT_WORK_TREE=$HOME vim'
 alias dc="docker-compose"
 alias ag='echo "use rg instead (due to ag not using .ignore when in subdirectories, see issues 1251, 287. Also last release 3 years old.)"'
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
@@ -47,6 +49,7 @@ else
   export PS1='\h:\w$(date +'%H:%M:%S') $PROMPT_CHAR '
 fi
 
+# shellcheck disable=SC1091
 [[ -r ~/.bash_functions ]] && source "$HOME/.bash_functions"
 
 # See "I have [bash] history back to ~2003" on https://news.ycombinator.com/item?id=10162189
@@ -114,10 +117,11 @@ fi
 # unless GPG_TTY is set.
 # https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html
 # https://unix.stackexchange.com/questions/257061/gentoo-linux-gpg-encrypts-properly-a-file-passed-through-parameter-but-throws-i/257065#257065
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
 export RIPGREP_CONFIG_PATH
 
 eval "$(zoxide init bash)"
-eval "$($HOME/.local/bin/mise activate bash)"
+eval "$("$HOME/.local/bin/mise" activate bash)"
