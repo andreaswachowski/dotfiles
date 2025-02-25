@@ -1,0 +1,4 @@
+# vi: filetype=sh
+
+PATH=/opt/homebrew/opt/mysql@8.0/bin:$PATH
+export PATH
