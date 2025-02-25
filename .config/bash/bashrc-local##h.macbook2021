@@ -12,7 +12,6 @@ case "$-" in *i*)
   alias less="less -R"
   alias a2ps="a2ps --medium=a4"
   alias urxvt="urxvt --perl-lib $HOME/bin -pe tabbed -geometry 120x40+0+0"
-
   alias start_mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM start"
   alias stop_mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
 
@@ -49,7 +48,7 @@ case "$-" in *i*)
   #		"bundle exec rails server"|server)
   #			echo -e "\033];Server\007"
   #			;;
-#		"bundle exec rake sunspot:solr:run"|solr|/usr/local/bin/solr)
+  #		"bundle exec rake sunspot:solr:run"|solr|/usr/local/bin/solr)
   #			echo -e "\033];Solr\007"
   #			;;
   #	esac
@@ -66,5 +65,28 @@ case "$-" in *i*)
   # - Enable crontab editing on Mac OS X ------------------------------------
   # http://superuser.com/questions/359580/error-adding-cronjobs-in-mac-os-x-lion
   alias crontab="VIM_CRONTAB=true crontab"
+  eval "$(rbenv init -)"
+  nvm_sh="$(brew --prefix)/opt/nvm/nvm.sh"
+  # shellcheck disable=SC1090
+  [ -s "$nvm_sh" ] && source "$nvm_sh"
+  # shellcheck disable=SC1090
+  nvm_bash_completion="$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+  # shellcheck disable=SC1090
+  [ -s "$nvm_bash_completion" ] && source "$nvm_bash_completion"
+  alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
+  alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+  {
+    export PNPM_HOME="$HOME/Library/pnpm"
+    case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+    esac
+  }
+  for llvmfile in lldb-vscode llvm-symbolizer; do
+    if [[ ! -L "$(brew --prefix)/bin/${llvmfile}" ]]; then
+      ln -s "$(brew --prefix)"/opt/llvm/bin/${llvmfile} "$(brew --prefix)"/bin/
+    fi
+  done
   ;;
 esac

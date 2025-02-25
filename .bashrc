@@ -119,26 +119,5 @@ export GPG_TTY=$(tty)
 RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
 export RIPGREP_CONFIG_PATH
 
-{% if yadm.hostname == "macbook2021" %}
-eval "$(rbenv init -)"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"                                       # This loads nvm
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
-alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
-export BASH_SILENCE_DEPRECATION_WARNING=1
-{
-  export PNPM_HOME="$HOME/Library/pnpm"
-  case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
-}
-for llvmfile in lldb-vscode llvm-symbolizer; do
-  if [[ ! -L "$(brew --prefix)/bin/${llvmfile}" ]]; then
-    ln -s $(brew --prefix)/opt/llvm/bin/${llvmfile} $(brew --prefix)/bin/
-  fi
-done
-{% endif %}
-
 eval "$(zoxide init bash)"
 eval "$($HOME/.local/bin/mise activate bash)"
