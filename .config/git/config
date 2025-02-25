@@ -48,12 +48,6 @@
 [core]
 	editor = nvim
 	attributesfile = ~/.config/git/attributes
-[credential]
-{% if yadm.os == "Darwin" %}
-	helper = osxkeychain
-{% else %}
-	helper = cache
-{% endif %}
 [diff]
 	algorithm = histogram
 	colorMoved = plain
@@ -64,6 +58,7 @@
 	pruneTags = true
 	all = true
 [include]
+	path = ~/.config/git/config-local
 	path = ~/.config/git/identities/config
 [init]
 	templatedir = ~/.config/git/template
