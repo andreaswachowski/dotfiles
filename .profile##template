@@ -24,11 +24,6 @@ export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 export VISUAL=nvim # crontab -e on qnap depends on VISUAL and apparently does not read EDITOR
-{% if yadm.distro == "openSUSE" %}
-export LESS="-MFRX" # default in /etc/profile is "-M -I -R"
-# -X to quit without clearing screen (e.g. git diff)
-# -F to quit if one screen
-{% endif %}
 
 # -------------------------------------------------------------------------
 # PATH
