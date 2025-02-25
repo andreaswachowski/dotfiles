@@ -4,7 +4,10 @@
 	diff = always
 	branch = auto
 	interactive = auto
-
+[column]
+	ui = auto
+[commit]
+	verbose = true
 [core]
 	editor = nvim
 	attributesfile = ~/.config/git/attributes
@@ -47,9 +50,12 @@
 
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
 
 [push]
 	default = simple
+	autoSetupRemote = true
 [init]
 	templatedir = ~/.config/git/template
 	defaultBranch = main
@@ -58,9 +64,14 @@
 	path = ~/.config/git/identities/config
 
 [diff]
-	algorithm = patience
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+
 [rerere]
 	enabled = true
+	autoupdate = true
 [color "diff"]
 	old = "#FF0000"
 	new = "#8AE234"
@@ -76,3 +87,9 @@
 	displayRef = refs/notes/*
 [branch]
 	sort = -committerdate
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[tag]
+	sort = version:refname
