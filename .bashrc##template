@@ -23,7 +23,7 @@ alias yvim="GIT_DIR=$HOME/.local/share/yadm/repo.git GIT_WORK_TREE=$HOME vim"
 alias dc="docker-compose"
 alias ag='echo "use rg instead (due to ag not using .ignore when in subdirectories, see issues 1251, 287. Also last release 3 years old.)"'
 alias ti="vim ~/Documents/Dropbox/notes/todos/tickler.taskpaper"
-alias rg="rg --hidden --glob '!.git'"
+alias rg="rg --hidden --max-columns 255 -F --glob '!.git'"
 command -v nvim >/dev/null && alias vim="nvim"
 command -v xdg-open >/dev/null && alias open="xdg-open"
 
