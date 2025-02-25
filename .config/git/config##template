@@ -1,17 +1,4 @@
 # vi: filetype=gitconfig
-[color]
-	status = auto
-	diff = always
-	branch = auto
-	interactive = auto
-[column]
-	ui = auto
-[commit]
-	verbose = true
-[core]
-	editor = nvim
-	attributesfile = ~/.config/git/attributes
-
 [alias]
 	ci = commit
 	can = commit --amend --no-edit
@@ -40,38 +27,13 @@
 	tagv = for-each-ref --format='%(refname:short) %(objecttype) %(objectname) %(authordate:format:%Y-%m-%d-%H:%M:%S) %(subject) %(body)' refs/tags
 	wdiff = diff --word-diff
 	staash = stash --all
-
-{% if yadm.os == "Darwin" %}
-[credential]
-	helper = osxkeychain
-{% else %}
-	helper = cache
-{% endif %}
-
-[fetch]
-	prune = true
-	pruneTags = true
-	all = true
-
-[push]
-	default = simple
-	autoSetupRemote = true
-[init]
-	templatedir = ~/.config/git/template
-	defaultBranch = main
-
-[include]
-	path = ~/.config/git/identities/config
-
-[diff]
-	algorithm = histogram
-	colorMoved = plain
-	mnemonicPrefix = true
-	renames = true
-
-[rerere]
-	enabled = true
-	autoupdate = true
+[branch]
+	sort = -committerdate
+[color]
+	status = auto
+	diff = always
+	branch = auto
+	interactive = auto
 [color "diff"]
 	old = "#FF0000"
 	new = "#8AE234"
@@ -79,17 +41,48 @@
 	changed = "#FF0000"
 	untracked = "#FF0000"
 	added = "#8AE234"
-[pull]
-	rebase = true
-[remote "origin"]
-	fetch = +refs/notes/*:refs/notes/*
+[column]
+	ui = auto
+[commit]
+	verbose = true
+[core]
+	editor = nvim
+	attributesfile = ~/.config/git/attributes
+[credential]
+{% if yadm.os == "Darwin" %}
+	helper = osxkeychain
+{% else %}
+	helper = cache
+{% endif %}
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[include]
+	path = ~/.config/git/identities/config
+[init]
+	templatedir = ~/.config/git/template
+	defaultBranch = main
 [notes]
 	displayRef = refs/notes/*
-[branch]
-	sort = -committerdate
+[pull]
+	rebase = true
+[push]
+	default = simple
+	autoSetupRemote = true
 [rebase]
 	autoSquash = true
 	autoStash = true
 	updateRefs = true
+[remote "origin"]
+	fetch = +refs/notes/*:refs/notes/*
+[rerere]
+	enabled = true
+	autoupdate = true
 [tag]
 	sort = version:refname
