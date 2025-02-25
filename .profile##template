@@ -59,16 +59,16 @@ if [ -z "$BASH" ]; then
 fi
 
 # -------------------------------------------------------------------------
-OS_SPECIFIC_PROFILE=~/.config/sh/profile.os.$(uname -s)
-if [ -f $OS_SPECIFIC_PROFILE ]; then
+profile_os="${HOME}/.config/sh/profile-os"
+if [ -r $profile_os ]; then
   # shellcheck source=/dev/null
-  . $OS_SPECIFIC_PROFILE
+  source "$profile_os"
 fi
 
-HOST_SPECIFIC_PROFILE=~/.config/sh/profile.host.$(uname -n | cut -d. -f1)
-if [ -f $HOST_SPECIFIC_PROFILE ]; then
+profile_local="$HOME/.config/sh/profile-local"
+if [ -r $profile_local ]; then
   # shellcheck source=/dev/null
-  . $HOST_SPECIFIC_PROFILE
+  source "$profile_local"
 fi
 
 export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
