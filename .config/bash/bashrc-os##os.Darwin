@@ -1,3 +1,6 @@
+# vi:filetype=bash
+
+# shellcheck shell=bash
 if [ "${BASH_VERSINFO}" -ge 4 ] && [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 	. $(brew --prefix)/share/bash-completion/bash_completion
 fi

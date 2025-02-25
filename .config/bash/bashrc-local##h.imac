@@ -1,8 +1,9 @@
-# vi: filetype=sh
+# vi: filetype=bash
+# shellcheck shell=bash
 case "$-" in *i*)
 
-   # - Enable crontab editing on Mac OS X ------------------------------------
-   # http://superuser.com/questions/359580/error-adding-cronjobs-in-mac-os-x-lion
-   alias crontab="VIM_CRONTAB=true crontab"
-   ;;
+  # - Enable crontab editing on Mac OS X ------------------------------------
+  # http://superuser.com/questions/359580/error-adding-cronjobs-in-mac-os-x-lion
+  alias crontab="VIM_CRONTAB=true crontab"
+  ;;
 esac

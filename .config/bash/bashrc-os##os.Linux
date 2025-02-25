@@ -1,2 +1,5 @@
+# vi:filetype=bash
+# shellcheck shell=bash
+
 GIT_COMPLETE=/usr/share/bash-completion/completions/git
 [ -r $GIT_COMPLETE ] && source $GIT_COMPLETE

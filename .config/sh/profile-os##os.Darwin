@@ -1,3 +1,6 @@
+# vi: filetype=sh
+# shellcheck shell=sh
+
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 export MORE="-erFX $MORE" # Mac Os X uses less for more

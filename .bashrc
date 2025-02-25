@@ -1,6 +1,6 @@
-# vi:filetype=sh
+# vi:filetype=bash
 #
-# shellcheck shell=bash
+# shellcheck shell=bash disable=SC1090 disable=SC1091
 # From http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980 :
 #
 # ~/.bashrc is the place to put stuff that applies only to bash itself,
@@ -49,7 +49,6 @@ else
   export PS1='\h:\w$(date +'%H:%M:%S') $PROMPT_CHAR '
 fi
 
-# shellcheck disable=SC1091
 [[ -r ~/.bash_functions ]] && source "$HOME/.bash_functions"
 
 # See "I have [bash] history back to ~2003" on https://news.ycombinator.com/item?id=10162189
@@ -80,18 +79,15 @@ HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
 trap 'history -a $HISTFILE' DEBUG
 
 bashrc_os=~/.config/bash/bashrc-os
-# shellcheck disable=SC1090
 [[ -f $bashrc_os ]] && source "$bashrc_os"
 
 bashrc_local=~/.config/bash/bashrc-local
-# shellcheck disable=SC1090
 [[ -r $bashrc_local ]] && source "$bashrc_local"
 
 set -o vi
 
-if [ -f ~/.fzf.bash ]; then
-  # shellcheck source=/dev/null
-  source ~/.fzf.bash
+if [ -f "$HOME/.fzf.bash" ]; then
+  source "$HOME/.fzf.bash"
   # https://mike.place/2017/fzf-fd/
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow -E .git'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

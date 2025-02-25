@@ -1,4 +1,6 @@
 # vi: filetype=sh
+#
+# shellcheck shell=sh disable=SC1090 disable=SC1091
 # From http://superuser.com/questions/183870/difference-between-bashrc-and-bash-profile/183980#183980
 # ~/.profile is the place to put stuff that applies to your whole session,
 # such as programs that you want to start when you log in (but not
@@ -50,24 +52,20 @@ fi
 
 # -------------------------------------------------------------------------
 profile_os="${HOME}/.config/sh/profile-os"
-if [ -r $profile_os ]; then
-  # shellcheck source=/dev/null
-  source "$profile_os"
+if [ -r "$profile_os" ]; then
+  . "$profile_os"
 fi
 
 profile_local="$HOME/.config/sh/profile-local"
-if [ -r $profile_local ]; then
-  # shellcheck source=/dev/null
-  source "$profile_local"
+if [ -r "$profile_local" ]; then
+  . "$profile_local"
 fi
 
 export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 export SOPS_AGE_RECIPIENTS="age1xnpatet4zu07tqyr7yzcvedw02au4gjp4rmqlfx0dax9w5xfjqpqpgvk88"
 
 export NVM_DIR="$HOME/.nvm"
-# shellcheck source=/dev/null
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-# shellcheck source=/dev/null
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"                    # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # If nvm installed with Homebrew, look in /usr/local:

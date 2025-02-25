@@ -1,2 +1,3 @@
-# vi: syntax=sh
+# vi: filetype=sh
+# shellcheck shell=sh
 export TODOTXT_DEFAULT_ACTION=ls

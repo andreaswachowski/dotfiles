@@ -1,9 +1,11 @@
-# vi: filetype=sh
+# vi: filetype=bash
+# shellcheck shell=bash
+#
 case "$-" in *i*)
-	alias a2ps="a2ps --medium=a4"
-	alias vless=/usr/local/bin/vimpager
+  alias a2ps="a2ps --medium=a4"
+  alias vless=/usr/local/bin/vimpager
 
-	# If I use this line, I can't login anymore:
-	#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib:/usr/local/64bit/lib
-	;;
+  # If I use this line, I can't login anymore:
+  #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib:/usr/local/64bit/lib
+  ;;
 esac
