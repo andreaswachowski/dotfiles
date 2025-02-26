@@ -41,8 +41,6 @@
 	changed = "#FF0000"
 	untracked = "#FF0000"
 	added = "#8AE234"
-[column]
-	ui = auto
 [commit]
 	verbose = true
 [core]
