@@ -53,12 +53,14 @@ brew 'findutils'
 brew 'archivebox'
 
 brew 'docbook' # to compile the mutt info page
-brew 'urlview'
+brew 'khard'
 brew 'isync'
 brew 'msmtp'
 brew 'neomutt'
 brew 'notmuch'
 brew 'pandoc'
+brew 'urlview'
+brew 'vdirsyncer'
 
 # Kubernetes
 brew 'kubectl'
