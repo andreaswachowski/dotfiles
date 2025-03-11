@@ -5,14 +5,13 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = 'openai',
-    openai = {
-      endpoint = 'https://api.openai.com/v1',
-      model = 'gpt-4o', -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- timeout in milliseconds
-      temperature = 0, -- adjust if needed
+    provider = 'claude',
+    auto_suggestions_provider = 'claude',
+    claude = {
+      endpoint = 'https://api.anthropic.com',
+      model = 'claude-3-7-sonnet-20250219',
+      temperature = 0,
       max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
