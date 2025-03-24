@@ -3,5 +3,8 @@
 
 export ANDROID_HOME=~/Library/Android/sdk
 export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+export XDG_STATE_HOME=~/.local/state
 export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 export MORE="-erFX $MORE" # Mac Os X uses less for more
