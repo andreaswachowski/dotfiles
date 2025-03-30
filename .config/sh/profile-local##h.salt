@@ -19,5 +19,19 @@ export TODOTXT_DEFAULT_ACTION=ls
 # For reportlib, for OCR2PDF
 export PYTHONPATH=/home/andreas/local/lib64/python2.7/site-packages
 
+# So some applications won't launch from inside alacritty/tmux, with the error
+#
+#     Authorization required, but no authorization protocol specified qt.qpa.plugin:
+#     Could not load the Qt platform plugin "xcb" in "" even though it was found.This
+#
+# On plain konsole, it works.
+# "env" under alacritty is missing some crucial variables, in particular XDG_SESSION_TYPE.
+#
+# On https://bbs.archlinux.org/viewtopic.php?id=247292, more variables are imported:
+#     systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE
+#         XDG_SESSION_DESKTOP GPG_TTY XDG_CURRENT_DESKTOP
+# This is a hack, because it won't work with ssh (where the value should be "tty")
+export XDG_SESSION_TYPE=wayland
+
 #Enable core dumps
 ulimit -c unlimited
