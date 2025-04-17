@@ -1,5 +1,4 @@
 require('autocommands.git')
-require('autocommands.helm')
 require('autocommands.mail')
 require('autocommands.ruby')
 require('autocommands.telescope')
