@@ -4,6 +4,7 @@ return {
     require('lint').linters_by_ft = {
       css = { 'stylelint' },
       dockerfile = { 'hadolint' },
+      gitcommit = { 'vale' },
       javascript = { 'eslint_d' },
       javascriptreact = { 'eslint_d' },
       json = { 'jsonlint' },
