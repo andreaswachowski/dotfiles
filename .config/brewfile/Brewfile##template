@@ -80,6 +80,11 @@ brew 'saulpw/vd/visidata'
 
 brew llama.cpp
 
+# perl et al for latexindent, which requires some modules:
+# Run "cpanm File::HomeDir YAML::Tiny" afterwards
+brew perl
+brew cpanminus
+
 # Casks
 cask 'authy'
 cask 'docker-edge'

@@ -46,6 +46,15 @@ return {
             }
           end,
         },
+        tex = {
+          function()
+            return {
+              exe = "latexindent",
+              args = {"-"},
+              stdin = true
+            }
+          end
+        },
         typescript = require('formatter.filetypes.typescript').prettier,
         typescriptreact = require('formatter.filetypes.typescript').prettier,
         vue = require('formatter.filetypes.vue').prettier,
