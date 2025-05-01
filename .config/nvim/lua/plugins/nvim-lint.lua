@@ -1,6 +1,34 @@
 return {
   'mfussenegger/nvim-lint',
   config = function()
+    local lint = require('lint')
+
+    -- I use prettier in formatter.nvim which sets one space before a comment
+    -- By default, yamllint uses two, as per Python convention
+    -- For my current setting, I can live with prettier's convention as a default.
+    -- https://github.com/redhat-developer/vscode-yaml/issues/433
+    -- https://github.com/prettier/prettier/pull/10926
+    lint.linters.yamllint = {
+      cmd = 'yamllint',
+      stdin = true,
+      args = {
+        '-f',
+        'parsable',
+        '-d',
+        '{extends: default, rules: {comments: {min-spaces-from-content: 1}}}',
+        '-', -- read from stdin
+      },
+      stream = 'stdout',
+      ignore_exitcode = true,
+      parser = require('lint.parser').from_errorformat('%f:%l:%c: %t%*[^:]: %m', {
+        source = 'yamllint',
+        severity = {
+          W = vim.diagnostic.severity.WARN,
+          E = vim.diagnostic.severity.ERROR,
+        },
+      }),
+    }
+
     require('lint').linters_by_ft = {
       cpp = { 'cpplint' },
       css = { 'stylelint' },
