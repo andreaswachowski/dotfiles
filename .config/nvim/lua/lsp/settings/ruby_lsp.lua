@@ -35,7 +35,7 @@ return {
   -- https://github.com/Shopify/ruby-lsp/issues/1198#issuecomment-1946436302
   -- Debug with "lua =vim.lsp.get_clients()[1].config.init_options"
   init_options = { formatter = 'rubocop' },
-  cmd = { vim.fn.expand('$HOME/.rbenv/shims/ruby-lsp') },
+  cmd = { 'mise', 'exec', '--', 'ruby-lsp' },
   -- We want both the diagnostics (for the code actions)
   -- and the keyboard shortcuts from the general setup,
   -- so combine them into one function
