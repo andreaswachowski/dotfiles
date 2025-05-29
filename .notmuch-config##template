@@ -53,6 +53,8 @@ other_email=andreas.wachowski@mailbox.org;andreas.wachowski@gmail.com;andreas.wa
 #		in the mail store.
 #
 [new]
+exclude=gmail
+
 tags=unread;inbox;
 ignore=.uidvalidity;.mbsyncstate;.Spotlight-V100;.Trashes;.fseventsd
 

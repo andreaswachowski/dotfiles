@@ -35,4 +35,3 @@ done
 
 mbsync gmail
 notmuch new
-notmuch tag --batch --input="${HOME}/.config/mutt/tagfile.notmuch"
