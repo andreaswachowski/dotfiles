@@ -33,5 +33,4 @@ for email in "$ARCHIVE_PATH/"{new,cur}/*; do
   fi
 done
 
-mbsync gmail
 notmuch new
