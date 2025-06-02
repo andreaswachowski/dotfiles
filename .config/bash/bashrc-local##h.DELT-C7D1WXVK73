@@ -13,12 +13,6 @@ export NVM_DIR="$HOME/.nvm"
 
 alias bo="bundle open \`bundle list --name-only | fzf\`"
 
-# eval "$(rbenv init -)"
-# command -v rbenv >/dev/null && {
-  # Required by rbenv-default-gems,
-  # see https://github.com/rbenv/rbenv-default-gems/issues/1
-  export RBENV_ROOT=$HOME/.rbenv
-# }
 command -v rspec >/dev/null && {
   _fzf_complete_rspec() {
     _fzf_complete -- "$@" < <(fd _spec.rb spec)
