@@ -76,4 +76,4 @@ local build_lsp_configs = function()
   return lsp_handlers
 end
 
-mason_lspconfig.setup_handlers(build_lsp_configs())
+mason_lspconfig.setup(build_lsp_configs())
