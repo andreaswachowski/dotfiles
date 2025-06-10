@@ -1,7 +1,6 @@
 # vi:filetype=brewfile
 tap 'homebrew/homebrew-cask' || true
 tap 'universal-ctags/universal-ctags' || true
-tap 'homebrew/cask-versions'
 tap 'homebrew/bundle' || true
 tap 'uptech/homebrew-oss' || true
 tap 'filippo.io/age https://filippo.io/age' || true
