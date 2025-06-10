@@ -86,7 +86,7 @@ brew cpanminus
 
 # Casks
 cask 'authy'
-cask 'docker-edge'
+cask 'docker'
 cask 'flux'
 cask 'gimp'
 cask 'google-chrome'
