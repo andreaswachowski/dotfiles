@@ -6,7 +6,7 @@ return {
     { '<Bslash>cc', '<cmd>Git commit<cr>', desc = 'Git commit' },
     { '<Bslash>cv', '<cmd>Gdiff<cr>', desc = 'Git diff' },
     { '<Bslash>cl', '<cmd>Gclog<cr>', desc = 'Git log' },
-    { '<Bslash>cb', '<cmd>Git blame<cr>', desc = 'Git blame' },
+    { '<Bslash>cb', "<cmd>Git blame --date=format:'%Y-%m-%d %H:%M'<cr>", desc = 'Git blame' },
     ---@diagnostic enable: missing-fields
   },
   config = function()
