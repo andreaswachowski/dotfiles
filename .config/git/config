@@ -10,7 +10,12 @@
 	msg = log --format=%B -n 1
 	fpush = push --force-with-lease --force-if-includes
 	loglastpull = diff --stat master@{1} master
-	l = log --color=always --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(green)C:%ci %C(green)A:%ai %C(bold blue)<%ae>%Creset <%ce>'
+	# log author and committer info
+	lac = log --color=always --date=format:'%Y-%m-%d %H:%M' --graph --pretty=format:'%Cred%h%C(yellow)%d%Creset %s %C(bold blue)A:%ad %aN %C(green)C:%cd %cN%Creset'
+	# log only committer info
+	lc = log --color=always --date=format:'%Y-%m-%d %H:%M' --graph --pretty=format:'%Cred%h%C(yellow)%d%Creset %s %C(green)C:%cd %cN%Creset'
+	# log author info (default)
+	l = log --color=always --date=format:'%Y-%m-%d %H:%M' --graph --pretty=format:'%Cred%h%C(yellow)%d%Creset %s %C(bold blue)A:%ad %aN%Creset'
 	# log today (use | grep "A:<date>" for author date)
 	lt = l --since="yesterday"
 	# list branches, but with dates (in descending order)
