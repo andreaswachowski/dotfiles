@@ -13,5 +13,7 @@ return {
     -- Include (mailmap'ed) author and a date indication in the fugitive
     -- Glog quickfix entries
     vim.g.fugitive_summary_format = '%aN %ai %s'
+    -- Disable dynamic colors. Color contrast is too bad to read commit hashes sometimes
+    vim.g.fugitive_dynamic_colors = 0
   end,
 }
