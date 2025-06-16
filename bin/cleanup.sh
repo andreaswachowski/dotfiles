@@ -47,6 +47,9 @@ esac
 $FIND $FIND_OPTS -type f -user $USER ! -regex ".*($REGEX)" $ACTION 2> >(grep -v 'Permission denied' >&2)
 $FIND $FIND_OPTS -type d -user $USER ! -regex ".*($REGEX)" $ACTION 2> >(grep -v 'Permission denied' >&2)
 
+$FIND $HOME/.local/state/nvim/undo -mindepth 1 \
+  -mount -mtime +90 $ACTION 2> >(grep -v 'Permission denied' >&2)
+
 $FIND $HOME/{Downloads,tmp} -mindepth 1 \
   -mount -mtime +60 ! -name '$HOME/tmp/vim/*' $ACTION 2> >(grep -v 'Permission denied' >&2)
 $FIND $HOME/Desktop -mindepth 1 -type f \
