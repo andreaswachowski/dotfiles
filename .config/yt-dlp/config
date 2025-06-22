@@ -1,0 +1,8 @@
+-t mkv
+--write-info-json
+--write-thumbnail
+--embed-thumbnail
+--embed-info-json
+--embed-metadata
+
+-o ~/films/youtube/%(title)s.%(ext)s
