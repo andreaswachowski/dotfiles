@@ -37,14 +37,8 @@ else
 fi
 
 if command -v git >/dev/null 2>&1; then
-  function gitprompt {
-    BRANCH=$(git branch 2>/dev/null | cut -f2 -d* -s | cut -b 2-)
-    if [ "$BRANCH" ]; then
-      echo "[$BRANCH]"
-    fi
-    echo ""
-  }
-  export PS1='\u@\h:\w$(gitprompt)\n$(date +'%H:%M:%S') $PROMPT_CHAR '
+  . ~/.config/bash/git-prompt.sh
+  export PS1='\u@\h:\w$(__git_ps1 "[%s]")\n$(date +'%H:%M:%S') $PROMPT_CHAR '
 else
   export PS1='\h:\w$(date +'%H:%M:%S') $PROMPT_CHAR '
 fi
