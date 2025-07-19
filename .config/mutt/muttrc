@@ -95,6 +95,7 @@ source ~/.config/mutt/colors
 # https://github.com/neomutt/neomutt/issues/1448#issuecomment-440991425
 macro compose ,r "<rename-attachment>"
 
+# Convert markdown gfm to HTML and plaintext alternative content types
 # https://tom.wemyss.net/posts/neomutt-markdown-email/#3-configure-the-mutt-macro
 macro compose ,m \
 "<enter-command>set pipe_decode<enter>\
@@ -102,12 +103,11 @@ macro compose ,m \
 <pipe-message>pandoc -s -f gfm -t html5 -o /tmp/msg.html<enter>\
 <enter-command>unset pipe_decode<enter>\
 <attach-file>/tmp/msg.txt<enter>\
+<toggle-disposition>\
 <attach-file>/tmp/msg.html<enter>\
-<toggle-disposition><edit-type>^Utext/html; charset=utf-8<enter><enter><tag-entry>\
-<previous-entry><toggle-disposition><edit-type>^Utext/plain; charset=utf-8<enter><enter><tag-entry>\
-<group-alternatives><toggle-disposition><toggle-disposition>" \
-"Convert markdown gfm to HTML and plaintext alternative content types"
-
+<toggle-disposition>\
+<tag-entry><previous-entry><tag-entry><group-alternatives>\
+<move-up><End><detach-file>"
 
 # -- Accounts -------------------------------------------------------------
 
