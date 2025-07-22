@@ -1,4 +1,2 @@
 # vi: filetype=sh
-export LESS="-MFRX" # default in /etc/profile is "-M -I -R"
-# -X to quit without clearing screen (e.g. git diff)
-# -F to quit if one screen
+unset LESS # default in /etc/profile is "-M -I -R"
