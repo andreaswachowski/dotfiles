@@ -30,8 +30,16 @@ export PYTHONPATH=/home/andreas/local/lib64/python2.7/site-packages
 # On https://bbs.archlinux.org/viewtopic.php?id=247292, more variables are imported:
 #     systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE
 #         XDG_SESSION_DESKTOP GPG_TTY XDG_CURRENT_DESKTOP
-# This is a hack, because it won't work with ssh (where the value should be "tty")
-export XDG_SESSION_TYPE=wayland
+# Don't do this from an ssh-session (where XDG_SESSION_TYPE=tty)
+if ! who -m | grep -q pts; then
+  # This assumes the "wayland-" prefix, and does not take into account multiple compositors.
+  WAYLAND_SOCKET=$(find "$XDG_RUNTIME_DIR" -maxdepth 1 -name 'wayland-*' -type s)
+  if [ -n "$WAYLAND_SOCKET" ]; then
+    WAYLAND_DISPLAY=$(basename "$WAYLAND_SOCKET")
+    export WAYLAND_DISPLAY
+    export XDG_SESSION_TYPE=wayland
+  fi
+fi
 
 #Enable core dumps
 ulimit -c unlimited

@@ -13,7 +13,13 @@ if [ "$(uname -s)" == "Darwin" ]; then
   eval "$($BREW_PREFIX/bin/brew shellenv)"
 fi
 
+{% if yadm.distro == "openSUSE" %}
+# I need to read the profile so that wayland env variables are
+# available for QT applications (e.g., makemkv)
+if [ -r ~/.profile ]; then
+{% else %}
 if [ -z "$TMUX" ] && [ -r ~/.profile ]; then
+{% endif %}
   . ~/.profile
 fi
 
