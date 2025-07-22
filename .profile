@@ -56,6 +56,11 @@ if [ -r "$profile_os" ]; then
   . "$profile_os"
 fi
 
+profile_distro="${HOME}/.config/sh/profile-distro"
+if [ -r "$profile_distro" ]; then
+  . "$profile_distro"
+fi
+
 profile_local="$HOME/.config/sh/profile-local"
 if [ -r "$profile_local" ]; then
   . "$profile_local"
