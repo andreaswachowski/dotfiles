@@ -3,14 +3,21 @@ return {
   event = 'VeryLazy',
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
-    -- add any opts here
-    -- for example
-    provider = 'ollama',
-    ollama = {
-      endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
-      -- model = 'qwq:32b',
-      model = 'qwen2.5-coder:32b',
-      -- max_tokens = 32768,
+    providers = {
+      ollama = {
+        endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
+        -- model = 'qwq:32b',
+        model = 'qwen2.5-coder:32b',
+        -- max_tokens = 32768,
+      },
+      claude = {
+        endpoint = 'https://api.anthropic.com',
+        model = 'claude-3-7-sonnet-20250219',
+        extra_request_body = {
+          temperature = 0,
+          max_tokens = 4096,
+        },
+      },
     },
     behaviour = {
       auto_suggestions = true, -- Experimental stage
@@ -22,12 +29,6 @@ return {
       enable_token_counting = true, -- Whether to enable token counting. Default to true.
     },
     auto_suggestions_provider = 'ollama',
-    claude = {
-      endpoint = 'https://api.anthropic.com',
-      model = 'claude-3-7-sonnet-20250219',
-      temperature = 0,
-      max_tokens = 4096,
-    },
     windows = {
       width = 40,
     },
