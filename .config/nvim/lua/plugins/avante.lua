@@ -28,7 +28,7 @@ return {
       minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
       enable_token_counting = true, -- Whether to enable token counting. Default to true.
     },
-    auto_suggestions_provider = 'ollama',
+    auto_suggestions_provider = nil,
     windows = {
       width = 40,
     },
