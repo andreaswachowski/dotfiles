@@ -87,7 +87,7 @@ set sort_alias		= alias
 set reverse_alias	= yes
 set reverse_name	= yes
 
-set signature           = ~/.config/mutt/signature
+# set signature           = ~/.config/mutt/signature
 
 source ~/.config/mutt/colors
 
