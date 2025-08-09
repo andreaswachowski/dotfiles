@@ -48,6 +48,13 @@ browser-sync-rails() {
   browser-sync start --proxy="localhost:3000" --files="app/assets/stylesheets/**/*.css,  app/assets/javascripts/**/*.js, app/views/**/*.haml"
 }
 
+rtmux() {
+  cd ~/.tmux/resurrect/ || exit
+  find . | sort | tail -n 1 | xargs rm
+  find . -printf "%f\n" | sort | tail -n 1 | xargs -I {} ln -sf {} last
+  cd - || exit
+}
+
 git-remove-merged() {
   # http://devblog.springest.com/a-script-to-remove-old-git-branches
   git branch --merged develop | grep -v 'develop$' | grep -v 'master$' | xargs git branch -d
