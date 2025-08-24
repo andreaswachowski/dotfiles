@@ -50,7 +50,7 @@ return {
           function()
             return {
               exe = "latexindent",
-              args = {"-"},
+              args = {"-", "-l"},
               stdin = true
             }
           end
