@@ -4,18 +4,21 @@ return {
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
     providers = {
-      ollama = {
-        endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
-        -- model = 'qwq:32b',
-        model = 'qwen2.5-coder:32b',
-        -- max_tokens = 32768,
-      },
       claude = {
         endpoint = 'https://api.anthropic.com',
-        model = 'claude-3-7-sonnet-20250219',
+        model = 'claude-sonnet-4-20250514',
         extra_request_body = {
-          temperature = 0,
-          max_tokens = 4096,
+          temperature = 0.75,
+          max_tokens = 20480,
+        },
+        moonshot = {
+          endpoint = 'https://api.moonshot.ai/v1',
+          model = 'kimi-k2-0711-preview',
+          timeout = 30000, -- Timeout in milliseconds
+          extra_request_body = {
+            temperature = 0.75,
+            max_tokens = 32768,
+          },
         },
       },
     },
