@@ -5,6 +5,7 @@ let &packpath = &runtimepath
 ]]
 
 vim.cmd([[let g:matchup_matchparen_enabled = 0]])
+vim.cmd([[let g:markdown_syntax_conceal = 0]])
 
 -- vim.lsp.set_log_level('debug')
 
