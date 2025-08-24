@@ -191,7 +191,8 @@ macro index,pager I  <set-flag>O	"Mark as read"
 macro index,pager U  <clear-flag>O	"Mark as unread"
 macro index,pager gl <change-folder>?				"Go to 'Label'"
 # https://unix.stackexchange.com/questions/532358/how-to-archive-mail-by-year-in-mutt
-macro index,pager e "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive conversation"
+macro index,pager e "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive, mark read conversation"
+macro index,pager E "<save-message><enter>" "Archive, keep unread conversation"
 
 # Sync email
 macro index O '<shell-escape>check-mail.sh >/dev/null 2>&1 &<enter>' "Check for new mails"
