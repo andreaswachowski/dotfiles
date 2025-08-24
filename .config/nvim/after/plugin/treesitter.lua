@@ -42,7 +42,7 @@ require('nvim-treesitter.configs').setup({
       node_decremental = '<M-space>',
     },
   },
-  indent = { enable = true, disable = { 'ruby' } },
+  indent = { enable = true, disable = { 'ruby', 'markdown' } },
   highlight = { enable = true, additional_vim_regex_highlighting = { 'ruby' } },
   matchup = {
     -- https://github.com/andymass/vim-matchup/issues/198
