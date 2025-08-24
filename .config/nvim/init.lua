@@ -13,6 +13,7 @@ local modules = {
   'aw.globals',
   'config.options',
   'config.keymaps',
+  'config.env',
   'autocommands',
   'config.lazy',
   'lsp',
