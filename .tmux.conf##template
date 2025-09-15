@@ -39,7 +39,7 @@ set -g history-limit 10000
 # Fix delay during vim-escape.
 # https://superuser.com/questions/252214
 # https://superuser.com/questions/942677/consequences-of-escape-time-0-tmux-setting
-set -sg escape-time 20
+set -sg escape-time 5
 set -g focus-events on
 set -g renumber-windows on
 set -g base-index 1
