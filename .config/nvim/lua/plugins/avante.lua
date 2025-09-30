@@ -1,12 +1,19 @@
 return {
   'yetone/avante.nvim',
+  build = vim.fn.has('win32') ~= 0
+      and 'powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false'
+    or 'make',
   event = 'VeryLazy',
-  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  version = false, -- Never set this value to "*"! Never!
+  ---@module 'avante'
+  ---@type avante.Config
   opts = {
+    instructions_file = 'avante.md',
     providers = {
       claude = {
         endpoint = 'https://api.anthropic.com',
         model = 'claude-sonnet-4-20250514',
+        timeout = 30000, -- Timeout in milliseconds
         extra_request_body = {
           temperature = 0.75,
           max_tokens = 20480,
@@ -23,7 +30,7 @@ return {
       },
     },
     behaviour = {
-      auto_suggestions = true, -- Experimental stage
+      auto_suggestions = false, -- Experimental stage
       auto_set_highlight_group = true,
       auto_set_keymaps = true,
       auto_apply_diff_after_generation = false,
@@ -36,9 +43,6 @@ return {
       width = 40,
     },
   },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = 'make',
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'stevearc/dressing.nvim',
