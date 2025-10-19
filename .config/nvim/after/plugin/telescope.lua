@@ -12,6 +12,18 @@ telescope.setup({
         ['<C-d>'] = false,
       },
     },
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--hidden',
+      '--glob',
+      '!.git',
+      '--smart-case',
+    },
   },
   extensions = {
     live_grep_args = {
