@@ -29,6 +29,19 @@ return {
       }),
     }
 
+    -- Copied from https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/cpplint.lua and added args
+    lint.linters.cpplint = {
+      cmd = 'cpplint',
+      stdin = false,
+      args = { '--config', '.cpplintrc', '--filter', '-legal/copyright' },
+      ignore_exitcode = true,
+      stream = 'stderr',
+      parser = require('lint.parser').from_pattern(pattern, groups, nil, {
+        ['source'] = 'cpplint',
+        ['severity'] = vim.diagnostic.severity.WARN,
+      }),
+    }
+
     require('lint').linters_by_ft = {
       cpp = { 'cpplint' },
       css = { 'stylelint' },
