@@ -14,6 +14,8 @@ export PERL_MM_OPT="INSTALL_BASE=/home/andreas/perl5"
 export PERL5LIB="/home/andreas/perl5/lib/perl5/x86_64-linux-thread-multi:/home/andreas/perl5/lib/perl5"
 export PATH="/home/andreas/perl5/bin:$PATH"
 
+export PATH=/usr/local/cuda-13.1/bin:$PATH
+
 export TODOTXT_DEFAULT_ACTION=ls
 
 # For reportlib, for OCR2PDF
