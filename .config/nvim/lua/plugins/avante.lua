@@ -1,5 +1,17 @@
+local ok, providerconfig = pcall(require, 'avanteconfig/providerconfig')
+
+local is_enabled
+
+if ok then
+  is_enabled = true
+else
+  P('Avante provider config not found, disabling Avante')
+  is_enabled = false
+end
+
 return {
   'yetone/avante.nvim',
+  enabled = is_enabled,
   build = vim.fn.has('win32') ~= 0
       and 'powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false'
     or 'make',
@@ -9,26 +21,8 @@ return {
   ---@type avante.Config
   opts = {
     instructions_file = 'avante.md',
-    providers = {
-      claude = {
-        endpoint = 'https://api.anthropic.com',
-        model = 'claude-sonnet-4-20250514',
-        timeout = 30000, -- Timeout in milliseconds
-        extra_request_body = {
-          temperature = 0.75,
-          max_tokens = 20480,
-        },
-        moonshot = {
-          endpoint = 'https://api.moonshot.ai/v1',
-          model = 'kimi-k2-0711-preview',
-          timeout = 30000, -- Timeout in milliseconds
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 32768,
-          },
-        },
-      },
-    },
+    provider = providerconfig.provider,
+    providers = providerconfig.providers,
     behaviour = {
       auto_suggestions = false, -- Experimental stage
       auto_set_highlight_group = true,

@@ -1,0 +1,30 @@
+-- vim: filetype=lua
+return {
+  provider = 'llamacpp',
+  providers = {
+    llamacpp = {
+      __inherited_from = 'openai',
+      endpoint = 'http://localhost:8080/',
+      model = 'gpt-oss-120b',
+      -- is_env_set = require('avante.providers.openai').check_endpoint_alive,
+    },
+    -- claude = {
+    --   endpoint = 'https://api.anthropic.com',
+    --   model = 'claude-sonnet-4-20250514',
+    --   timeout = 30000, -- Timeout in milliseconds
+    --   extra_request_body = {
+    --     temperature = 0.75,
+    --     max_tokens = 20480,
+    --   },
+    --   moonshot = {
+    --     endpoint = 'https://api.moonshot.ai/v1',
+    --     model = 'kimi-k2-0711-preview',
+    --     timeout = 30000, -- Timeout in milliseconds
+    --     extra_request_body = {
+    --       temperature = 0.75,
+    --       max_tokens = 32768,
+    --     },
+    --   },
+    -- },
+  },
+}
