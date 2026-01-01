@@ -32,40 +32,6 @@ bash_profile_local=~/.config/bash/bash_profile-local
 [[ -r $bash_profile_local ]] && source "$bash_profile_local"
 
 # ---------------------------------------------------------------------------
-#
-# setup ssh-agent
-#
-# http://mah.everybody.org/docs/ssh
-
-# set environment variables if user's agent already exists
-# the sed call at the end just in case someone (QNAP!) has aliased ls to ls -F
-[ -z "$SSH_AUTH_SOCK" ] && SSH_AUTH_SOCK=$(ls -ltr /tmp/ssh-*/agent.* 2>/dev/null | grep $(whoami) | awk '{print $9}' | sed 's/=$//')
-if [ $(echo "$SSH_AUTH_SOCK" | wc -l) -gt 1 ]; then
-  echo Warning, more than one ssh agent socket found, using first: echo $SSH_AUTH_SOCK
-  SSH_AUTH_SOCK=$(echo "$SSH_AUTH_SOCK" | head -1)
-fi
-[ -z "$SSH_AGENT_PID" -a "$(echo $SSH_AUTH_SOCK | cut -d. -f2)" ] && SSH_AGENT_PID=$(($(echo $SSH_AUTH_SOCK | cut -d. -f2) + 1))
-[ -n "$SSH_AUTH_SOCK" ] && export SSH_AUTH_SOCK
-[ -n "$SSH_AGENT_PID" ] && export SSH_AGENT_PID
-
-# start agent if necessary
-# if [ -z "$SSH_AGENT_PID" ] && [ -z "$SSH_TTY" ]; then  # if no agent & not in ssh
-if [ -z "$SSH_AGENT_PID" ]; then # if no agent
-  eval $(ssh-agent -s) >/dev/null
-fi
-
-# setup addition of keys when needed
-if [ -z "$SSH_TTY" ]; then # if not using ssh
-  ssh-add -l >/dev/null    # check for keys
-  if [ $? -ne 0 ]; then
-    alias ssh='ssh-add -l > /dev/null || ssh-add && unalias ssh ; ssh'
-    if [ -f "/usr/lib/ssh/x11-ssh-askpass" ]; then
-      SSH_ASKPASS="/usr/lib/ssh/x11-ssh-askpass"
-      export SSH_ASKPASS
-    fi
-  fi
-fi
-# ---------------------------------------------------------------------------
 
 {% if yadm.distro == "openSUSE" %}
 # Normally we source .bashrc when the shell is interactive.
