@@ -29,17 +29,32 @@ export VISUAL=nvim # crontab -e on qnap depends on VISUAL and apparently does no
 
 # -------------------------------------------------------------------------
 # PATH
-PATH="$HOME/.cargo/bin:\
-$HOME/.yarn/bin:\
-$HOME/Documents/git_projects/csslint/dist:\
-$HOME/bin:\
-$HOME/local/bin:\
-$HOME/dotfiles/local/bin:\
-$HOME/dotfiles/os/bin:\
-$HOME/dotfiles/bin:\
-$HOME/dotfiles/bin/remarkable/host:\
-/opt/homebrew/opt/gnu-tar/libexec/gnubin:\
-$PATH"
+
+path_append() {
+  case ":$PATH:" in
+  *:"$1":*) ;;          # already there → do nothing
+  *) PATH="$PATH:$1" ;; # not there → append
+  esac
+}
+
+path_prepend() {
+  case ":$PATH:" in
+  *:"$1":*) ;;          # already there → do nothing
+  *) PATH="$1:$PATH" ;; # not there → prepend
+  esac
+}
+
+path_prepend "/opt/homebrew/opt/gnu-tar/libexec/gnubin"
+path_prepend "$HOME/dotfiles/bin/remarkable/host"
+path_prepend "$HOME/dotfiles/bin"
+path_prepend "$HOME/dotfiles/os/bin"
+path_prepend "$HOME/dotfiles/local/bin"
+path_prepend "$HOME/local/bin"
+path_prepend "$HOME/bin"
+path_prepend "$HOME/Documents/git_projects/csslint/dist"
+path_prepend "$HOME/.yarn/bin"
+path_prepend "$HOME/.cargo/bin"
+
 export PATH
 
 if [ -z "$BASH" ]; then

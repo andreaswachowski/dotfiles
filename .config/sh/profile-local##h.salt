@@ -1,10 +1,10 @@
 # vi: filetype=sh
 # shellcheck shell=sh
-export PATH=$HOME/bin/dvd:$PATH
+path_prepend "$HOME/bin/dvd"
 
 # Amarok development
-export PATH=$HOME/kde/bin:$PATH
-export PATH=/usr/lib/ccache:$PATH
+path_prepend "$HOME/kde/bin"
+path_prepend "/usr/lib/ccache"
 export LD_LIBRARY_PATH=$HOME/kde/lib:$LD_LIBRARY_PATH
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/home/andreas/kde/share
 
@@ -12,9 +12,10 @@ export PERL_LOCAL_LIB_ROOT="/home/andreas/perl5"
 export PERL_MB_OPT="--install_base /home/andreas/perl5"
 export PERL_MM_OPT="INSTALL_BASE=/home/andreas/perl5"
 export PERL5LIB="/home/andreas/perl5/lib/perl5/x86_64-linux-thread-multi:/home/andreas/perl5/lib/perl5"
-export PATH="/home/andreas/perl5/bin:$PATH"
+path_prepend "/home/andreas/perl5/bin"
 
-export PATH=/usr/local/cuda-13.1/bin:$PATH
+path_prepend "/usr/local/cuda-13.1/bin"
+export PATH
 
 export TODOTXT_DEFAULT_ACTION=ls
 

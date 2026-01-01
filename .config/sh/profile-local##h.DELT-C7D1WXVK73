@@ -1,5 +1,5 @@
 # vi: filetype=sh
 # shellcheck shell=sh
 
-PATH=/opt/homebrew/opt/mysql@8.0/bin:$PATH
+path_prepend "/opt/homebrew/opt/mysql@8.0/bin"
 export PATH
