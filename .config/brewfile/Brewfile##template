@@ -74,6 +74,7 @@ brew 'imagemagick'
 brew 'tidy-html5'
 brew 'poppler'
 brew 'jq'
+brew 'prettierd'
 
 brew 'saulpw/vd/visidata'
 

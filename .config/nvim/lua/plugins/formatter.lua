@@ -13,9 +13,9 @@ return {
         -- Later, activate the venv before starting the editing session.
         cmake = require('formatter.filetypes.cmake').cmakeformat,
         cpp = require('formatter.filetypes.cpp').clangformat,
-        javascript = require('formatter.filetypes.javascript').prettier,
-        javascriptreact = require('formatter.filetypes.javascript').prettier,
-        json = require('formatter.filetypes.json').prettier,
+        javascript = require('formatter.filetypes.javascript').prettierd,
+        javascriptreact = require('formatter.filetypes.javascript').prettierd,
+        json = require('formatter.filetypes.json').prettierd,
         lua = {
           function()
             local file = vim.api.nvim_buf_get_name(0)
@@ -52,10 +52,10 @@ return {
             }
           end
         },
-        typescript = require('formatter.filetypes.typescript').prettier,
-        typescriptreact = require('formatter.filetypes.typescript').prettier,
-        vue = require('formatter.filetypes.vue').prettier,
-        yaml = require('formatter.filetypes.yaml').prettier,
+        typescript = require('formatter.filetypes.typescript').prettierd,
+        typescriptreact = require('formatter.filetypes.typescript').prettierd,
+        vue = require('formatter.filetypes.vue').prettierd,
+        yaml = require('formatter.filetypes.yaml').prettierd,
         ['*'] = {
           function()
             -- base64 encoded mail might need an empty line at EOF
