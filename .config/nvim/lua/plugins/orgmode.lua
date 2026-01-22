@@ -19,7 +19,7 @@ return {
         s = {
           description = 'Sysadmin Log',
           template = '* %?\n  CREATED: %U',
-          target = org_path('sysadmin_log.org'),
+          target = org_path('logs/sysadmin_log.org'),
           datetree = {
             tree_type = 'month',
           },
@@ -27,7 +27,15 @@ return {
         f = {
           description = 'Friction Log',
           template = '* %?\n  CREATED: %U',
-          target = org_path('friction_log.org'),
+          target = org_path('logs/friction_log.org'),
+          datetree = {
+            tree_type = 'month',
+          },
+        },
+        i = {
+          description = 'Finance Log',
+          template = '* %?\n  CREATED: %U',
+          target = org_path('logs/finance_log.org'),
           datetree = {
             tree_type = 'month',
           },
