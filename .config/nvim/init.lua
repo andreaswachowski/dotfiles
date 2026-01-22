@@ -24,6 +24,9 @@ for _, module in ipairs(modules) do
   if not ok then error('Error loading ' .. module .. '\n\n' .. err) end
 end
 
+-- To close a buffer without closing the tab (and its cd settings)
+vim.cmd([[nnoremap <silent> <leader>bd :enew<CR>]])
+
 -- [[ Import other stuff ]]
 -- Someday I might migrate from my custom solution to
 -- https://github.com/kazhala/close-buffers.nvim
