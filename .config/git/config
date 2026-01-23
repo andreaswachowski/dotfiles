@@ -33,11 +33,16 @@
 	tagv = for-each-ref --format='%(refname:short) %(objecttype) %(objectname) %(authordate:format:%Y-%m-%d-%H:%M:%S) %(subject) %(body)' refs/tags
 	wdiff = diff --word-diff
 	staash = stash --all
+	# "git show | less" ignores color, which is unfortunate. Configuring
+	# "color.diff = always" is not possible because then gitleaks does not
+	# work ("0 commits scanned"). Thus, use an alias when "git show | less"
+	# with color is required.
+	showc = show --color=always
 [branch]
 	sort = -committerdate
 [color]
 	status = auto
-	diff = always
+	diff = auto
 	branch = auto
 	interactive = auto
 [color "diff"]
