@@ -23,6 +23,15 @@ command -v rspec >/dev/null && {
   complete -F _fzf_complete_rspec -o default -o bashdefault bundle exec rspec
 }
 
+{
+  _fzf_complete_jest() {
+    _fzf_complete -- "$@" < <(fd _spec.ts __tests__)
+  }
+
+  complete -F _fzf_complete_jest -o default -o bashdefault jest
+  complete -F _fzf_complete_jest -o default -o bashdefault pnpm exec jest
+}
+
 # by default, ulimit -n is only 256. With that low setting, largeish vim
 # sessions will fail in git-conflict.nvim with
 #
