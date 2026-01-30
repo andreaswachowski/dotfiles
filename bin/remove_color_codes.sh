@@ -14,4 +14,7 @@ if [ "$(uname)" = Darwin ]; then
   fi
 fi
 
-$SED -e 's/\x1b\[[0-9;]*m//g' "$1"
+# \x1b\[ → ESC + [ (start of CSI)
+# [0-9;?]* → optional parameters (digits, ;, ?)
+# [A-Za-z] → final byte
+$SED -e 's/\x1b\[[0-9;?]*[A-Za-z]//g' "$1"
