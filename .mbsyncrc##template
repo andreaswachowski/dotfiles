@@ -23,4 +23,4 @@ Create Both
 Remove Near
 Expunge Both
 SyncState *
-Pattern INBOX Sent Archive Archive.2025 Archive.2026 Drafts Junk Trash
+Pattern INBOX Sent Archive "Archive/2024" "Archive/2025" "Archive/2026" "Archive/2027" Drafts Junk Trash
