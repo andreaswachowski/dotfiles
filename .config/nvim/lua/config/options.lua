@@ -43,3 +43,9 @@ let &directory=vimtmp
 -- project-related files. Thus, each tab is set to a different tab-local
 -- directory.
 vim.cmd([[source ~/.vim/tabline.vim]])
+
+vim.filetype.add({
+  extension = {
+    mdx = 'mdx',
+  },
+})
