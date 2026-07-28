@@ -59,7 +59,7 @@ set include                                                            # always 
 set forward_format      = "Fwd: %s"                                    # when forwarding email, simply add a Fwd to the subject
 set wrap = 78
 set smart_wrap                                                         # dont wrap mid word
-set hidden_tags = "inbox,invoices,replied,unread,attachment,signed,encrypted,newsletter"
+set hidden_tags = "invoices,replied,unread,attachment,signed,encrypted,newsletter"
 
 auto_view text/html                                                    # autoview html
 alternative_order text/plain text/enriched text/html                   # save html for last
@@ -140,6 +140,8 @@ bind index,pager & noop                                                # unbind 
 bind index,pager b noop                                                # Unbind bounce
 bind index,pager A create-alias                                        # bind alias-creation
 
+bind index,pager \et modify-tags
+
 # bind index K previous-unread
 # bind index J next-unread
 
@@ -191,8 +193,10 @@ macro index,pager I  <set-flag>O	"Mark as read"
 macro index,pager U  <clear-flag>O	"Mark as unread"
 macro index,pager gl <change-folder>?				"Go to 'Label'"
 # https://unix.stackexchange.com/questions/532358/how-to-archive-mail-by-year-in-mutt
-macro index,pager e "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive, mark read conversation"
-macro index,pager E "<save-message><enter>" "Archive, keep unread conversation"
+# macro index,pager e "<modify-tags>-inbox -unread<enter>" "Logically archive, mark read conversation"
+#macro index,pager E "<modify-tags>-inbox<enter>" "Logically archive, keep unread conversation"
+macro index,pager e "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Physically archive, mark read conversation"
+macro index,pager E "<save-message><enter>" "Physically archive, keep unread conversation"
 
 # Sync email
 macro index O '<shell-escape>check-mail.sh >/dev/null 2>&1 &<enter>' "Check for new mails"
