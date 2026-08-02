@@ -22,7 +22,9 @@ family = "Monaco Nerd Font Mono"
 style = "Regular"
 
 [window]
-# allows meta-shortcuts in neovim but prevents entering Umlauts
+# Allows meta-shortcuts in neovim but prevents entering Umlauts the MacOS way
+# (e.g., Option+u for ü). That's not a problem in neovim because the alternative
+# "C-K : u" exists, but everywhere else.
 # option_as_alt = "Both"
 position = { x = 40, y = 40 }
 
