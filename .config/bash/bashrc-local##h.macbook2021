@@ -15,6 +15,7 @@ case "$-" in *i*)
   alias urxvt='urxvt --perl-lib $HOME/bin -pe tabbed -geometry 120x40+0+0'
   alias start_mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM start"
   alias stop_mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
+  alias neomutt="echo \"Use inbox instead (or call with full path if you really mean it).\""
 
   alias cdkanban="cd ~/Documents/qa-kanban"
   alias cdrails="cd ~/Documents/rails-app"

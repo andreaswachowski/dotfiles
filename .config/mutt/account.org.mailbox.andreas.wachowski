@@ -31,7 +31,7 @@ set sendmail = "msmtp -a andreas.wachowski@mailbox.org"
 
 set folder             = ~/Mail/mailbox.org
 
-set spool_file          = "+INBOX"
+set spool_file          = "notmuch://?query=tag:inbox"
 set mbox                = "+mbox"
 set postponed           = "+Drafts"
 set record              = "+Sent"
@@ -39,8 +39,6 @@ set trash               = "+Trash"
 set header_cache        = ~/.cache/mutt/org.mailbox.andreas.wachowski/headers
 set message_cachedir    = ~/.cache/mutt/org.mailbox.andreas.wachowski/bodies
 set certificate_file    = ~/.cache/mutt/certificates
-
-mailboxes -label Inbox-Mailbox ~/Mail/mailbox.org/INBOX
 
 folder-hook . "set sort=threads" # like gmail
 
@@ -53,7 +51,11 @@ folder-hook "=Sent" "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %
 
 source ~/.config/mutt/notmuch-mailboxes
 set folder = ~/Mail/mailbox.org # reset after it was set to ~/Mail in notmuch-mailboxes
-mailboxes `ls -1 ~/Mail/mailbox.org | grep -v INBO | sed 's/.*/"+\/&"/' | paste -sd ' ' -`
+mailboxes -label "Drafts" "notmuch://?query=folder:mailbox.org/Drafts"
+mailboxes -label "Sent"   "notmuch://?query=folder:mailbox.org/Sent"
+mailboxes -label "Trash"  "notmuch://?query=tag:trash"
+mailboxes -label "Junk"   "notmuch://?query=folder:mailbox.org/Junk"
+source `f=$(mktemp); for d in $(ls -1d ~/Mail/mailbox.org/Archive.???? 2>/dev/null | sort -r); do y="${d##*.}"; printf 'mailboxes -label %s "notmuch://?query=folder:mailbox.org/Archive.%s"\n' "$y" "$y" >> "$f"; done; echo "$f"`
 
 # Use "date-sent" (not received) because that is displayed on screen
 save-hook ~d01/01/1996-31/12/1996 =Archive.1996
@@ -94,7 +96,8 @@ save-hook ~d01/01/2030-31/12/2030 =Archive.2030
 
 bind index,pager g noop # to avoid neomutt warning in next line
 macro index,pager gd "<change-folder>=mailbox.org/Drafts<enter>"	"Go to 'Drafts'"
-macro index,pager gi <change-folder>=mailbox.org/INBOX<enter> 		"Go to inbox"
+macro index,pager gi  "<change-folder>notmuch://?query=tag:inbox<enter>" "Go to notmuch inbox"
+macro index,pager gI  "<change-folder>=mailbox.org/INBOX<enter>"         "Go to physical INBOX"
 macro index,pager gt "<change-folder>=mailbox.org/Sent<enter>"	"Go to 'Sent Mail'"
 
 set folder = ~/Mail

@@ -23,7 +23,7 @@ set move                = no # Don't ask me to move messages out of my inbox whe
 set quit
 set wait_key            = no                                           # Don't ask me to press a key to continue after I did a shell escape and came back
 set timeout             = 60                                           # idle time before scanning
-set mail_check          = 60                                           # minimum time between scans
+set mail_check          = 0                                            # no mail check, control instead via ~/bin/check-mail.sh
 set mail_check_stats    = yes                                          # calculate message statistics of a mailbox (unread, flagged, total message count)
 set delete                                                             # don't ask, just do
 unset confirmappend                                                    # When saving a message, append the message to an existing mailbox without asking (Why should it ask, anyway? Mailboxes generally have multiple messages...)
@@ -65,7 +65,7 @@ auto_view text/html                                                    # autovie
 alternative_order text/plain text/enriched text/html                   # save html for last
 
 set sidebar_visible        = yes
-set sidebar_folder_indent  = yes
+set sidebar_folder_indent  = no
 set sidebar_short_path     = yes
 # https://neomutt.org/guide/gettingstarted.html#2-4-3-2-%C2%A0sidebar-format-string
 set sidebar_format         = "%D%<F? [%F]>%* %<N?%N/>%S"
@@ -193,10 +193,9 @@ macro index,pager I  <set-flag>O	"Mark as read"
 macro index,pager U  <clear-flag>O	"Mark as unread"
 macro index,pager gl <change-folder>?				"Go to 'Label'"
 # https://unix.stackexchange.com/questions/532358/how-to-archive-mail-by-year-in-mutt
-# macro index,pager e "<modify-tags>-inbox -unread<enter>" "Logically archive, mark read conversation"
-#macro index,pager E "<modify-tags>-inbox<enter>" "Logically archive, keep unread conversation"
-macro index,pager e "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Physically archive, mark read conversation"
-macro index,pager E "<save-message><enter>" "Physically archive, keep unread conversation"
+macro index,pager e "<modify-tags>-inbox -unread +archive<enter>" "Logically archive, mark read"
+macro index,pager E "<modify-tags>-inbox +archive<enter>"         "Logically archive, keep unread"
+macro index,pager d "<modify-tags>+trash -inbox -unread<enter>" "Tag as deleted"
 
 # Sync email
 macro index O '<shell-escape>check-mail.sh >/dev/null 2>&1 &<enter>' "Check for new mails"

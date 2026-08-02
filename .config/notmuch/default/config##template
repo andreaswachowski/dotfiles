@@ -68,7 +68,7 @@ ignore=.uidvalidity;.mbsyncstate;.Spotlight-V100;.Trashes;.fseventsd
 #		query will override that exclusion.
 #
 [search]
-exclude_tags=deleted;spam;
+exclude_tags=trash;spam;
 
 # Maildir compatibility configuration
 #

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# inbox: sync → neomutt → purge/archive
+# Usage: inbox [-n|--offline]   skip pre/post sync
+
+set -euo pipefail
+
+OFFLINE=false
+[[ "${1:-}" == "-n" || "${1:-}" == "--offline" ]] && OFFLINE=true
+
+if ! $OFFLINE; then
+  echo "→ Checking mail..."
+  check-mail.sh || echo "Warning: check-mail.sh failed — opening neomutt offline"
+fi
+
+neomutt || true
+
+if ! $OFFLINE; then
+  echo "→ Purging trash..."
+  notmuch-purge.sh
+  echo "→ Archiving..."
+  notmuch-archive.sh
+fi
