@@ -29,14 +29,22 @@ return {
           end,
         },
         sh = {
-          require('formatter.filetypes.sh').shfmt,
-
           function()
+            local shiftwidth = vim.opt.shiftwidth:get()
+            local expandtab = vim.opt.expandtab:get()
+
+            if not expandtab then
+              shiftwidth = 0
+            end
+
             return {
+              exe = 'shfmt',
+              stdin = true,
               -- According to shfmt's man page, similar to
               -- https://google.github.io/styleguide/shellguide.html
               args = {
-                '--indent 2',
+                '--indent',
+                shiftwidth,
                 '--case-indent',
                 '--binary-next-line',
               },
