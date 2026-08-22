@@ -7,6 +7,8 @@ set -euo pipefail
 OFFLINE=false
 [[ "${1:-}" == "-n" || "${1:-}" == "--offline" ]] && OFFLINE=true
 
+[ -e $HOME/.config/mutt/aliases ] || { cd "$HOME"/.secrets && ./decrypt_secrets.sh && cd -; }
+
 if ! $OFFLINE; then
   echo "→ Checking mail..."
   check-mail.sh || echo "Warning: check-mail.sh failed — opening neomutt offline"
