@@ -57,6 +57,12 @@ bind-key C-a send-prefix
 # Order session list alphabetically
 bind s choose-tree -sZ -O name
 
+# Global todo popup: attach-or-create the dedicated 'todo' session.
+# Press again from inside the popup to close it.
+bind-key T if-shell -F '#{==:#{session_name},todo}' \
+    'detach-client' \
+    'display-popup -w 90% -h 90% -E -T " todo " "$HOME/bin/todo-popup"'
+
 # move around panes with hjkl, as one would in vim after pressing ctrl-w
 bind h select-pane -L
 bind l select-pane -R

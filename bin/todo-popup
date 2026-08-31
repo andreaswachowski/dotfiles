@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Attach-or-create the dedicated 'todo' tmux session: a single
+# long-lived nvim instance on the global todo file. Never open this
+# file from any other nvim instance — this is the one true editor.
+exec tmux new-session -A -s todo nvim "$HOME/Documents/git_projects/notes/refile.org"
