@@ -32,15 +32,15 @@ export VISUAL=nvim # crontab -e on qnap depends on VISUAL and apparently does no
 
 path_append() {
   case ":$PATH:" in
-  *:"$1":*) ;;          # already there → do nothing
-  *) PATH="$PATH:$1" ;; # not there → append
+    *:"$1":*) ;;          # already there → do nothing
+    *) PATH="$PATH:$1" ;; # not there → append
   esac
 }
 
 path_prepend() {
   case ":$PATH:" in
-  *:"$1":*) ;;          # already there → do nothing
-  *) PATH="$1:$PATH" ;; # not there → prepend
+    *:"$1":*) ;;          # already there → do nothing
+    *) PATH="$1:$PATH" ;; # not there → prepend
   esac
 }
 
