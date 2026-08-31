@@ -1,6 +1,13 @@
 [Unit]
 Description=tmux default session (detached)
 Documentation=man:tmux(1)
+# Not a hard requirement -- tmux itself never touches SSH_AUTH_SOCK, panes
+# pick it up from bashrc-os##os.Linux whenever they start a shell. This
+# ordering just avoids a boot-time race with tmux-resurrect restoring
+# processes (@resurrect-processes 'ssh') before ssh-agent.service's socket
+# exists.
+Wants=ssh-agent.service
+After=ssh-agent.service
 
 [Service]
 Type=forking

@@ -3,3 +3,17 @@
 
 GIT_COMPLETE=/usr/share/bash-completion/completions/git
 [ -r $GIT_COMPLETE ] && source $GIT_COMPLETE
+
+# Fixed-socket ssh-agent managed by systemd --user
+# (~/.config/systemd/user/ssh-agent.service). Exporting unconditionally
+# here -- not in .profile -- because tmux panes are non-login shells
+# (.tmux.conf default-command) and never source .profile; .bashrc is the
+# one file every interactive shell, tmux or not, actually runs.
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/ssh-agent.socket"
+
+if [ -z "$SSH_TTY" ]; then
+  ssh-add -l >/dev/null 2>&1
+  if [ $? -eq 1 ]; then # agent reachable, no identities loaded yet
+    alias ssh='ssh-add -l >/dev/null 2>&1 || ssh-add; unalias ssh; ssh'
+  fi
+fi
