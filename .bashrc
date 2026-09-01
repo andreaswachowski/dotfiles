@@ -113,5 +113,5 @@ export GPG_TTY
 RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
 export RIPGREP_CONFIG_PATH
 
-eval "$(zoxide init bash)"
-eval "$("$HOME/.local/bin/mise" activate bash)"
+command -v zoxide >/dev/null && eval "$(zoxide init bash)"
+[ -e $HOME/.local/bin/mise ] && eval "$("$HOME/.local/bin/mise" activate bash)"
