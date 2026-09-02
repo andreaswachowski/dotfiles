@@ -55,7 +55,7 @@ other_email=andreas.wachowski@mailbox.org;andreas.wachowski@gmail.com;andreas.wa
 [new]
 exclude=gmail
 
-tags=unread;inbox;
+tags=unread;
 ignore=.uidvalidity;.mbsyncstate;.Spotlight-V100;.Trashes;.fseventsd
 
 # Search configuration
