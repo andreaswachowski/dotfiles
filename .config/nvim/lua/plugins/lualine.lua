@@ -45,6 +45,41 @@ local function diff_source()
   end
 end
 
+-- Cache git-root lookups per directory: the statusline redraws on nearly
+-- every cursor move, and a directory's git root can't change mid-session.
+local git_root_cache = {} -- dir -> root string or false (negative cache)
+
+local function get_git_root(dir)
+  if git_root_cache[dir] ~= nil then
+    return git_root_cache[dir] or nil
+  end
+  local gitdir = vim.fs.find('.git', { upward = true, path = dir })[1]
+  local root = gitdir and vim.fn.fnamemodify(gitdir, ':h') or nil
+  git_root_cache[dir] = root or false
+  return root
+end
+
+-- Show oil.nvim/file paths as <project>/<path-relative-to-repo-root> when
+-- inside a git repo, or ~/<path> relative to $HOME otherwise.
+local function display_path()
+  local bufname = vim.api.nvim_buf_get_name(0)
+  if bufname == '' then
+    return '[No Name]'
+  end
+  local path = bufname:gsub('^oil://', '')
+  local dir = vim.fn.fnamemodify(path, ':p:h')
+  local root = vim.b.gitsigns_status_dict and vim.b.gitsigns_status_dict.root
+    or get_git_root(dir)
+
+  if root then
+    local project = vim.fn.fnamemodify(root, ':t')
+    local rel = path:sub(#root + 2)
+    return rel ~= '' and (project .. '/' .. rel) or project
+  end
+
+  return vim.fn.fnamemodify(path, ':~')
+end
+
 return {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
@@ -68,7 +103,7 @@ return {
         'diagnostics',
       },
       lualine_c = {
-        { 'filename', path = 1, fmt = trunc(100, 80, 50, false) },
+        { display_path, fmt = trunc(100, 80, 50, false) },
         { 'branch', fmt = trunc_branch(120, 15, 100, false) },
       },
       lualine_x = {
@@ -87,7 +122,7 @@ return {
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { { 'filename', path = 1 } },
+      lualine_c = { { display_path } },
       lualine_x = { 'location' },
       lualine_y = {},
       lualine_z = {},
