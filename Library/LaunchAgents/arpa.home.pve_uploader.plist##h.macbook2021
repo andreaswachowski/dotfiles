@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>arpa.home.pve_uploader</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/andreas/bin/pve_uploader.sh</string>
+		<string>-v</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/tmp/pve_uploader.log</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/pve_uploader.log</string>
+	<key>RunAtLoad</key>
+	<false/>
+</dict>
+</plist>
