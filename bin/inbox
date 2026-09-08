@@ -23,6 +23,20 @@ if ! $OFFLINE; then
   notmuch-purge.sh
   echo "→ Archiving..."
   notmuch-archive.sh
-  echo "→ Backing up..."
-  backup_email.sh || echo "Warning: backup_email.sh failed"
+  backup_stamp="$HOME/.cache/inbox/backup_email.last_run"
+  backup_interval=$((2 * 60 * 60))
+  now=$(date +%s)
+  last_run=0
+  [ -f "$backup_stamp" ] && last_run=$(cat "$backup_stamp")
+  if [ $((now - last_run)) -ge "$backup_interval" ]; then
+    echo "→ Backing up..."
+    mkdir -p "$(dirname "$backup_stamp")"
+    if backup_email.sh; then
+      date +%s >"$backup_stamp"
+    else
+      echo "Warning: backup_email.sh failed"
+    fi
+  else
+    echo "→ Skipping backup (last ran $(( (now - last_run) / 60 )) min ago, interval is 120 min)"
+  fi
 fi
