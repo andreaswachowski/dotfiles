@@ -58,6 +58,7 @@ brew 'msmtp'
 brew 'neomutt'
 brew 'notmuch'
 brew 'pandoc'
+brew 'parsedmarc'
 brew 'urlview'
 brew 'vdirsyncer'
 

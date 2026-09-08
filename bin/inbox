@@ -12,6 +12,8 @@ OFFLINE=false
 if ! $OFFLINE; then
   echo "→ Checking mail..."
   check-mail.sh || echo "Warning: check-mail.sh failed — opening neomutt offline"
+  echo "→ Processing DMARC reports..."
+  notmuch-dmarc.py || echo "Warning: notmuch-dmarc.py failed"
 fi
 
 neomutt || true
