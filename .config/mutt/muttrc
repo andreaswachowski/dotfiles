@@ -49,6 +49,14 @@ set date_format         = "%d.%m.%y %H:%M"                          # a simple d
 folder-hook ".*" "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30L %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
 # In addition, show mbox when searching
 folder-hook notmuch:// "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30b %-30.30L %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
+# The "Inbox" and "Inbox (seen)" vfolders both filter on tag:inbox, which is
+# pinned 1:1 to folder:mailbox.org/INBOX by the first notmuch tag rule, so
+# %g's "inbox" tag and %b's folder name are always the same constant value
+# there - drop both to save the width for sender/subject.
+folder-hook 'query=tag:inbox$' "set hidden_tags='invoices,replied,unread,attachment,signed,encrypted,newsletter,inbox'"
+folder-hook 'query=tag:inbox$' "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30L %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
+folder-hook 'query=tag:inbox and not tag:unread$' "set hidden_tags='invoices,replied,unread,attachment,signed,encrypted,newsletter,inbox'"
+folder-hook 'query=tag:inbox and not tag:unread$' "set index_format='%4C [%Z] %<X?%X& > %g %[%d.%m.%y %H:%M] %-30.30L %<M?(%2M)&    > %?y?(%.20Y) ?%s'"
 set sort                = threads                                      # like gmail
 set sort_aux            = reverse-last-date-received                   # like gmail
 set uncollapse_jump                                                    # don't collapse on an unread message
