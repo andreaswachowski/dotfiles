@@ -21,4 +21,6 @@ if ! $OFFLINE; then
   notmuch-purge.sh
   echo "→ Archiving..."
   notmuch-archive.sh
+  echo "→ Backing up..."
+  backup_email.sh || echo "Warning: backup_email.sh failed"
 fi
