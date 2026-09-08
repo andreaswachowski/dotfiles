@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Physically archive INBOX messages that no longer have the 'inbox' notmuch tag.
+# Physically archive INBOX messages tagged 'archive'.
 # Safe to run repeatedly; already-archived messages won't match the query.
 #
 # Strategy: copy to Archive.<year>, mark original with Maildir :2,T (\Deleted)
@@ -75,7 +75,7 @@ while IFS= read -r file; do
     add_trashed_flag "$file"
   fi
   ((count++)) || true
-done < <(notmuch search --output=files 'folder:mailbox.org/INBOX and not tag:inbox and not tag:trash')
+done < <(notmuch search --output=files 'folder:mailbox.org/INBOX and tag:archive and not tag:trash')
 
 if ((count > 0)); then
   if $DRY_RUN; then
