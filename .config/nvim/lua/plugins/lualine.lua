@@ -59,8 +59,9 @@ local function get_git_root(dir)
   return root
 end
 
--- Show oil.nvim/file paths as <project>/<path-relative-to-repo-root> when
--- inside a git repo, or ~/<path> relative to $HOME otherwise.
+-- Show oil.nvim/file paths relative to the git root when cwd is already
+-- that root (no point repeating the project name), <project>/<relative>
+-- when inside a git repo but cwd is elsewhere, or ~/<path> otherwise.
 local function display_path()
   local bufname = vim.api.nvim_buf_get_name(0)
   if bufname == '' then
@@ -72,8 +73,11 @@ local function display_path()
     or get_git_root(dir)
 
   if root then
-    local project = vim.fn.fnamemodify(root, ':t')
     local rel = path:sub(#root + 2)
+    if vim.fn.getcwd() == root then
+      return rel ~= '' and rel or '.'
+    end
+    local project = vim.fn.fnamemodify(root, ':t')
     return rel ~= '' and (project .. '/' .. rel) or project
   end
 
