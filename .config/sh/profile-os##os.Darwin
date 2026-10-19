@@ -14,33 +14,17 @@ export MORE="-erFX $MORE" # Mac Os X uses less for more
 #
 # setup ssh-agent
 #
-# http://mah.everybody.org/docs/ssh
+# Use Apple's ssh-agent with Keychain integration for simplicity.
+# Keys are added once with: /usr/bin/ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+# After that, they persist across reboots and work with both Apple and Homebrew SSH.
 
-# set environment variables if user's agent already exists
-# the sed call at the end just in case someone (QNAP!) has aliased ls to ls -F
-[ -z "$SSH_AUTH_SOCK" ] && SSH_AUTH_SOCK=$(ls -ltr /tmp/ssh-*/agent.* 2>/dev/null | grep $(whoami) | awk '{print $9}' | sed 's/=$//')
-if [ $(echo "$SSH_AUTH_SOCK" | wc -l) -gt 1 ]; then
-  echo Warning, more than one ssh agent socket found, using first: echo $SSH_AUTH_SOCK
-  SSH_AUTH_SOCK=$(echo "$SSH_AUTH_SOCK" | head -1)
-fi
-[ -z "$SSH_AGENT_PID" -a "$(echo $SSH_AUTH_SOCK | cut -d. -f2)" ] && SSH_AGENT_PID=$(($(echo $SSH_AUTH_SOCK | cut -d. -f2) + 1))
-[ -n "$SSH_AUTH_SOCK" ] && export SSH_AUTH_SOCK
-[ -n "$SSH_AGENT_PID" ] && export SSH_AGENT_PID
-
-# start agent if necessary
-# if [ -z "$SSH_AGENT_PID" ] && [ -z "$SSH_TTY" ]; then  # if no agent & not in ssh
-if [ -z "$SSH_AGENT_PID" ]; then # if no agent
-  eval $(ssh-agent -s) >/dev/null
-fi
-
-# setup addition of keys when needed
+# Apple's ssh-agent is automatically managed by macOS. We just need to ensure
+# keys are loaded when the agent starts fresh.
 if [ -z "$SSH_TTY" ]; then # if not using ssh
-  ssh-add -l >/dev/null    # check for keys
-  if [ $? -ne 0 ]; then
-    alias ssh='ssh-add -l > /dev/null || ssh-add && unalias ssh ; ssh'
-    if [ -f "/usr/lib/ssh/x11-ssh-askpass" ]; then
-      SSH_ASKPASS="/usr/lib/ssh/x11-ssh-askpass"
-      export SSH_ASKPASS
-    fi
+  /usr/bin/ssh-add -l >/dev/null 2>&1
+  if [ $? -eq 1 ]; then # agent reachable, no identities loaded
+    # Use Apple's ssh-add with Keychain support for lazy-loading
+    # This will pull keys from Keychain automatically
+    alias ssh='/usr/bin/ssh-add -l >/dev/null 2>&1 || /usr/bin/ssh-add --apple-use-keychain; unalias ssh; ssh'
   fi
 fi
