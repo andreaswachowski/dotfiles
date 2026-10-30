@@ -2,6 +2,9 @@
 
 CYANRIP=/usr/bin/cyanrip
 LIBRARY=/audio/audiolibrary
+# The kernel's /dev/srN numbering depends on probe order (the mainboard BMC's
+# "AMI Virtual CDROM" competes for sr0), so address the drive by its serial.
+DRIVE=/dev/disk/by-id/usb-HL-DT-ST_BD-RE_BE16NU50_HITACHLGDA000000054-0:0
 
 # Per type: target directory below $LIBRARY, and whether to sort into a
 # per-artist subdirectory. Various-artists releases (compilations, soundtracks)
@@ -40,6 +43,11 @@ else
   TRACK_NAME="{track} - {artist} - {title}"
 fi
 
+DEVICE=$(readlink -e "$DRIVE") || {
+  echo "Blu-ray drive not connected: $DRIVE" >&2
+  exit 1
+}
+
 if [ -n "$RELEASE" ]; then
   set -- -R "$RELEASE"
 else
@@ -52,7 +60,7 @@ fi
 # in RAM while ripping, which may be from 300 to 600 megabytes, depending on the
 # output used. Low-power and low-RAM devices can turn this off via the -K
 # switch.
-$CYANRIP -d /dev/sr0 -s 6 \
+$CYANRIP -d "$DEVICE" -s 6 \
   -D "$LIBRARY/$DIR/$DECADE/{year}/$ARTIST_DIR{album}{if #releasecomment# > #0# (|releasecomment|)}{if #totaldiscs# > #1#/CD |disc|}" \
   "$@" \
   -T simple \
