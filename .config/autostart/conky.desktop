@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Conky
+Comment=Start both conky columns (~/.config/conky/launch.sh)
+Exec=/home/andreas/.config/conky/launch.sh
+Icon=conky-logomark-violet
+Terminal=false
+X-KDE-autostart-phase=2

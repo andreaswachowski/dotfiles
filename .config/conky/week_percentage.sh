@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Get current day of year (1-366)
