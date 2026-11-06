@@ -32,7 +32,11 @@ position = { x = 40, y = 40 }
 
 [window.dimensions]
 columns = 230
+{% if yadm.os == "Darwin" %}
 lines = 60
+{% else %}
+lines = 55
+{% endif %}
 
 [[keyboard.bindings]]
 key = "Enter"
